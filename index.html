@@ -985,6 +985,47 @@
       line-height:.9;
     }
 
+    /* ---------------- INSTAGRAM FEED SECTION ---------------- */
+    .instagram-section{
+      background:var(--jet);
+      padding:130px 0;
+      border-top:1px solid var(--white-line);
+    }
+    .ig-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:30px;
+      margin-bottom:50px;
+    }
+    .ig-title{
+      margin:16px 0 0;
+      font-size:clamp(65px,9vw,135px);
+      line-height:.9;
+    }
+    .ig-handle-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:12px 20px;
+      background:transparent;
+      border:1px solid rgba(250,250,248,.3);
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.15em;
+      text-transform:uppercase;
+      color:var(--off);
+      transition:.35s var(--ease);
+    }
+    .ig-handle-btn:hover{
+      background:var(--red);
+      border-color:var(--red);
+    }
+    .behold-wrapper{
+      min-height:220px;
+      position:relative;
+    }
+
     /* ---------------- CTA ---------------- */
     .cta{
       background:var(--red);
@@ -1114,12 +1155,12 @@
       .hero-title{font-size:28vw}
       .hero-sub{font-size:12px}
       .hero-actions{flex-direction:column;align-items:stretch}
-      .story-top,.work,.services,.pricing,.direction{padding-top:90px;padding-bottom:90px}
+      .story-top,.work,.services,.pricing,.direction,.instagram-section{padding-top:90px;padding-bottom:90px}
       .story-top{padding-bottom:70px}
       .story-strip{grid-template-columns:1fr}
       .story-card{min-height:280px;border-right:0;border-bottom:1px solid var(--line)}
       .story-card:last-child{grid-column:auto;border-bottom:0}
-      .work-head,.direction-head{flex-direction:column;align-items:flex-start}
+      .work-head,.direction-head,.ig-header{flex-direction:column;align-items:flex-start}
       .project-copy h3{font-size:42px}
       .service{grid-template-columns:40px 1fr 30px;gap:12px}
       .service-desc{display:none}
@@ -1150,6 +1191,7 @@
           <li><a href="#services">Services</a></li>
           <li><a href="#pricing">Pricelist</a></li>
           <li><a href="#direction">Direction</a></li>
+          <li><a href="#instagram">Instagram</a></li>
         </ul>
       </nav>
 
@@ -1671,6 +1713,26 @@
       </div>
     </section>
 
+    <!-- INSTAGRAM LIVE FEED (BEHOLD WIDGET) -->
+    <section class="instagram-section" id="instagram">
+      <div class="container">
+        <div class="ig-header reveal">
+          <div>
+            <div class="eyebrow red-dot">Social Journal</div>
+            <h2 class="ig-title display">LATEST ON<br>INSTAGRAM.</h2>
+          </div>
+          <a class="ig-handle-btn" href="https://instagram.com/alponstudio" target="_blank" rel="noopener">
+            <span>Follow @alponstudio</span> ↗
+          </a>
+        </div>
+
+        <div class="behold-wrapper reveal">
+          <!-- Behold.so Widget Component -->
+          <behold-widget feed-id="CtpYJCSBiUILU0vPGAOr"></behold-widget>
+        </div>
+      </div>
+    </section>
+
     <!-- CTA -->
     <section class="cta" id="contact">
       <div class="container reveal">
@@ -1700,6 +1762,7 @@
             <a href="#services">Services</a>
             <a href="#pricing">Pricelist 2026</a>
             <a href="#direction">Direction</a>
+            <a href="#instagram">Instagram</a>
           </div>
           <div class="footer-col">
             <h4>Social</h4>
@@ -1722,6 +1785,16 @@
     </div>
   </footer>
 
+  <!-- BEHOLD WIDGET SCRIPT -->
+  <script>
+    (() => {
+      if(window.__bhldScript)return;window.__bhldScript=true;
+      const d=document,s=d.createElement("script");s.type="module";
+      s.src="https://w.behold.so/widget.js";setTimeout(()=>{d.head.append(s);},0);
+    })();
+  </script>
+
+  <!-- PAGE ENGINE SCRIPT -->
   <script>
     /*
       IMAGE ASSET LIBRARY
