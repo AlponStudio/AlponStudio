@@ -11,7 +11,7 @@
     ALPON STUDIO — BRAND-ALIGNED SINGLE FILE WEBSITE
     ------------------------------------------------
     IMAGE REPLACEMENT:
-    Semua foto ada di object IMAGE_LIBRARY pada bagian <script>.
+    Semua foto ada di object IMAGE_LIBRARY pada bagian JavaScript.
     Ganti URL di sana saja; tidak perlu mencari URL foto di seluruh file.
 
     BRAND SYSTEM:
@@ -854,6 +854,832 @@
       .footer-links{grid-template-columns:1fr 1fr;gap:35px}
       .footer-bottom{flex-direction:column}
     }
+  
+    /* ==========================================================
+       ALPON GUIDELINE OVERRIDE — EDITORIAL / SHAPE / FRAME SYSTEM
+       ========================================================== */
+
+    :root{
+      --guide-red:#E63946;
+      --guide-black:#0D0D0D;
+      --guide-smoke:#1F1F1F;
+      --guide-stone:#E8E8E6;
+      --guide-off:#FAFAF8;
+      --guide-indigo:#1A2A44;
+      --hair:rgba(13,13,13,.16);
+      --hair-white:rgba(250,250,248,.16);
+    }
+
+    /* brand grid */
+    .brand-gridline{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background:
+        linear-gradient(to right,
+          transparent 0,
+          transparent calc(25% - .5px),
+          rgba(255,255,255,.08) calc(25% - .5px),
+          rgba(255,255,255,.08) 25%,
+          transparent 25%,
+          transparent calc(50% - .5px),
+          rgba(255,255,255,.06) calc(50% - .5px),
+          rgba(255,255,255,.06) 50%,
+          transparent 50%,
+          transparent calc(75% - .5px),
+          rgba(255,255,255,.05) calc(75% - .5px),
+          rgba(255,255,255,.05) 75%,
+          transparent 75%);
+      opacity:.55;
+    }
+
+    .hero-guideline-panel{
+      position:absolute;
+      top:0;right:0;
+      width:42%;
+      height:100%;
+      border-left:1px solid rgba(250,250,248,.14);
+      background:linear-gradient(180deg,rgba(250,250,248,.03),rgba(13,13,13,.24));
+      pointer-events:none;
+    }
+
+    .red-square{
+      width:38px;height:38px;
+      display:grid;place-items:center;
+      background:var(--guide-red);
+      color:var(--guide-off);
+      font-family:var(--display);
+      font-size:16px;
+      letter-spacing:.08em;
+      flex:0 0 auto;
+    }
+
+    .micro-label{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 10px;
+      border:1px solid currentColor;
+      font-size:8px;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+    }
+    .micro-label.red{
+      background:var(--guide-red);
+      border-color:var(--guide-red);
+      color:var(--guide-off);
+    }
+
+    .corner-frame{
+      position:relative;
+      overflow:hidden;
+    }
+    .corner-frame::before,
+    .corner-frame::after{
+      content:"";
+      position:absolute;
+      z-index:8;
+      width:24px;height:24px;
+      border-color:currentColor;
+      border-style:solid;
+      pointer-events:none;
+    }
+    .corner-frame::before{
+      top:16px;left:16px;
+      border-width:2px 0 0 2px;
+      color:var(--guide-off);
+    }
+    .corner-frame::after{
+      bottom:16px;right:16px;
+      border-width:0 2px 2px 0;
+      color:var(--guide-off);
+    }
+
+    /* Hero becomes closer to the supplied guideline:
+       black editorial field + red micro accent + modular right panel */
+    .hero{
+      background:var(--guide-black);
+    }
+    .hero-media{
+      width:58%;
+      right:0;
+      left:auto;
+      background:
+        linear-gradient(90deg,rgba(13,13,13,.15),rgba(13,13,13,.06)),
+        center/cover no-repeat;
+      border-left:1px solid rgba(250,250,248,.13);
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      left:0;bottom:0;
+      width:58%;
+      height:72px;
+      background:var(--guide-black);
+      z-index:2;
+      clip-path:polygon(0 0,92% 0,100% 100%,0 100%);
+      opacity:.98;
+    }
+    .hero-grid{
+      grid-template-columns:58% 42%;
+      padding-bottom:84px;
+    }
+    .hero-main{
+      max-width:760px;
+      position:relative;
+      z-index:4;
+    }
+    .hero-main::after{
+      content:"";
+      position:absolute;
+      left:-24px;bottom:-54px;
+      width:110px;height:1px;
+      background:var(--guide-red);
+      box-shadow:0 0 0 18px rgba(230,57,70,.02);
+    }
+    .hero-kicker{
+      margin-bottom:28px;
+    }
+    .hero-title{
+      font-size:clamp(105px,15.5vw,228px);
+      letter-spacing:.018em;
+    }
+    .hero-title .studio{
+      display:flex;
+      align-items:baseline;
+      gap:18px;
+      -webkit-text-stroke:1px rgba(250,250,248,.82);
+    }
+    .hero-title .studio::after{
+      content:"AP";
+      display:inline-grid;
+      place-items:center;
+      width:64px;height:64px;
+      border:1px solid rgba(250,250,248,.55);
+      color:var(--guide-red);
+      font-family:var(--body);
+      font-size:10px;
+      letter-spacing:.24em;
+      -webkit-text-stroke:0;
+      vertical-align:middle;
+    }
+    .hero-side{
+      position:relative;
+      z-index:4;
+      padding:42px 34px 10px 0;
+    }
+    .hero-side::before{
+      content:"";
+      position:absolute;
+      right:18px;top:38px;
+      width:11px;height:11px;
+      background:var(--guide-red);
+    }
+    .hero-side::after{
+      content:"アルポン・スタジオ";
+      position:absolute;
+      right:8px;top:120px;
+      writing-mode:vertical-rl;
+      font-family:var(--jp);
+      font-size:9px;
+      letter-spacing:.12em;
+      color:rgba(250,250,248,.7);
+    }
+    .aperture{
+      width:148px;height:148px;
+      margin-top:18px;
+      border:1px solid rgba(250,250,248,.34);
+      background:
+        linear-gradient(45deg,transparent 48%,rgba(250,250,248,.07) 49%,transparent 50%),
+        linear-gradient(-45deg,transparent 48%,rgba(250,250,248,.07) 49%,transparent 50%);
+    }
+    .aperture::before{
+      width:78px;height:78px;
+      border-width:12px;
+    }
+    .aperture::after{
+      content:"A  P";
+      right:-12px;
+      bottom:-11px;
+      background:var(--guide-red);
+      padding:6px 9px;
+      font-size:12px;
+    }
+
+    /* New guideline title bars */
+    .guideline-bar{
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:16px;
+      margin-bottom:28px;
+    }
+    .guideline-bar .line{
+      height:1px;background:currentColor;opacity:.18;
+    }
+
+    /* Brand object strip directly inspired by the guideline board */
+    .brand-objects{
+      background:var(--guide-stone);
+      color:var(--guide-black);
+      border-top:1px solid var(--hair);
+      border-bottom:1px solid var(--hair);
+      padding:28px 0;
+    }
+    .brand-objects-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr 1fr .8fr 1fr;
+      gap:1px;
+      background:var(--hair);
+    }
+    .object-card{
+      min-height:160px;
+      background:var(--guide-stone);
+      padding:18px;
+      position:relative;
+      overflow:hidden;
+    }
+    .object-card h4{
+      margin:0 0 16px;
+      font-size:8px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+    .object-card.dark{background:var(--guide-black);color:var(--guide-off)}
+    .object-card.red{background:var(--guide-red);color:var(--guide-off)}
+    .object-card.center{
+      display:grid;place-items:center;
+    }
+    .shape-square{
+      width:62px;height:62px;
+      border:1px solid currentColor;
+      position:relative;
+    }
+    .shape-square::before,
+    .shape-square::after{
+      content:"";
+      position:absolute;
+      background:currentColor;
+    }
+    .shape-square::before{width:18px;height:1px;left:10px;top:10px}
+    .shape-square::after{width:1px;height:18px;left:10px;top:10px}
+    .shape-circle{
+      width:72px;height:72px;border-radius:50%;
+      background:var(--guide-red);
+      position:relative;
+    }
+    .shape-circle::after{
+      content:"";
+      position:absolute;
+      width:34px;height:34px;
+      left:19px;top:19px;
+      border:5px solid var(--guide-off);
+      border-radius:50%;
+      clip-path:polygon(0 0,100% 0,100% 25%,75% 25%,75% 10%,25% 10%,25% 25%,0 25%,
+                        0 75%,25% 75%,25% 90%,75% 90%,75% 75%,100% 75%,100% 100%,0 100%);
+      transform:rotate(15deg);
+    }
+    .barcode{
+      width:100px;height:46px;
+      margin:auto;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          #111 0 2px,
+          transparent 2px 4px,
+          #111 4px 5px,
+          transparent 5px 8px
+        );
+      border:6px solid var(--guide-off);
+    }
+    .sticker{
+      transform:rotate(-2deg);
+      box-shadow:0 7px 14px rgba(0,0,0,.08);
+    }
+    .sticker + .sticker{margin-top:8px;transform:rotate(1.5deg)}
+    .sticker.small{font-size:7px}
+
+    /* Work: more modular and graphic */
+    .work{
+      padding-top:100px;
+    }
+    .work-head{
+      padding-bottom:26px;
+      border-bottom:1px solid var(--hair-white);
+    }
+    .work-head::after{
+      content:"";
+      width:78px;height:7px;
+      display:block;
+      background:var(--guide-red);
+      margin-top:18px;
+    }
+    .frame{
+      border:1px solid rgba(250,250,248,.12);
+    }
+    .frame.large::before{
+      content:"01 / 24";
+      position:absolute;
+      z-index:5;
+      top:17px;right:52px;
+      color:var(--guide-off);
+      font-size:8px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+    .frame.large::after{
+      background:
+        linear-gradient(0deg,rgba(13,13,13,.92),transparent 58%),
+        linear-gradient(90deg,rgba(230,57,70,.16),transparent 34%);
+    }
+    .frame.medium:nth-child(1){
+      border-color:rgba(230,57,70,.48);
+    }
+    .frame.medium:nth-child(1)::before{
+      content:"REC ●";
+      position:absolute;
+      top:17px;left:20px;z-index:5;
+      color:var(--guide-off);
+      background:var(--guide-red);
+      padding:6px 8px;
+      font-size:7px;font-weight:700;letter-spacing:.14em;
+    }
+    .frame.medium:nth-child(2)::before{
+      content:"ALPON / 002";
+      position:absolute;
+      top:17px;right:20px;z-index:5;
+      color:var(--guide-off);
+      font-size:7px;letter-spacing:.17em;
+    }
+
+    /* Section separators / micro rules */
+    .story::before,
+    .direction::before,
+    .identity::before{
+      content:"";
+      display:block;
+      width:100%;
+      height:1px;
+      background:var(--hair);
+    }
+
+    /* Japanese vertical red label */
+    .jp-tab{
+      position:absolute;
+      right:18px;top:18px;
+      padding:9px 7px;
+      background:var(--guide-red);
+      color:var(--guide-off);
+      font-family:var(--jp);
+      font-size:9px;
+      line-height:1.2;
+      writing-mode:vertical-rl;
+      letter-spacing:.12em;
+      box-shadow:0 8px 15px rgba(0,0,0,.13);
+    }
+
+    /* diagonal red block */
+    .red-slash{
+      width:52px;height:24px;
+      background:var(--guide-red);
+      transform:skewX(-22deg);
+      display:inline-block;
+    }
+
+    /* layout system mini board */
+    .layout-board{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:8px;
+      margin-top:24px;
+    }
+    .layout-box{
+      height:92px;
+      border:1px solid var(--hair);
+      background:var(--guide-off);
+      position:relative;
+      padding:11px;
+    }
+    .layout-box .mini-red{
+      width:18px;height:18px;background:var(--guide-red);
+    }
+    .layout-box .mini-lines{
+      position:absolute;
+      left:11px;right:11px;bottom:12px;
+      height:25px;
+      background:
+        linear-gradient(var(--guide-black),var(--guide-black)) 0 0/70% 2px no-repeat,
+        linear-gradient(var(--guide-black),var(--guide-black)) 0 9px/92% 2px no-repeat,
+        linear-gradient(var(--guide-black),var(--guide-black)) 0 18px/55% 2px no-repeat;
+      opacity:.7;
+    }
+    .layout-box.alt{background:var(--guide-black)}
+    .layout-box.alt .mini-lines{
+      background:
+        linear-gradient(var(--guide-off),var(--guide-off)) 0 0/55% 2px no-repeat,
+        linear-gradient(var(--guide-red),var(--guide-red)) 0 9px/25% 2px no-repeat,
+        linear-gradient(var(--guide-off),var(--guide-off)) 0 18px/80% 2px no-repeat;
+    }
+
+    /* identity panel: more like the guideline board */
+    .identity{
+      position:relative;
+      overflow:hidden;
+    }
+    .identity::after{
+      content:"APLON?"; /* intentionally abstract visual noise, not a logo */
+      position:absolute;
+      left:-80px;bottom:-50px;
+      font-family:var(--display);
+      font-size:220px;
+      color:rgba(13,13,13,.03);
+      transform:rotate(-12deg);
+      pointer-events:none;
+    }
+    .identity-left{
+      padding-right:25px;
+    }
+
+    /* CTA gets black inset and red label system */
+    .cta{
+      position:relative;
+      overflow:hidden;
+    }
+    .cta::before{
+      content:"";
+      position:absolute;
+      left:8%;top:12%;
+      width:130px;height:130px;
+      border:1px solid rgba(13,13,13,.22);
+      border-radius:50%;
+    }
+    .cta::after{
+      content:"";
+      position:absolute;
+      right:9%;bottom:12%;
+      width:90px;height:90px;
+      border:10px solid rgba(13,13,13,.12);
+      border-radius:50%;
+      clip-path:polygon(50% 0,80% 17%,100% 50%,80% 83%,50% 100%,20% 83%,0 50%,20% 17%);
+      transform:rotate(15deg);
+    }
+
+    /* footer brand line */
+    footer{
+      border-top:1px solid rgba(250,250,248,.09);
+    }
+
+    @media (max-width:1050px){
+      .hero-media{width:55%}
+      .hero-grid{grid-template-columns:55% 45%}
+      .brand-objects-grid{grid-template-columns:1fr 1fr}
+      .object-card:last-child{grid-column:span 2}
+    }
+
+    @media (max-width:700px){
+      .hero-media{width:100%;opacity:.34}
+      .hero::before{width:100%;height:52px}
+      .hero-grid{grid-template-columns:1fr}
+      .hero-title .studio::after{width:48px;height:48px}
+      .brand-objects-grid{grid-template-columns:1fr}
+      .object-card:last-child{grid-column:auto}
+    }
+
+  
+    /* ==========================================================
+       PRICING / PACKAGE SYSTEM
+       ========================================================== */
+    .pricing{
+      background:var(--guide-indigo);
+      padding:120px 0 135px;
+    }
+    .pricing .services-head{
+      margin-bottom:72px;
+    }
+    .pricing .services-intro{
+      max-width:410px;
+    }
+    .pricing .services-intro p{
+      margin:0 0 18px;
+      color:#c4c9ce;
+      line-height:1.9;
+    }
+    .price-section{
+      position:relative;
+      padding:42px 0 48px;
+      border-top:1px solid var(--white-line);
+    }
+    .price-section:last-of-type{
+      border-bottom:1px solid var(--white-line);
+    }
+    .price-section-head{
+      display:grid;
+      grid-template-columns:68px 62px 1fr;
+      gap:18px;
+      align-items:start;
+      margin-bottom:28px;
+    }
+    .section-index{
+      color:var(--guide-red);
+      font-family:var(--display);
+      font-size:58px;
+      line-height:.78;
+    }
+    .price-section-icon{
+      color:var(--guide-off);
+      font-family:var(--display);
+      font-size:48px;
+      line-height:.8;
+      padding-top:4px;
+    }
+    .price-kicker{
+      color:var(--guide-red);
+      font-size:9px;
+      font-weight:700;
+      letter-spacing:.17em;
+      text-transform:uppercase;
+      margin-bottom:7px;
+    }
+    .price-section-head h3{
+      margin:0;
+      font-size:42px;
+      line-height:.82;
+    }
+    .price-section-head p{
+      color:#aeb5bc;
+      font-size:11px;
+      line-height:1.7;
+      margin:10px 0 0;
+      max-width:510px;
+    }
+    .package-grid{
+      display:grid;
+      gap:10px;
+      align-items:stretch;
+    }
+    .package-grid.three{grid-template-columns:repeat(3,1fr)}
+    .package-card{
+      position:relative;
+      min-height:300px;
+      padding:24px 22px 20px;
+      background:rgba(13,13,13,.34);
+      border:1px solid rgba(250,250,248,.16);
+      display:flex;
+      flex-direction:column;
+      transition:.35s var(--ease);
+    }
+    .package-card:hover{
+      transform:translateY(-4px);
+      border-color:rgba(230,57,70,.65);
+      background:rgba(13,13,13,.52);
+    }
+    .package-card.featured{
+      border-color:rgba(230,57,70,.72);
+      box-shadow:inset 0 2px 0 var(--guide-red);
+    }
+    .package-badge{
+      position:absolute;
+      top:-12px;right:15px;
+      padding:5px 8px;
+      background:var(--guide-red);
+      color:var(--guide-off);
+      font-size:7px;font-weight:700;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+    }
+    .package-top{
+      display:flex;
+      justify-content:space-between;
+      gap:15px;
+      align-items:baseline;
+      padding-bottom:16px;
+      margin-bottom:14px;
+      border-bottom:1px solid var(--white-line);
+    }
+    .package-top span{
+      font-family:var(--display);
+      font-size:32px;
+      line-height:.8;
+    }
+    .package-top small{
+      color:var(--guide-red);
+      font-size:9px;
+      font-weight:700;
+      letter-spacing:.12em;
+    }
+    .package-card ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:grid;
+      gap:10px;
+    }
+    .package-card li{
+      color:#d9dde1;
+      font-size:10px;
+      line-height:1.45;
+      padding-left:16px;
+      position:relative;
+    }
+    .package-card li::before{
+      content:"✓";
+      position:absolute;
+      left:0;
+      top:0;
+      color:var(--guide-red);
+      font-weight:700;
+    }
+    .package-card strong{
+      margin-top:auto;
+      padding-top:24px;
+      color:var(--guide-red);
+      font-family:var(--display);
+      font-size:27px;
+      line-height:.85;
+      letter-spacing:.02em;
+    }
+    .package-btn{
+      width:100%;
+      margin-top:14px;
+      border:1px solid rgba(250,250,248,.22);
+      background:transparent;
+      color:var(--guide-off);
+      padding:11px 12px;
+      text-transform:uppercase;
+      font-size:8px;
+      font-weight:700;
+      letter-spacing:.15em;
+      cursor:pointer;
+      transition:.35s var(--ease);
+    }
+    .package-btn:hover{
+      background:var(--guide-red);
+      border-color:var(--guide-red);
+    }
+    .package-note{
+      margin-top:12px;
+      padding:11px 14px;
+      border:1px solid rgba(250,250,248,.16);
+      color:#bfc6cc;
+      font-size:10px;
+      line-height:1.5;
+    }
+    .package-note b{color:var(--guide-red)}
+    .creator-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+    }
+    .package-card.creator{
+      min-height:330px;
+    }
+    .addon-grid{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:8px;
+    }
+    .addon{
+      min-height:120px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      align-items:flex-start;
+      padding:16px;
+      border:1px dashed rgba(250,250,248,.28);
+      background:rgba(13,13,13,.22);
+      color:var(--guide-off);
+      text-align:left;
+      cursor:pointer;
+      transition:.35s var(--ease);
+    }
+    .addon:hover{
+      background:var(--guide-red);
+      border-style:solid;
+      border-color:var(--guide-red);
+    }
+    .addon span{
+      font-family:var(--display);
+      font-size:25px;
+      line-height:.82;
+    }
+    .addon b{
+      color:var(--guide-red);
+      font-size:10px;
+      letter-spacing:.08em;
+    }
+    .addon:hover b{color:var(--guide-off)}
+    .pricing-foot{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:20px;
+      margin-top:28px;
+    }
+    .pricing-foot > div{
+      border:1px solid var(--white-line);
+      padding:20px;
+      background:rgba(13,13,13,.16);
+    }
+    .pricing-foot ul{
+      margin:15px 0 0;
+      padding-left:16px;
+      color:#bfc5ca;
+      font-size:10px;
+      line-height:1.8;
+    }
+    .pricing-contact p{
+      color:#bfc5ca;
+      font-size:11px;
+      line-height:1.7;
+      margin:12px 0 15px;
+    }
+    .wa-direct{
+      display:inline-flex;
+      padding:10px 13px;
+      background:var(--guide-red);
+      color:var(--guide-off);
+      font-size:9px;
+      font-weight:700;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    /* Spacing fixes: stop uppercase/display lines colliding vertically */
+    .display{
+      padding-top:.05em;
+    }
+    .hero-title{
+      line-height:.82;
+    }
+    .hero-title span + span{
+      margin-top:.06em;
+    }
+    .services-title,.work-title,.direction-title,.story-heading,.cta-title{
+      line-height:.84;
+    }
+    .story-heading br + em,
+    .story-heading em + br{
+      line-height:1.05;
+    }
+    .project-copy h3,
+    .direction-card .caption{
+      line-height:.9;
+    }
+    .footer-brand .logo-word{
+      line-height:.85;
+    }
+
+    @media (max-width:1050px){
+      .package-grid.three{grid-template-columns:1fr}
+      .package-card{min-height:270px}
+      .addon-grid{grid-template-columns:repeat(2,1fr)}
+      .pricing-foot{grid-template-columns:1fr}
+    }
+    @media (max-width:700px){
+      .pricing{padding:90px 0 100px}
+      .price-section-head{
+        grid-template-columns:45px 45px 1fr;
+        gap:10px;
+      }
+      .section-index{font-size:44px}
+      .price-section-icon{font-size:34px}
+      .price-section-head h3{font-size:34px}
+      .creator-grid{grid-template-columns:1fr}
+      .addon-grid{grid-template-columns:1fr}
+      .package-card{min-height:auto}
+    }
+
+  
+    /* FINAL SPACING FIX */
+    .services-head,
+    .price-section-head,
+    .package-card,
+    .pricing-foot > div{
+      overflow:visible;
+    }
+    .price-section-head h3{
+      margin-top:3px;
+      margin-bottom:8px;
+      line-height:.92;
+    }
+    .package-card li + li{
+      margin-top:1px;
+    }
+    .package-btn{
+      text-align:center;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .addon{
+      text-decoration:none;
+    }
+    .addon span,
+    .package-top span{
+      letter-spacing:.02em;
+    }
+
   </style>
 </head>
 
@@ -870,7 +1696,7 @@
       <nav>
         <ul class="nav-links">
           <li><a href="#work">Work</a></li>
-          <li><a href="#services">Services</a></li>
+          <li><a href="#services">Packages</a></li>
           <li><a href="#direction">Direction</a></li>
           <li><a href="#about">About</a></li>
         </ul>
@@ -885,6 +1711,8 @@
     <!-- HERO -->
     <section class="hero" id="home">
       <div class="hero-media" id="heroMedia"></div>
+      <div class="hero-guideline-panel"></div>
+      <div class="brand-gridline"></div>
 
       <div class="container hero-grid">
         <div class="hero-main reveal">
@@ -912,6 +1740,58 @@
       </div>
     </section>
 
+    <!-- BRAND GUIDELINE OBJECTS / SHAPES -->
+    <section class="brand-objects" aria-label="Brand guideline elements">
+      <div class="container">
+        <div class="guideline-bar">
+          <span class="eyebrow red-dot">Graphic Elements</span>
+          <span class="line"></span>
+          <span class="micro-label red">ALPON / SYSTEM</span>
+        </div>
+
+        <div class="brand-objects-grid">
+          <div class="object-card">
+            <h4>01 / Frame</h4>
+            <div class="shape-square corner-frame"></div>
+            <div class="layout-board">
+              <div class="layout-box"><div class="mini-red"></div><div class="mini-lines"></div></div>
+              <div class="layout-box alt"><div class="mini-red"></div><div class="mini-lines"></div></div>
+            </div>
+          </div>
+
+          <div class="object-card dark center">
+            <div>
+              <div class="eyebrow">Aperture</div>
+              <div class="shape-circle"></div>
+            </div>
+          </div>
+
+          <div class="object-card red">
+            <h4>02 / Japanese Accent</h4>
+            <div class="jp-tab">アルポン・スタジオ</div>
+            <div style="padding-top:18px;font-family:var(--display);font-size:42px;line-height:.8;">瞬間<br>SHUNKAN</div>
+          </div>
+
+          <div class="object-card center">
+            <div>
+              <h4>03 / Label</h4>
+              <div class="sticker sticker small">ALPON STUDIO</div>
+              <div class="sticker sticker small">WE CAPTURE WHAT MATTERS.</div>
+              <div class="sticker sticker red small">REC ●</div>
+            </div>
+          </div>
+
+          <div class="object-card dark center">
+            <div>
+              <h4>04 / Archive</h4>
+              <div class="barcode"></div>
+              <div style="margin-top:10px;font-size:8px;letter-spacing:.16em;color:#aaa;">MOMENT / 001 / ALPON STUDIO</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- BRAND STORY -->
     <section class="story">
       <div class="container story-top">
@@ -925,7 +1805,8 @@
           </h2>
         </div>
 
-        <div class="story-copy reveal">
+        <div class="story-copy reveal" style="position:relative;">
+          <span class="jp-tab">物語を残す</span>
           <p><strong>ALPON STUDIO</strong> lahir dari persahabatan Alap + Pondah dan berkembang menjadi ruang kreatif untuk menangkap manusia, energi, detail, dan cerita.</p>
           <p>Kami tidak mengejar gambar yang sekadar indah. Kami mencari <strong>momen yang terasa</strong> — candid, cinematic, sedikit raw, namun tetap terarah.</p>
 
@@ -972,7 +1853,7 @@
         </div>
 
         <div class="work-grid">
-          <article class="frame large reveal">
+          <article class="frame large reveal corner-frame">
             <div class="image" data-image="workEvent"></div>
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
             <span class="mini-tag">REC ●</span>
@@ -984,7 +1865,7 @@
           </article>
 
           <div class="work-stack">
-            <article class="frame medium reveal">
+            <article class="frame medium reveal corner-frame">
               <div class="image" data-image="workWedding"></div>
               <span class="corner tl"></span><span class="corner br"></span>
               <div class="project-copy">
@@ -994,7 +1875,7 @@
               </div>
             </article>
 
-            <article class="frame medium reveal">
+            <article class="frame medium reveal corner-frame">
               <div class="image" data-image="workCity"></div>
               <span class="corner tr"></span><span class="corner bl"></span>
               <div class="project-copy">
@@ -1008,41 +1889,252 @@
       </div>
     </section>
 
-    <!-- SERVICES -->
-    <section class="services" id="services">
+
+    <!-- SERVICES / PRICING -->
+    <section class="services pricing" id="services">
       <div class="container">
         <div class="services-head reveal">
           <div>
-            <div class="eyebrow">What We Do</div>
-            <h2 class="services-title display">SERVICES</h2>
+            <div class="eyebrow">Services &amp; Pricing</div>
+            <h2 class="services-title display">PACKAGES</h2>
           </div>
-          <p class="services-intro">Dari satu frame sampai satu rangkaian cerita — ALPON bekerja dengan pendekatan visual yang cinematic, candid, minimal, dan editorial.</p>
+          <div class="services-intro">
+            <p>Harga launching 2026. Pilih paket yang paling sesuai dengan kebutuhan dokumentasi Anda.</p>
+            <span class="micro-label red">SEMARANG &amp; SEKITARNYA</span>
+          </div>
         </div>
 
-        <div class="service-list">
-          <div class="service reveal">
-            <div class="service-no">01</div>
-            <div class="service-name">PHOTO</div>
-            <div class="service-desc">Event, documentary, portrait, editorial, brand coverage dan visual yang fokus pada detail manusia.</div>
-            <div class="service-arrow">↗</div>
+        <div class="price-section reveal" id="photo">
+          <div class="price-section-head">
+            <div class="section-index">01</div>
+            <div class="price-section-icon">◉</div>
+            <div>
+              <div class="price-kicker">ALPON PHOTO</div>
+              <h3 class="display">PHOTO</h3>
+              <p>Dokumentasi momen berharga dengan sudut pandang terbaik.</p>
+            </div>
           </div>
-          <div class="service reveal">
-            <div class="service-no">02</div>
-            <div class="service-name">MOTION</div>
-            <div class="service-desc">Video coverage, cinematic recap, aftermovie, short-form dan story-driven production.</div>
-            <div class="service-arrow">↗</div>
+
+          <div class="package-grid three">
+            <article class="package-card">
+              <div class="package-top"><span>BASIC</span><small>2–3 JAM</small></div>
+              <ul>
+                <li>1 Photographer</li>
+                <li>50–80 Edited Photos</li>
+              </ul>
+              <strong>Rp350.000</strong>
+              <a class="package-btn" href="https://wa.me/6289668184078?text=Hello%20ALPON%20STUDIO%2C%20saya%20tertarik%20dengan%20paket%3A%0A%0AAlpon%20Photo%20%E2%80%94%20Basic%202%E2%80%933%20Jam%20%E2%80%94%20Rp350.000%0A%0ANama%3A%0ATanggal%3A%0ALokasi%3A%0ACatatan%3A" target="_blank" rel="noopener">Pilih Paket ↗</a>
+            </article>
+
+            <article class="package-card featured">
+              <span class="package-badge">POPULAR</span>
+              <div class="package-top"><span>STANDARD</span><small>4–5 JAM</small></div>
+              <ul>
+                <li>1 Photographer</li>
+                <li>100–150 Edited Photos</li>
+              </ul>
+              <strong>Rp500.000</strong>
+              <a class="package-btn" href="https://wa.me/6289668184078?text=Hello%20ALPON%20STUDIO%2C%20saya%20tertarik%20dengan%20paket%3A%0A%0AAlpon%20Photo%20%E2%80%94%20Standard%204%E2%80%935%20Jam%20%E2%80%94%20Rp500.000%0A%0ANama%3A%0ATanggal%3A%0ALokasi%3A%0ACatatan%3A" target="_blank" rel="noopener">Pilih Paket ↗</a>
+            </article>
+
+            <article class="package-card">
+              <div class="package-top"><span>FULL DAY</span><small>7–8 JAM</small></div>
+              <ul>
+                <li>1 Photographer</li>
+                <li>200–250 Edited Photos</li>
+              </ul>
+              <strong>Rp750.000</strong>
+              <a class="package-btn" href="https://wa.me/6289668184078?text=Hello%20ALPON%20STUDIO%2C%20saya%20tertarik%20dengan%20paket%3A%0A%0AAlpon%20Photo%20%E2%80%94%20Full%20Day%207%E2%80%938%20Jam%20%E2%80%94%20Rp750.000%0A%0ANama%3A%0ATanggal%3A%0ALokasi%3A%0ACatatan%3A" target="_blank" rel="noopener">Pilih Paket ↗</a>
+            </article>
           </div>
-          <div class="service reveal">
-            <div class="service-no">03</div>
-            <div class="service-name">AIR</div>
-            <div class="service-desc">Aerial perspective untuk memperluas skala, konteks dan rhythm sebuah visual story.</div>
-            <div class="service-arrow">↗</div>
+
+          <div class="package-note">☁ Semua paket mendapatkan <b>akses seluruh footage di Google Drive.</b></div>
+        </div>
+
+        <div class="price-section reveal" id="reels">
+          <div class="price-section-head">
+            <div class="section-index">02</div>
+            <div class="price-section-icon">▣</div>
+            <div>
+              <div class="price-kicker">ALPON REELS &amp; AFTER MOVIE</div>
+              <h3 class="display">REELS &amp; AFTER MOVIE</h3>
+              <p>Video pendek atau after movie yang menceritakan suasana dengan lebih hidup.</p>
+            </div>
           </div>
-          <div class="service reveal">
-            <div class="service-no">04</div>
-            <div class="service-name">CONTENT</div>
-            <div class="service-desc">Social assets, campaign visuals, reels dan modular content yang tetap punya identitas.</div>
-            <div class="service-arrow">↗</div>
+
+          <div class="package-grid three">
+            <article class="package-card">
+              <div class="package-top"><span>BASIC</span><small>2–3 JAM</small></div>
+              <ul>
+                <li>1 Videographer</li>
+                <li>1 Reels / After Movie (15–30 Detik)</li>
+              </ul>
+              <strong>Rp400.000</strong>
+              <a class="package-btn" href="https://wa.me/6289668184078?text=Hello%20ALPON%20STUDIO%2C%20saya%20tertarik%20dengan%20paket%3A%0A%0AAlpon%20Reels%20%26%20After%20Movie%20%E2%80%94%20Basic%202%E2%80%933%20Jam%20%E2%80%94%20Rp400.000%0A%0ANama%3A%0ATanggal%3A%0ALokasi%3A%0ACatatan%3A" target="_blank" rel="noopener">Pilih Paket ↗</a>
+            </article>
+
+            <article class="package-card">
+              <div class="package-top"><span>STANDARD</span><small>4–5 JAM</small></div>
+              <ul>
+                <li>1 Videographer</li>
+                <li>1 After Movie (30–60 Detik)</li>
+                <li>1 Reels</li>
+              </ul>
+              <strong>Rp600.000</strong>
+              <a class="package-btn" href="https://wa.me/6289668184078?text=Hello%20ALPON%20STUDIO%2C%20saya%20tertarik%20dengan%20paket%3A%0A%0AAlpon%20Reels%20%26%20After%20Movie%20%E2%80%94%20Standard%204%E2%80%935%20Jam%20%E2%80%94%20Rp600.000%0A%0ANama%3A%0ATanggal%3A%0ALokasi%3A%0ACatatan%3A" target="_blank" rel="noopener">Pilih Paket ↗</a>
+            </article>
+
+            <article class="package-card">
+              <div class="package-top"><span>FULL DAY</span><small>7–8 JAM</small></div>
+              <ul>
+                <li>1–2 Videographer</li>
+                <li>1 After Movie (1–2 Menit)</li>
+                <li>2 Reels</li>
+              </ul>
+              <strong>Rp900.000</strong>
+              <a class="package-btn" href="https://wa.me/6289668184078?text=Hello%20ALPON%20STUDIO%2C%20saya%20tertarik%20dengan%20paket%3A%0A%0AAlpon%20Reels%20%26%20After%20Movie%20%E2%80%94%20Full%20Day%207%E2%80%938%20Jam%20%E2%80%94%20Rp900.000%0A%0ANama%3A%0ATanggal%3A%0ALokasi%3A%0ACatatan%3A" target="_blank" rel="noopener">Pilih Paket ↗</a>
+            </article>
+          </div>
+
+          <div class="package-note">☁ Semua paket mendapatkan <b>akses seluruh footage di Google Drive.</b></div>
+        </div>
+
+        <div class="price-section reveal" id="photo-video">
+          <div class="price-section-head">
+            <div class="section-index">03</div>
+            <div class="price-section-icon">◉+</div>
+            <div>
+              <div class="price-kicker">PHOTO + VIDEO PACKAGE</div>
+              <h3 class="display">PHOTO + VIDEO</h3>
+              <p>Paket lengkap foto dan video untuk menceritakan cerita secara utuh.</p>
+            </div>
+          </div>
+
+          <div class="package-grid three">
+            <article class="package-card">
+              <div class="package-top"><span>STARTER</span><small>3–4 JAM</small></div>
+              <ul>
+                <li>1 Photographer</li>
+                <li>1 Videographer</li>
+                <li>75–100 Edited Photos</li>
+                <li>1 Reels / After Movie (15–30 Detik)</li>
+              </ul>
+              <strong>Rp600.000</strong>
+              <a class="package-btn" href="https://wa.me/6289668184078?text=Hello%20ALPON%20STUDIO%2C%20saya%20tertarik%20dengan%20paket%3A%0A%0APhoto%20%2B%20Video%20%E2%80%94%20Starter%203%E2%80%934%20Jam%20%E2%80%94%20Rp600.000%0A%0ANama%3A%0ATanggal%3A%0ALokasi%3A%0ACatatan%3A" target="_blank" rel="noopener">Pilih Paket ↗</a>
+            </article>
+
+            <article class="package-card featured">
+              <span class="package-badge">REKOMENDASI</span>
+              <div class="package-top"><span>SIGNATURE</span><small>5–6 JAM</small></div>
+              <ul>
+                <li>1 Photographer</li>
+                <li>1 Videographer</li>
+                <li>120–150 Edited Photos</li>
+                <li>1 After Movie (30–60 Detik)</li>
+                <li>1–2 Reels</li>
+              </ul>
+              <strong>Rp850.000</strong>
+              <a class="package-btn" href="https://wa.me/6289668184078?text=Hello%20ALPON%20STUDIO%2C%20saya%20tertarik%20dengan%20paket%3A%0A%0APhoto%20%2B%20Video%20%E2%80%94%20Signature%205%E2%80%936%20Jam%20%E2%80%94%20Rp850.000%0A%0ANama%3A%0ATanggal%3A%0ALokasi%3A%0ACatatan%3A" target="_blank" rel="noopener">Pilih Paket ↗</a>
+            </article>
+
+            <article class="package-card">
+              <div class="package-top"><span>COMPLETE</span><small>7–8 JAM</small></div>
+              <ul>
+                <li>1–2 Photographer</li>
+                <li>1–2 Videographer</li>
+                <li>200+ Edited Photos</li>
+                <li>1 After Movie (1–2 Menit)</li>
+                <li>2–3 Reels</li>
+                <li>Drone Add-on (Basic)</li>
+              </ul>
+              <strong>Rp1.200.000</strong>
+              <a class="package-btn" href="https://wa.me/6289668184078?text=Hello%20ALPON%20STUDIO%2C%20saya%20tertarik%20dengan%20paket%3A%0A%0APhoto%20%2B%20Video%20%E2%80%94%20Complete%207%E2%80%938%20Jam%20%E2%80%94%20Rp1.200.000%0A%0ANama%3A%0ATanggal%3A%0ALokasi%3A%0ACatatan%3A" target="_blank" rel="noopener">Pilih Paket ↗</a>
+            </article>
+          </div>
+        </div>
+
+        <div class="price-section reveal" id="content-creator">
+          <div class="price-section-head">
+            <div class="section-index">04</div>
+            <div class="price-section-icon">♙</div>
+            <div>
+              <div class="price-kicker">MONTHLY CONTENT CREATOR</div>
+              <h3 class="display">KONTEN KREATOR</h3>
+              <p>Paket bulanan untuk brand yang membutuhkan ritme produksi konten yang konsisten.</p>
+            </div>
+          </div>
+
+          <div class="creator-grid">
+            <article class="package-card creator">
+              <div class="package-top"><span>PAKET PROFESSIONAL</span><small>1 BULAN</small></div>
+              <ul>
+                <li>Kamera + Lens</li>
+                <li>Lighting</li>
+                <li>Hollyland Lark M2</li>
+                <li>12 Konten per Bulan</li>
+                <li>Storyboard</li>
+                <li>Konten Plan</li>
+                <li>Editing</li>
+                <li>Talent</li>
+              </ul>
+              <strong>Rp3.000.000</strong>
+              <a class="package-btn" href="https://wa.me/6289668184078?text=Hello%20ALPON%20STUDIO%2C%20saya%20tertarik%20dengan%20paket%3A%0A%0AKonten%20Kreator%20%E2%80%94%20Professional%20%E2%80%94%201%20Bulan%20%E2%80%94%20Rp3.000.000%0A%0ANama%3A%0ATanggal%3A%0ALokasi%3A%0ACatatan%3A" target="_blank" rel="noopener">Pilih Paket ↗</a>
+            </article>
+
+            <article class="package-card creator">
+              <div class="package-top"><span>PAKET STANDARD</span><small>1 BULAN</small></div>
+              <ul>
+                <li>iPhone 13 Pro</li>
+                <li>Hollyland Lark M2</li>
+                <li>12 Konten per Bulan</li>
+                <li>Storyboard</li>
+                <li>Konten Plan</li>
+                <li>Editing</li>
+                <li>Talent</li>
+              </ul>
+              <strong>Rp2.000.000</strong>
+              <a class="package-btn" href="https://wa.me/6289668184078?text=Hello%20ALPON%20STUDIO%2C%20saya%20tertarik%20dengan%20paket%3A%0A%0AKonten%20Kreator%20%E2%80%94%20Standard%20%E2%80%94%201%20Bulan%20%E2%80%94%20Rp2.000.000%0A%0ANama%3A%0ATanggal%3A%0ALokasi%3A%0ACatatan%3A" target="_blank" rel="noopener">Pilih Paket ↗</a>
+            </article>
+          </div>
+        </div>
+
+        <div class="price-section reveal" id="addons">
+          <div class="price-section-head">
+            <div class="section-index">05</div>
+            <div class="price-section-icon">+</div>
+            <div>
+              <div class="price-kicker">OPTIONAL EXTRAS</div>
+              <h3 class="display">ADD-ONS</h3>
+              <p>Tambahkan kebutuhan produksi sesuai skala dan format konten Anda.</p>
+            </div>
+          </div>
+
+          <div class="addon-grid">
+            <a class="addon" href="https://wa.me/6289668184078?text=Hello%20ALPON%20STUDIO%2C%20saya%20tertarik%20dengan%20paket%3A%0A%0AAdd-on%20Drone%20%E2%80%94%20Rp350.000%0A%0ANama%3A%0ATanggal%3A%0ALokasi%3A%0ACatatan%3A" target="_blank" rel="noopener"><span>DRONE</span><b>+Rp350.000</b></a>
+            <a class="addon" href="https://wa.me/6289668184078?text=Hello%20ALPON%20STUDIO%2C%20saya%20tertarik%20dengan%20paket%3A%0A%0AAdditional%20Photographer%20%E2%80%94%20Rp200.000%0A%0ANama%3A%0ATanggal%3A%0ALokasi%3A%0ACatatan%3A" target="_blank" rel="noopener"><span>ADDITIONAL PHOTOGRAPHER</span><b>+Rp200.000</b></a>
+            <a class="addon" href="https://wa.me/6289668184078?text=Hello%20ALPON%20STUDIO%2C%20saya%20tertarik%20dengan%20paket%3A%0A%0AAdditional%20Videographer%20%E2%80%94%20Rp300.000%0A%0ANama%3A%0ATanggal%3A%0ALokasi%3A%0ACatatan%3A" target="_blank" rel="noopener"><span>ADDITIONAL VIDEOGRAPHER</span><b>+Rp300.000</b></a>
+            <a class="addon" href="https://wa.me/6289668184078?text=Hello%20ALPON%20STUDIO%2C%20saya%20tertarik%20dengan%20paket%3A%0A%0AAdditional%20Hour%20%E2%80%94%20Rp75.000%0A%0ANama%3A%0ATanggal%3A%0ALokasi%3A%0ACatatan%3A" target="_blank" rel="noopener"><span>ADDITIONAL HOUR</span><b>+Rp75.000</b></a>
+            <a class="addon" href="https://wa.me/6289668184078?text=Hello%20ALPON%20STUDIO%2C%20saya%20tertarik%20dengan%20paket%3A%0A%0AVertical%20Reel%20%E2%80%94%20Rp100.000%20per%20video%0A%0ANama%3A%0ATanggal%3A%0ALokasi%3A%0ACatatan%3A" target="_blank" rel="noopener"><span>VERTICAL REEL / VIDEO</span><b>+Rp100.000</b></a>
+          </div>
+        </div>
+
+        <div class="pricing-foot reveal">
+          <div>
+            <span class="micro-label">CATATAN</span>
+            <ul>
+              <li>Harga berlaku untuk area Semarang dan sekitarnya.</li>
+              <li>Harga dapat berubah menyesuaikan kebutuhan dan lokasi.</li>
+              <li>DP 50% untuk booking tanggal.</li>
+              <li>Pengiriman hasil: Foto 2–5 hari kerja.</li>
+              <li>Video 3–7 hari kerja.</li>
+            </ul>
+          </div>
+          <div class="pricing-contact">
+            <div class="eyebrow">Let's Create Your Story</div>
+            <p>Pesan paket langsung melalui WhatsApp.</p>
+            <a class="wa-direct" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO%2C%20saya%20ingin%20konsultasi%20tentang%20paket." target="_blank" rel="noopener">
+              WhatsApp 089668184078 ↗
+            </a>
           </div>
         </div>
       </div>
@@ -1056,7 +2148,10 @@
             <div class="eyebrow">Photography &amp; Video Direction</div>
             <h2 class="direction-title display">HOW IT<br>SHOULD FEEL.</h2>
           </div>
-          <p class="direction-copy">Cinematic tone, natural candid moment, high contrast, real people, real story. Bukan visual yang terlalu polished — tetapi visual yang terasa hidup.</p>
+          <div>
+            <div class="red-slash" aria-hidden="true"></div>
+            <p class="direction-copy">Cinematic tone, natural candid moment, high contrast, real people, real story. Bukan visual yang terlalu polished — tetapi visual yang terasa hidup.</p>
+          </div>
         </div>
 
         <div class="direction-grid">
@@ -1083,59 +2178,13 @@
         </div>
       </div>
     </section>
-
-    <!-- IDENTITY -->
-    <section class="identity" id="about">
-      <div class="container identity-grid">
-        <div class="identity-left reveal">
-          <div class="eyebrow">Brand System</div>
-          <h2 class="display">ALPON<br>IDENTITY.</h2>
-          <div class="identity-quote">A + P<br>→ ONE<br>VISUAL<br>LANGUAGE.</div>
-        </div>
-
-        <div class="identity-right">
-          <div class="spec reveal">
-            <h3>Color Palette</h3>
-            <div class="swatches">
-              <div class="swatch black">#0D0D0D</div>
-              <div class="swatch smoke">#1F1F1F</div>
-              <div class="swatch stone">#E8E8E6</div>
-              <div class="swatch red">#E63946</div>
-              <div class="swatch indigo">#1A2A44</div>
-            </div>
-          </div>
-
-          <div class="spec reveal">
-            <h3>Typography</h3>
-            <div class="type-demo">ALPON<br>STUDIO.</div>
-            <div class="jp-demo">瞬間 / SHUNKAN / MOMENT</div>
-          </div>
-
-          <div class="spec reveal">
-            <h3>Frame System</h3>
-            <div class="frame-demo">[ A P ]</div>
-          </div>
-
-          <div class="spec reveal">
-            <h3>Sticker / Label</h3>
-            <div class="sticker-demo">
-              <span class="sticker red">ALPON STUDIO</span>
-              <span class="sticker">WE CAPTURE WHAT MATTERS.</span>
-              <span class="sticker">REC ●</span>
-              <span class="sticker">瞬間</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- CTA -->
     <section class="cta" id="contact">
       <div class="container reveal">
         <div class="eyebrow">Let's Work Together</div>
         <h2 class="cta-title display">GOT A<br>STORY?</h2>
         <p class="cta-copy">Tell us what matters. Kami akan membantu mengubah momen itu menjadi cerita visual yang terasa, bukan sekadar terlihat.</p>
-        <a class="cta-btn" href="mailto:hello@alponstudio.com">Start a Project ↗</a>
+        <a class="cta-btn" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO%2C%20saya%20ingin%20konsultasi%20untuk%20project." target="_blank" rel="noopener">WhatsApp 089668184078 ↗</a>
       </div>
     </section>
   </main>
@@ -1168,7 +2217,7 @@
           </div>
           <div class="footer-col">
             <h4>Contact</h4>
-            <a href="mailto:hello@alponstudio.com">Email</a>
+            <a href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO%2C%20saya%20ingin%20bertanya%20tentang%20paket." target="_blank" rel="noopener">WhatsApp</a>
             <a href="#contact">Start a Project</a>
           </div>
         </div>
@@ -1191,7 +2240,7 @@
       saat riset visual. Untuk produksi komersial, tetap cek kembali
       lisensi foto pilihan Anda sebelum dipakai sebagai asset final.
     */
-    const IMAGE_LIBRARY = {
+    const // FOTO REPLACEMENT: cukup ubah URL di object ini. Semua layout otomatis mengikuti rasio frame.\n    IMAGE_LIBRARY = {
       hero: "https://images.unsplash.com/photo-1671117507838-103b9f1bb432?auto=format&fit=crop&w=2400&q=88",
 
       storyTokyo: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1500&q=86",
@@ -1232,17 +2281,21 @@
       document.querySelector(".hero").classList.add("ready");
     });
 
-    // Scroll reveal
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold:.08 });
+    // Scroll reveal with a simple fallback for older environments
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold:.08 });
 
-    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+      document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    } else {
+      document.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-visible"));
+    }
 
     // Smooth anchor links
     document.querySelectorAll('a[href^="#"]').forEach((link) => {
@@ -1254,6 +2307,6 @@
         target.scrollIntoView({ behavior:"smooth", block:"start" });
       });
     });
-  </script>
+</script>
 </body>
 </html>
