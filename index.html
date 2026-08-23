@@ -16,7 +16,7 @@
     Stone        #E8E8E6
     Off White    #FAFAF8
     Japanese Red #E63946
-    Deep Indigo  #1A2A44
+    Deep Indigo  #121E31
   -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -110,39 +110,20 @@
     .logo{
       display:inline-flex;
       align-items:center;
-      gap:14px;
     }
-    .logo-mark{
-      width:36px;
-      height:36px;
-      display:grid;
-      place-items:center;
-      border:1px solid rgba(250,250,248,.35);
-      position:relative;
-    }
-    .logo-mark::before{
-      content:"";
-      width:20px;
-      height:20px;
-      border-radius:50%;
-      border:3.5px solid var(--off);
-      clip-path:polygon(0 0,100% 0,100% 28%,78% 28%,78% 12%,22% 12%,22% 28%,0 28%,
-                        0 72%,22% 72%,22% 88%,78% 88%,78% 72%,100% 72%,100% 100%,0 100%);
-      transform:rotate(-18deg);
-    }
-    .logo-word{
-      font-family:var(--display);
-      font-size:32px;
-      line-height:1;
-      letter-spacing:.05em;
-    }
-    .logo-word small{
+    .logo-img{
+      height:32px;
+      width:auto;
+      object-fit:contain;
       display:block;
-      margin-top:2px;
-      font-family:var(--body);
-      font-size:7px;
-      letter-spacing:.42em;
-      font-weight:600;
+      transition:opacity .3s ease;
+    }
+    .logo:hover .logo-img{
+      opacity:.85;
+    }
+    .footer-logo{
+      height:38px;
+      margin-bottom:14px;
     }
 
     /* ---------------- NAV ---------------- */
@@ -150,7 +131,7 @@
       position:fixed;
       inset:0 0 auto 0;
       z-index:1000;
-      padding:22px 0;
+      padding:20px 0;
       transition:.4s var(--ease);
     }
     .nav.scrolled{
@@ -1073,13 +1054,12 @@
       padding-bottom:50px;
       border-bottom:1px solid rgba(250,250,248,.1);
     }
-    .footer-brand .logo-word{font-size:52px}
     .footer-brand p{
       color:#777;
       max-width:300px;
       font-size:12px;
       line-height:1.8;
-      margin:14px 0 0;
+      margin:0;
     }
     .footer-links{
       display:grid;
@@ -1144,8 +1124,8 @@
     @media (max-width:700px){
       .container{width:calc(100% - 32px)}
       .nav-cta{padding:8px 12px;font-size:9px}
-      .logo-mark{width:30px;height:30px}
-      .logo-word{font-size:26px}
+      .logo-img{height:24px}
+      .footer-logo{height:30px}
       .hero-grid{padding:135px 0 45px}
       .hero-title{font-size:28vw}
       .hero-sub{font-size:12px}
@@ -1177,8 +1157,7 @@
   <header class="nav" id="nav">
     <div class="container nav-inner">
       <a class="logo" href="#home" aria-label="ALPON STUDIO">
-        <span class="logo-mark"></span>
-        <span class="logo-word">ALPON<small>STUDIO</small></span>
+        <img src="AP LOGO HORIZONTAL_1.png" alt="ALPON STUDIO" class="logo-img">
       </a>
 
       <nav>
@@ -1725,8 +1704,7 @@
       <div class="footer-top">
         <div class="footer-brand">
           <a class="logo" href="#home">
-            <span class="logo-mark"></span>
-            <span class="logo-word">ALPON<small>STUDIO</small></span>
+            <img src="AP LOGO HORIZONTAL_1.png" alt="ALPON STUDIO" class="logo-img footer-logo">
           </a>
           <p>We capture what matters.<br>Born from friendship, built on stories.</p>
         </div>
