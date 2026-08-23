@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,23 +8,15 @@
   <meta name="description" content="ALPON STUDIO — visual documentation, photography, motion and content. Born from friendship, built on stories.">
 
   <!--
-    ALPON STUDIO — BRAND-ALIGNED SINGLE FILE WEBSITE
-    ------------------------------------------------
-    IMAGE REPLACEMENT:
-    Semua foto ada di object IMAGE_LIBRARY pada bagian <script>.
-    Ganti URL di sana saja; tidak perlu mencari URL foto di seluruh file.
-
-    BRAND SYSTEM:
-    Jet Black   #0D0D0D
-    Smoke Gray  #1F1F1F
-    Stone       #E8E8E6
-    Off White   #FAFAF8
-    Japanese Red#E63946
-    Deep Indigo #1A2A44
-
-    Typography mengikuti guideline:
-    - Display: Bebas Neue
-    - Secondary: Noto Sans JP / Inter
+    ALPON STUDIO — BRAND SYSTEM & SINGLE FILE CODE
+    ---------------------------------------------
+    Brand Colors:
+    Jet Black    #0D0D0D
+    Smoke Gray   #1F1F1F
+    Stone        #E8E8E6
+    Off White    #FAFAF8
+    Japanese Red #E63946
+    Deep Indigo  #1A2A44
   -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,19 +26,21 @@
   <style>
     :root{
       --jet:#0D0D0D;
-      --smoke:#1F1F1F;
+      --smoke:#181818;
+      --smoke-light:#222222;
       --stone:#E8E8E6;
       --off:#FAFAF8;
       --red:#E63946;
-      --indigo:#1A2A44;
-      --line:rgba(13,13,13,.18);
-      --white-line:rgba(250,250,248,.18);
+      --indigo:#121E31;
+      --line:rgba(13,13,13,.15);
+      --white-line:rgba(250,250,248,.12);
+      --red-glow:rgba(230,57,70,.35);
 
       --display:"Bebas Neue", sans-serif;
       --body:"Inter", sans-serif;
       --jp:"Noto Sans JP", sans-serif;
 
-      --max:1480px;
+      --max:1440px;
       --ease:cubic-bezier(.22,1,.36,1);
     }
 
@@ -58,10 +52,11 @@
       color:var(--off);
       font-family:var(--body);
       overflow-x:hidden;
+      -webkit-font-smoothing:antialiased;
     }
     a{color:inherit;text-decoration:none}
     img{display:block;width:100%}
-    button{font:inherit}
+    button{font:inherit;cursor:pointer}
     ::selection{background:var(--red);color:var(--off)}
 
     .container{
@@ -69,33 +64,7 @@
       margin-inline:auto;
     }
 
-    .eyebrow{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      font-size:10px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      font-weight:700;
-    }
-    .eyebrow::before{
-      content:"";
-      width:26px;height:1px;
-      background:var(--red);
-    }
-    .eyebrow.red-dot::before{
-      width:7px;height:7px;border-radius:50%;
-    }
-
-    .jp{font-family:var(--jp)}
-    .red{color:var(--red)}
-    .display{
-      font-family:var(--display);
-      text-transform:uppercase;
-      letter-spacing:.01em;
-    }
-
-    /* subtle editorial grain */
+    /* Editorial Noise Grain */
     body::before{
       content:"";
       position:fixed;
@@ -107,36 +76,69 @@
       mix-blend-mode:soft-light;
     }
 
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:12px;
+      font-size:11px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      font-weight:700;
+      margin-bottom:14px;
+    }
+    .eyebrow::before{
+      content:"";
+      width:24px;
+      height:2px;
+      background:var(--red);
+    }
+    .eyebrow.red-dot::before{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+    }
+
+    .jp{font-family:var(--jp)}
+    .red{color:var(--red)}
+    .display{
+      font-family:var(--display);
+      text-transform:uppercase;
+      letter-spacing:.02em;
+    }
+
     /* ---------------- LOGO ---------------- */
     .logo{
       display:inline-flex;
       align-items:center;
-      gap:12px;
+      gap:14px;
     }
     .logo-mark{
-      width:38px;height:38px;
-      display:grid;place-items:center;
-      border:1px solid rgba(250,250,248,.45);
+      width:36px;
+      height:36px;
+      display:grid;
+      place-items:center;
+      border:1px solid rgba(250,250,248,.35);
       position:relative;
     }
     .logo-mark::before{
       content:"";
-      width:22px;height:22px;
+      width:20px;
+      height:20px;
       border-radius:50%;
-      border:4px solid var(--off);
+      border:3.5px solid var(--off);
       clip-path:polygon(0 0,100% 0,100% 28%,78% 28%,78% 12%,22% 12%,22% 28%,0 28%,
                         0 72%,22% 72%,22% 88%,78% 88%,78% 72%,100% 72%,100% 100%,0 100%);
       transform:rotate(-18deg);
     }
     .logo-word{
       font-family:var(--display);
-      font-size:33px;
-      line-height:.8;
-      letter-spacing:.06em;
+      font-size:32px;
+      line-height:1;
+      letter-spacing:.05em;
     }
     .logo-word small{
       display:block;
-      margin-top:6px;
+      margin-top:2px;
       font-family:var(--body);
       font-size:7px;
       letter-spacing:.42em;
@@ -148,14 +150,14 @@
       position:fixed;
       inset:0 0 auto 0;
       z-index:1000;
-      padding:18px 0;
-      transition:.45s var(--ease);
+      padding:22px 0;
+      transition:.4s var(--ease);
     }
     .nav.scrolled{
-      background:rgba(13,13,13,.88);
+      background:rgba(13,13,13,.92);
       backdrop-filter:blur(16px);
       border-bottom:1px solid rgba(250,250,248,.10);
-      padding:12px 0;
+      padding:14px 0;
     }
     .nav-inner{
       display:flex;
@@ -166,41 +168,46 @@
     .nav-links{
       display:flex;
       align-items:center;
-      gap:28px;
+      gap:32px;
       list-style:none;
       padding:0;
       margin:0;
     }
     .nav-links a{
       position:relative;
-      font-size:10px;
+      font-size:11px;
       text-transform:uppercase;
-      letter-spacing:.16em;
+      letter-spacing:.18em;
       font-weight:600;
+      transition:color .3s ease;
     }
     .nav-links a::after{
       content:"";
       position:absolute;
-      left:0;bottom:-6px;
-      width:0;height:1px;
+      left:0;
+      bottom:-6px;
+      width:0;
+      height:2px;
       background:var(--red);
-      transition:width .4s var(--ease);
+      transition:width .3s var(--ease);
     }
+    .nav-links a:hover{color:var(--off)}
     .nav-links a:hover::after{width:100%}
 
     .nav-cta{
       display:inline-flex;
       align-items:center;
-      gap:9px;
-      padding:9px 13px;
-      border:1px solid rgba(250,250,248,.45);
-      font-size:9px;
+      gap:8px;
+      padding:10px 16px;
+      border:1px solid rgba(250,250,248,.35);
+      font-size:10px;
       font-weight:700;
-      letter-spacing:.14em;
+      letter-spacing:.15em;
       text-transform:uppercase;
       transition:.35s var(--ease);
+      background:transparent;
     }
-    .nav-cta:hover{background:var(--red);border-color:var(--red)}
+    .nav-cta:hover{background:var(--red);border-color:var(--red);color:var(--off)}
 
     /* ---------------- HERO ---------------- */
     .hero{
@@ -215,92 +222,92 @@
       position:absolute;
       inset:0;
       background:
-        linear-gradient(90deg,rgba(13,13,13,.97) 0%,rgba(13,13,13,.77) 44%,rgba(13,13,13,.28) 100%),
-        linear-gradient(0deg,rgba(13,13,13,.86),transparent 50%),
+        linear-gradient(90deg,rgba(13,13,13,.96) 0%,rgba(13,13,13,.82) 48%,rgba(13,13,13,.35) 100%),
+        linear-gradient(0deg,rgba(13,13,13,.9),transparent 55%),
         center/cover no-repeat;
-      transform:scale(1.04);
-      transition:transform 8s var(--ease);
-      filter:saturate(.72) contrast(1.12);
+      transform:scale(1.05);
+      transition:transform 7s var(--ease);
+      filter:saturate(.75) contrast(1.1);
     }
     .hero.ready .hero-media{transform:scale(1.01)}
-    .hero::after{
-      content:"";
-      position:absolute;
-      right:0;top:0;
-      width:38%;
-      height:100%;
-      background:linear-gradient(90deg,transparent,rgba(230,57,70,.05));
-      pointer-events:none;
-    }
     .hero-grid{
       position:relative;
       z-index:2;
       width:100%;
       display:grid;
-      grid-template-columns:1.25fr .75fr;
+      grid-template-columns:1.3fr .7fr;
       min-height:100svh;
       align-items:end;
-      padding:140px 0 54px;
+      padding:150px 0 65px;
     }
     .hero-main{max-width:1000px}
     .hero-kicker{
       display:flex;
       align-items:center;
       gap:10px;
-      margin-bottom:22px;
+      margin-bottom:28px;
       color:var(--red);
-      font-size:11px;
-      letter-spacing:.13em;
+      font-size:12px;
+      letter-spacing:.18em;
+      font-weight:700;
     }
     .hero-kicker::before{
       content:"";
-      width:7px;height:7px;border-radius:50%;
+      width:8px;
+      height:8px;
+      border-radius:50%;
       background:var(--red);
-      box-shadow:0 0 16px rgba(230,57,70,.55);
+      box-shadow:0 0 14px var(--red);
     }
     .hero-title{
       margin:0;
       font-family:var(--display);
-      font-size:clamp(110px,18vw,270px);
-      line-height:.73;
-      letter-spacing:.005em;
+      font-size:clamp(90px,16vw,240px);
+      line-height:.88;
+      letter-spacing:.02em;
       text-transform:uppercase;
     }
     .hero-title span{display:block}
     .hero-title .studio{
       color:transparent;
-      -webkit-text-stroke:1px rgba(250,250,248,.7);
+      -webkit-text-stroke:1.5px rgba(250,250,248,.75);
     }
     .hero-sub{
       display:flex;
       align-items:center;
-      gap:14px;
-      margin-top:42px;
-      font-size:16px;
-      letter-spacing:.08em;
+      gap:16px;
+      margin-top:36px;
+      font-size:15px;
+      letter-spacing:.16em;
+      font-weight:600;
+      color:#d2d2d0;
     }
     .hero-sub::before{
       content:"";
-      width:44px;height:1px;background:var(--red);
+      width:40px;
+      height:2px;
+      background:var(--red);
     }
     .hero-actions{
-      display:flex;gap:10px;
-      margin-top:28px;
+      display:flex;
+      gap:14px;
+      margin-top:36px;
     }
     .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      min-height:46px;
-      padding:0 18px;
-      border:1px solid rgba(250,250,248,.38);
+      gap:8px;
+      min-height:48px;
+      padding:0 22px;
+      border:1px solid rgba(250,250,248,.35);
       text-transform:uppercase;
-      letter-spacing:.15em;
-      font-size:9px;
+      letter-spacing:.16em;
+      font-size:10px;
       font-weight:700;
-      transition:.4s var(--ease);
+      transition:.35s var(--ease);
     }
-    .btn-primary{background:var(--red);border-color:var(--red)}
+    .btn-primary{background:var(--red);border-color:var(--red);color:var(--off)}
     .btn-primary:hover{background:transparent;color:var(--red)}
     .btn-secondary:hover{background:var(--off);color:var(--jet)}
 
@@ -310,62 +317,40 @@
       flex-direction:column;
       justify-content:flex-end;
       align-items:flex-end;
-      padding-bottom:10px;
+      padding-bottom:15px;
     }
     .vertical-note{
       writing-mode:vertical-rl;
       transform:rotate(180deg);
       font-family:var(--jp);
-      font-size:10px;
-      letter-spacing:.18em;
-      color:rgba(250,250,248,.55);
-      margin-bottom:50px;
+      font-size:11px;
+      letter-spacing:.22em;
+      color:rgba(250,250,248,.5);
+      margin-bottom:45px;
     }
     .rec{
-      display:flex;align-items:center;gap:8px;
-      margin-bottom:18px;
-      font-size:9px;
-      letter-spacing:.18em;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      margin-bottom:20px;
+      font-size:10px;
+      letter-spacing:.2em;
       text-transform:uppercase;
+      font-weight:700;
     }
     .rec i{
-      width:7px;height:7px;border-radius:50%;
+      width:8px;
+      height:8px;
+      border-radius:50%;
       background:var(--red);
-      box-shadow:0 0 12px var(--red);
+      box-shadow:0 0 10px var(--red);
     }
     .hero-coordinates{
-      display:flex;gap:24px;
+      display:flex;
+      gap:18px;
       font-family:var(--display);
-      font-size:21px;
-      letter-spacing:.06em;
-    }
-
-    /* camera aperture motif */
-    .aperture{
-      width:115px;height:115px;
-      border:1px solid rgba(250,250,248,.28);
-      display:grid;place-items:center;
-      position:relative;
-      margin-top:22px;
-    }
-    .aperture::before{
-      content:"";
-      width:66px;height:66px;
-      border:11px solid var(--off);
-      clip-path:polygon(50% 0,80% 17%,100% 50%,80% 83%,50% 100%,20% 83%,0 50%,20% 17%);
-      transform:rotate(17deg);
-      opacity:.92;
-    }
-    .aperture::after{
-      content:"A P";
-      position:absolute;
-      bottom:-9px;right:-9px;
-      padding:5px 7px;
-      background:var(--red);
-      color:var(--off);
-      font-family:var(--display);
-      font-size:15px;
-      letter-spacing:.15em;
+      font-size:26px;
+      letter-spacing:.08em;
     }
 
     /* ---------------- BRAND STORY ---------------- */
@@ -376,90 +361,101 @@
       overflow:hidden;
     }
     .story-top{
-      padding:118px 0 90px;
+      padding:130px 0 100px;
       display:grid;
-      grid-template-columns:1.15fr .85fr;
-      gap:90px;
+      grid-template-columns:1.2fr .8fr;
+      gap:80px;
       align-items:end;
     }
     .story-heading{
-      margin:20px 0 0;
-      font-size:clamp(74px,10vw,150px);
-      line-height:.78;
+      margin:16px 0 0;
+      font-size:clamp(65px,9vw,135px);
+      line-height:.92;
+      letter-spacing:.01em;
     }
     .story-heading em{font-style:normal;color:var(--red)}
     .story-copy{
-      color:#565656;
-      font-size:14px;
-      line-height:1.85;
-      max-width:520px;
+      color:#444444;
+      font-size:15px;
+      line-height:1.9;
+      max-width:540px;
     }
-    .story-copy strong{color:var(--jet)}
+    .story-copy p{margin:0 0 18px}
+    .story-copy strong{color:var(--jet);font-weight:700}
     .story-jp{
-      margin-top:35px;
+      margin-top:32px;
+      padding-top:24px;
+      border-top:1px solid var(--line);
       display:flex;
-      gap:18px;
-      align-items:flex-start;
+      gap:16px;
+      align-items:center;
     }
     .story-jp .vertical{
-      writing-mode:vertical-rl;
+      padding:4px 8px;
+      background:var(--red);
+      color:var(--off);
       font-family:var(--jp);
       font-size:11px;
-      letter-spacing:.13em;
-      color:var(--red);
+      font-weight:700;
+      letter-spacing:.1em;
     }
-    .story-jp p{margin:0}
+    .story-jp p{margin:0;font-size:13px;color:#222}
+
     .story-strip{
       border-top:1px solid var(--line);
       display:grid;
       grid-template-columns:1.25fr .75fr 1fr;
-      min-height:320px;
+      min-height:340px;
     }
     .story-card{
       position:relative;
       overflow:hidden;
-      padding:24px;
+      padding:28px;
       border-right:1px solid var(--line);
-      min-height:320px;
+      min-height:340px;
     }
     .story-card:last-child{border-right:0}
     .story-card .image{
-      position:absolute;inset:0;
+      position:absolute;
+      inset:0;
       background:center/cover no-repeat;
       filter:grayscale(1) contrast(1.1);
       transition:transform .8s var(--ease),filter .5s var(--ease);
     }
-    .story-card:hover .image{transform:scale(1.05);filter:grayscale(.25) contrast(1.08)}
+    .story-card:hover .image{transform:scale(1.05);filter:grayscale(.2) contrast(1.08)}
     .story-card::after{
       content:"";
-      position:absolute;inset:0;
-      background:linear-gradient(0deg,rgba(13,13,13,.8),transparent 58%);
+      position:absolute;
+      inset:0;
+      background:linear-gradient(0deg,rgba(13,13,13,.88),transparent 60%);
     }
     .story-card > *:not(.image){position:relative;z-index:2}
     .story-label{
       display:inline-flex;
       background:var(--red);
       color:var(--off);
-      padding:6px 10px;
-      font-size:8px;
+      padding:6px 11px;
+      font-size:9px;
       text-transform:uppercase;
       letter-spacing:.16em;
       font-weight:700;
     }
     .story-card h3{
       position:absolute;
-      left:24px;bottom:46px;
+      left:28px;
+      bottom:52px;
       margin:0;
       color:var(--off);
       font-family:var(--display);
-      font-size:42px;
-      line-height:.85;
+      font-size:44px;
+      line-height:.92;
     }
     .story-card small{
       position:absolute;
-      left:24px;bottom:21px;
-      color:rgba(250,250,248,.7);
-      font-size:8px;
+      left:28px;
+      bottom:26px;
+      color:rgba(250,250,248,.75);
+      font-size:9px;
       letter-spacing:.15em;
       text-transform:uppercase;
     }
@@ -467,62 +463,66 @@
     /* ---------------- WORK ---------------- */
     .work{
       background:var(--jet);
-      padding:130px 0;
+      padding:140px 0;
     }
     .work-head{
       display:flex;
       justify-content:space-between;
       gap:40px;
-      align-items:end;
-      margin-bottom:55px;
+      align-items:flex-end;
+      margin-bottom:60px;
     }
     .work-title{
-      margin:18px 0 0;
-      font-size:clamp(82px,11vw,160px);
-      line-height:.72;
+      margin:16px 0 0;
+      font-size:clamp(75px,10vw,150px);
+      line-height:.88;
     }
     .work-note{
-      max-width:300px;
-      color:#999;
-      font-size:12px;
-      line-height:1.7;
+      max-width:340px;
+      color:#9c9c9c;
+      font-size:13px;
+      line-height:1.75;
+      margin:0;
     }
     .work-grid{
       display:grid;
-      grid-template-columns:1.17fr .83fr;
-      gap:14px;
+      grid-template-columns:1.2fr .8fr;
+      gap:16px;
     }
-    .work-stack{display:grid;gap:14px}
+    .work-stack{display:grid;gap:16px}
     .frame{
       position:relative;
       overflow:hidden;
       background:var(--smoke);
-      min-height:300px;
+      min-height:320px;
     }
-    .frame.large{min-height:680px}
-    .frame.medium{min-height:333px}
+    .frame.large{min-height:700px}
+    .frame.medium{min-height:342px}
     .frame .image{
-      position:absolute;inset:0;
+      position:absolute;
+      inset:0;
       background:center/cover no-repeat;
       transition:transform .85s var(--ease);
     }
-    .frame:hover .image{transform:scale(1.06)}
+    .frame:hover .image{transform:scale(1.05)}
     .frame::after{
       content:"";
-      position:absolute;inset:0;
-      background:linear-gradient(0deg,rgba(13,13,13,.88),transparent 62%);
+      position:absolute;
+      inset:0;
+      background:linear-gradient(0deg,rgba(13,13,13,.9),transparent 65%);
     }
     .corner{
       position:absolute;
-      width:27px;height:27px;
+      width:24px;
+      height:24px;
       z-index:3;
       pointer-events:none;
     }
-    .corner::before,.corner::after{content:"";position:absolute;background:currentColor}
-    .corner.tl{top:18px;left:18px;color:var(--off)}
-    .corner.tr{top:18px;right:18px;color:var(--off)}
-    .corner.bl{bottom:18px;left:18px;color:var(--off)}
-    .corner.br{bottom:18px;right:18px;color:var(--off)}
+    .corner::before,.corner::after{content:"";position:absolute;background:var(--off)}
+    .corner.tl{top:20px;left:20px}
+    .corner.tr{top:20px;right:20px}
+    .corner.bl{bottom:20px;left:20px}
+    .corner.br{bottom:20px;right:20px}
     .corner.tl::before,.corner.bl::before{left:0;width:16px;height:1px}
     .corner.tl::after,.corner.tr::after{top:0;width:1px;height:16px}
     .corner.tr::before,.corner.br::before{right:0;width:16px;height:1px}
@@ -533,14 +533,16 @@
     .project-copy{
       position:absolute;
       z-index:4;
-      left:26px;right:26px;bottom:25px;
+      left:30px;
+      right:30px;
+      bottom:30px;
     }
     .project-meta{
       display:flex;
       align-items:center;
       gap:10px;
-      margin-bottom:8px;
-      font-size:8px;
+      margin-bottom:12px;
+      font-size:9px;
       text-transform:uppercase;
       letter-spacing:.16em;
       font-weight:700;
@@ -548,262 +550,571 @@
     .project-meta b{
       color:var(--red);
       font-family:var(--display);
-      font-size:18px;
+      font-size:20px;
+      line-height:1;
     }
     .project-copy h3{
       margin:0;
-      font-size:58px;
-      line-height:.82;
+      font-size:clamp(38px,4vw,60px);
+      line-height:.92;
     }
     .project-copy p{
-      margin:9px 0 0;
-      color:#bbb;
-      font-size:9px;
+      margin:10px 0 0;
+      color:#aaa;
+      font-size:10px;
       text-transform:uppercase;
-      letter-spacing:.12em;
+      letter-spacing:.14em;
     }
     .mini-tag{
       position:absolute;
-      top:18px;right:18px;
+      top:20px;
+      right:20px;
       z-index:4;
-      padding:6px 8px;
+      padding:6px 10px;
       background:var(--red);
       color:var(--off);
       font-size:8px;
       font-weight:700;
-      letter-spacing:.12em;
-      transform:rotate(-2deg);
+      letter-spacing:.15em;
     }
 
     /* ---------------- SERVICES ---------------- */
     .services{
       background:var(--indigo);
-      padding:130px 0;
+      padding:140px 0;
     }
     .services-head{
       display:grid;
-      grid-template-columns:1fr .8fr;
+      grid-template-columns:1fr .9fr;
       gap:80px;
-      align-items:end;
+      align-items:flex-end;
       margin-bottom:70px;
     }
-    .services-title{margin:18px 0 0;font-size:clamp(82px,11vw,160px);line-height:.72}
-    .services-intro{color:#b9c0c6;font-size:13px;line-height:1.8}
+    .services-title{
+      margin:16px 0 0;
+      font-size:clamp(75px,10vw,150px);
+      line-height:.88;
+    }
+    .services-intro{
+      color:#b3bcc7;
+      font-size:14px;
+      line-height:1.85;
+      margin:0;
+    }
     .service-list{border-top:1px solid var(--white-line)}
     .service{
       display:grid;
-      grid-template-columns:70px 1fr 1fr 42px;
-      gap:22px;
+      grid-template-columns:70px 1.2fr 1fr 50px;
+      gap:24px;
       align-items:center;
-      min-height:112px;
+      padding:34px 10px;
       border-bottom:1px solid var(--white-line);
-      transition:.45s var(--ease);
+      transition:.35s var(--ease);
     }
-    .service:hover{padding:0 18px;background:rgba(250,250,248,.035)}
-    .service-no{color:var(--red);font-family:var(--display);font-size:30px}
-    .service-name{font-family:var(--display);font-size:54px;line-height:.8}
-    .service-desc{color:#aab0b5;font-size:11px;line-height:1.6}
-    .service-arrow{font-family:var(--display);font-size:28px;text-align:right;transition:.4s var(--ease)}
-    .service:hover .service-arrow{color:var(--red);transform:translateX(6px)}
+    .service:hover{
+      padding-left:24px;
+      padding-right:24px;
+      background:rgba(250,250,248,.04);
+    }
+    .service-no{
+      color:var(--red);
+      font-family:var(--display);
+      font-size:32px;
+      line-height:1;
+    }
+    .service-name{
+      font-family:var(--display);
+      font-size:46px;
+      line-height:.92;
+      letter-spacing:.02em;
+    }
+    .service-name small{
+      display:block;
+      font-family:var(--jp);
+      font-size:11px;
+      color:rgba(250,250,248,.5);
+      letter-spacing:.12em;
+      margin-top:6px;
+      text-transform:none;
+    }
+    .service-desc{
+      color:#9fa9b5;
+      font-size:12px;
+      line-height:1.7;
+    }
+    .service-arrow{
+      font-family:var(--display);
+      font-size:28px;
+      text-align:right;
+      transition:.35s var(--ease);
+    }
+    .service:hover .service-arrow{
+      color:var(--red);
+      transform:translateX(8px);
+    }
 
-    /* ---------------- VISUAL DIRECTION ---------------- */
+    /* ---------------- PRICELIST SECTION ---------------- */
+    .pricing{
+      background:var(--jet);
+      padding:140px 0 120px;
+      position:relative;
+    }
+    .pricing-head{
+      text-align:center;
+      max-width:760px;
+      margin:0 auto 75px;
+    }
+    .pricing-head .eyebrow{justify-content:center}
+    .pricing-title{
+      margin:16px 0 20px;
+      font-size:clamp(75px,11vw,160px);
+      line-height:.88;
+    }
+    .pricing-tagline{
+      display:inline-block;
+      padding:6px 14px;
+      background:var(--smoke-light);
+      border:1px solid var(--white-line);
+      font-size:10px;
+      font-weight:700;
+      letter-spacing:.25em;
+      text-transform:uppercase;
+      color:var(--red);
+      margin-bottom:16px;
+    }
+    .pricing-intro{
+      color:#9e9e9c;
+      font-size:14px;
+      line-height:1.8;
+      margin:0;
+    }
+
+    .pricing-group{
+      margin-bottom:70px;
+    }
+    .pricing-category-title{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:16px;
+      padding-bottom:18px;
+      border-bottom:1px solid var(--white-line);
+      margin-bottom:28px;
+    }
+    .pricing-category-title h3{
+      margin:0;
+      font-family:var(--display);
+      font-size:42px;
+      line-height:.92;
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+    .pricing-category-title h3 span.num{
+      color:var(--red);
+    }
+    .pricing-category-title h3 span.jp-sub{
+      font-family:var(--jp);
+      font-size:12px;
+      color:#777;
+      letter-spacing:.12em;
+    }
+    .pricing-category-desc{
+      color:#8c8c8c;
+      font-size:12px;
+      max-width:440px;
+      margin:0;
+    }
+
+    .pricing-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+    .pricing-grid.two-col{
+      grid-template-columns:repeat(2,1fr);
+    }
+
+    .price-card{
+      background:var(--smoke);
+      border:1px solid var(--white-line);
+      padding:32px 28px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      position:relative;
+      transition:transform .35s var(--ease),border-color .35s var(--ease);
+    }
+    .price-card:hover{
+      transform:translateY(-6px);
+      border-color:rgba(230,57,70,.6);
+    }
+    .price-card.featured{
+      background:linear-gradient(180deg,#241a1c 0%,var(--smoke) 100%);
+      border-color:var(--red);
+    }
+    .badge-featured{
+      position:absolute;
+      top:-12px;
+      right:24px;
+      background:var(--red);
+      color:var(--off);
+      padding:4px 10px;
+      font-size:8px;
+      font-weight:700;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+
+    .card-top{margin-bottom:28px}
+    .card-pkg-name{
+      font-family:var(--display);
+      font-size:38px;
+      line-height:.9;
+      margin:0 0 6px;
+      letter-spacing:.02em;
+    }
+    .card-duration{
+      display:inline-block;
+      font-size:10px;
+      font-weight:700;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:var(--red);
+      margin-bottom:20px;
+    }
+    .card-price{
+      font-family:var(--display);
+      font-size:48px;
+      line-height:.9;
+      color:var(--off);
+      margin:18px 0;
+      letter-spacing:.02em;
+    }
+    .card-price small{
+      font-family:var(--body);
+      font-size:11px;
+      color:#888;
+      font-weight:500;
+      letter-spacing:.05em;
+    }
+
+    .card-features{
+      list-style:none;
+      padding:0;
+      margin:0 0 32px;
+      border-top:1px solid rgba(250,250,248,.08);
+      padding-top:20px;
+    }
+    .card-features li{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      font-size:12px;
+      line-height:1.6;
+      color:#c8c8c6;
+      margin-bottom:12px;
+    }
+    .card-features li::before{
+      content:"✓";
+      color:var(--red);
+      font-weight:700;
+      font-size:12px;
+    }
+
+    .card-action{
+      margin-top:auto;
+    }
+    .btn-wa{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:9px;
+      width:100%;
+      padding:13px 16px;
+      background:transparent;
+      border:1px solid rgba(250,250,248,.3);
+      color:var(--off);
+      font-size:9px;
+      font-weight:700;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      transition:.3s var(--ease);
+    }
+    .price-card:hover .btn-wa,
+    .price-card.featured .btn-wa{
+      background:var(--red);
+      border-color:var(--red);
+      color:var(--off);
+    }
+    .btn-wa:hover{
+      background:var(--off) !important;
+      border-color:var(--off) !important;
+      color:var(--jet) !important;
+    }
+
+    /* Drive note banner */
+    .gdrive-banner{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      padding:14px 20px;
+      background:rgba(250,250,248,.03);
+      border:1px dashed rgba(250,250,248,.18);
+      margin-top:18px;
+      font-size:11px;
+      color:#a8a8a8;
+      letter-spacing:.06em;
+      text-align:center;
+    }
+    .gdrive-banner b{color:var(--red)}
+
+    /* Add-ons & Notes */
+    .addons-grid{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:12px;
+      margin-bottom:30px;
+    }
+    .addon-box{
+      background:var(--smoke);
+      border:1px solid var(--white-line);
+      padding:22px 16px;
+      text-align:center;
+      transition:.3s var(--ease);
+    }
+    .addon-box:hover{
+      border-color:var(--red);
+      transform:translateY(-3px);
+    }
+    .addon-name{
+      font-size:9px;
+      font-weight:700;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:#b3b3b3;
+      margin-bottom:8px;
+      min-height:26px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .addon-price{
+      font-family:var(--display);
+      font-size:24px;
+      line-height:1;
+      color:var(--red);
+    }
+
+    .notes-card{
+      background:var(--smoke-light);
+      border-left:3px solid var(--red);
+      padding:28px 32px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:30px;
+    }
+    .notes-card h4{
+      margin:0 0 14px;
+      font-family:var(--display);
+      font-size:24px;
+      letter-spacing:.06em;
+      color:var(--off);
+    }
+    .notes-list{
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+    .notes-list li{
+      position:relative;
+      padding-left:16px;
+      font-size:12px;
+      line-height:1.8;
+      color:#a6a6a6;
+      margin-bottom:6px;
+    }
+    .notes-list li::before{
+      content:"•";
+      position:absolute;
+      left:0;
+      color:var(--red);
+      font-size:14px;
+    }
+
+    /* ---------------- PHOTOGRAPHY / VIDEO DIRECTION ---------------- */
     .direction{
       background:var(--stone);
       color:var(--jet);
-      padding:120px 0;
+      padding:130px 0;
     }
     .direction-head{
-      display:flex;justify-content:space-between;align-items:end;gap:40px;
-      margin-bottom:55px;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:40px;
+      margin-bottom:60px;
     }
-    .direction-title{margin:18px 0 0;font-size:clamp(74px,10vw,145px);line-height:.72}
-    .direction-copy{max-width:330px;color:#5f5f5c;font-size:12px;line-height:1.8}
+    .direction-title{
+      margin:16px 0 0;
+      font-size:clamp(65px,9vw,135px);
+      line-height:.9;
+    }
+    .direction-copy{
+      max-width:360px;
+      color:#50504d;
+      font-size:13px;
+      line-height:1.8;
+      margin:0;
+    }
     .direction-grid{
       display:grid;
       grid-template-columns:1.2fr .8fr 1fr;
       grid-template-rows:300px 220px;
-      gap:9px;
+      gap:12px;
     }
     .direction-card{
-      position:relative;overflow:hidden;background:#111;
+      position:relative;
+      overflow:hidden;
+      background:#111;
     }
     .direction-card:nth-child(1){grid-row:span 2}
     .direction-card:nth-child(4){grid-column:2 / span 2}
     .direction-card .image{
-      position:absolute;inset:0;background:center/cover no-repeat;
+      position:absolute;
+      inset:0;
+      background:center/cover no-repeat;
       filter:grayscale(.85) contrast(1.06);
       transition:.75s var(--ease);
     }
-    .direction-card:hover .image{transform:scale(1.05);filter:grayscale(.25) contrast(1.08)}
+    .direction-card:hover .image{transform:scale(1.05);filter:grayscale(.2) contrast(1.08)}
     .direction-card::after{
-      content:"";position:absolute;inset:0;
-      background:linear-gradient(0deg,rgba(0,0,0,.55),transparent 55%);
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(0deg,rgba(0,0,0,.65),transparent 55%);
     }
     .direction-card .badge{
-      position:absolute;z-index:3;left:14px;top:14px;
-      background:var(--off);padding:6px 9px;
-      font-size:8px;letter-spacing:.15em;font-weight:700;text-transform:uppercase;
-    }
-    .direction-card .caption{
-      position:absolute;z-index:3;left:14px;bottom:14px;
-      color:var(--off);font-family:var(--display);
-      font-size:30px;line-height:.8;
-    }
-
-    /* ---------------- IDENTITY PANEL ---------------- */
-    .identity{
+      position:absolute;
+      z-index:3;
+      left:18px;
+      top:18px;
       background:var(--off);
       color:var(--jet);
-      padding:120px 0 135px;
-    }
-    .identity-grid{
-      display:grid;
-      grid-template-columns:.8fr 1.2fr;
-      gap:100px;
-      align-items:start;
-    }
-    .identity-left{
-      position:sticky;top:110px;
-    }
-    .identity-left h2{
-      margin:18px 0 25px;
-      font-size:clamp(82px,10vw,145px);
-      line-height:.7;
-    }
-    .identity-quote{
-      border-left:2px solid var(--red);
-      padding-left:18px;
-      font-family:var(--display);
-      font-size:36px;
-      line-height:.84;
-    }
-    .identity-right{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:1px;
-      background:var(--line);
-      border:1px solid var(--line);
-    }
-    .spec{
-      min-height:200px;
-      background:var(--off);
-      padding:22px;
-    }
-    .spec h3{
-      margin:0 0 24px;
-      font-size:9px;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-    }
-    .swatches{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
-    .swatch{
-      height:70px;
-      border:1px solid var(--line);
-      display:flex;
-      align-items:flex-end;
-      padding:7px;
+      padding:6px 10px;
       font-size:8px;
+      letter-spacing:.15em;
       font-weight:700;
-    }
-    .swatch.black{background:var(--jet);color:var(--off)}
-    .swatch.smoke{background:var(--smoke);color:var(--off)}
-    .swatch.stone{background:var(--stone)}
-    .swatch.red{background:var(--red);color:var(--off)}
-    .swatch.indigo{background:var(--indigo);color:var(--off)}
-    .type-demo{font-family:var(--display);font-size:58px;line-height:.75}
-    .jp-demo{margin-top:16px;font-family:var(--jp);font-size:14px}
-    .frame-demo{
-      height:95px;
-      border:1px solid var(--line);
-      position:relative;
-      display:grid;place-items:center;
-      font-family:var(--display);
-      font-size:34px;
-    }
-    .frame-demo::before,.frame-demo::after{
-      content:"";position:absolute;width:18px;height:18px;
-      border-color:var(--red);border-style:solid;
-    }
-    .frame-demo::before{top:10px;left:10px;border-width:1px 0 0 1px}
-    .frame-demo::after{bottom:10px;right:10px;border-width:0 1px 1px 0}
-    .sticker-demo{
-      display:flex;flex-wrap:wrap;gap:8px;
-    }
-    .sticker{
-      padding:8px 11px;
-      font-size:9px;
       text-transform:uppercase;
-      letter-spacing:.13em;
-      font-weight:700;
-      background:var(--jet);
-      color:var(--off);
-      transform:rotate(-2deg);
     }
-    .sticker.red{background:var(--red);transform:rotate(1deg)}
+    .direction-card .caption{
+      position:absolute;
+      z-index:3;
+      left:18px;
+      bottom:18px;
+      color:var(--off);
+      font-family:var(--display);
+      font-size:32px;
+      line-height:.9;
+    }
 
     /* ---------------- CTA ---------------- */
     .cta{
       background:var(--red);
-      color:var(--jet);
-      padding:130px 0;
+      color:var(--off);
+      padding:140px 0;
       text-align:center;
     }
-    .cta .eyebrow{justify-content:center}
+    .cta .eyebrow{justify-content:center;color:var(--jet)}
+    .cta .eyebrow::before{background:var(--jet)}
     .cta-title{
-      margin:30px 0 20px;
-      font-size:clamp(92px,15vw,220px);
-      line-height:.7;
+      margin:24px 0 20px;
+      font-size:clamp(85px,14vw,200px);
+      line-height:.88;
+      color:var(--off);
     }
     .cta-copy{
-      max-width:510px;margin:30px auto 35px;
-      font-size:13px;line-height:1.8;
+      max-width:540px;
+      margin:24px auto 38px;
+      font-size:14px;
+      line-height:1.85;
+      color:rgba(250,250,248,.88);
     }
     .cta-btn{
       display:inline-flex;
       align-items:center;
       gap:10px;
-      padding:14px 20px;
-      background:var(--jet);color:var(--off);
-      font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+      padding:16px 28px;
+      background:var(--jet);
+      color:var(--off);
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.18em;
+      text-transform:uppercase;
       transition:.35s var(--ease);
     }
-    .cta-btn:hover{background:var(--off);color:var(--jet)}
+    .cta-btn:hover{
+      background:var(--off);
+      color:var(--jet);
+    }
 
     /* ---------------- FOOTER ---------------- */
-    footer{background:var(--jet);padding:45px 0 25px}
-    .footer-top{
-      display:flex;justify-content:space-between;gap:60px;
-      padding-bottom:45px;border-bottom:1px solid rgba(250,250,248,.12);
+    footer{
+      background:var(--jet);
+      padding:60px 0 35px;
+      border-top:1px solid rgba(250,250,248,.1);
     }
-    .footer-brand .logo-word{font-size:55px}
+    .footer-top{
+      display:flex;
+      justify-content:space-between;
+      gap:60px;
+      padding-bottom:50px;
+      border-bottom:1px solid rgba(250,250,248,.1);
+    }
+    .footer-brand .logo-word{font-size:52px}
     .footer-brand p{
-      color:#747474;
-      max-width:280px;
-      font-size:10px;line-height:1.8;
+      color:#777;
+      max-width:300px;
+      font-size:12px;
+      line-height:1.8;
+      margin:14px 0 0;
     }
     .footer-links{
       display:grid;
       grid-template-columns:repeat(3,auto);
-      gap:58px;
+      gap:64px;
     }
     .footer-col h4{
-      margin:0 0 16px;color:var(--red);
-      font-size:8px;letter-spacing:.16em;text-transform:uppercase;
+      margin:0 0 18px;
+      color:var(--red);
+      font-size:9px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
     }
     .footer-col a{
-      display:block;margin-bottom:9px;
-      color:#9d9d9d;font-size:10px;
+      display:block;
+      margin-bottom:10px;
+      color:#9d9d9d;
+      font-size:11px;
+      transition:color .3s ease;
     }
     .footer-col a:hover{color:var(--off)}
     .footer-bottom{
-      display:flex;justify-content:space-between;gap:20px;
-      padding-top:22px;
-      color:#5f5f5f;font-size:8px;letter-spacing:.12em;text-transform:uppercase;
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      padding-top:28px;
+      color:#5f5f5f;
+      font-size:9px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
     }
     .footer-bottom span:last-child{color:#8b8b8b}
     .footer-bottom b{color:var(--red)}
 
-    /* ---------------- MOTION ---------------- */
+    /* ---------------- MOTION REVEAL ---------------- */
     .reveal{
       opacity:0;
       transform:translateY(28px);
@@ -812,44 +1123,47 @@
     .reveal.is-visible{opacity:1;transform:none}
 
     /* ---------------- RESPONSIVE ---------------- */
-    @media (max-width:1050px){
+    @media (max-width:1100px){
       .nav-links{display:none}
       .hero-grid{grid-template-columns:1fr}
       .hero-side{display:none}
-      .story-top,.services-head,.identity-grid{grid-template-columns:1fr;gap:45px}
-      .identity-left{position:static}
+      .story-top,.services-head{grid-template-columns:1fr;gap:45px}
       .story-strip{grid-template-columns:1fr 1fr}
       .story-card:last-child{grid-column:span 2}
       .work-grid{grid-template-columns:1fr}
       .frame.large{min-height:540px}
+      .pricing-grid{grid-template-columns:1fr}
+      .pricing-grid.two-col{grid-template-columns:1fr}
+      .addons-grid{grid-template-columns:repeat(3,1fr)}
+      .notes-card{grid-template-columns:1fr}
       .direction-grid{grid-template-columns:1fr 1fr;grid-template-rows:260px 260px 220px}
       .direction-card:nth-child(1){grid-row:span 2}
       .direction-card:nth-child(4){grid-column:1 / span 2}
     }
 
     @media (max-width:700px){
-      .container{width:calc(100% - 30px)}
-      .nav-cta{padding:8px 10px;font-size:8px}
-      .logo-mark{width:32px;height:32px}
-      .logo-word{font-size:27px}
-      .hero-grid{padding:135px 0 44px}
-      .hero-title{font-size:31vw}
+      .container{width:calc(100% - 32px)}
+      .nav-cta{padding:8px 12px;font-size:9px}
+      .logo-mark{width:30px;height:30px}
+      .logo-word{font-size:26px}
+      .hero-grid{padding:135px 0 45px}
+      .hero-title{font-size:28vw}
       .hero-sub{font-size:12px}
-      .hero-actions{flex-direction:column;align-items:flex-start}
-      .story-top,.work,.services,.direction,.identity{padding-top:90px;padding-bottom:90px}
+      .hero-actions{flex-direction:column;align-items:stretch}
+      .story-top,.work,.services,.pricing,.direction{padding-top:90px;padding-bottom:90px}
       .story-top{padding-bottom:70px}
       .story-strip{grid-template-columns:1fr}
-      .story-card{min-height:290px;border-right:0;border-bottom:1px solid var(--line)}
+      .story-card{min-height:280px;border-right:0;border-bottom:1px solid var(--line)}
       .story-card:last-child{grid-column:auto;border-bottom:0}
       .work-head,.direction-head{flex-direction:column;align-items:flex-start}
-      .project-copy h3{font-size:48px}
-      .service{grid-template-columns:42px 1fr 30px;gap:10px}
+      .project-copy h3{font-size:42px}
+      .service{grid-template-columns:40px 1fr 30px;gap:12px}
       .service-desc{display:none}
-      .service-name{font-size:41px}
-      .direction-grid{grid-template-columns:1fr;grid-template-rows:280px 220px 220px 220px}
+      .service-name{font-size:36px}
+      .addons-grid{grid-template-columns:1fr 1fr}
+      .direction-grid{grid-template-columns:1fr;grid-template-rows:260px 220px 220px 220px}
       .direction-card:nth-child(1){grid-row:auto}
       .direction-card:nth-child(4){grid-column:auto}
-      .identity-right{grid-template-columns:1fr}
       .footer-top{flex-direction:column}
       .footer-links{grid-template-columns:1fr 1fr;gap:35px}
       .footer-bottom{flex-direction:column}
@@ -871,12 +1185,12 @@
         <ul class="nav-links">
           <li><a href="#work">Work</a></li>
           <li><a href="#services">Services</a></li>
+          <li><a href="#pricing">Pricelist</a></li>
           <li><a href="#direction">Direction</a></li>
-          <li><a href="#about">About</a></li>
         </ul>
       </nav>
 
-      <a class="nav-cta" href="#contact">Start a Project <span>↗</span></a>
+      <a class="nav-cta" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20tertarik%20untuk%20diskusi%20project%20visual." target="_blank" rel="noopener">Start a Project <span>↗</span></a>
     </div>
   </header>
 
@@ -898,16 +1212,15 @@
           <div class="hero-sub">WE CAPTURE WHAT MATTERS.</div>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#work">View Stories</a>
-            <a class="btn btn-secondary" href="#contact">Start a Project</a>
+            <a class="btn btn-primary" href="#pricing">Lihat Pricelist 2026</a>
+            <a class="btn btn-secondary" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20tanya%20paket%20dokumentasi." target="_blank" rel="noopener">Konsultasi WhatsApp ↗</a>
           </div>
         </div>
 
         <aside class="hero-side reveal">
           <div class="vertical-note jp">瞬間を記録する。物語を残す。</div>
           <div class="rec"><i></i> REC / ALPON STUDIO</div>
-          <div class="hero-coordinates"><span>01</span><span>/</span><span>24</span></div>
-          <div class="aperture" aria-hidden="true"></div>
+          <div class="hero-coordinates"><span>01</span><span>/</span><span>26</span></div>
         </aside>
       </div>
     </section>
@@ -926,8 +1239,8 @@
         </div>
 
         <div class="story-copy reveal">
-          <p><strong>ALPON STUDIO</strong> lahir dari persahabatan Alap + Pondah dan berkembang menjadi ruang kreatif untuk menangkap manusia, energi, detail, dan cerita.</p>
-          <p>Kami tidak mengejar gambar yang sekadar indah. Kami mencari <strong>momen yang terasa</strong> — candid, cinematic, sedikit raw, namun tetap terarah.</p>
+          <p><strong>ALPON STUDIO</strong> lahir dari persahabatan dan berkembang menjadi ruang kreatif untuk menangkap manusia, energi, detail, dan cerita yang bermakna.</p>
+          <p>Kami tidak mengejar gambar yang sekadar indah. Kami mencari <strong>momen yang terasa</strong> — candid, cinematic, berkarakter, namun tetap terarah secara editorial.</p>
 
           <div class="story-jp">
             <span class="vertical">瞬間</span>
@@ -968,7 +1281,7 @@
             <div class="eyebrow">Selected Stories</div>
             <h2 class="work-title display">WORK</h2>
           </div>
-          <p class="work-note">Asymmetric editorial grid, bold typography, frame corners and red labels — langsung mengambil bahasa visual dari brand guideline.</p>
+          <p class="work-note">Asymmetric editorial grid, high contrast, framing clean, dan sentuhan visual yang mengutamakan emosi di setiap rekaman frame.</p>
         </div>
 
         <div class="work-grid">
@@ -988,7 +1301,7 @@
               <div class="image" data-image="workWedding"></div>
               <span class="corner tl"></span><span class="corner br"></span>
               <div class="project-copy">
-                <div class="project-meta"><b>02</b> / WEDDING</div>
+                <div class="project-meta"><b>02</b> / WEDDING &amp; INTIMATE</div>
                 <h3 class="display">THE<br>BEGINNING.</h3>
                 <p>documentary / candid / intimate</p>
               </div>
@@ -1008,7 +1321,7 @@
       </div>
     </section>
 
-    <!-- SERVICES -->
+    <!-- SERVICES (SESUAI PRICELIST) -->
     <section class="services" id="services">
       <div class="container">
         <div class="services-head reveal">
@@ -1016,35 +1329,346 @@
             <div class="eyebrow">What We Do</div>
             <h2 class="services-title display">SERVICES</h2>
           </div>
-          <p class="services-intro">Dari satu frame sampai satu rangkaian cerita — ALPON bekerja dengan pendekatan visual yang cinematic, candid, minimal, dan editorial.</p>
+          <p class="services-intro">Dari satu frame foto hingga rangkuman cerita utuh — ALPON menghadirkan standar dokumentasi cinematic, candid, dan story-driven yang terjangkau.</p>
         </div>
 
         <div class="service-list">
           <div class="service reveal">
             <div class="service-no">01</div>
-            <div class="service-name">PHOTO</div>
-            <div class="service-desc">Event, documentary, portrait, editorial, brand coverage dan visual yang fokus pada detail manusia.</div>
-            <div class="service-arrow">↗</div>
+            <div class="service-name">
+              PHOTO
+              <small>写真撮影 — Dokumentasi Momen</small>
+            </div>
+            <div class="service-desc">Dokumentasi momen berharga dengan sudut pandang terbaik, warna berkarakter, dan hasil candid yang natural.</div>
+            <a class="service-arrow" href="#pricing">↗</a>
           </div>
+
           <div class="service reveal">
             <div class="service-no">02</div>
-            <div class="service-name">MOTION</div>
-            <div class="service-desc">Video coverage, cinematic recap, aftermovie, short-form dan story-driven production.</div>
-            <div class="service-arrow">↗</div>
+            <div class="service-name">
+              REELS &amp; AFTER MOVIE
+              <small>リール &amp; アフタームービー — Motion Story</small>
+            </div>
+            <div class="service-desc">Video pendek atau after movie sinematik yang menceritakan suasana, emosi, dan energi secara lebih hidup.</div>
+            <a class="service-arrow" href="#pricing">↗</a>
           </div>
+
           <div class="service reveal">
             <div class="service-no">03</div>
-            <div class="service-name">AIR</div>
-            <div class="service-desc">Aerial perspective untuk memperluas skala, konteks dan rhythm sebuah visual story.</div>
-            <div class="service-arrow">↗</div>
+            <div class="service-name">
+              PHOTO + VIDEO PACKAGE
+              <small>写真 + 映像パッケージ — Paket Lengkap</small>
+            </div>
+            <div class="service-desc">Paket kolaborasi lengkap foto dan video untuk mengabadikan seluruh momen berharga Anda dari berbagai perspektif.</div>
+            <a class="service-arrow" href="#pricing">↗</a>
           </div>
+
           <div class="service reveal">
             <div class="service-no">04</div>
-            <div class="service-name">CONTENT</div>
-            <div class="service-desc">Social assets, campaign visuals, reels dan modular content yang tetap punya identitas.</div>
-            <div class="service-arrow">↗</div>
+            <div class="service-name">
+              KONTEN KREATOR
+              <small>コンテンツクリエイター — Monthly Social Production</small>
+            </div>
+            <div class="service-desc">Produksi konten bulanan untuk brand &amp; personal, mulai dari storyboard, lighting, audio pro, editing hingga talent.</div>
+            <a class="service-arrow" href="#pricing">↗</a>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- PRICELIST SECTION (LENGKAP SESUAI GAMBAR) -->
+    <section class="pricing" id="pricing">
+      <div class="container">
+        <div class="pricing-head reveal">
+          <div class="eyebrow red-dot">Official Rate Card</div>
+          <span class="pricing-tagline">2026 LAUNCHING RATE</span>
+          <h2 class="pricing-title display">PRICE LIST</h2>
+          <p class="pricing-intro">Harga terjangkau untuk membantu setiap cerita mendapatkan dokumentasi visual terbaik.</p>
+        </div>
+
+        <!-- 01 ALPON PHOTO -->
+        <div class="pricing-group reveal">
+          <div class="pricing-category-title">
+            <h3><span class="num">01</span> ALPON PHOTO <span class="jp-sub">写真撮影</span></h3>
+            <p class="pricing-category-desc">Dokumentasi momen berharga dengan sudut pandang terbaik.</p>
+          </div>
+
+          <div class="pricing-grid">
+            <div class="price-card">
+              <div class="card-top">
+                <h4 class="card-pkg-name">BASIC</h4>
+                <span class="card-duration">2–3 JAM SESI</span>
+                <div class="card-price">Rp 350.000</div>
+                <ul class="card-features">
+                  <li>1 Photographer</li>
+                  <li>50–80 Edited Photos</li>
+                  <li>Full High Resolution</li>
+                </ul>
+              </div>
+              <div class="card-action">
+                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20paket%2001%20PHOTO%20-%20BASIC%20(Rp350.000)." target="_blank" rel="noopener">Book via WhatsApp ↗</a>
+              </div>
+            </div>
+
+            <div class="price-card">
+              <div class="card-top">
+                <h4 class="card-pkg-name">STANDARD</h4>
+                <span class="card-duration">4–5 JAM SESI</span>
+                <div class="card-price">Rp 500.000</div>
+                <ul class="card-features">
+                  <li>1 Photographer</li>
+                  <li>100–150 Edited Photos</li>
+                  <li>Color Grading &amp; Retouch</li>
+                </ul>
+              </div>
+              <div class="card-action">
+                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20paket%2001%20PHOTO%20-%20STANDARD%20(Rp500.000)." target="_blank" rel="noopener">Book via WhatsApp ↗</a>
+              </div>
+            </div>
+
+            <div class="price-card">
+              <div class="card-top">
+                <h4 class="card-pkg-name">FULL DAY</h4>
+                <span class="card-duration">7–8 JAM SESI</span>
+                <div class="card-price">Rp 750.000</div>
+                <ul class="card-features">
+                  <li>1 Photographer</li>
+                  <li>200–250 Edited Photos</li>
+                  <li>Comprehensive Coverage</li>
+                </ul>
+              </div>
+              <div class="card-action">
+                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20paket%2001%20PHOTO%20-%20FULL%20DAY%20(Rp750.000)." target="_blank" rel="noopener">Book via WhatsApp ↗</a>
+              </div>
+            </div>
+          </div>
+          <div class="gdrive-banner">
+            <span>☁️ Semua paket mendapatkan <b>akses seluruh footage di Google Drive</b>.</span>
+          </div>
+        </div>
+
+        <!-- 02 ALPON REELS & AFTER MOVIE -->
+        <div class="pricing-group reveal">
+          <div class="pricing-category-title">
+            <h3><span class="num">02</span> REELS &amp; AFTER MOVIE <span class="jp-sub">リール &amp; アフタームービー</span></h3>
+            <p class="pricing-category-desc">Video pendek atau after movie yang menceritakan suasana dengan lebih hidup.</p>
+          </div>
+
+          <div class="pricing-grid">
+            <div class="price-card">
+              <div class="card-top">
+                <h4 class="card-pkg-name">BASIC</h4>
+                <span class="card-duration">2–3 JAM SESI</span>
+                <div class="card-price">Rp 400.000</div>
+                <ul class="card-features">
+                  <li>1 Videographer</li>
+                  <li>1 Reels / After Movie (15–30 Detik)</li>
+                  <li>Cinematic Audio &amp; Color</li>
+                </ul>
+              </div>
+              <div class="card-action">
+                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20paket%2002%20REELS%20%26%20AFTER%20MOVIE%20-%20BASIC%20(Rp400.000)." target="_blank" rel="noopener">Book via WhatsApp ↗</a>
+              </div>
+            </div>
+
+            <div class="price-card">
+              <div class="card-top">
+                <h4 class="card-pkg-name">STANDARD</h4>
+                <span class="card-duration">4–5 JAM SESI</span>
+                <div class="card-price">Rp 600.000</div>
+                <ul class="card-features">
+                  <li>1 Videographer</li>
+                  <li>1 After Movie (30–60 Detik)</li>
+                  <li>1 Reels Highlight</li>
+                </ul>
+              </div>
+              <div class="card-action">
+                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20paket%2002%20REELS%20%26%20AFTER%20MOVIE%20-%20STANDARD%20(Rp600.000)." target="_blank" rel="noopener">Book via WhatsApp ↗</a>
+              </div>
+            </div>
+
+            <div class="price-card">
+              <div class="card-top">
+                <h4 class="card-pkg-name">FULL DAY</h4>
+                <span class="card-duration">7–8 JAM SESI</span>
+                <div class="card-price">Rp 900.000</div>
+                <ul class="card-features">
+                  <li>1–2 Videographer</li>
+                  <li>1 After Movie (1–2 Menit)</li>
+                  <li>2 Reels Story</li>
+                </ul>
+              </div>
+              <div class="card-action">
+                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20paket%2002%20REELS%20%26%20AFTER%20MOVIE%20-%20FULL%20DAY%20(Rp900.000)." target="_blank" rel="noopener">Book via WhatsApp ↗</a>
+              </div>
+            </div>
+          </div>
+          <div class="gdrive-banner">
+            <span>☁️ Semua paket mendapatkan <b>akses seluruh footage di Google Drive</b>.</span>
+          </div>
+        </div>
+
+        <!-- 03 PHOTO + VIDEO PACKAGE -->
+        <div class="pricing-group reveal">
+          <div class="pricing-category-title">
+            <h3><span class="num">03</span> PHOTO + VIDEO PACKAGE <span class="jp-sub">写真 + 映像パッケージ</span></h3>
+            <p class="pricing-category-desc">Paket lengkap foto dan video untuk menceritakan cerita secara utuh.</p>
+          </div>
+
+          <div class="pricing-grid">
+            <div class="price-card">
+              <div class="card-top">
+                <h4 class="card-pkg-name">STARTER</h4>
+                <span class="card-duration">3–4 JAM SESI</span>
+                <div class="card-price">Rp 600.000</div>
+                <ul class="card-features">
+                  <li>1 Photographer + 1 Videographer</li>
+                  <li>75–100 Edited Photos</li>
+                  <li>1 Reels / After Movie (15–30 Detik)</li>
+                </ul>
+              </div>
+              <div class="card-action">
+                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Paket%2003%20PHOTO%20%2B%20VIDEO%20-%20STARTER%20(Rp600.000)." target="_blank" rel="noopener">Book via WhatsApp ↗</a>
+              </div>
+            </div>
+
+            <div class="price-card featured">
+              <span class="badge-featured">REKOMENDASI</span>
+              <div class="card-top">
+                <h4 class="card-pkg-name">SIGNATURE</h4>
+                <span class="card-duration">5–6 JAM SESI</span>
+                <div class="card-price">Rp 850.000</div>
+                <ul class="card-features">
+                  <li>1 Photographer + 1 Videographer</li>
+                  <li>120–150 Edited Photos</li>
+                  <li>1 After Movie (30–60 Detik)</li>
+                  <li>1–2 Reels High Energy</li>
+                </ul>
+              </div>
+              <div class="card-action">
+                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Paket%2003%20PHOTO%20%2B%20VIDEO%20-%20SIGNATURE%20(Rp850.000)%20[Rekomendasi]." target="_blank" rel="noopener">Book Rekomendasi ↗</a>
+              </div>
+            </div>
+
+            <div class="price-card">
+              <div class="card-top">
+                <h4 class="card-pkg-name">COMPLETE</h4>
+                <span class="card-duration">7–8 JAM SESI</span>
+                <div class="card-price">Rp 1.200.000</div>
+                <ul class="card-features">
+                  <li>1–2 Photographer + 1–2 Videographer</li>
+                  <li>200+ Edited Photos</li>
+                  <li>1 After Movie (1–2 Menit) + 2–3 Reels</li>
+                  <li>Drone Add-on (Basic Included)</li>
+                </ul>
+              </div>
+              <div class="card-action">
+                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Paket%2003%20PHOTO%20%2B%20VIDEO%20-%20COMPLETE%20(Rp1.200.000)." target="_blank" rel="noopener">Book via WhatsApp ↗</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 04 KONTEN KREATOR -->
+        <div class="pricing-group reveal">
+          <div class="pricing-category-title">
+            <h3><span class="num">04</span> KONTEN KREATOR <span class="jp-sub">コンテンツクリエイター</span></h3>
+            <p class="pricing-category-desc">Solusi produksi konten media sosial profesional bulanan untuk brand &amp; personal.</p>
+          </div>
+
+          <div class="pricing-grid two-col">
+            <div class="price-card">
+              <div class="card-top">
+                <h4 class="card-pkg-name">PAKET STANDARD</h4>
+                <span class="card-duration">DURASI 1 BULAN</span>
+                <div class="card-price">Rp 2.000.000 <small>/ bln</small></div>
+                <ul class="card-features">
+                  <li>Device: iPhone 13 Pro 4K</li>
+                  <li>Audio: Hollyland Lark M2 Wireless Mic</li>
+                  <li>12 Konten Siap Upload per Bulan</li>
+                  <li>Termasuk Storyboard &amp; Konten Plan</li>
+                  <li>Professional Video Editing</li>
+                  <li>Talent Included</li>
+                </ul>
+              </div>
+              <div class="card-action">
+                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20tertarik%20konsultasi%2004%20KONTEN%20KREATOR%20-%20PAKET%20STANDARD%20(Rp2.000.000/bln)." target="_blank" rel="noopener">Konsultasi Paket Konten ↗</a>
+              </div>
+            </div>
+
+            <div class="price-card featured">
+              <span class="badge-featured">PRO LEVEL</span>
+              <div class="card-top">
+                <h4 class="card-pkg-name">PAKET PROFESSIONAL</h4>
+                <span class="card-duration">DURASI 1 BULAN</span>
+                <div class="card-price">Rp 3.000.000 <small>/ bln</small></div>
+                <ul class="card-features">
+                  <li>Device: Dedicated Camera &amp; Lenses Pro</li>
+                  <li>Studio Lighting System</li>
+                  <li>Audio: Hollyland Lark M2 Wireless Mic</li>
+                  <li>12 Konten High Production per Bulan</li>
+                  <li>In-depth Storyboard &amp; Konten Plan</li>
+                  <li>Advanced Editing &amp; Color Grading</li>
+                  <li>Talent Included</li>
+                </ul>
+              </div>
+              <div class="card-action">
+                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20tertarik%20konsultasi%2004%20KONTEN%20KREATOR%20-%20PAKET%20PROFESSIONAL%20(Rp3.000.000/bln)." target="_blank" rel="noopener">Konsultasi Paket Pro ↗</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 05 ADD-ONS & NOTES -->
+        <div class="pricing-group reveal">
+          <div class="pricing-category-title">
+            <h3><span class="num">05</span> ADD-ONS <span class="jp-sub">追加オプション</span></h3>
+            <p class="pricing-category-desc">Kebutuhan ekstra untuk memperkaya dokumentasi project Anda.</p>
+          </div>
+
+          <div class="addons-grid">
+            <div class="addon-box">
+              <div class="addon-name">DRONE ADD-ON</div>
+              <div class="addon-price">+Rp350.000</div>
+            </div>
+            <div class="addon-box">
+              <div class="addon-name">ADDITIONAL PHOTOGRAPHER</div>
+              <div class="addon-price">+Rp200.000</div>
+            </div>
+            <div class="addon-box">
+              <div class="addon-name">ADDITIONAL VIDEOGRAPHER</div>
+              <div class="addon-price">+Rp300.000</div>
+            </div>
+            <div class="addon-box">
+              <div class="addon-name">ADDITIONAL HOUR</div>
+              <div class="addon-price">+Rp75.000</div>
+            </div>
+            <div class="addon-box">
+              <div class="addon-name">VERTICAL REEL (PER VIDEO)</div>
+              <div class="addon-price">+Rp100.000</div>
+            </div>
+          </div>
+
+          <div class="notes-card">
+            <div>
+              <h4>CATATAN &amp; KETENTUAN</h4>
+              <ul class="notes-list">
+                <li>Harga berlaku untuk area Semarang dan sekitarnya.</li>
+                <li>Harga dapat berubah menyesuaikan kebutuhan spesifik dan lokasi project.</li>
+                <li>DP 50% wajib untuk penguncian jadwal/booking tanggal.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>ESTIMASI PENGERJAAN</h4>
+              <ul class="notes-list">
+                <li>Pengiriman hasil Foto: <b>2–5 hari kerja</b>.</li>
+                <li>Pengiriman hasil Video: <b>3–7 hari kerja</b>.</li>
+                <li>File master &amp; final diunggah ke Google Drive private folder.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -1053,10 +1677,10 @@
       <div class="container">
         <div class="direction-head reveal">
           <div>
-            <div class="eyebrow">Photography &amp; Video Direction</div>
+            <div class="eyebrow">Visual Direction</div>
             <h2 class="direction-title display">HOW IT<br>SHOULD FEEL.</h2>
           </div>
-          <p class="direction-copy">Cinematic tone, natural candid moment, high contrast, real people, real story. Bukan visual yang terlalu polished — tetapi visual yang terasa hidup.</p>
+          <p class="direction-copy">Cinematic tone, natural candid moment, high contrast, real people, real story. Bukan sekadar visual yang rapi — melainkan momen yang terasa hidup dan berkarakter.</p>
         </div>
 
         <div class="direction-grid">
@@ -1084,58 +1708,13 @@
       </div>
     </section>
 
-    <!-- IDENTITY -->
-    <section class="identity" id="about">
-      <div class="container identity-grid">
-        <div class="identity-left reveal">
-          <div class="eyebrow">Brand System</div>
-          <h2 class="display">ALPON<br>IDENTITY.</h2>
-          <div class="identity-quote">A + P<br>→ ONE<br>VISUAL<br>LANGUAGE.</div>
-        </div>
-
-        <div class="identity-right">
-          <div class="spec reveal">
-            <h3>Color Palette</h3>
-            <div class="swatches">
-              <div class="swatch black">#0D0D0D</div>
-              <div class="swatch smoke">#1F1F1F</div>
-              <div class="swatch stone">#E8E8E6</div>
-              <div class="swatch red">#E63946</div>
-              <div class="swatch indigo">#1A2A44</div>
-            </div>
-          </div>
-
-          <div class="spec reveal">
-            <h3>Typography</h3>
-            <div class="type-demo">ALPON<br>STUDIO.</div>
-            <div class="jp-demo">瞬間 / SHUNKAN / MOMENT</div>
-          </div>
-
-          <div class="spec reveal">
-            <h3>Frame System</h3>
-            <div class="frame-demo">[ A P ]</div>
-          </div>
-
-          <div class="spec reveal">
-            <h3>Sticker / Label</h3>
-            <div class="sticker-demo">
-              <span class="sticker red">ALPON STUDIO</span>
-              <span class="sticker">WE CAPTURE WHAT MATTERS.</span>
-              <span class="sticker">REC ●</span>
-              <span class="sticker">瞬間</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- CTA -->
     <section class="cta" id="contact">
       <div class="container reveal">
-        <div class="eyebrow">Let's Work Together</div>
+        <div class="eyebrow">Let's Create Your Story</div>
         <h2 class="cta-title display">GOT A<br>STORY?</h2>
-        <p class="cta-copy">Tell us what matters. Kami akan membantu mengubah momen itu menjadi cerita visual yang terasa, bukan sekadar terlihat.</p>
-        <a class="cta-btn" href="mailto:hello@alponstudio.com">Start a Project ↗</a>
+        <p class="cta-copy">Tell us what matters. Kami siap mengabadikan setiap momen Anda menjadi visual yang bermakna dan berkesan.</p>
+        <a class="cta-btn" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20konsultasi%20project%20visual." target="_blank" rel="noopener">Chat via WhatsApp (089668184078) ↗</a>
       </div>
     </section>
   </main>
@@ -1157,25 +1736,25 @@
             <h4>Navigate</h4>
             <a href="#work">Work</a>
             <a href="#services">Services</a>
+            <a href="#pricing">Pricelist 2026</a>
             <a href="#direction">Direction</a>
-            <a href="#about">About</a>
           </div>
           <div class="footer-col">
             <h4>Social</h4>
-            <a href="#">Instagram</a>
+            <a href="https://instagram.com/alponstudio" target="_blank" rel="noopener">Instagram (@alponstudio)</a>
             <a href="#">TikTok</a>
-            <a href="#">WhatsApp</a>
+            <a href="https://alpon-studio.vercel.app/" target="_blank" rel="noopener">Website</a>
           </div>
           <div class="footer-col">
             <h4>Contact</h4>
+            <a href="https://wa.me/6289668184078" target="_blank" rel="noopener">WhatsApp (089668184078)</a>
             <a href="mailto:hello@alponstudio.com">Email</a>
-            <a href="#contact">Start a Project</a>
           </div>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <span>© 2026 ALPON STUDIO</span>
+        <span>© 2026 ALPON STUDIO — ALL RIGHTS RESERVED</span>
         <span>BORN FROM <b>FRIENDSHIP</b>, BUILT ON STORIES.</span>
       </div>
     </div>
@@ -1183,35 +1762,26 @@
 
   <script>
     /*
-      ==========================================================
-      IMAGE LIBRARY — REPLACE FOTO DI SINI SAJA
-      ==========================================================
-      URL di bawah dipisahkan dari layout supaya gampang diganti.
-      Foto utama menggunakan Unsplash / sumber publik yang ditemukan
-      saat riset visual. Untuk produksi komersial, tetap cek kembali
-      lisensi foto pilihan Anda sebelum dipakai sebagai asset final.
+      IMAGE ASSET LIBRARY
     */
     const IMAGE_LIBRARY = {
       hero: "https://images.unsplash.com/photo-1671117507838-103b9f1bb432?auto=format&fit=crop&w=2400&q=88",
-
       storyTokyo: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1500&q=86",
       storyWedding: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1300&q=86",
       storyCamera: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1400&q=86",
-
       workEvent: "https://images.unsplash.com/photo-1671117507838-103b9f1bb432?auto=format&fit=crop&w=1900&q=88",
       workWedding: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1500&q=88",
       workCity: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1500&q=88",
-
       directionEvent: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1800&q=88",
       directionCamera: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1600&q=88",
       directionStreet: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1600&q=88",
       directionWedding: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=88"
     };
 
-    // Apply image library
+    // Apply Background Images
     document.getElementById("heroMedia").style.backgroundImage =
-      `linear-gradient(90deg,rgba(13,13,13,.97) 0%,rgba(13,13,13,.77) 44%,rgba(13,13,13,.28) 100%),
-       linear-gradient(0deg,rgba(13,13,13,.86),transparent 50%),
+      `linear-gradient(90deg,rgba(13,13,13,.96) 0%,rgba(13,13,13,.82) 48%,rgba(13,13,13,.35) 100%),
+       linear-gradient(0deg,rgba(13,13,13,.9),transparent 55%),
        url("${IMAGE_LIBRARY.hero}")`;
 
     document.querySelectorAll("[data-image]").forEach((el) => {
@@ -1221,18 +1791,18 @@
       }
     });
 
-    // Navbar
+    // Nav Scroll Transition
     const nav = document.getElementById("nav");
     window.addEventListener("scroll", () => {
       nav.classList.toggle("scrolled", window.scrollY > 30);
-    }, { passive:true });
+    }, { passive: true });
 
-    // Hero settle-in
+    // Hero Mount Animation
     window.addEventListener("load", () => {
       document.querySelector(".hero").classList.add("ready");
     });
 
-    // Scroll reveal
+    // Scroll Reveal Observer
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -1240,18 +1810,19 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold:.08 });
+    }, { threshold: 0.08 });
 
     document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
-    // Smooth anchor links
+    // Smooth Anchor Scroll
     document.querySelectorAll('a[href^="#"]').forEach((link) => {
       link.addEventListener("click", (e) => {
         const id = link.getAttribute("href");
+        if (id === "#") return;
         const target = document.querySelector(id);
         if (!target) return;
         e.preventDefault();
-        target.scrollIntoView({ behavior:"smooth", block:"start" });
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
       });
     });
   </script>
