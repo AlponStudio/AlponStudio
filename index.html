@@ -7,18 +7,6 @@
   <title>ALPON STUDIO — We Capture What Matters.</title>
   <meta name="description" content="ALPON STUDIO — visual documentation, photography, motion and content. Born from friendship, built on stories.">
 
-  <!--
-    ALPON STUDIO — BRAND SYSTEM & SINGLE FILE CODE
-    ---------------------------------------------
-    Brand Colors:
-    Jet Black    #0D0D0D
-    Smoke Gray   #1F1F1F
-    Stone        #E8E8E6
-    Off White    #FAFAF8
-    Japanese Red #E63946
-    Deep Indigo  #121E31
-  -->
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -55,7 +43,7 @@
       -webkit-font-smoothing:antialiased;
     }
     a{color:inherit;text-decoration:none}
-    img{display:block;width:100%}
+    img{display:block}
     button{font:inherit;cursor:pointer}
     ::selection{background:var(--red);color:var(--off)}
 
@@ -110,20 +98,16 @@
     .logo{
       display:inline-flex;
       align-items:center;
-    }
-    .logo-img{
-      height:32px;
-      width:auto;
-      object-fit:contain;
-      display:block;
       transition:opacity .3s ease;
     }
-    .logo:hover .logo-img{
-      opacity:.85;
+    .logo:hover{opacity:.85}
+    .logo-img{
+      height:36px;
+      width:auto;
+      object-fit:contain;
     }
     .footer-logo{
-      height:38px;
-      margin-bottom:14px;
+      height:44px;
     }
 
     /* ---------------- NAV ---------------- */
@@ -1059,7 +1043,7 @@
       max-width:300px;
       font-size:12px;
       line-height:1.8;
-      margin:0;
+      margin:18px 0 0;
     }
     .footer-links{
       display:grid;
@@ -1124,8 +1108,8 @@
     @media (max-width:700px){
       .container{width:calc(100% - 32px)}
       .nav-cta{padding:8px 12px;font-size:9px}
-      .logo-img{height:24px}
-      .footer-logo{height:30px}
+      .logo-img{height:30px}
+      .footer-logo{height:36px}
       .hero-grid{padding:135px 0 45px}
       .hero-title{font-size:28vw}
       .hero-sub{font-size:12px}
@@ -1157,7 +1141,7 @@
   <header class="nav" id="nav">
     <div class="container nav-inner">
       <a class="logo" href="#home" aria-label="ALPON STUDIO">
-        <img src="AP LOGO HORIZONTAL_1.png" alt="ALPON STUDIO" class="logo-img">
+        <img src="https://lh3.googleusercontent.com/d/1VzehDfh7kaoJBUak6E6wkYi5V2IHwpcC" alt="ALPON STUDIO Logo" class="logo-img">
       </a>
 
       <nav>
@@ -1355,7 +1339,7 @@
       </div>
     </section>
 
-    <!-- PRICELIST SECTION (LENGKAP SESUAI GAMBAR) -->
+    <!-- PRICELIST SECTION -->
     <section class="pricing" id="pricing">
       <div class="container">
         <div class="pricing-head reveal">
@@ -1703,8 +1687,8 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <a class="logo" href="#home">
-            <img src="AP LOGO HORIZONTAL_1.png" alt="ALPON STUDIO" class="logo-img footer-logo">
+          <a class="logo" href="#home" aria-label="ALPON STUDIO">
+            <img src="https://lh3.googleusercontent.com/d/1VzehDfh7kaoJBUak6E6wkYi5V2IHwpcC" alt="ALPON STUDIO Logo" class="logo-img footer-logo">
           </a>
           <p>We capture what matters.<br>Born from friendship, built on stories.</p>
         </div>
