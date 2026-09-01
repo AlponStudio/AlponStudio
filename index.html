@@ -145,33 +145,130 @@
     .project-copy h3{margin:0;font-size:clamp(38px,4vw,60px);line-height:.92}
     .project-copy p{margin:10px 0 0;color:#aaa;font-size:10px;text-transform:uppercase;letter-spacing:.14em}
 
-    /* ---------------- SECTION 2: CONTENT CREATOR PORTFOLIO ---------------- */
+    /* ---------------- SECTION 2: CONTENT CREATOR (SIDE-SCROLLING SLIDER) ---------------- */
     .creator-work{background:var(--smoke);padding:130px 0;border-bottom:1px solid var(--white-line)}
-    .creator-head{display:flex;justify-content:space-between;gap:40px;align-items:flex-end;margin-bottom:55px}
+    .creator-head{display:flex;justify-content:space-between;gap:40px;align-items:flex-end;margin-bottom:45px}
     .creator-title{margin:14px 0 0;font-size:clamp(75px,10vw,150px);line-height:.88}
-    .creator-note{max-width:360px;color:#a8a8a8;font-size:13px;line-height:1.75;margin:0}
-    .creator-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:16px}
-    .creator-stack{display:grid;gap:16px}
-    .creator-frame{position:relative;overflow:hidden;background:#111;min-height:320px}
-    .creator-frame.large{min-height:700px}
-    .creator-frame.medium{min-height:342px}
-    .creator-frame .image{
+    .creator-header-right{display:flex;flex-direction:column;align-items:flex-end;gap:18px}
+    .creator-note{max-width:360px;color:#a8a8a8;font-size:13px;line-height:1.75;margin:0;text-align:right}
+    
+    .slider-arrows{display:flex;gap:10px}
+    .slider-btn{
+      width:44px;height:44px;border:1px solid var(--white-line);background:var(--jet);
+      color:var(--off);font-size:18px;display:grid;place-items:center;cursor:pointer;
+      transition:.3s var(--ease);
+    }
+    .slider-btn:hover{background:var(--red);border-color:var(--red)}
+
+    .creator-slider-wrapper{position:relative;width:100%}
+    .creator-slider{
+      display:flex;
+      gap:20px;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      scroll-behavior:smooth;
+      padding:10px 0 25px;
+      scrollbar-width:thin;
+      scrollbar-color:var(--red) var(--smoke-light);
+    }
+    .creator-slider::-webkit-scrollbar{height:4px}
+    .creator-slider::-webkit-scrollbar-track{background:var(--smoke-light)}
+    .creator-slider::-webkit-scrollbar-thumb{background:var(--red)}
+
+    .creator-card{
+      flex:0 0 300px;
+      height:520px;
+      scroll-snap-align:start;
+      position:relative;
+      overflow:hidden;
+      background:#111;
+      border:1px solid var(--white-line);
+      cursor:pointer;
+      transition:transform .4s var(--ease), border-color .4s var(--ease);
+    }
+    .creator-card:hover{
+      transform:translateY(-8px);
+      border-color:var(--red);
+    }
+    .creator-card .card-thumb{
       position:absolute;inset:0;background:center/cover no-repeat;
       filter:grayscale(.35) contrast(1.08);
-      transition:transform .85s var(--ease), filter .6s var(--ease);
+      transition:transform .8s var(--ease), filter .5s var(--ease);
     }
-    .creator-frame:hover .image{
-      transform:scale(1.05);
+    .creator-card:hover .card-thumb{
+      transform:scale(1.06);
       filter:grayscale(0) contrast(1.12);
     }
-    .creator-frame::after{
-      content:"";position:absolute;inset:0;
-      background:linear-gradient(0deg,rgba(13,13,13,.95) 0%, rgba(13,13,13,.2) 50%, rgba(13,13,13,.75) 100%);
+    .creator-card .overlay{
+      position:absolute;inset:0;
+      background:linear-gradient(180deg, rgba(13,13,13,.75) 0%, rgba(13,13,13,.15) 45%, rgba(13,13,13,.95) 100%);
+      z-index:2;
     }
-    .ratio-tag{
-      position:absolute;top:20px;right:20px;z-index:4;
-      padding:6px 10px;background:var(--red);color:var(--off);
+    .card-badge-top{
+      position:absolute;top:20px;left:20px;right:20px;z-index:3;
+      display:flex;justify-content:space-between;align-items:center;
+    }
+    .pill-tag{
+      background:var(--red);color:var(--off);padding:5px 10px;
       font-size:8px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+    }
+    .play-btn-circle{
+      width:40px;height:40px;border-radius:50%;background:rgba(13,13,13,.75);
+      border:1px solid rgba(250,250,248,.35);backdrop-filter:blur(6px);
+      display:grid;place-items:center;font-size:12px;color:var(--off);
+      transition:.3s var(--ease);
+    }
+    .creator-card:hover .play-btn-circle{
+      background:var(--red);border-color:var(--red);transform:scale(1.12);
+    }
+    .card-info-bottom{
+      position:absolute;bottom:22px;left:22px;right:22px;z-index:3;
+    }
+    .card-info-bottom .cat-sub{
+      font-size:9px;font-weight:700;letter-spacing:.16em;color:var(--red);
+      text-transform:uppercase;margin-bottom:6px;display:block;
+    }
+    .card-info-bottom h3{
+      margin:0 0 8px;font-family:var(--display);font-size:32px;line-height:.92;letter-spacing:.02em;
+    }
+    .card-info-bottom p{
+      margin:0;font-size:11px;color:#aaa;line-height:1.5;
+    }
+
+    /* ---------------- VIDEO MODAL LIGHTBOX ---------------- */
+    .video-modal{
+      position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;
+      opacity:0;transition:opacity .35s var(--ease);
+    }
+    .video-modal.active{display:flex;opacity:1}
+    .modal-backdrop{
+      position:absolute;inset:0;background:rgba(13,13,13,.94);backdrop-filter:blur(18px);
+    }
+    .modal-dialog{
+      position:relative;z-index:2;width:min(90vw, 420px);background:#111;
+      border:1px solid var(--white-line);padding:18px;display:flex;flex-direction:column;
+      box-shadow:0 20px 60px rgba(0,0,0,.85);
+    }
+    .modal-close{
+      position:absolute;top:-45px;right:0;background:transparent;border:0;
+      color:var(--off);font-size:24px;cursor:pointer;transition:.3s var(--ease);
+    }
+    .modal-close:hover{color:var(--red);transform:rotate(90deg)}
+    .modal-video-container{
+      width:100%;aspect-ratio:9/16;background:#000;position:relative;overflow:hidden;
+    }
+    .modal-video-container video{
+      width:100%;height:100%;object-fit:cover;
+    }
+    .modal-desc{
+      margin-top:14px;padding-top:10px;border-top:1px solid var(--white-line);
+      display:flex;justify-content:space-between;align-items:center;
+    }
+    .modal-desc h4{
+      margin:0;font-family:var(--display);font-size:24px;letter-spacing:.03em;
+    }
+    .modal-desc span{
+      font-size:10px;font-weight:700;color:var(--red);letter-spacing:.15em;text-transform:uppercase;
     }
 
     /* ---------------- PRICELIST PORTAL ---------------- */
@@ -249,17 +346,20 @@
 
     @media (max-width:1100px){
       .nav-links{display:none}
-      .hero-grid,.about-top,.visi-misi-grid,.work-grid,.creator-grid,.category-grid{grid-template-columns:1fr;gap:40px}
+      .hero-grid,.about-top,.visi-misi-grid,.work-grid,.category-grid{grid-template-columns:1fr;gap:40px}
       .hero-side{display:none}
-      .frame.large,.creator-frame.large{min-height:500px}
+      .frame.large{min-height:500px}
     }
     @media (max-width:700px){
       .container{width:calc(100% - 32px)}
       .hero-grid{padding:135px 0 45px}
       .hero-title{font-size:28vw}
       .brand-about,.work,.creator-work,.pricing-portal,.instagram-section{padding:90px 0}
+      .creator-head{flex-direction:column;align-items:flex-start}
+      .creator-header-right{align-items:flex-start}
+      .creator-note{text-align:left}
       .category-card{padding:30px 24px}
-      .work-head,.creator-head,.ig-header,.footer-top{flex-direction:column;align-items:flex-start}
+      .work-head,.ig-header,.footer-top{flex-direction:column;align-items:flex-start}
       .footer-links{grid-template-columns:1fr 1fr;gap:30px}
     }
   </style>
@@ -310,10 +410,9 @@
       </div>
     </section>
 
-    <!-- BRAND STORY, VISI & MISI (SEBELUM DOCUMENTATION) -->
+    <!-- BRAND ABOUT & VISI MISI -->
     <section class="brand-about" id="about">
       <div class="container">
-        <!-- Overview & Filosofi Brand -->
         <div class="about-top reveal">
           <div>
             <div class="eyebrow red-dot">About The Studio</div>
@@ -335,9 +434,7 @@
           </div>
         </div>
 
-        <!-- Grid Visi & Misi -->
         <div class="visi-misi-grid">
-          <!-- Visi -->
           <div class="vm-card reveal">
             <span class="vm-badge">OUR VISION</span>
             <h3 class="vm-title">VISI KAMI</h3>
@@ -346,7 +443,6 @@
             </p>
           </div>
 
-          <!-- Misi -->
           <div class="vm-card reveal">
             <span class="vm-badge">OUR MISSION</span>
             <h3 class="vm-title">MISI KAMI</h3>
@@ -375,7 +471,7 @@
       </div>
     </section>
 
-    <!-- SECTION 1: WORK (PHOTO & VIDEO DOCUMENTATION) -->
+    <!-- SECTION 1: WORK (DOCUMENTATION) -->
     <section class="work" id="work">
       <div class="container">
         <div class="work-head reveal">
@@ -416,54 +512,135 @@
       </div>
     </section>
 
-    <!-- SECTION 2: CONTENT CREATOR PORTFOLIO -->
+    <!-- SECTION 2: CONTENT CREATOR (HORIZONTAL SIDE-SCROLLING 5 VIDEOS) -->
     <section class="creator-work" id="creator">
       <div class="container">
         <div class="creator-head reveal">
           <div>
-            <div class="eyebrow red-dot">Social &amp; Commercial Assets</div>
+            <div class="eyebrow red-dot">Social &amp; Commercial Motion</div>
             <h2 class="creator-title display">CONTENT CREATOR</h2>
           </div>
-          <p class="creator-note">Produksi video pendek 9:16 untuk Reels, TikTok, &amp; Campaign Brand. Storyboard terarah, dynamic pacing, audio Hollyland Lark M2, dan color grading berkarakter.</p>
+          <div class="creator-header-right">
+            <p class="creator-note">Geser ke samping &amp; klik kartu video untuk memutar preview output konten vertikal 9:16.</p>
+            <div class="slider-arrows">
+              <button class="slider-btn" id="slideLeft" aria-label="Slide Left">←</button>
+              <button class="slider-btn" id="slideRight" aria-label="Slide Right">→</button>
+            </div>
+          </div>
         </div>
 
-        <div class="creator-grid">
-          <!-- Main Reel Feature -->
-          <article class="creator-frame large reveal">
-            <div class="image" data-image="creatorReels1"></div>
-            <span class="ratio-tag">9:16 REEL ●</span>
-            <div class="project-copy">
-              <div class="project-meta"><b>01</b> / BRAND &amp; CAMPAIGN</div>
-              <h3 class="display">DYNAMIC<br>NARRATIVE.</h3>
-              <p>storyboard / fast pacing / hook / sound design</p>
+        <div class="creator-slider-wrapper reveal">
+          <div class="creator-slider" id="creatorSlider">
+            
+            <!-- Video 1 -->
+            <div class="creator-card" 
+                 data-video="https://assets.mixkit.co/videos/preview/mixkit-fashion-model-in-neon-light-41484-large.mp4" 
+                 data-title="BRAND CAMPAIGN REEL" 
+                 data-tag="REELS 9:16">
+              <div class="card-thumb" style="background-image:url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80');"></div>
+              <div class="overlay"></div>
+              <div class="card-badge-top">
+                <span class="pill-tag">01 / BRAND</span>
+                <div class="play-btn-circle">▶</div>
+              </div>
+              <div class="card-info-bottom">
+                <span class="cat-sub">Dynamic Hook</span>
+                <h3>NEON PULSE</h3>
+                <p>Fashion &amp; commercial high-speed editorial reel.</p>
+              </div>
             </div>
-          </article>
 
-          <!-- Secondary Reel Stack -->
-          <div class="creator-stack">
-            <article class="creator-frame medium reveal">
-              <div class="image" data-image="creatorReels2"></div>
-              <span class="ratio-tag">REAL-TIME STORY</span>
-              <div class="project-copy">
-                <div class="project-meta"><b>02</b> / EVENT RECAP KILAT</div>
-                <h3 class="display">LIVE<br>ENGAGEMENT.</h3>
-                <p>wireless audio / same-day edit / reels 30-60s</p>
+            <!-- Video 2 -->
+            <div class="creator-card" 
+                 data-video="https://assets.mixkit.co/videos/preview/mixkit-hands-holding-smartphones-at-a-concert-43306-large.mp4" 
+                 data-title="LIVE EVENT RECAP" 
+                 data-tag="FAST PACING">
+              <div class="card-thumb" style="background-image:url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80');"></div>
+              <div class="overlay"></div>
+              <div class="card-badge-top">
+                <span class="pill-tag">02 / EVENT</span>
+                <div class="play-btn-circle">▶</div>
               </div>
-            </article>
+              <div class="card-info-bottom">
+                <span class="cat-sub">Real-Time Story</span>
+                <h3>CROWD ENERGY</h3>
+                <p>Same-day festival highlight with wireless audio.</p>
+              </div>
+            </div>
 
-            <article class="creator-frame medium reveal">
-              <div class="image" data-image="creatorReels3"></div>
-              <span class="ratio-tag">TALENT &amp; PRODUCT</span>
-              <div class="project-copy">
-                <div class="project-meta"><b>03</b> / COMMERCIAL RETINER</div>
-                <h3 class="display">VISUAL<br>IDENTITY.</h3>
-                <p>monthly plan / studio lighting / talent direction</p>
+            <!-- Video 3 -->
+            <div class="creator-card" 
+                 data-video="https://assets.mixkit.co/videos/preview/mixkit-pouring-milk-in-a-glass-of-coffee-41662-large.mp4" 
+                 data-title="COMMERCIAL PRODUCT" 
+                 data-tag="MONTHLY RETAINER">
+              <div class="card-thumb" style="background-image:url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=800&q=80');"></div>
+              <div class="overlay"></div>
+              <div class="card-badge-top">
+                <span class="pill-tag">03 / PRODUCT</span>
+                <div class="play-btn-circle">▶</div>
               </div>
-            </article>
+              <div class="card-info-bottom">
+                <span class="cat-sub">Studio Lighting</span>
+                <h3>ARTISAN BREW</h3>
+                <p>Crisp product showcase &amp; sound design.</p>
+              </div>
+            </div>
+
+            <!-- Video 4 -->
+            <div class="creator-card" 
+                 data-video="https://assets.mixkit.co/videos/preview/mixkit-skater-performing-tricks-on-a-ramp-43285-large.mp4" 
+                 data-title="STREET & CULTURE" 
+                 data-tag="ACTION 9:16">
+              <div class="card-thumb" style="background-image:url('https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=800&q=80');"></div>
+              <div class="overlay"></div>
+              <div class="card-badge-top">
+                <span class="pill-tag">04 / STREET</span>
+                <div class="play-btn-circle">▶</div>
+              </div>
+              <div class="card-info-bottom">
+                <span class="cat-sub">Cinematic Motion</span>
+                <h3>URBAN FLOW</h3>
+                <p>Youth culture &amp; lifestyle pacing aesthetic.</p>
+              </div>
+            </div>
+
+            <!-- Video 5 -->
+            <div class="creator-card" 
+                 data-video="https://assets.mixkit.co/videos/preview/mixkit-woman-recording-a-vlog-with-her-phone-41481-large.mp4" 
+                 data-title="TALENT & INTERVIEW" 
+                 data-tag="HOLLYLAND AUDIO">
+              <div class="card-thumb" style="background-image:url('https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80');"></div>
+              <div class="overlay"></div>
+              <div class="card-badge-top">
+                <span class="pill-tag">05 / TALENT</span>
+                <div class="play-btn-circle">▶</div>
+              </div>
+              <div class="card-info-bottom">
+                <span class="cat-sub">Storyboard Plan</span>
+                <h3>TALENT TALK</h3>
+                <p>Clean vocal recording &amp; engaging captions.</p>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
     </section>
+
+    <!-- VIDEO LIGHTBOX MODAL -->
+    <div class="video-modal" id="videoModal">
+      <div class="modal-backdrop" id="modalBackdrop"></div>
+      <div class="modal-dialog">
+        <button class="modal-close" id="modalClose" aria-label="Close Video">✕</button>
+        <div class="modal-video-container">
+          <video id="modalVideoPlayer" controls playsinline></video>
+        </div>
+        <div class="modal-desc">
+          <h4 id="modalVideoTitle">VIDEO TITLE</h4>
+          <span id="modalVideoTag">REELS 9:16</span>
+        </div>
+      </div>
+    </div>
 
     <!-- SECTION 3: PRICELIST CATEGORY PORTAL -->
     <section class="pricing-portal" id="pricing">
@@ -609,16 +786,13 @@
     })();
   </script>
 
-  <!-- PAGE SCRIPT -->
+  <!-- PAGE SCRIPT & INTERACTION LOGIC -->
   <script>
     const IMAGE_LIBRARY = {
       hero: "https://images.unsplash.com/photo-1671117507838-103b9f1bb432?auto=format&fit=crop&w=2400&q=88",
       workEvent: "https://images.unsplash.com/photo-1671117507838-103b9f1bb432?auto=format&fit=crop&w=1900&q=88",
       workWedding: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1500&q=88",
-      workCity: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=1500&q=88",
-      creatorReels1: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1600&q=88",
-      creatorReels2: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1200&q=88",
-      creatorReels3: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1200&q=88"
+      workCity: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=1500&q=88"
     };
 
     document.getElementById("heroMedia").style.backgroundImage =
@@ -641,6 +815,52 @@
       });
     }, { threshold: 0.08 });
     document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+    // SLIDER BUTTONS LOGIC
+    const slider = document.getElementById("creatorSlider");
+    document.getElementById("slideLeft").addEventListener("click", () => {
+      slider.scrollBy({ left: -320, behavior: "smooth" });
+    });
+    document.getElementById("slideRight").addEventListener("click", () => {
+      slider.scrollBy({ left: 320, behavior: "smooth" });
+    });
+
+    // VIDEO MODAL LOGIC
+    const modal = document.getElementById("videoModal");
+    const modalPlayer = document.getElementById("modalVideoPlayer");
+    const modalTitle = document.getElementById("modalVideoTitle");
+    const modalTag = document.getElementById("modalVideoTag");
+    const modalClose = document.getElementById("modalClose");
+    const modalBackdrop = document.getElementById("modalBackdrop");
+
+    document.querySelectorAll(".creator-card").forEach((card) => {
+      card.addEventListener("click", () => {
+        const videoSrc = card.dataset.video;
+        const title = card.dataset.title;
+        const tag = card.dataset.tag;
+
+        modalPlayer.src = videoSrc;
+        modalTitle.textContent = title;
+        modalTag.textContent = tag;
+
+        modal.classList.add("active");
+        modalPlayer.play();
+      });
+    });
+
+    function closeModal() {
+      modal.classList.remove("active");
+      modalPlayer.pause();
+      modalPlayer.src = "";
+    }
+
+    modalClose.addEventListener("click", closeModal);
+    modalBackdrop.addEventListener("click", closeModal);
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modal.classList.contains("active")) {
+        closeModal();
+      }
+    });
   </script>
 </body>
 </html>
