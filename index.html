@@ -48,7 +48,7 @@
     .red{color:var(--red)}
     .display{font-family:var(--display);text-transform:uppercase;letter-spacing:.02em}
 
-    /* NAV */
+    /* ---------------- NAV ---------------- */
     .nav{position:fixed;inset:0 0 auto 0;z-index:1000;padding:20px 0;transition:.4s var(--ease)}
     .nav.scrolled{background:rgba(13,13,13,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--white-line);padding:14px 0}
     .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:25px}
@@ -60,7 +60,7 @@
     .nav-cta{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:1px solid rgba(250,250,248,.35);font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;transition:.35s var(--ease)}
     .nav-cta:hover{background:var(--red);border-color:var(--red);color:var(--off)}
 
-    /* HERO */
+    /* ---------------- HERO ---------------- */
     .hero{min-height:100svh;position:relative;display:flex;align-items:stretch;overflow:hidden;background:var(--jet)}
     .hero-media{position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,13,13,.96) 0%,rgba(13,13,13,.82) 48%,rgba(13,13,13,.35) 100%),linear-gradient(0deg,rgba(13,13,13,.9),transparent 55%),center/cover no-repeat;transform:scale(1.05);transition:transform 7s var(--ease);filter:saturate(.75) contrast(1.1)}
     .hero.ready .hero-media{transform:scale(1.01)}
@@ -83,36 +83,111 @@
     .rec i{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red)}
     .hero-coordinates{display:flex;gap:18px;font-family:var(--display);font-size:26px}
 
-    /* STORY */
+    /* ---------------- BRAND STORY ---------------- */
     .story{background:var(--off);color:var(--jet);position:relative;overflow:hidden}
-    .story-top{padding:130px 0 100px;display:grid;grid-template-columns:1.2fr .8fr;gap:80px;align-items:end}
+    .story-top{padding:110px 0 80px;display:grid;grid-template-columns:1.2fr .8fr;gap:80px;align-items:end}
     .story-heading{margin:16px 0 0;font-size:clamp(65px,9vw,135px);line-height:.92}
     .story-heading em{font-style:normal;color:var(--red)}
     .story-copy{color:#444;font-size:15px;line-height:1.9}
     .story-copy p{margin:0 0 18px}
     .story-jp{margin-top:32px;padding-top:24px;border-top:1px solid var(--line);display:flex;gap:16px;align-items:center}
     .story-jp .vertical{padding:4px 8px;background:var(--red);color:var(--off);font-family:var(--jp);font-size:11px;font-weight:700}
-    .story-strip{border-top:1px solid var(--line);display:grid;grid-template-columns:1.25fr .75fr 1fr;min-height:340px}
-    .story-card{position:relative;overflow:hidden;padding:28px;border-right:1px solid var(--line);min-height:340px}
+    
+    /* FIX: STORY STRIP & CARDS DENGAN FLEXBOX TERSTRUKTUR */
+    .story-strip{
+      border-top:1px solid var(--line);
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      min-height:420px;
+      background:var(--jet);
+    }
+    .story-card{
+      position:relative;
+      overflow:hidden;
+      border-right:1px solid rgba(250,250,248,.12);
+      min-height:420px;
+      display:flex;
+    }
     .story-card:last-child{border-right:0}
-    .story-card .image{position:absolute;inset:0;background:center/cover no-repeat;filter:grayscale(1) contrast(1.1);transition:transform .8s var(--ease),filter .5s var(--ease)}
-    .story-card:hover .image{transform:scale(1.05);filter:grayscale(.2) contrast(1.08)}
-    .story-card::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(13,13,13,.88),transparent 60%)}
-    .story-card > *:not(.image){position:relative;z-index:2}
-    .story-label{display:inline-flex;background:var(--red);color:var(--off);padding:6px 11px;font-size:9px;text-transform:uppercase;letter-spacing:.16em;font-weight:700}
-    .story-card h3{position:absolute;left:28px;bottom:52px;margin:0;color:var(--off);font-family:var(--display);font-size:44px;line-height:.92}
-    .story-card small{position:absolute;left:28px;bottom:26px;color:rgba(250,250,248,.75);font-size:9px;letter-spacing:.15em;text-transform:uppercase}
+    .story-card .image{
+      position:absolute;
+      inset:0;
+      background:center/cover no-repeat;
+      filter:grayscale(1) contrast(1.1);
+      transition:transform .8s var(--ease),filter .5s var(--ease);
+    }
+    .story-card:hover .image{
+      transform:scale(1.06);
+      filter:grayscale(.15) contrast(1.1);
+    }
+    /* Dual Gradient Overlay untuk kontras sempurna atas & bawah */
+    .story-card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, rgba(13,13,13,.75) 0%, rgba(13,13,13,.1) 40%, rgba(13,13,13,.95) 100%);
+      z-index:1;
+    }
+    .story-card-content{
+      position:relative;
+      z-index:2;
+      width:100%;
+      padding:28px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      align-items:flex-start;
+    }
+    .story-label{
+      display:inline-flex;
+      background:var(--red);
+      color:var(--off);
+      padding:6px 12px;
+      font-size:9px;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-weight:700;
+      box-shadow:0 2px 10px rgba(0,0,0,.4);
+    }
+    .story-card-bottom{
+      width:100%;
+    }
+    .story-card-bottom h3{
+      margin:0 0 8px;
+      color:var(--off);
+      font-family:var(--display);
+      font-size:clamp(36px, 3.4vw, 48px);
+      line-height:.95;
+      letter-spacing:.02em;
+    }
+    .story-card-bottom small{
+      display:block;
+      color:rgba(250,250,248,.75);
+      font-size:10px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      font-weight:500;
+    }
 
-    /* WORK */
-    .work{background:var(--jet);padding:140px 0}
-    .work-head{display:flex;justify-content:space-between;gap:40px;align-items:flex-end;margin-bottom:60px}
-    .work-title{margin:16px 0 0;font-size:clamp(75px,10vw,150px);line-height:.88}
+    /* ---------------- WORK (FIXED PADDING & SPACING) ---------------- */
+    .work{
+      background:var(--jet);
+      padding:90px 0 130px;
+    }
+    .work-head{
+      display:flex;
+      justify-content:space-between;
+      gap:40px;
+      align-items:flex-end;
+      margin-bottom:50px;
+    }
+    .work-title{margin:12px 0 0;font-size:clamp(75px,10vw,150px);line-height:.88}
     .work-note{max-width:340px;color:#9c9c9c;font-size:13px;line-height:1.75;margin:0}
     .work-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
     .work-stack{display:grid;gap:16px}
     .frame{position:relative;overflow:hidden;background:var(--smoke);min-height:320px}
-    .frame.large{min-height:700px}
-    .frame.medium{min-height:342px}
+    .frame.large{min-height:680px}
+    .frame.medium{min-height:332px}
     .frame .image{position:absolute;inset:0;background:center/cover no-repeat;transition:transform .85s var(--ease)}
     .frame:hover .image{transform:scale(1.05)}
     .frame::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(13,13,13,.9),transparent 65%)}
@@ -122,9 +197,9 @@
     .project-copy h3{margin:0;font-size:clamp(38px,4vw,60px);line-height:.92}
     .project-copy p{margin:10px 0 0;color:#aaa;font-size:10px;text-transform:uppercase;letter-spacing:.14em}
 
-    /* PRICELIST PORTAL (CATEGORIES NAVIGATION) */
-    .pricing-portal{background:var(--smoke);padding:140px 0;border-top:1px solid var(--white-line);position:relative}
-    .portal-head{text-align:center;max-width:760px;margin:0 auto 75px}
+    /* ---------------- PRICELIST PORTAL ---------------- */
+    .pricing-portal{background:var(--smoke);padding:130px 0;border-top:1px solid var(--white-line);position:relative}
+    .portal-head{text-align:center;max-width:760px;margin:0 auto 65px}
     .portal-head .eyebrow{justify-content:center}
     .portal-title{margin:16px 0 20px;font-size:clamp(75px,11vw,160px);line-height:.88}
     .portal-tagline{display:inline-block;padding:6px 14px;background:var(--smoke-light);border:1px solid var(--white-line);font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--red);margin-bottom:16px}
@@ -164,14 +239,14 @@
     }
     .category-card:hover .cat-btn{color:var(--red);gap:14px}
 
-    /* INSTAGRAM */
-    .instagram-section{background:var(--jet);padding:130px 0;border-top:1px solid var(--white-line)}
+    /* ---------------- INSTAGRAM ---------------- */
+    .instagram-section{background:var(--jet);padding:120px 0;border-top:1px solid var(--white-line)}
     .ig-header{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:50px}
     .ig-title{margin:16px 0 0;font-size:clamp(65px,9vw,135px);line-height:.9}
     .ig-handle-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border:1px solid rgba(250,250,248,.3);font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;transition:.35s var(--ease)}
     .ig-handle-btn:hover{background:var(--red);border-color:var(--red)}
 
-    /* CTA */
+    /* ---------------- CTA ---------------- */
     .cta{background:var(--red);color:var(--off);padding:140px 0;text-align:center}
     .cta .eyebrow{justify-content:center;color:var(--jet)}
     .cta .eyebrow::before{background:var(--jet)}
@@ -180,7 +255,7 @@
     .cta-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;background:var(--jet);color:var(--off);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;transition:.35s var(--ease)}
     .cta-btn:hover{background:var(--off);color:var(--jet)}
 
-    /* FOOTER */
+    /* ---------------- FOOTER ---------------- */
     footer{background:var(--jet);padding:60px 0 35px;border-top:1px solid rgba(250,250,248,.1)}
     .footer-top{display:flex;justify-content:space-between;gap:60px;padding-bottom:50px;border-bottom:1px solid rgba(250,250,248,.1)}
     .footer-logo{height:44px}
@@ -195,19 +270,21 @@
     .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s var(--ease)}
     .reveal.is-visible{opacity:1;transform:none}
 
+    /* ---------------- RESPONSIVE ---------------- */
     @media (max-width:1100px){
       .nav-links{display:none}
       .hero-grid,.story-top,.work-grid,.category-grid{grid-template-columns:1fr;gap:40px}
       .hero-side{display:none}
+      .story-strip{grid-template-columns:1fr;min-height:auto}
+      .story-card{border-right:0;border-bottom:1px solid rgba(250,250,248,.12);min-height:360px}
+      .story-card:last-child{border-bottom:0}
       .frame.large{min-height:500px}
     }
     @media (max-width:700px){
       .container{width:calc(100% - 32px)}
       .hero-grid{padding:135px 0 45px}
       .hero-title{font-size:28vw}
-      .story-top,.work,.pricing-portal,.instagram-section{padding:90px 0}
-      .story-strip{grid-template-columns:1fr}
-      .story-card{border-right:0;border-bottom:1px solid var(--line);min-height:280px}
+      .story-top,.work,.pricing-portal,.instagram-section{padding:80px 0}
       .category-card{padding:30px 24px}
       .work-head,.ig-header,.footer-top{flex-direction:column;align-items:flex-start}
       .footer-links{grid-template-columns:1fr 1fr;gap:30px}
@@ -275,24 +352,40 @@
           </div>
         </div>
       </div>
+
+      <!-- STORY STRIP (STRUKTUR TERPERBAIKI) -->
       <div class="story-strip">
         <article class="story-card reveal">
           <div class="image" data-image="storyTokyo"></div>
-          <span class="story-label">JAPAN / STREET</span>
-          <h3 class="display">DOCUMENT<br>THE CITY.</h3>
-          <small>street / culture / atmosphere</small>
+          <div class="story-card-content">
+            <span class="story-label">JAPAN / STREET</span>
+            <div class="story-card-bottom">
+              <h3 class="display">DOCUMENT<br>THE CITY.</h3>
+              <small>street / culture / atmosphere</small>
+            </div>
+          </div>
         </article>
+
         <article class="story-card reveal">
           <div class="image" data-image="storyWedding"></div>
-          <span class="story-label">REAL / CANDID</span>
-          <h3 class="display">KEEP<br>THE FEELING.</h3>
-          <small>people / emotion / memory</small>
+          <div class="story-card-content">
+            <span class="story-label">REAL / CANDID</span>
+            <div class="story-card-bottom">
+              <h3 class="display">KEEP<br>THE FEELING.</h3>
+              <small>people / emotion / memory</small>
+            </div>
+          </div>
         </article>
+
         <article class="story-card reveal">
           <div class="image" data-image="storyCamera"></div>
-          <span class="story-label">BEHIND / FRAME</span>
-          <h3 class="display">CHASING<br>THE MOMENT.</h3>
-          <small>photo / motion / production</small>
+          <div class="story-card-content">
+            <span class="story-label">BEHIND / FRAME</span>
+            <div class="story-card-bottom">
+              <h3 class="display">CHASING<br>THE MOMENT.</h3>
+              <small>photo / motion / production</small>
+            </div>
+          </div>
         </article>
       </div>
     </section>
