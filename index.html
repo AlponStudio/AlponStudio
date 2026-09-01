@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>ALPON STUDIO — We Capture What Matters.</title>
-  <meta name="description" content="ALPON STUDIO — visual documentation, photography, motion and content. Born from friendship, built on stories.">
+  <meta name="description" content="ALPON STUDIO — visual documentation, photography, motion and content creator in Semarang. Born from friendship, built on stories.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +22,6 @@
       --indigo:#121E31;
       --line:rgba(13,13,13,.15);
       --white-line:rgba(250,250,248,.12);
-      --red-glow:rgba(230,57,70,.35);
 
       --display:"Bebas Neue", sans-serif;
       --body:"Inter", sans-serif;
@@ -52,7 +51,7 @@
       margin-inline:auto;
     }
 
-    /* Editorial Noise Grain */
+    /* Grain Overlay */
     body::before{
       content:"";
       position:fixed;
@@ -655,7 +654,7 @@
     }
 
     .pricing-group{
-      margin-bottom:70px;
+      margin-bottom:85px;
     }
     .pricing-category-title{
       display:flex;
@@ -665,7 +664,7 @@
       gap:16px;
       padding-bottom:18px;
       border-bottom:1px solid var(--white-line);
-      margin-bottom:28px;
+      margin-bottom:24px;
     }
     .pricing-category-title h3{
       margin:0;
@@ -692,19 +691,38 @@
       margin:0;
     }
 
+    .subcat-label{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:#dcdcd9;
+      background:var(--smoke-light);
+      padding:7px 14px;
+      border-left:3px solid var(--red);
+      margin:22px 0 16px;
+    }
+
     .pricing-grid{
       display:grid;
       grid-template-columns:repeat(3,1fr);
       gap:18px;
+      margin-bottom:24px;
     }
     .pricing-grid.two-col{
       grid-template-columns:repeat(2,1fr);
+    }
+    .pricing-grid.four-col{
+      grid-template-columns:repeat(4,1fr);
     }
 
     .price-card{
       background:var(--smoke);
       border:1px solid var(--white-line);
-      padding:32px 28px;
+      padding:30px 24px;
       display:flex;
       flex-direction:column;
       justify-content:space-between;
@@ -732,10 +750,10 @@
       text-transform:uppercase;
     }
 
-    .card-top{margin-bottom:28px}
+    .card-top{margin-bottom:24px}
     .card-pkg-name{
       font-family:var(--display);
-      font-size:38px;
+      font-size:36px;
       line-height:.9;
       margin:0 0 6px;
       letter-spacing:.02em;
@@ -747,14 +765,14 @@
       letter-spacing:.16em;
       text-transform:uppercase;
       color:var(--red);
-      margin-bottom:20px;
+      margin-bottom:16px;
     }
     .card-price{
       font-family:var(--display);
-      font-size:48px;
+      font-size:44px;
       line-height:.9;
       color:var(--off);
-      margin:18px 0;
+      margin:14px 0;
       letter-spacing:.02em;
     }
     .card-price small{
@@ -768,9 +786,9 @@
     .card-features{
       list-style:none;
       padding:0;
-      margin:0 0 32px;
+      margin:0 0 28px;
       border-top:1px solid rgba(250,250,248,.08);
-      padding-top:20px;
+      padding-top:18px;
     }
     .card-features li{
       display:flex;
@@ -779,7 +797,7 @@
       font-size:12px;
       line-height:1.6;
       color:#c8c8c6;
-      margin-bottom:12px;
+      margin-bottom:10px;
     }
     .card-features li::before{
       content:"✓";
@@ -819,59 +837,35 @@
       color:var(--jet) !important;
     }
 
-    /* Drive note banner */
-    .gdrive-banner{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:12px;
-      padding:14px 20px;
+    /* Add-ons inline strip */
+    .addon-strip{
       background:rgba(250,250,248,.03);
-      border:1px dashed rgba(250,250,248,.18);
-      margin-top:18px;
-      font-size:11px;
-      color:#a8a8a8;
-      letter-spacing:.06em;
-      text-align:center;
-    }
-    .gdrive-banner b{color:var(--red)}
-
-    /* Add-ons & Notes */
-    .addons-grid{
-      display:grid;
-      grid-template-columns:repeat(5,1fr);
-      gap:12px;
-      margin-bottom:30px;
-    }
-    .addon-box{
-      background:var(--smoke);
       border:1px solid var(--white-line);
-      padding:22px 16px;
-      text-align:center;
-      transition:.3s var(--ease);
-    }
-    .addon-box:hover{
-      border-color:var(--red);
-      transform:translateY(-3px);
-    }
-    .addon-name{
-      font-size:9px;
-      font-weight:700;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color:#b3b3b3;
-      margin-bottom:8px;
-      min-height:26px;
+      padding:16px 20px;
       display:flex;
+      flex-wrap:wrap;
+      gap:14px;
       align-items:center;
-      justify-content:center;
+      margin-top:12px;
     }
-    .addon-price{
-      font-family:var(--display);
-      font-size:24px;
-      line-height:1;
+    .addon-strip-label{
+      font-size:10px;
+      font-weight:700;
+      letter-spacing:.16em;
+      text-transform:uppercase;
       color:var(--red);
+      padding-right:12px;
+      border-right:1px solid var(--white-line);
     }
+    .addon-pill{
+      background:var(--smoke-light);
+      border:1px solid rgba(250,250,248,.08);
+      padding:6px 12px;
+      font-size:10px;
+      color:#bbb;
+      letter-spacing:.08em;
+    }
+    .addon-pill b{color:var(--off)}
 
     .notes-card{
       background:var(--smoke-light);
@@ -880,6 +874,7 @@
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:30px;
+      margin-top:40px;
     }
     .notes-card h4{
       margin:0 0 14px;
@@ -1138,8 +1133,7 @@
       .work-grid{grid-template-columns:1fr}
       .frame.large{min-height:540px}
       .pricing-grid{grid-template-columns:1fr}
-      .pricing-grid.two-col{grid-template-columns:1fr}
-      .addons-grid{grid-template-columns:repeat(3,1fr)}
+      .pricing-grid.two-col,.pricing-grid.four-col{grid-template-columns:1fr}
       .notes-card{grid-template-columns:1fr}
       .direction-grid{grid-template-columns:1fr 1fr;grid-template-rows:260px 260px 220px}
       .direction-card:nth-child(1){grid-row:span 2}
@@ -1165,7 +1159,8 @@
       .service{grid-template-columns:40px 1fr 30px;gap:12px}
       .service-desc{display:none}
       .service-name{font-size:36px}
-      .addons-grid{grid-template-columns:1fr 1fr}
+      .addon-strip{flex-direction:column;align-items:flex-start}
+      .addon-strip-label{border-right:0;border-bottom:1px solid var(--white-line);padding-bottom:8px;width:100%}
       .direction-grid{grid-template-columns:1fr;grid-template-rows:260px 220px 220px 220px}
       .direction-card:nth-child(1){grid-row:auto}
       .direction-card:nth-child(4){grid-column:auto}
@@ -1326,7 +1321,7 @@
       </div>
     </section>
 
-    <!-- SERVICES (SESUAI PRICELIST) -->
+    <!-- SERVICES -->
     <section class="services" id="services">
       <div class="container">
         <div class="services-head reveal">
@@ -1334,343 +1329,430 @@
             <div class="eyebrow">What We Do</div>
             <h2 class="services-title display">SERVICES</h2>
           </div>
-          <p class="services-intro">Dari satu frame foto hingga rangkuman cerita utuh — ALPON menghadirkan standar dokumentasi cinematic, candid, dan story-driven yang terjangkau.</p>
+          <p class="services-intro">Empat pilar layanan visual ALPON STUDIO — disesuaikan untuk setiap momen personal, selebrasi akademik, selebrasi cinta, event komunitas, hingga kebutuhan komersial brand.</p>
         </div>
 
         <div class="service-list">
           <div class="service reveal">
             <div class="service-no">01</div>
             <div class="service-name">
-              PHOTO
-              <small>写真撮影 — Dokumentasi Momen</small>
+              GRADUATION
+              <small>卒業写真 — Wisuda &amp; Personal Milestone</small>
             </div>
-            <div class="service-desc">Dokumentasi momen berharga dengan sudut pandang terbaik, warna berkarakter, dan hasil candid yang natural.</div>
+            <div class="service-desc">Dokumentasi momen kelulusan dengan konsep foto candid editorial, video reels estetik, serta cinematic after movie.</div>
             <a class="service-arrow" href="#pricing">↗</a>
           </div>
 
           <div class="service reveal">
             <div class="service-no">02</div>
             <div class="service-name">
-              REELS &amp; AFTER MOVIE
-              <small>リール &amp; アフタームービー — Motion Story</small>
+              PREWEDDING
+              <small>ウェディング — Intimate &amp; Romance Story</small>
             </div>
-            <div class="service-desc">Video pendek atau after movie sinematik yang menceritakan suasana, emosi, dan energi secara lebih hidup.</div>
+            <div class="service-desc">Paket dokumentasi foto dan video intim dengan bonus cetak 20R + frame eksklusif untuk kenangan abadi Anda.</div>
             <a class="service-arrow" href="#pricing">↗</a>
           </div>
 
           <div class="service reveal">
             <div class="service-no">03</div>
             <div class="service-name">
-              PHOTO + VIDEO PACKAGE
-              <small>写真 + 映像パッケージ — Paket Lengkap</small>
+              EVENT DOCUMENTATION
+              <small>イベント — Live &amp; High Energy</small>
             </div>
-            <div class="service-desc">Paket kolaborasi lengkap foto dan video untuk mengabadikan seluruh momen berharga Anda dari berbagai perspektif.</div>
+            <div class="service-desc">Coverage lengkap untuk konser, gathering, festival, seminar dengan multi-kamera, drone aerial, dan tim content creator.</div>
             <a class="service-arrow" href="#pricing">↗</a>
           </div>
 
           <div class="service reveal">
             <div class="service-no">04</div>
             <div class="service-name">
-              KONTEN KREATOR
-              <small>コンテンツクリエイター — Monthly Social Production</small>
+              CONTENT CREATOR
+              <small>クリエイター — Social Media Production</small>
             </div>
-            <div class="service-desc">Produksi konten bulanan untuk brand &amp; personal, mulai dari storyboard, lighting, audio pro, editing hingga talent.</div>
+            <div class="service-desc">Produksi konten bulanan untuk brand &amp; personal: storyboard, shooting iPhone/Sony Pro, wireless mic, editing, hingga talent.</div>
             <a class="service-arrow" href="#pricing">↗</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PRICELIST SECTION -->
+    <!-- PRICELIST SECTION (UPDATED) -->
     <section class="pricing" id="pricing">
       <div class="container">
         <div class="pricing-head reveal">
           <div class="eyebrow red-dot">Official Rate Card</div>
-          <span class="pricing-tagline">2026 LAUNCHING RATE</span>
+          <span class="pricing-tagline">2026 PRICE LIST</span>
           <h2 class="pricing-title display">PRICE LIST</h2>
-          <p class="pricing-intro">Harga terjangkau untuk membantu setiap cerita mendapatkan dokumentasi visual terbaik.</p>
+          <p class="pricing-intro">Pilihan paket dokumentasi lengkap dengan harga transparan dan terjangkau untuk mengabadikan momen terbaik Anda.</p>
         </div>
 
-        <!-- 01 ALPON PHOTO -->
+        <!-- 01 GRADUATION -->
         <div class="pricing-group reveal">
           <div class="pricing-category-title">
-            <h3><span class="num">01</span> ALPON PHOTO <span class="jp-sub">写真撮影</span></h3>
-            <p class="pricing-category-desc">Dokumentasi momen berharga dengan sudut pandang terbaik.</p>
+            <h3><span class="num">01</span> GRADUATION <span class="jp-sub">卒業写真</span></h3>
+            <p class="pricing-category-desc">Dokumentasi momen kelulusan berharga bersama teman, sahabat, dan keluarga tercinta.</p>
           </div>
 
+          <!-- Subcat: Foto -->
+          <div class="subcat-label">PAKET FOTO GRADUATION</div>
           <div class="pricing-grid">
             <div class="price-card">
               <div class="card-top">
                 <h4 class="card-pkg-name">BASIC</h4>
-                <span class="card-duration">2–3 JAM SESI</span>
-                <div class="card-price">Rp 350.000</div>
+                <span class="card-duration">2 JAM SESI</span>
+                <div class="card-price">Rp 400.000</div>
                 <ul class="card-features">
                   <li>1 Photographer</li>
-                  <li>50–80 Edited Photos</li>
-                  <li>Full High Resolution</li>
+                  <li>10 Edited Photos</li>
+                  <li>All Raw Files on Drive</li>
                 </ul>
               </div>
               <div class="card-action">
-                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20paket%2001%20PHOTO%20-%20BASIC%20(Rp350.000)." target="_blank" rel="noopener">Book via WhatsApp ↗</a>
+                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Graduation%20Foto%20-%20Basic%20(Rp400.000)." target="_blank" rel="noopener">Book via WhatsApp ↗</a>
               </div>
             </div>
 
             <div class="price-card">
               <div class="card-top">
                 <h4 class="card-pkg-name">STANDARD</h4>
-                <span class="card-duration">4–5 JAM SESI</span>
-                <div class="card-price">Rp 500.000</div>
+                <span class="card-duration">4 JAM SESI</span>
+                <div class="card-price">Rp 650.000</div>
                 <ul class="card-features">
                   <li>1 Photographer</li>
-                  <li>100–150 Edited Photos</li>
-                  <li>Color Grading &amp; Retouch</li>
+                  <li>20 Edited Photos</li>
+                  <li>All Raw Files on Drive</li>
                 </ul>
               </div>
               <div class="card-action">
-                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20paket%2001%20PHOTO%20-%20STANDARD%20(Rp500.000)." target="_blank" rel="noopener">Book via WhatsApp ↗</a>
+                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Graduation%20Foto%20-%20Standard%20(Rp650.000)." target="_blank" rel="noopener">Book via WhatsApp ↗</a>
               </div>
             </div>
 
             <div class="price-card">
               <div class="card-top">
-                <h4 class="card-pkg-name">FULL DAY</h4>
-                <span class="card-duration">7–8 JAM SESI</span>
-                <div class="card-price">Rp 750.000</div>
+                <h4 class="card-pkg-name">HALFDAY</h4>
+                <span class="card-duration">8 JAM SESI</span>
+                <div class="card-price">Rp 800.000</div>
                 <ul class="card-features">
                   <li>1 Photographer</li>
-                  <li>200–250 Edited Photos</li>
+                  <li>40 Edited Photos</li>
                   <li>Comprehensive Coverage</li>
                 </ul>
               </div>
               <div class="card-action">
-                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20paket%2001%20PHOTO%20-%20FULL%20DAY%20(Rp750.000)." target="_blank" rel="noopener">Book via WhatsApp ↗</a>
+                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Graduation%20Foto%20-%20Halfday%20(Rp800.000)." target="_blank" rel="noopener">Book via WhatsApp ↗</a>
               </div>
             </div>
           </div>
-          <div class="gdrive-banner">
-            <span>☁️ Semua paket mendapatkan <b>akses seluruh footage di Google Drive</b>.</span>
-          </div>
-        </div>
 
-        <!-- 02 ALPON REELS & AFTER MOVIE -->
-        <div class="pricing-group reveal">
-          <div class="pricing-category-title">
-            <h3><span class="num">02</span> REELS &amp; AFTER MOVIE <span class="jp-sub">リール &amp; アフタームービー</span></h3>
-            <p class="pricing-category-desc">Video pendek atau after movie yang menceritakan suasana dengan lebih hidup.</p>
-          </div>
-
-          <div class="pricing-grid">
-            <div class="price-card">
-              <div class="card-top">
-                <h4 class="card-pkg-name">BASIC</h4>
-                <span class="card-duration">2–3 JAM SESI</span>
-                <div class="card-price">Rp 400.000</div>
-                <ul class="card-features">
-                  <li>1 Videographer</li>
-                  <li>1 Reels / After Movie (15–30 Detik)</li>
-                  <li>Cinematic Audio &amp; Color</li>
-                </ul>
-              </div>
-              <div class="card-action">
-                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20paket%2002%20REELS%20%26%20AFTER%20MOVIE%20-%20BASIC%20(Rp400.000)." target="_blank" rel="noopener">Book via WhatsApp ↗</a>
-              </div>
-            </div>
-
-            <div class="price-card">
-              <div class="card-top">
-                <h4 class="card-pkg-name">STANDARD</h4>
-                <span class="card-duration">4–5 JAM SESI</span>
-                <div class="card-price">Rp 600.000</div>
-                <ul class="card-features">
-                  <li>1 Videographer</li>
-                  <li>1 After Movie (30–60 Detik)</li>
-                  <li>1 Reels Highlight</li>
-                </ul>
-              </div>
-              <div class="card-action">
-                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20paket%2002%20REELS%20%26%20AFTER%20MOVIE%20-%20STANDARD%20(Rp600.000)." target="_blank" rel="noopener">Book via WhatsApp ↗</a>
-              </div>
-            </div>
-
-            <div class="price-card">
-              <div class="card-top">
-                <h4 class="card-pkg-name">FULL DAY</h4>
-                <span class="card-duration">7–8 JAM SESI</span>
-                <div class="card-price">Rp 900.000</div>
-                <ul class="card-features">
-                  <li>1–2 Videographer</li>
-                  <li>1 After Movie (1–2 Menit)</li>
-                  <li>2 Reels Story</li>
-                </ul>
-              </div>
-              <div class="card-action">
-                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20paket%2002%20REELS%20%26%20AFTER%20MOVIE%20-%20FULL%20DAY%20(Rp900.000)." target="_blank" rel="noopener">Book via WhatsApp ↗</a>
-              </div>
-            </div>
-          </div>
-          <div class="gdrive-banner">
-            <span>☁️ Semua paket mendapatkan <b>akses seluruh footage di Google Drive</b>.</span>
-          </div>
-        </div>
-
-        <!-- 03 PHOTO + VIDEO PACKAGE -->
-        <div class="pricing-group reveal">
-          <div class="pricing-category-title">
-            <h3><span class="num">03</span> PHOTO + VIDEO PACKAGE <span class="jp-sub">写真 + 映像パッケージ</span></h3>
-            <p class="pricing-category-desc">Paket lengkap foto dan video untuk menceritakan cerita secara utuh.</p>
-          </div>
-
+          <!-- Subcat: Foto + Video -->
+          <div class="subcat-label">PAKET FOTO + VIDEO GRADUATION</div>
           <div class="pricing-grid">
             <div class="price-card">
               <div class="card-top">
                 <h4 class="card-pkg-name">STARTER</h4>
-                <span class="card-duration">3–4 JAM SESI</span>
-                <div class="card-price">Rp 600.000</div>
+                <span class="card-duration">2 JAM SESI</span>
+                <div class="card-price">Rp 650.000</div>
                 <ul class="card-features">
                   <li>1 Photographer + 1 Videographer</li>
-                  <li>75–100 Edited Photos</li>
-                  <li>1 Reels / After Movie (15–30 Detik)</li>
+                  <li>10 Edited Photos</li>
+                  <li>1 Reels / After Movie</li>
                 </ul>
               </div>
               <div class="card-action">
-                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Paket%2003%20PHOTO%20%2B%20VIDEO%20-%20STARTER%20(Rp600.000)." target="_blank" rel="noopener">Book via WhatsApp ↗</a>
+                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Graduation%20Foto%2BVideo%20-%20Starter%20(Rp650.000)." target="_blank" rel="noopener">Book via WhatsApp ↗</a>
               </div>
             </div>
 
             <div class="price-card featured">
-              <span class="badge-featured">REKOMENDASI</span>
+              <span class="badge-featured">FAVORIT</span>
               <div class="card-top">
                 <h4 class="card-pkg-name">SIGNATURE</h4>
-                <span class="card-duration">5–6 JAM SESI</span>
-                <div class="card-price">Rp 850.000</div>
+                <span class="card-duration">4 JAM SESI</span>
+                <div class="card-price">Rp 1.000.000</div>
                 <ul class="card-features">
                   <li>1 Photographer + 1 Videographer</li>
-                  <li>120–150 Edited Photos</li>
-                  <li>1 After Movie (30–60 Detik)</li>
-                  <li>1–2 Reels High Energy</li>
+                  <li>20 Edited Photos</li>
+                  <li>1 Reels + 1 After Movie</li>
                 </ul>
               </div>
               <div class="card-action">
-                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Paket%2003%20PHOTO%20%2B%20VIDEO%20-%20SIGNATURE%20(Rp850.000)%20[Rekomendasi]." target="_blank" rel="noopener">Book Rekomendasi ↗</a>
+                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Graduation%20Foto%2BVideo%20-%20Signature%20(Rp1.000.000)." target="_blank" rel="noopener">Book via WhatsApp ↗</a>
               </div>
             </div>
 
             <div class="price-card">
               <div class="card-top">
                 <h4 class="card-pkg-name">COMPLETE</h4>
-                <span class="card-duration">7–8 JAM SESI</span>
-                <div class="card-price">Rp 1.200.000</div>
+                <span class="card-duration">8 JAM SESI</span>
+                <div class="card-price">Rp 1.350.000</div>
                 <ul class="card-features">
-                  <li>1–2 Photographer + 1–2 Videographer</li>
-                  <li>200+ Edited Photos</li>
-                  <li>1 After Movie (1–2 Menit) + 2–3 Reels</li>
-                  <li>Drone Add-on (Basic Included)</li>
+                  <li>1 Photographer + 1 Videographer</li>
+                  <li>40 Edited Photos</li>
+                  <li>1 Reels + 1 After Movie</li>
+                  <li>Drone Aerial (2 Jam)</li>
                 </ul>
               </div>
               <div class="card-action">
-                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Paket%2003%20PHOTO%20%2B%20VIDEO%20-%20COMPLETE%20(Rp1.200.000)." target="_blank" rel="noopener">Book via WhatsApp ↗</a>
+                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Graduation%20Foto%2BVideo%20-%20Complete%20(Rp1.350.000)." target="_blank" rel="noopener">Book via WhatsApp ↗</a>
               </div>
             </div>
           </div>
+
+          <!-- Addon Strip -->
+          <div class="addon-strip">
+            <span class="addon-strip-label">AddOn Graduation</span>
+            <span class="addon-pill">Drone: <b>Rp 350.000 / jam</b></span>
+            <span class="addon-pill">Personil: <b>Rp 200.000 / jam</b></span>
+            <span class="addon-pill">Extra Hour: <b>Rp 100.000 / jam</b></span>
+            <span class="addon-pill">Extra Reels: <b>Rp 100.000 / content</b></span>
+          </div>
         </div>
 
-        <!-- 04 KONTEN KREATOR -->
+        <!-- 02 PREWEDDING -->
         <div class="pricing-group reveal">
           <div class="pricing-category-title">
-            <h3><span class="num">04</span> KONTEN KREATOR <span class="jp-sub">コンテンツクリエイター</span></h3>
-            <p class="pricing-category-desc">Solusi produksi konten media sosial profesional bulanan untuk brand &amp; personal.</p>
+            <h3><span class="num">02</span> PREWEDDING <span class="jp-sub">ウェディング写真</span></h3>
+            <p class="pricing-category-desc">Abadikan kisah cinta Anda dengan visual candid berkelas dan bingkai cetak eksklusif.</p>
           </div>
 
           <div class="pricing-grid two-col">
             <div class="price-card">
               <div class="card-top">
-                <h4 class="card-pkg-name">PAKET STANDARD</h4>
-                <span class="card-duration">DURASI 1 BULAN</span>
-                <div class="card-price">Rp 2.000.000 <small>/ bln</small></div>
+                <h4 class="card-pkg-name">FOTO PREWEDDING</h4>
+                <span class="card-duration">TARIF PER JAM</span>
+                <div class="card-price">Rp 400.000 <small>/ jam</small></div>
                 <ul class="card-features">
-                  <li>Device: iPhone 13 Pro 4K</li>
-                  <li>Audio: Hollyland Lark M2 Wireless Mic</li>
-                  <li>12 Konten Siap Upload per Bulan</li>
-                  <li>Termasuk Storyboard &amp; Konten Plan</li>
-                  <li>Professional Video Editing</li>
-                  <li>Talent Included</li>
+                  <li>1 Photographer</li>
+                  <li>10 Edited Photos</li>
+                  <li>1 Photo Print 20R + Frame Eksklusif</li>
+                  <li>High-Resolution Master Files</li>
                 </ul>
               </div>
               <div class="card-action">
-                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20tertarik%20konsultasi%2004%20KONTEN%20KREATOR%20-%20PAKET%20STANDARD%20(Rp2.000.000/bln)." target="_blank" rel="noopener">Konsultasi Paket Konten ↗</a>
+                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20PreWedding%20Foto%20(Rp400.000/jam)." target="_blank" rel="noopener">Book via WhatsApp ↗</a>
               </div>
             </div>
 
             <div class="price-card featured">
-              <span class="badge-featured">PRO LEVEL</span>
+              <span class="badge-featured">RECOMMENDED</span>
               <div class="card-top">
-                <h4 class="card-pkg-name">PAKET PROFESSIONAL</h4>
-                <span class="card-duration">DURASI 1 BULAN</span>
-                <div class="card-price">Rp 3.000.000 <small>/ bln</small></div>
+                <h4 class="card-pkg-name">FOTO + VIDEO PREWEDDING</h4>
+                <span class="card-duration">TARIF PER JAM</span>
+                <div class="card-price">Rp 750.000 <small>/ jam</small></div>
                 <ul class="card-features">
-                  <li>Device: Dedicated Camera &amp; Lenses Pro</li>
-                  <li>Studio Lighting System</li>
-                  <li>Audio: Hollyland Lark M2 Wireless Mic</li>
-                  <li>12 Konten High Production per Bulan</li>
-                  <li>In-depth Storyboard &amp; Konten Plan</li>
-                  <li>Advanced Editing &amp; Color Grading</li>
-                  <li>Talent Included</li>
+                  <li>1 Photographer + 1 Videographer</li>
+                  <li>20 Edited Photos</li>
+                  <li>1 Photo Print 20R + Frame Eksklusif</li>
+                  <li>1 Cinematic After Movie</li>
+                  <li>1 Reels Highlight</li>
                 </ul>
               </div>
               <div class="card-action">
-                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20tertarik%20konsultasi%2004%20KONTEN%20KREATOR%20-%20PAKET%20PROFESSIONAL%20(Rp3.000.000/bln)." target="_blank" rel="noopener">Konsultasi Paket Pro ↗</a>
+                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20PreWedding%20Foto%2BVideo%20(Rp750.000/jam)." target="_blank" rel="noopener">Book via WhatsApp ↗</a>
               </div>
             </div>
           </div>
+
+          <!-- Addon Strip -->
+          <div class="addon-strip">
+            <span class="addon-strip-label">AddOn PreWedding</span>
+            <span class="addon-pill">Drone: <b>Rp 350.000 / jam</b></span>
+            <span class="addon-pill">Personil: <b>Rp 400.000 / jam</b></span>
+            <span class="addon-pill">Extra Reels: <b>Rp 100.000 / content</b></span>
+          </div>
         </div>
 
-        <!-- 05 ADD-ONS & NOTES -->
+        <!-- 03 EVENT -->
         <div class="pricing-group reveal">
           <div class="pricing-category-title">
-            <h3><span class="num">05</span> ADD-ONS <span class="jp-sub">追加オプション</span></h3>
-            <p class="pricing-category-desc">Kebutuhan ekstra untuk memperkaya dokumentasi project Anda.</p>
+            <h3><span class="num">03</span> EVENT DOCUMENTATION <span class="jp-sub">イベント撮影</span></h3>
+            <p class="pricing-category-desc">Dokumentasi profesional untuk event, konser, seminar, gathering, dan corporate.</p>
           </div>
 
-          <div class="addons-grid">
-            <div class="addon-box">
-              <div class="addon-name">DRONE ADD-ON</div>
-              <div class="addon-price">+Rp350.000</div>
+          <div class="pricing-grid four-col">
+            <!-- Basic -->
+            <div class="price-card">
+              <div class="card-top">
+                <h4 class="card-pkg-name">BASIC</h4>
+                <span class="card-duration">PER JAM</span>
+                <div class="card-price">Rp 600.000 <small>/ jam</small></div>
+                <ul class="card-features">
+                  <li>1 Photographer</li>
+                  <li>1 Videographer</li>
+                  <li>50 Edited Photos</li>
+                  <li>1 After Movie</li>
+                </ul>
+              </div>
+              <div class="card-action">
+                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Event%20-%20Basic%20(Rp600.000/jam)." target="_blank" rel="noopener">Book Basic ↗</a>
+              </div>
             </div>
-            <div class="addon-box">
-              <div class="addon-name">ADDITIONAL PHOTOGRAPHER</div>
-              <div class="addon-price">+Rp200.000</div>
+
+            <!-- Elite -->
+            <div class="price-card">
+              <div class="card-top">
+                <h4 class="card-pkg-name">ELITE</h4>
+                <span class="card-duration">PER JAM</span>
+                <div class="card-price">Rp 750.000 <small>/ jam</small></div>
+                <ul class="card-features">
+                  <li>1 Photographer + 1 Videographer</li>
+                  <li>1 Content Creator</li>
+                  <li>50 Edited Photos + 1 After Movie</li>
+                  <li>1 Recap (30–60 Detik)</li>
+                  <li>3 Reels (60–120 Detik)</li>
+                </ul>
+              </div>
+              <div class="card-action">
+                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Event%20-%20Elite%20(Rp750.000/jam)." target="_blank" rel="noopener">Book Elite ↗</a>
+              </div>
             </div>
-            <div class="addon-box">
-              <div class="addon-name">ADDITIONAL VIDEOGRAPHER</div>
-              <div class="addon-price">+Rp300.000</div>
+
+            <!-- Ultimate -->
+            <div class="price-card featured">
+              <span class="badge-featured">POPULAR</span>
+              <div class="card-top">
+                <h4 class="card-pkg-name">ULTIMATE</h4>
+                <span class="card-duration">PER JAM</span>
+                <div class="card-price">Rp 1.250.000 <small>/ jam</small></div>
+                <ul class="card-features">
+                  <li>2 Photographer + 2 Videographer</li>
+                  <li>1 Content Creator</li>
+                  <li>50 Edited Photos + 1 After Movie</li>
+                  <li>1 Recap (30–60 Detik)</li>
+                  <li>3 Reels (60–120 Detik)</li>
+                </ul>
+              </div>
+              <div class="card-action">
+                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Event%20-%20Ultimate%20(Rp1.250.000/jam)." target="_blank" rel="noopener">Book Ultimate ↗</a>
+              </div>
             </div>
-            <div class="addon-box">
-              <div class="addon-name">ADDITIONAL HOUR</div>
-              <div class="addon-price">+Rp75.000</div>
-            </div>
-            <div class="addon-box">
-              <div class="addon-name">VERTICAL REEL (PER VIDEO)</div>
-              <div class="addon-price">+Rp100.000</div>
+
+            <!-- Profesional -->
+            <div class="price-card">
+              <div class="card-top">
+                <h4 class="card-pkg-name">PROFESIONAL</h4>
+                <span class="card-duration">FULL EVENT</span>
+                <div class="card-price">Rp 1.500.000</div>
+                <ul class="card-features">
+                  <li>2 Photographer + 2 Videographer</li>
+                  <li>1 Content Creator</li>
+                  <li>1 Drone Aerial Unit</li>
+                  <li>50 Edited Photos + 1 After Movie</li>
+                  <li>1 Recap + 3 Reels</li>
+                </ul>
+              </div>
+              <div class="card-action">
+                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Event%20-%20Profesional%20(Rp1.500.000)." target="_blank" rel="noopener">Book Pro ↗</a>
+              </div>
             </div>
           </div>
 
-          <div class="notes-card">
-            <div>
-              <h4>CATATAN &amp; KETENTUAN</h4>
-              <ul class="notes-list">
-                <li>Harga berlaku untuk area Semarang dan sekitarnya.</li>
-                <li>Harga dapat berubah menyesuaikan kebutuhan spesifik dan lokasi project.</li>
-                <li>DP 50% wajib untuk penguncian jadwal/booking tanggal.</li>
-              </ul>
+          <!-- Addon Strip -->
+          <div class="addon-strip">
+            <span class="addon-strip-label">AddOn Event</span>
+            <span class="addon-pill">Drone: <b>Rp 350.000 / jam</b></span>
+            <span class="addon-pill">Personil: <b>Rp 400.000 / jam</b></span>
+            <span class="addon-pill">Extra Reels: <b>Rp 100.000 / content</b></span>
+          </div>
+        </div>
+
+        <!-- 04 CONTENT CREATOR -->
+        <div class="pricing-group reveal">
+          <div class="pricing-category-title">
+            <h3><span class="num">04</span> CONTENT CREATOR <span class="jp-sub">コンテンツクリエイター</span></h3>
+            <p class="pricing-category-desc">Layanan produksi konten media sosial profesional, recap event kilat, hingga manajemen bulanan.</p>
+          </div>
+
+          <div class="pricing-grid">
+            <!-- Recap -->
+            <div class="price-card">
+              <div class="card-top">
+                <h4 class="card-pkg-name">RECAP</h4>
+                <span class="card-duration">PER HOUR / EVENT</span>
+                <div class="card-price">Rp 400.000 <small>/ jam</small></div>
+                <ul class="card-features">
+                  <li>Device: iPhone 13 Pro (minimum)</li>
+                  <li>Audio: Hollyland Lark M2</li>
+                  <li>1 Recap Event</li>
+                  <li>2 Content (Request)</li>
+                  <li>10 Story Real Time</li>
+                  <li>Professional Editing</li>
+                </ul>
+              </div>
+              <div class="card-action">
+                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Content%20Creator%20-%20Recap%20(Rp400.000/jam)." target="_blank" rel="noopener">Book Recap ↗</a>
+              </div>
             </div>
-            <div>
-              <h4>ESTIMASI PENGERJAAN</h4>
-              <ul class="notes-list">
-                <li>Pengiriman hasil Foto: <b>2–5 hari kerja</b>.</li>
-                <li>Pengiriman hasil Video: <b>3–7 hari kerja</b>.</li>
-                <li>File master &amp; final diunggah ke Google Drive private folder.</li>
-              </ul>
+
+            <!-- Standard -->
+            <div class="price-card">
+              <div class="card-top">
+                <h4 class="card-pkg-name">STANDARD</h4>
+                <span class="card-duration">DURASI 1 BULAN</span>
+                <div class="card-price">Rp 2.000.000 <small>/ bln</small></div>
+                <ul class="card-features">
+                  <li>Device: iPhone 13 Pro (minimum)</li>
+                  <li>Audio: Hollyland Lark M2</li>
+                  <li>12 Content / bulan</li>
+                  <li>Storyboard &amp; Content Plan</li>
+                  <li>Editing + Talent Included</li>
+                </ul>
+              </div>
+              <div class="card-action">
+                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Content%20Creator%20-%20Standard%20(Rp2.000.000/bln)." target="_blank" rel="noopener">Book Standard ↗</a>
+              </div>
             </div>
+
+            <!-- Profesional -->
+            <div class="price-card featured">
+              <span class="badge-featured">PRO LEVEL</span>
+              <div class="card-top">
+                <h4 class="card-pkg-name">PROFESIONAL</h4>
+                <span class="card-duration">DURASI 1 BULAN</span>
+                <div class="card-price">Rp 3.000.000 <small>/ bln</small></div>
+                <ul class="card-features">
+                  <li>Device: Sony a6400 (minimum)</li>
+                  <li>Audio: Hollyland Lark M2</li>
+                  <li>12 Content / bulan</li>
+                  <li>Storyboard &amp; Content Plan</li>
+                  <li>Editing + Talent Included</li>
+                </ul>
+              </div>
+              <div class="card-action">
+                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Content%20Creator%20-%20Profesional%20(Rp3.000.000/bln)." target="_blank" rel="noopener">Book Profesional ↗</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Addon Strip -->
+          <div class="addon-strip">
+            <span class="addon-strip-label">AddOn Content Creator</span>
+            <span class="addon-pill">Drone: <b>Rp 350.000 / jam</b></span>
+            <span class="addon-pill">Personil: <b>Rp 200.000 / jam</b></span>
+            <span class="addon-pill">Extra Hour: <b>Rp 100.000 / jam</b></span>
+            <span class="addon-pill">Extra Reels: <b>Rp 100.000 / content</b></span>
+          </div>
+        </div>
+
+        <!-- NOTES & TERMS -->
+        <div class="notes-card reveal">
+          <div>
+            <h4>KETENTUAN &amp; CATATAN</h4>
+            <ul class="notes-list">
+              <li>Harga sudah termasuk kamera basic (kit).</li>
+              <li>Harga berlaku untuk area Semarang dan sekitarnya.</li>
+              <li>Harga dapat berubah menyesuaikan kebutuhan spesifik event dan lokasi.</li>
+              <li>DP 50% wajib untuk penguncian jadwal/booking tanggal.</li>
+            </ul>
+          </div>
+          <div>
+            <h4>ESTIMASI PENGERJAAN</h4>
+            <ul class="notes-list">
+              <li>Pengiriman hasil Foto: <b>2–5 hari kerja</b>.</li>
+              <li>Pengiriman hasil Video: <b>3–7 hari kerja</b>.</li>
+              <li>Semua paket mendapatkan <b>akses seluruh footage di Google Drive</b>.</li>
+            </ul>
           </div>
         </div>
 
@@ -1727,7 +1809,6 @@
         </div>
 
         <div class="behold-wrapper reveal">
-          <!-- Behold.so Widget Component -->
           <behold-widget feed-id="CtpYJCSBiUILU0vPGAOr"></behold-widget>
         </div>
       </div>
@@ -1796,9 +1877,6 @@
 
   <!-- PAGE ENGINE SCRIPT -->
   <script>
-    /*
-      IMAGE ASSET LIBRARY
-    */
     const IMAGE_LIBRARY = {
       hero: "https://images.unsplash.com/photo-1671117507838-103b9f1bb432?auto=format&fit=crop&w=2400&q=88",
       storyTokyo: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1500&q=86",
@@ -1813,7 +1891,6 @@
       directionWedding: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=88"
     };
 
-    // Apply Background Images
     document.getElementById("heroMedia").style.backgroundImage =
       `linear-gradient(90deg,rgba(13,13,13,.96) 0%,rgba(13,13,13,.82) 48%,rgba(13,13,13,.35) 100%),
        linear-gradient(0deg,rgba(13,13,13,.9),transparent 55%),
@@ -1826,18 +1903,15 @@
       }
     });
 
-    // Nav Scroll Transition
     const nav = document.getElementById("nav");
     window.addEventListener("scroll", () => {
       nav.classList.toggle("scrolled", window.scrollY > 30);
     }, { passive: true });
 
-    // Hero Mount Animation
     window.addEventListener("load", () => {
       document.querySelector(".hero").classList.add("ready");
     });
 
-    // Scroll Reveal Observer
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -1849,7 +1923,6 @@
 
     document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
-    // Smooth Anchor Scroll
     document.querySelectorAll('a[href^="#"]').forEach((link) => {
       link.addEventListener("click", (e) => {
         const id = link.getAttribute("href");
