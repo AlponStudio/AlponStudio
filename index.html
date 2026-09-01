@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>ALPON STUDIO — We Capture What Matters.</title>
-  <meta name="description" content="ALPON STUDIO — visual documentation, photography, motion and content creator in Semarang. Born from friendship, built on stories.">
+  <meta name="description" content="ALPON STUDIO — visual documentation, photography, motion and content creator.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,1201 +21,236 @@
       --indigo:#121E31;
       --line:rgba(13,13,13,.15);
       --white-line:rgba(250,250,248,.12);
-
       --display:"Bebas Neue", sans-serif;
       --body:"Inter", sans-serif;
       --jp:"Noto Sans JP", sans-serif;
-
       --max:1440px;
       --ease:cubic-bezier(.22,1,.36,1);
     }
-
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      background:var(--jet);
-      color:var(--off);
-      font-family:var(--body);
-      overflow-x:hidden;
-      -webkit-font-smoothing:antialiased;
-    }
+    body{margin:0;background:var(--jet);color:var(--off);font-family:var(--body);overflow-x:hidden;-webkit-font-smoothing:antialiased}
     a{color:inherit;text-decoration:none}
     img{display:block}
-    button{font:inherit;cursor:pointer}
     ::selection{background:var(--red);color:var(--off)}
+    .container{width:min(calc(100% - 64px),var(--max));margin-inline:auto}
 
-    .container{
-      width:min(calc(100% - 64px),var(--max));
-      margin-inline:auto;
-    }
-
-    /* Grain Overlay */
     body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      z-index:9999;
-      opacity:.065;
+      content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.065;
       background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.65'/%3E%3C/svg%3E");
       mix-blend-mode:soft-light;
     }
 
-    .eyebrow{
-      display:inline-flex;
-      align-items:center;
-      gap:12px;
-      font-size:11px;
-      letter-spacing:.22em;
-      text-transform:uppercase;
-      font-weight:700;
-      margin-bottom:14px;
-    }
-    .eyebrow::before{
-      content:"";
-      width:24px;
-      height:2px;
-      background:var(--red);
-    }
-    .eyebrow.red-dot::before{
-      width:8px;
-      height:8px;
-      border-radius:50%;
-    }
-
+    .eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;margin-bottom:14px}
+    .eyebrow::before{content:"";width:24px;height:2px;background:var(--red)}
+    .eyebrow.red-dot::before{width:8px;height:8px;border-radius:50%}
     .jp{font-family:var(--jp)}
     .red{color:var(--red)}
-    .display{
-      font-family:var(--display);
-      text-transform:uppercase;
-      letter-spacing:.02em;
-    }
+    .display{font-family:var(--display);text-transform:uppercase;letter-spacing:.02em}
 
-    /* ---------------- LOGO ---------------- */
-    .logo{
-      display:inline-flex;
-      align-items:center;
-      transition:opacity .3s ease;
-    }
-    .logo:hover{opacity:.85}
-    .logo-img{
-      height:36px;
-      width:auto;
-      object-fit:contain;
-    }
-    .footer-logo{
-      height:44px;
-    }
-
-    /* ---------------- NAV ---------------- */
-    .nav{
-      position:fixed;
-      inset:0 0 auto 0;
-      z-index:1000;
-      padding:20px 0;
-      transition:.4s var(--ease);
-    }
-    .nav.scrolled{
-      background:rgba(13,13,13,.92);
-      backdrop-filter:blur(16px);
-      border-bottom:1px solid rgba(250,250,248,.10);
-      padding:14px 0;
-    }
-    .nav-inner{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:25px;
-    }
-    .nav-links{
-      display:flex;
-      align-items:center;
-      gap:32px;
-      list-style:none;
-      padding:0;
-      margin:0;
-    }
-    .nav-links a{
-      position:relative;
-      font-size:11px;
-      text-transform:uppercase;
-      letter-spacing:.18em;
-      font-weight:600;
-      transition:color .3s ease;
-    }
-    .nav-links a::after{
-      content:"";
-      position:absolute;
-      left:0;
-      bottom:-6px;
-      width:0;
-      height:2px;
-      background:var(--red);
-      transition:width .3s var(--ease);
-    }
-    .nav-links a:hover{color:var(--off)}
+    /* NAV */
+    .nav{position:fixed;inset:0 0 auto 0;z-index:1000;padding:20px 0;transition:.4s var(--ease)}
+    .nav.scrolled{background:rgba(13,13,13,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--white-line);padding:14px 0}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:25px}
+    .logo-img{height:36px;width:auto;object-fit:contain}
+    .nav-links{display:flex;align-items:center;gap:32px;list-style:none;padding:0;margin:0}
+    .nav-links a{position:relative;font-size:11px;text-transform:uppercase;letter-spacing:.18em;font-weight:600;transition:color .3s ease}
+    .nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--red);transition:width .3s var(--ease)}
     .nav-links a:hover::after{width:100%}
-
-    .nav-cta{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:10px 16px;
-      border:1px solid rgba(250,250,248,.35);
-      font-size:10px;
-      font-weight:700;
-      letter-spacing:.15em;
-      text-transform:uppercase;
-      transition:.35s var(--ease);
-      background:transparent;
-    }
+    .nav-cta{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:1px solid rgba(250,250,248,.35);font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;transition:.35s var(--ease)}
     .nav-cta:hover{background:var(--red);border-color:var(--red);color:var(--off)}
 
-    /* ---------------- HERO ---------------- */
-    .hero{
-      min-height:100svh;
-      position:relative;
-      display:flex;
-      align-items:stretch;
-      overflow:hidden;
-      background:var(--jet);
-    }
-    .hero-media{
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(90deg,rgba(13,13,13,.96) 0%,rgba(13,13,13,.82) 48%,rgba(13,13,13,.35) 100%),
-        linear-gradient(0deg,rgba(13,13,13,.9),transparent 55%),
-        center/cover no-repeat;
-      transform:scale(1.05);
-      transition:transform 7s var(--ease);
-      filter:saturate(.75) contrast(1.1);
-    }
+    /* HERO */
+    .hero{min-height:100svh;position:relative;display:flex;align-items:stretch;overflow:hidden;background:var(--jet)}
+    .hero-media{position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,13,13,.96) 0%,rgba(13,13,13,.82) 48%,rgba(13,13,13,.35) 100%),linear-gradient(0deg,rgba(13,13,13,.9),transparent 55%),center/cover no-repeat;transform:scale(1.05);transition:transform 7s var(--ease);filter:saturate(.75) contrast(1.1)}
     .hero.ready .hero-media{transform:scale(1.01)}
-    .hero-grid{
-      position:relative;
-      z-index:2;
-      width:100%;
-      display:grid;
-      grid-template-columns:1.3fr .7fr;
-      min-height:100svh;
-      align-items:end;
-      padding:150px 0 65px;
-    }
-    .hero-main{max-width:1000px}
-    .hero-kicker{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      margin-bottom:28px;
-      color:var(--red);
-      font-size:12px;
-      letter-spacing:.18em;
-      font-weight:700;
-    }
-    .hero-kicker::before{
-      content:"";
-      width:8px;
-      height:8px;
-      border-radius:50%;
-      background:var(--red);
-      box-shadow:0 0 14px var(--red);
-    }
-    .hero-title{
-      margin:0;
-      font-family:var(--display);
-      font-size:clamp(90px,16vw,240px);
-      line-height:.88;
-      letter-spacing:.02em;
-      text-transform:uppercase;
-    }
+    .hero-grid{position:relative;z-index:2;width:100%;display:grid;grid-template-columns:1.3fr .7fr;min-height:100svh;align-items:end;padding:150px 0 65px}
+    .hero-kicker{display:flex;align-items:center;gap:10px;margin-bottom:28px;color:var(--red);font-size:12px;letter-spacing:.18em;font-weight:700}
+    .hero-kicker::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 14px var(--red)}
+    .hero-title{margin:0;font-family:var(--display);font-size:clamp(90px,16vw,240px);line-height:.88;text-transform:uppercase}
     .hero-title span{display:block}
-    .hero-title .studio{
-      color:transparent;
-      -webkit-text-stroke:1.5px rgba(250,250,248,.75);
-    }
-    .hero-sub{
-      display:flex;
-      align-items:center;
-      gap:16px;
-      margin-top:36px;
-      font-size:15px;
-      letter-spacing:.16em;
-      font-weight:600;
-      color:#d2d2d0;
-    }
-    .hero-sub::before{
-      content:"";
-      width:40px;
-      height:2px;
-      background:var(--red);
-    }
-    .hero-actions{
-      display:flex;
-      gap:14px;
-      margin-top:36px;
-    }
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      min-height:48px;
-      padding:0 22px;
-      border:1px solid rgba(250,250,248,.35);
-      text-transform:uppercase;
-      letter-spacing:.16em;
-      font-size:10px;
-      font-weight:700;
-      transition:.35s var(--ease);
-    }
+    .hero-title .studio{color:transparent;-webkit-text-stroke:1.5px rgba(250,250,248,.75)}
+    .hero-sub{display:flex;align-items:center;gap:16px;margin-top:36px;font-size:15px;letter-spacing:.16em;font-weight:600;color:#d2d2d0}
+    .hero-sub::before{content:"";width:40px;height:2px;background:var(--red)}
+    .hero-actions{display:flex;gap:14px;margin-top:36px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border:1px solid rgba(250,250,248,.35);text-transform:uppercase;letter-spacing:.16em;font-size:10px;font-weight:700;transition:.35s var(--ease)}
     .btn-primary{background:var(--red);border-color:var(--red);color:var(--off)}
     .btn-primary:hover{background:transparent;color:var(--red)}
     .btn-secondary:hover{background:var(--off);color:var(--jet)}
+    .hero-side{display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-end;padding-bottom:15px}
+    .vertical-note{writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--jp);font-size:11px;letter-spacing:.22em;color:rgba(250,250,248,.5);margin-bottom:45px}
+    .rec{display:flex;align-items:center;gap:8px;margin-bottom:20px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:700}
+    .rec i{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red)}
+    .hero-coordinates{display:flex;gap:18px;font-family:var(--display);font-size:26px}
 
-    .hero-side{
-      align-self:stretch;
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-end;
-      align-items:flex-end;
-      padding-bottom:15px;
-    }
-    .vertical-note{
-      writing-mode:vertical-rl;
-      transform:rotate(180deg);
-      font-family:var(--jp);
-      font-size:11px;
-      letter-spacing:.22em;
-      color:rgba(250,250,248,.5);
-      margin-bottom:45px;
-    }
-    .rec{
-      display:flex;
-      align-items:center;
-      gap:8px;
-      margin-bottom:20px;
-      font-size:10px;
-      letter-spacing:.2em;
-      text-transform:uppercase;
-      font-weight:700;
-    }
-    .rec i{
-      width:8px;
-      height:8px;
-      border-radius:50%;
-      background:var(--red);
-      box-shadow:0 0 10px var(--red);
-    }
-    .hero-coordinates{
-      display:flex;
-      gap:18px;
-      font-family:var(--display);
-      font-size:26px;
-      letter-spacing:.08em;
-    }
-
-    /* ---------------- BRAND STORY ---------------- */
-    .story{
-      background:var(--off);
-      color:var(--jet);
-      position:relative;
-      overflow:hidden;
-    }
-    .story-top{
-      padding:130px 0 100px;
-      display:grid;
-      grid-template-columns:1.2fr .8fr;
-      gap:80px;
-      align-items:end;
-    }
-    .story-heading{
-      margin:16px 0 0;
-      font-size:clamp(65px,9vw,135px);
-      line-height:.92;
-      letter-spacing:.01em;
-    }
+    /* STORY */
+    .story{background:var(--off);color:var(--jet);position:relative;overflow:hidden}
+    .story-top{padding:130px 0 100px;display:grid;grid-template-columns:1.2fr .8fr;gap:80px;align-items:end}
+    .story-heading{margin:16px 0 0;font-size:clamp(65px,9vw,135px);line-height:.92}
     .story-heading em{font-style:normal;color:var(--red)}
-    .story-copy{
-      color:#444444;
-      font-size:15px;
-      line-height:1.9;
-      max-width:540px;
-    }
+    .story-copy{color:#444;font-size:15px;line-height:1.9}
     .story-copy p{margin:0 0 18px}
-    .story-copy strong{color:var(--jet);font-weight:700}
-    .story-jp{
-      margin-top:32px;
-      padding-top:24px;
-      border-top:1px solid var(--line);
-      display:flex;
-      gap:16px;
-      align-items:center;
-    }
-    .story-jp .vertical{
-      padding:4px 8px;
-      background:var(--red);
-      color:var(--off);
-      font-family:var(--jp);
-      font-size:11px;
-      font-weight:700;
-      letter-spacing:.1em;
-    }
-    .story-jp p{margin:0;font-size:13px;color:#222}
-
-    .story-strip{
-      border-top:1px solid var(--line);
-      display:grid;
-      grid-template-columns:1.25fr .75fr 1fr;
-      min-height:340px;
-    }
-    .story-card{
-      position:relative;
-      overflow:hidden;
-      padding:28px;
-      border-right:1px solid var(--line);
-      min-height:340px;
-    }
+    .story-jp{margin-top:32px;padding-top:24px;border-top:1px solid var(--line);display:flex;gap:16px;align-items:center}
+    .story-jp .vertical{padding:4px 8px;background:var(--red);color:var(--off);font-family:var(--jp);font-size:11px;font-weight:700}
+    .story-strip{border-top:1px solid var(--line);display:grid;grid-template-columns:1.25fr .75fr 1fr;min-height:340px}
+    .story-card{position:relative;overflow:hidden;padding:28px;border-right:1px solid var(--line);min-height:340px}
     .story-card:last-child{border-right:0}
-    .story-card .image{
-      position:absolute;
-      inset:0;
-      background:center/cover no-repeat;
-      filter:grayscale(1) contrast(1.1);
-      transition:transform .8s var(--ease),filter .5s var(--ease);
-    }
+    .story-card .image{position:absolute;inset:0;background:center/cover no-repeat;filter:grayscale(1) contrast(1.1);transition:transform .8s var(--ease),filter .5s var(--ease)}
     .story-card:hover .image{transform:scale(1.05);filter:grayscale(.2) contrast(1.08)}
-    .story-card::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(0deg,rgba(13,13,13,.88),transparent 60%);
-    }
+    .story-card::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(13,13,13,.88),transparent 60%)}
     .story-card > *:not(.image){position:relative;z-index:2}
-    .story-label{
-      display:inline-flex;
-      background:var(--red);
-      color:var(--off);
-      padding:6px 11px;
-      font-size:9px;
-      text-transform:uppercase;
-      letter-spacing:.16em;
-      font-weight:700;
-    }
-    .story-card h3{
-      position:absolute;
-      left:28px;
-      bottom:52px;
-      margin:0;
-      color:var(--off);
-      font-family:var(--display);
-      font-size:44px;
-      line-height:.92;
-    }
-    .story-card small{
-      position:absolute;
-      left:28px;
-      bottom:26px;
-      color:rgba(250,250,248,.75);
-      font-size:9px;
-      letter-spacing:.15em;
-      text-transform:uppercase;
-    }
+    .story-label{display:inline-flex;background:var(--red);color:var(--off);padding:6px 11px;font-size:9px;text-transform:uppercase;letter-spacing:.16em;font-weight:700}
+    .story-card h3{position:absolute;left:28px;bottom:52px;margin:0;color:var(--off);font-family:var(--display);font-size:44px;line-height:.92}
+    .story-card small{position:absolute;left:28px;bottom:26px;color:rgba(250,250,248,.75);font-size:9px;letter-spacing:.15em;text-transform:uppercase}
 
-    /* ---------------- WORK ---------------- */
-    .work{
-      background:var(--jet);
-      padding:140px 0;
-    }
-    .work-head{
-      display:flex;
-      justify-content:space-between;
-      gap:40px;
-      align-items:flex-end;
-      margin-bottom:60px;
-    }
-    .work-title{
-      margin:16px 0 0;
-      font-size:clamp(75px,10vw,150px);
-      line-height:.88;
-    }
-    .work-note{
-      max-width:340px;
-      color:#9c9c9c;
-      font-size:13px;
-      line-height:1.75;
-      margin:0;
-    }
-    .work-grid{
-      display:grid;
-      grid-template-columns:1.2fr .8fr;
-      gap:16px;
-    }
+    /* WORK */
+    .work{background:var(--jet);padding:140px 0}
+    .work-head{display:flex;justify-content:space-between;gap:40px;align-items:flex-end;margin-bottom:60px}
+    .work-title{margin:16px 0 0;font-size:clamp(75px,10vw,150px);line-height:.88}
+    .work-note{max-width:340px;color:#9c9c9c;font-size:13px;line-height:1.75;margin:0}
+    .work-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
     .work-stack{display:grid;gap:16px}
-    .frame{
-      position:relative;
-      overflow:hidden;
-      background:var(--smoke);
-      min-height:320px;
-    }
+    .frame{position:relative;overflow:hidden;background:var(--smoke);min-height:320px}
     .frame.large{min-height:700px}
     .frame.medium{min-height:342px}
-    .frame .image{
-      position:absolute;
-      inset:0;
-      background:center/cover no-repeat;
-      transition:transform .85s var(--ease);
-    }
+    .frame .image{position:absolute;inset:0;background:center/cover no-repeat;transition:transform .85s var(--ease)}
     .frame:hover .image{transform:scale(1.05)}
-    .frame::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(0deg,rgba(13,13,13,.9),transparent 65%);
-    }
-    .corner{
-      position:absolute;
-      width:24px;
-      height:24px;
-      z-index:3;
-      pointer-events:none;
-    }
-    .corner::before,.corner::after{content:"";position:absolute;background:var(--off)}
-    .corner.tl{top:20px;left:20px}
-    .corner.tr{top:20px;right:20px}
-    .corner.bl{bottom:20px;left:20px}
-    .corner.br{bottom:20px;right:20px}
-    .corner.tl::before,.corner.bl::before{left:0;width:16px;height:1px}
-    .corner.tl::after,.corner.tr::after{top:0;width:1px;height:16px}
-    .corner.tr::before,.corner.br::before{right:0;width:16px;height:1px}
-    .corner.bl::after,.corner.br::after{bottom:0;width:1px;height:16px}
-    .corner.tl::before,.corner.tl::after,.corner.tr::before,.corner.tr::after{top:0}
-    .corner.bl::before,.corner.br::before{bottom:0}
+    .frame::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(13,13,13,.9),transparent 65%)}
+    .project-copy{position:absolute;z-index:4;left:30px;right:30px;bottom:30px}
+    .project-meta{display:flex;align-items:center;gap:10px;margin-bottom:12px;font-size:9px;text-transform:uppercase;letter-spacing:.16em;font-weight:700}
+    .project-meta b{color:var(--red);font-family:var(--display);font-size:20px;line-height:1}
+    .project-copy h3{margin:0;font-size:clamp(38px,4vw,60px);line-height:.92}
+    .project-copy p{margin:10px 0 0;color:#aaa;font-size:10px;text-transform:uppercase;letter-spacing:.14em}
 
-    .project-copy{
-      position:absolute;
-      z-index:4;
-      left:30px;
-      right:30px;
-      bottom:30px;
-    }
-    .project-meta{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      margin-bottom:12px;
-      font-size:9px;
-      text-transform:uppercase;
-      letter-spacing:.16em;
-      font-weight:700;
-    }
-    .project-meta b{
-      color:var(--red);
-      font-family:var(--display);
-      font-size:20px;
-      line-height:1;
-    }
-    .project-copy h3{
-      margin:0;
-      font-size:clamp(38px,4vw,60px);
-      line-height:.92;
-    }
-    .project-copy p{
-      margin:10px 0 0;
-      color:#aaa;
-      font-size:10px;
-      text-transform:uppercase;
-      letter-spacing:.14em;
-    }
-    .mini-tag{
-      position:absolute;
-      top:20px;
-      right:20px;
-      z-index:4;
-      padding:6px 10px;
-      background:var(--red);
-      color:var(--off);
-      font-size:8px;
-      font-weight:700;
-      letter-spacing:.15em;
-    }
+    /* PRICELIST PORTAL (CATEGORIES NAVIGATION) */
+    .pricing-portal{background:var(--smoke);padding:140px 0;border-top:1px solid var(--white-line);position:relative}
+    .portal-head{text-align:center;max-width:760px;margin:0 auto 75px}
+    .portal-head .eyebrow{justify-content:center}
+    .portal-title{margin:16px 0 20px;font-size:clamp(75px,11vw,160px);line-height:.88}
+    .portal-tagline{display:inline-block;padding:6px 14px;background:var(--smoke-light);border:1px solid var(--white-line);font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--red);margin-bottom:16px}
+    .portal-intro{color:#9e9e9c;font-size:14px;line-height:1.8;margin:0}
 
-    /* ---------------- SERVICES ---------------- */
-    .services{
-      background:var(--indigo);
-      padding:140px 0;
-    }
-    .services-head{
-      display:grid;
-      grid-template-columns:1fr .9fr;
-      gap:80px;
-      align-items:flex-end;
-      margin-bottom:70px;
-    }
-    .services-title{
-      margin:16px 0 0;
-      font-size:clamp(75px,10vw,150px);
-      line-height:.88;
-    }
-    .services-intro{
-      color:#b3bcc7;
-      font-size:14px;
-      line-height:1.85;
-      margin:0;
-    }
-    .service-list{border-top:1px solid var(--white-line)}
-    .service{
-      display:grid;
-      grid-template-columns:70px 1.2fr 1fr 50px;
-      gap:24px;
-      align-items:center;
-      padding:34px 10px;
-      border-bottom:1px solid var(--white-line);
-      transition:.35s var(--ease);
-    }
-    .service:hover{
-      padding-left:24px;
-      padding-right:24px;
-      background:rgba(250,250,248,.04);
-    }
-    .service-no{
-      color:var(--red);
-      font-family:var(--display);
-      font-size:32px;
-      line-height:1;
-    }
-    .service-name{
-      font-family:var(--display);
-      font-size:46px;
-      line-height:.92;
-      letter-spacing:.02em;
-    }
-    .service-name small{
-      display:block;
-      font-family:var(--jp);
-      font-size:11px;
-      color:rgba(250,250,248,.5);
-      letter-spacing:.12em;
-      margin-top:6px;
-      text-transform:none;
-    }
-    .service-desc{
-      color:#9fa9b5;
-      font-size:12px;
-      line-height:1.7;
-    }
-    .service-arrow{
-      font-family:var(--display);
-      font-size:28px;
-      text-align:right;
-      transition:.35s var(--ease);
-    }
-    .service:hover .service-arrow{
-      color:var(--red);
-      transform:translateX(8px);
-    }
-
-    /* ---------------- PRICELIST SECTION ---------------- */
-    .pricing{
+    .category-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+    .category-card{
       background:var(--jet);
-      padding:140px 0 120px;
-      position:relative;
-    }
-    .pricing-head{
-      text-align:center;
-      max-width:760px;
-      margin:0 auto 75px;
-    }
-    .pricing-head .eyebrow{justify-content:center}
-    .pricing-title{
-      margin:16px 0 20px;
-      font-size:clamp(75px,11vw,160px);
-      line-height:.88;
-    }
-    .pricing-tagline{
-      display:inline-block;
-      padding:6px 14px;
-      background:var(--smoke-light);
       border:1px solid var(--white-line);
-      font-size:10px;
-      font-weight:700;
-      letter-spacing:.25em;
-      text-transform:uppercase;
-      color:var(--red);
-      margin-bottom:16px;
-    }
-    .pricing-intro{
-      color:#9e9e9c;
-      font-size:14px;
-      line-height:1.8;
-      margin:0;
-    }
-
-    .pricing-group{
-      margin-bottom:85px;
-    }
-    .pricing-category-title{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      gap:16px;
-      padding-bottom:18px;
-      border-bottom:1px solid var(--white-line);
-      margin-bottom:24px;
-    }
-    .pricing-category-title h3{
-      margin:0;
-      font-family:var(--display);
-      font-size:42px;
-      line-height:.92;
-      display:flex;
-      align-items:center;
-      gap:14px;
-    }
-    .pricing-category-title h3 span.num{
-      color:var(--red);
-    }
-    .pricing-category-title h3 span.jp-sub{
-      font-family:var(--jp);
-      font-size:12px;
-      color:#777;
-      letter-spacing:.12em;
-    }
-    .pricing-category-desc{
-      color:#8c8c8c;
-      font-size:12px;
-      max-width:440px;
-      margin:0;
-    }
-
-    .subcat-label{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      font-size:11px;
-      font-weight:700;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-      color:#dcdcd9;
-      background:var(--smoke-light);
-      padding:7px 14px;
-      border-left:3px solid var(--red);
-      margin:22px 0 16px;
-    }
-
-    .pricing-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
-      margin-bottom:24px;
-    }
-    .pricing-grid.two-col{
-      grid-template-columns:repeat(2,1fr);
-    }
-    .pricing-grid.four-col{
-      grid-template-columns:repeat(4,1fr);
-    }
-
-    .price-card{
-      background:var(--smoke);
-      border:1px solid var(--white-line);
-      padding:30px 24px;
+      padding:44px 38px;
       display:flex;
       flex-direction:column;
       justify-content:space-between;
       position:relative;
-      transition:transform .35s var(--ease),border-color .35s var(--ease);
-    }
-    .price-card:hover{
-      transform:translateY(-6px);
-      border-color:rgba(230,57,70,.6);
-    }
-    .price-card.featured{
-      background:linear-gradient(180deg,#241a1c 0%,var(--smoke) 100%);
-      border-color:var(--red);
-    }
-    .badge-featured{
-      position:absolute;
-      top:-12px;
-      right:24px;
-      background:var(--red);
-      color:var(--off);
-      padding:4px 10px;
-      font-size:8px;
-      font-weight:700;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-    }
-
-    .card-top{margin-bottom:24px}
-    .card-pkg-name{
-      font-family:var(--display);
-      font-size:36px;
-      line-height:.9;
-      margin:0 0 6px;
-      letter-spacing:.02em;
-    }
-    .card-duration{
-      display:inline-block;
-      font-size:10px;
-      font-weight:700;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-      color:var(--red);
-      margin-bottom:16px;
-    }
-    .card-price{
-      font-family:var(--display);
-      font-size:44px;
-      line-height:.9;
-      color:var(--off);
-      margin:14px 0;
-      letter-spacing:.02em;
-    }
-    .card-price small{
-      font-family:var(--body);
-      font-size:11px;
-      color:#888;
-      font-weight:500;
-      letter-spacing:.05em;
-    }
-
-    .card-features{
-      list-style:none;
-      padding:0;
-      margin:0 0 28px;
-      border-top:1px solid rgba(250,250,248,.08);
-      padding-top:18px;
-    }
-    .card-features li{
-      display:flex;
-      align-items:flex-start;
-      gap:10px;
-      font-size:12px;
-      line-height:1.6;
-      color:#c8c8c6;
-      margin-bottom:10px;
-    }
-    .card-features li::before{
-      content:"✓";
-      color:var(--red);
-      font-weight:700;
-      font-size:12px;
-    }
-
-    .card-action{
-      margin-top:auto;
-    }
-    .btn-wa{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:9px;
-      width:100%;
-      padding:13px 16px;
-      background:transparent;
-      border:1px solid rgba(250,250,248,.3);
-      color:var(--off);
-      font-size:9px;
-      font-weight:700;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-      transition:.3s var(--ease);
-    }
-    .price-card:hover .btn-wa,
-    .price-card.featured .btn-wa{
-      background:var(--red);
-      border-color:var(--red);
-      color:var(--off);
-    }
-    .btn-wa:hover{
-      background:var(--off) !important;
-      border-color:var(--off) !important;
-      color:var(--jet) !important;
-    }
-
-    /* Add-ons inline strip */
-    .addon-strip{
-      background:rgba(250,250,248,.03);
-      border:1px solid var(--white-line);
-      padding:16px 20px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:14px;
-      align-items:center;
-      margin-top:12px;
-    }
-    .addon-strip-label{
-      font-size:10px;
-      font-weight:700;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-      color:var(--red);
-      padding-right:12px;
-      border-right:1px solid var(--white-line);
-    }
-    .addon-pill{
-      background:var(--smoke-light);
-      border:1px solid rgba(250,250,248,.08);
-      padding:6px 12px;
-      font-size:10px;
-      color:#bbb;
-      letter-spacing:.08em;
-    }
-    .addon-pill b{color:var(--off)}
-
-    .notes-card{
-      background:var(--smoke-light);
-      border-left:3px solid var(--red);
-      padding:28px 32px;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:30px;
-      margin-top:40px;
-    }
-    .notes-card h4{
-      margin:0 0 14px;
-      font-family:var(--display);
-      font-size:24px;
-      letter-spacing:.06em;
-      color:var(--off);
-    }
-    .notes-list{
-      list-style:none;
-      padding:0;
-      margin:0;
-    }
-    .notes-list li{
-      position:relative;
-      padding-left:16px;
-      font-size:12px;
-      line-height:1.8;
-      color:#a6a6a6;
-      margin-bottom:6px;
-    }
-    .notes-list li::before{
-      content:"•";
-      position:absolute;
-      left:0;
-      color:var(--red);
-      font-size:14px;
-    }
-
-    /* ---------------- PHOTOGRAPHY / VIDEO DIRECTION ---------------- */
-    .direction{
-      background:var(--stone);
-      color:var(--jet);
-      padding:130px 0;
-    }
-    .direction-head{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-end;
-      gap:40px;
-      margin-bottom:60px;
-    }
-    .direction-title{
-      margin:16px 0 0;
-      font-size:clamp(65px,9vw,135px);
-      line-height:.9;
-    }
-    .direction-copy{
-      max-width:360px;
-      color:#50504d;
-      font-size:13px;
-      line-height:1.8;
-      margin:0;
-    }
-    .direction-grid{
-      display:grid;
-      grid-template-columns:1.2fr .8fr 1fr;
-      grid-template-rows:300px 220px;
-      gap:12px;
-    }
-    .direction-card{
-      position:relative;
+      min-height:320px;
+      transition:transform .4s var(--ease), border-color .4s var(--ease), background .4s var(--ease);
       overflow:hidden;
+    }
+    .category-card::before{
+      content:"";position:absolute;top:0;left:0;width:4px;height:0;background:var(--red);transition:height .4s var(--ease);
+    }
+    .category-card:hover{
+      transform:translateY(-8px);
+      border-color:rgba(230,57,70,.7);
       background:#111;
     }
-    .direction-card:nth-child(1){grid-row:span 2}
-    .direction-card:nth-child(4){grid-column:2 / span 2}
-    .direction-card .image{
-      position:absolute;
-      inset:0;
-      background:center/cover no-repeat;
-      filter:grayscale(.85) contrast(1.06);
-      transition:.75s var(--ease);
+    .category-card:hover::before{height:100%}
+    .cat-num{font-family:var(--display);font-size:42px;color:var(--red);line-height:1;margin-bottom:16px}
+    .cat-title{font-family:var(--display);font-size:clamp(38px,4vw,56px);line-height:.92;margin:0 0 10px;letter-spacing:.02em}
+    .cat-jp{font-family:var(--jp);font-size:12px;color:#777;letter-spacing:.14em;margin-bottom:18px;display:block}
+    .cat-desc{color:#a5a5a5;font-size:13px;line-height:1.75;margin:0 0 28px;max-width:460px}
+    .cat-footer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--white-line);padding-top:20px;margin-top:auto}
+    .cat-rate{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#ddd}
+    .cat-rate b{color:var(--red)}
+    .cat-btn{
+      display:inline-flex;align-items:center;gap:8px;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--off);transition:gap .3s var(--ease), color .3s var(--ease);
     }
-    .direction-card:hover .image{transform:scale(1.05);filter:grayscale(.2) contrast(1.08)}
-    .direction-card::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(0deg,rgba(0,0,0,.65),transparent 55%);
-    }
-    .direction-card .badge{
-      position:absolute;
-      z-index:3;
-      left:18px;
-      top:18px;
-      background:var(--off);
-      color:var(--jet);
-      padding:6px 10px;
-      font-size:8px;
-      letter-spacing:.15em;
-      font-weight:700;
-      text-transform:uppercase;
-    }
-    .direction-card .caption{
-      position:absolute;
-      z-index:3;
-      left:18px;
-      bottom:18px;
-      color:var(--off);
-      font-family:var(--display);
-      font-size:32px;
-      line-height:.9;
-    }
+    .category-card:hover .cat-btn{color:var(--red);gap:14px}
 
-    /* ---------------- INSTAGRAM FEED SECTION ---------------- */
-    .instagram-section{
-      background:var(--jet);
-      padding:130px 0;
-      border-top:1px solid var(--white-line);
-    }
-    .ig-header{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-end;
-      gap:30px;
-      margin-bottom:50px;
-    }
-    .ig-title{
-      margin:16px 0 0;
-      font-size:clamp(65px,9vw,135px);
-      line-height:.9;
-    }
-    .ig-handle-btn{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:12px 20px;
-      background:transparent;
-      border:1px solid rgba(250,250,248,.3);
-      font-size:11px;
-      font-weight:700;
-      letter-spacing:.15em;
-      text-transform:uppercase;
-      color:var(--off);
-      transition:.35s var(--ease);
-    }
-    .ig-handle-btn:hover{
-      background:var(--red);
-      border-color:var(--red);
-    }
-    .behold-wrapper{
-      min-height:220px;
-      position:relative;
-    }
+    /* INSTAGRAM */
+    .instagram-section{background:var(--jet);padding:130px 0;border-top:1px solid var(--white-line)}
+    .ig-header{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:50px}
+    .ig-title{margin:16px 0 0;font-size:clamp(65px,9vw,135px);line-height:.9}
+    .ig-handle-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border:1px solid rgba(250,250,248,.3);font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;transition:.35s var(--ease)}
+    .ig-handle-btn:hover{background:var(--red);border-color:var(--red)}
 
-    /* ---------------- CTA ---------------- */
-    .cta{
-      background:var(--red);
-      color:var(--off);
-      padding:140px 0;
-      text-align:center;
-    }
+    /* CTA */
+    .cta{background:var(--red);color:var(--off);padding:140px 0;text-align:center}
     .cta .eyebrow{justify-content:center;color:var(--jet)}
     .cta .eyebrow::before{background:var(--jet)}
-    .cta-title{
-      margin:24px 0 20px;
-      font-size:clamp(85px,14vw,200px);
-      line-height:.88;
-      color:var(--off);
-    }
-    .cta-copy{
-      max-width:540px;
-      margin:24px auto 38px;
-      font-size:14px;
-      line-height:1.85;
-      color:rgba(250,250,248,.88);
-    }
-    .cta-btn{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:16px 28px;
-      background:var(--jet);
-      color:var(--off);
-      font-size:11px;
-      font-weight:700;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      transition:.35s var(--ease);
-    }
-    .cta-btn:hover{
-      background:var(--off);
-      color:var(--jet);
-    }
+    .cta-title{margin:24px 0 20px;font-size:clamp(85px,14vw,200px);line-height:.88}
+    .cta-copy{max-width:540px;margin:24px auto 38px;font-size:14px;line-height:1.85;color:rgba(250,250,248,.88)}
+    .cta-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;background:var(--jet);color:var(--off);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;transition:.35s var(--ease)}
+    .cta-btn:hover{background:var(--off);color:var(--jet)}
 
-    /* ---------------- FOOTER ---------------- */
-    footer{
-      background:var(--jet);
-      padding:60px 0 35px;
-      border-top:1px solid rgba(250,250,248,.1);
-    }
-    .footer-top{
-      display:flex;
-      justify-content:space-between;
-      gap:60px;
-      padding-bottom:50px;
-      border-bottom:1px solid rgba(250,250,248,.1);
-    }
-    .footer-brand p{
-      color:#777;
-      max-width:300px;
-      font-size:12px;
-      line-height:1.8;
-      margin:18px 0 0;
-    }
-    .footer-links{
-      display:grid;
-      grid-template-columns:repeat(3,auto);
-      gap:64px;
-    }
-    .footer-col h4{
-      margin:0 0 18px;
-      color:var(--red);
-      font-size:9px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-    }
-    .footer-col a{
-      display:block;
-      margin-bottom:10px;
-      color:#9d9d9d;
-      font-size:11px;
-      transition:color .3s ease;
-    }
+    /* FOOTER */
+    footer{background:var(--jet);padding:60px 0 35px;border-top:1px solid rgba(250,250,248,.1)}
+    .footer-top{display:flex;justify-content:space-between;gap:60px;padding-bottom:50px;border-bottom:1px solid rgba(250,250,248,.1)}
+    .footer-logo{height:44px}
+    .footer-brand p{color:#777;max-width:300px;font-size:12px;line-height:1.8;margin:18px 0 0}
+    .footer-links{display:grid;grid-template-columns:repeat(3,auto);gap:64px}
+    .footer-col h4{margin:0 0 18px;color:var(--red);font-size:9px;letter-spacing:.18em;text-transform:uppercase}
+    .footer-col a{display:block;margin-bottom:10px;color:#9d9d9d;font-size:11px;transition:color .3s ease}
     .footer-col a:hover{color:var(--off)}
-    .footer-bottom{
-      display:flex;
-      justify-content:space-between;
-      gap:20px;
-      padding-top:28px;
-      color:#5f5f5f;
-      font-size:9px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-    }
-    .footer-bottom span:last-child{color:#8b8b8b}
+    .footer-bottom{display:flex;justify-content:space-between;gap:20px;padding-top:28px;color:#5f5f5f;font-size:9px;letter-spacing:.14em;text-transform:uppercase}
     .footer-bottom b{color:var(--red)}
 
-    /* ---------------- MOTION REVEAL ---------------- */
-    .reveal{
-      opacity:0;
-      transform:translateY(28px);
-      transition:opacity .8s ease,transform .8s var(--ease);
-    }
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s var(--ease)}
     .reveal.is-visible{opacity:1;transform:none}
 
-    /* ---------------- RESPONSIVE ---------------- */
     @media (max-width:1100px){
       .nav-links{display:none}
-      .hero-grid{grid-template-columns:1fr}
+      .hero-grid,.story-top,.work-grid,.category-grid{grid-template-columns:1fr;gap:40px}
       .hero-side{display:none}
-      .story-top,.services-head{grid-template-columns:1fr;gap:45px}
-      .story-strip{grid-template-columns:1fr 1fr}
-      .story-card:last-child{grid-column:span 2}
-      .work-grid{grid-template-columns:1fr}
-      .frame.large{min-height:540px}
-      .pricing-grid{grid-template-columns:1fr}
-      .pricing-grid.two-col,.pricing-grid.four-col{grid-template-columns:1fr}
-      .notes-card{grid-template-columns:1fr}
-      .direction-grid{grid-template-columns:1fr 1fr;grid-template-rows:260px 260px 220px}
-      .direction-card:nth-child(1){grid-row:span 2}
-      .direction-card:nth-child(4){grid-column:1 / span 2}
+      .frame.large{min-height:500px}
     }
-
     @media (max-width:700px){
       .container{width:calc(100% - 32px)}
-      .nav-cta{padding:8px 12px;font-size:9px}
-      .logo-img{height:30px}
-      .footer-logo{height:36px}
       .hero-grid{padding:135px 0 45px}
       .hero-title{font-size:28vw}
-      .hero-sub{font-size:12px}
-      .hero-actions{flex-direction:column;align-items:stretch}
-      .story-top,.work,.services,.pricing,.direction,.instagram-section{padding-top:90px;padding-bottom:90px}
-      .story-top{padding-bottom:70px}
+      .story-top,.work,.pricing-portal,.instagram-section{padding:90px 0}
       .story-strip{grid-template-columns:1fr}
-      .story-card{min-height:280px;border-right:0;border-bottom:1px solid var(--line)}
-      .story-card:last-child{grid-column:auto;border-bottom:0}
-      .work-head,.direction-head,.ig-header{flex-direction:column;align-items:flex-start}
-      .project-copy h3{font-size:42px}
-      .service{grid-template-columns:40px 1fr 30px;gap:12px}
-      .service-desc{display:none}
-      .service-name{font-size:36px}
-      .addon-strip{flex-direction:column;align-items:flex-start}
-      .addon-strip-label{border-right:0;border-bottom:1px solid var(--white-line);padding-bottom:8px;width:100%}
-      .direction-grid{grid-template-columns:1fr;grid-template-rows:260px 220px 220px 220px}
-      .direction-card:nth-child(1){grid-row:auto}
-      .direction-card:nth-child(4){grid-column:auto}
-      .footer-top{flex-direction:column}
-      .footer-links{grid-template-columns:1fr 1fr;gap:35px}
-      .footer-bottom{flex-direction:column}
+      .story-card{border-right:0;border-bottom:1px solid var(--line);min-height:280px}
+      .category-card{padding:30px 24px}
+      .work-head,.ig-header,.footer-top{flex-direction:column;align-items:flex-start}
+      .footer-links{grid-template-columns:1fr 1fr;gap:30px}
     }
   </style>
 </head>
 
 <body>
-
   <!-- NAV -->
   <header class="nav" id="nav">
     <div class="container nav-inner">
       <a class="logo" href="#home" aria-label="ALPON STUDIO">
         <img src="https://lh3.googleusercontent.com/d/1VzehDfh7kaoJBUak6E6wkYi5V2IHwpcC" alt="ALPON STUDIO Logo" class="logo-img">
       </a>
-
       <nav>
         <ul class="nav-links">
           <li><a href="#work">Work</a></li>
-          <li><a href="#services">Services</a></li>
           <li><a href="#pricing">Pricelist</a></li>
-          <li><a href="#direction">Direction</a></li>
           <li><a href="#instagram">Instagram</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
-
       <a class="nav-cta" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20tertarik%20untuk%20diskusi%20project%20visual." target="_blank" rel="noopener">Start a Project <span>↗</span></a>
     </div>
   </header>
 
   <main>
-
     <!-- HERO -->
     <section class="hero" id="home">
       <div class="hero-media" id="heroMedia"></div>
-
       <div class="container hero-grid">
         <div class="hero-main reveal">
           <div class="hero-kicker jp">アルポン・スタジオ</div>
-
           <h1 class="hero-title display">
             <span>ALPON</span>
             <span class="studio">STUDIO</span>
           </h1>
-
           <div class="hero-sub">WE CAPTURE WHAT MATTERS.</div>
-
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#pricing">Lihat Pricelist 2026</a>
+            <a class="btn btn-primary" href="#pricing">Pilih Paket Dokumentasi</a>
             <a class="btn btn-secondary" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20tanya%20paket%20dokumentasi." target="_blank" rel="noopener">Konsultasi WhatsApp ↗</a>
           </div>
         </div>
-
         <aside class="hero-side reveal">
           <div class="vertical-note jp">瞬間を記録する。物語を残す。</div>
           <div class="rec"><i></i> REC / ALPON STUDIO</div>
@@ -1230,25 +264,17 @@
       <div class="container story-top">
         <div class="reveal">
           <div class="eyebrow red-dot">Brand Philosophy</div>
-          <h2 class="story-heading display">
-            BORN FROM<br>
-            <em>FRIENDSHIP,</em><br>
-            BUILT ON<br>
-            STORIES.
-          </h2>
+          <h2 class="story-heading display">BORN FROM<br><em>FRIENDSHIP,</em><br>BUILT ON<br>STORIES.</h2>
         </div>
-
         <div class="story-copy reveal">
           <p><strong>ALPON STUDIO</strong> lahir dari persahabatan dan berkembang menjadi ruang kreatif untuk menangkap manusia, energi, detail, dan cerita yang bermakna.</p>
           <p>Kami tidak mengejar gambar yang sekadar indah. Kami mencari <strong>momen yang terasa</strong> — candid, cinematic, berkarakter, namun tetap terarah secara editorial.</p>
-
           <div class="story-jp">
             <span class="vertical">瞬間</span>
             <p class="jp">大切な瞬間を捉え、物語として残す。</p>
           </div>
         </div>
       </div>
-
       <div class="story-strip">
         <article class="story-card reveal">
           <div class="image" data-image="storyTokyo"></div>
@@ -1256,14 +282,12 @@
           <h3 class="display">DOCUMENT<br>THE CITY.</h3>
           <small>street / culture / atmosphere</small>
         </article>
-
         <article class="story-card reveal">
           <div class="image" data-image="storyWedding"></div>
           <span class="story-label">REAL / CANDID</span>
           <h3 class="display">KEEP<br>THE FEELING.</h3>
           <small>people / emotion / memory</small>
         </article>
-
         <article class="story-card reveal">
           <div class="image" data-image="storyCamera"></div>
           <span class="story-label">BEHIND / FRAME</span>
@@ -1283,33 +307,26 @@
           </div>
           <p class="work-note">Asymmetric editorial grid, high contrast, framing clean, dan sentuhan visual yang mengutamakan emosi di setiap rekaman frame.</p>
         </div>
-
         <div class="work-grid">
           <article class="frame large reveal">
             <div class="image" data-image="workEvent"></div>
-            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-            <span class="mini-tag">REC ●</span>
             <div class="project-copy">
               <div class="project-meta"><b>01</b> / EVENT DOCUMENTATION</div>
               <h3 class="display">LIVE &amp;<br>ENERGY.</h3>
               <p>people / motion / sound / atmosphere</p>
             </div>
           </article>
-
           <div class="work-stack">
             <article class="frame medium reveal">
               <div class="image" data-image="workWedding"></div>
-              <span class="corner tl"></span><span class="corner br"></span>
               <div class="project-copy">
                 <div class="project-meta"><b>02</b> / WEDDING &amp; INTIMATE</div>
                 <h3 class="display">THE<br>BEGINNING.</h3>
                 <p>documentary / candid / intimate</p>
               </div>
             </article>
-
             <article class="frame medium reveal">
               <div class="image" data-image="workCity"></div>
-              <span class="corner tr"></span><span class="corner bl"></span>
               <div class="project-copy">
                 <div class="project-meta"><b>03</b> / CREATIVE CONTENT</div>
                 <h3 class="display">IN<br>MOTION.</h3>
@@ -1321,481 +338,77 @@
       </div>
     </section>
 
-    <!-- SERVICES -->
-    <section class="services" id="services">
+    <!-- PRICELIST CATEGORY PORTAL -->
+    <section class="pricing-portal" id="pricing">
       <div class="container">
-        <div class="services-head reveal">
-          <div>
-            <div class="eyebrow">What We Do</div>
-            <h2 class="services-title display">SERVICES</h2>
-          </div>
-          <p class="services-intro">Empat pilar layanan visual ALPON STUDIO — disesuaikan untuk setiap momen personal, selebrasi akademik, selebrasi cinta, event komunitas, hingga kebutuhan komersial brand.</p>
+        <div class="portal-head reveal">
+          <div class="eyebrow red-dot">Rate Card &amp; Packages</div>
+          <span class="portal-tagline">2026 PRICE LIST</span>
+          <h2 class="portal-title display">SERVICES &amp; RATES</h2>
+          <p class="portal-intro">Pilih kategori layanan di bawah untuk melihat rincian paket, durasi sesi, output, serta add-on lengkap.</p>
         </div>
 
-        <div class="service-list">
-          <div class="service reveal">
-            <div class="service-no">01</div>
-            <div class="service-name">
-              GRADUATION
-              <small>卒業写真 — Wisuda &amp; Personal Milestone</small>
+        <div class="category-grid">
+          <!-- 01 GRADUATION -->
+          <a class="category-card reveal" href="graduation.html">
+            <div>
+              <div class="cat-num">01</div>
+              <h3 class="cat-title">GRADUATION</h3>
+              <span class="cat-jp">卒業写真 — Wisuda &amp; Personal Milestone</span>
+              <p class="cat-desc">Dokumentasi momen kelulusan dengan opsi paket Foto (Basic, Standard, Halfday) dan Foto + Video (Starter, Signature, Complete).</p>
             </div>
-            <div class="service-desc">Dokumentasi momen kelulusan dengan konsep foto candid editorial, video reels estetik, serta cinematic after movie.</div>
-            <a class="service-arrow" href="#pricing">↗</a>
-          </div>
+            <div class="cat-footer">
+              <span class="cat-rate">Mulai Dari <b>Rp 400.000</b></span>
+              <span class="cat-btn">Lihat Pricelist ↗</span>
+            </div>
+          </a>
 
-          <div class="service reveal">
-            <div class="service-no">02</div>
-            <div class="service-name">
-              PREWEDDING
-              <small>ウェディング — Intimate &amp; Romance Story</small>
+          <!-- 02 PREWEDDING -->
+          <a class="category-card reveal" href="prewedding.html">
+            <div>
+              <div class="cat-num">02</div>
+              <h3 class="cat-title">PREWEDDING</h3>
+              <span class="cat-jp">ウェディング写真 — Intimate Love Story</span>
+              <p class="cat-desc">Sesi foto dan video intim per jam, lengkap dengan bonus cetak foto 20R + frame eksklusif serta after movie sinematik.</p>
             </div>
-            <div class="service-desc">Paket dokumentasi foto dan video intim dengan bonus cetak 20R + frame eksklusif untuk kenangan abadi Anda.</div>
-            <a class="service-arrow" href="#pricing">↗</a>
-          </div>
+            <div class="cat-footer">
+              <span class="cat-rate">Mulai Dari <b>Rp 400.000 / jam</b></span>
+              <span class="cat-btn">Lihat Pricelist ↗</span>
+            </div>
+          </a>
 
-          <div class="service reveal">
-            <div class="service-no">03</div>
-            <div class="service-name">
-              EVENT DOCUMENTATION
-              <small>イベント — Live &amp; High Energy</small>
+          <!-- 03 EVENT -->
+          <a class="category-card reveal" href="event.html">
+            <div>
+              <div class="cat-num">03</div>
+              <h3 class="cat-title">EVENT DOCUMENTATION</h3>
+              <span class="cat-jp">イベント撮影 — Live, Concert, Gathering</span>
+              <p class="cat-desc">Liputan multi-kamera untuk konser, festival, seminar, dan acara komunitas (Paket Basic, Elite, Ultimate, Profesional).</p>
             </div>
-            <div class="service-desc">Coverage lengkap untuk konser, gathering, festival, seminar dengan multi-kamera, drone aerial, dan tim content creator.</div>
-            <a class="service-arrow" href="#pricing">↗</a>
-          </div>
+            <div class="cat-footer">
+              <span class="cat-rate">Mulai Dari <b>Rp 600.000 / jam</b></span>
+              <span class="cat-btn">Lihat Pricelist ↗</span>
+            </div>
+          </a>
 
-          <div class="service reveal">
-            <div class="service-no">04</div>
-            <div class="service-name">
-              CONTENT CREATOR
-              <small>クリエイター — Social Media Production</small>
+          <!-- 04 CONTENT CREATOR -->
+          <a class="category-card reveal" href="content-creator.html">
+            <div>
+              <div class="cat-num">04</div>
+              <h3 class="cat-title">CONTENT CREATOR</h3>
+              <span class="cat-jp">コンテンツクリエイター — Reels &amp; Monthly Retainer</span>
+              <p class="cat-desc">Layanan pembuatan konten media sosial: recap kilat per jam, hingga manajemen produksi konten bulanan (Standard &amp; Pro).</p>
             </div>
-            <div class="service-desc">Produksi konten bulanan untuk brand &amp; personal: storyboard, shooting iPhone/Sony Pro, wireless mic, editing, hingga talent.</div>
-            <a class="service-arrow" href="#pricing">↗</a>
-          </div>
+            <div class="cat-footer">
+              <span class="cat-rate">Mulai Dari <b>Rp 400.000 / jam</b></span>
+              <span class="cat-btn">Lihat Pricelist ↗</span>
+            </div>
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- PRICELIST SECTION (UPDATED) -->
-    <section class="pricing" id="pricing">
-      <div class="container">
-        <div class="pricing-head reveal">
-          <div class="eyebrow red-dot">Official Rate Card</div>
-          <span class="pricing-tagline">2026 PRICE LIST</span>
-          <h2 class="pricing-title display">PRICE LIST</h2>
-          <p class="pricing-intro">Pilihan paket dokumentasi lengkap dengan harga transparan dan terjangkau untuk mengabadikan momen terbaik Anda.</p>
-        </div>
-
-        <!-- 01 GRADUATION -->
-        <div class="pricing-group reveal">
-          <div class="pricing-category-title">
-            <h3><span class="num">01</span> GRADUATION <span class="jp-sub">卒業写真</span></h3>
-            <p class="pricing-category-desc">Dokumentasi momen kelulusan berharga bersama teman, sahabat, dan keluarga tercinta.</p>
-          </div>
-
-          <!-- Subcat: Foto -->
-          <div class="subcat-label">PAKET FOTO GRADUATION</div>
-          <div class="pricing-grid">
-            <div class="price-card">
-              <div class="card-top">
-                <h4 class="card-pkg-name">BASIC</h4>
-                <span class="card-duration">2 JAM SESI</span>
-                <div class="card-price">Rp 400.000</div>
-                <ul class="card-features">
-                  <li>1 Photographer</li>
-                  <li>10 Edited Photos</li>
-                  <li>All Raw Files on Drive</li>
-                </ul>
-              </div>
-              <div class="card-action">
-                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Graduation%20Foto%20-%20Basic%20(Rp400.000)." target="_blank" rel="noopener">Book via WhatsApp ↗</a>
-              </div>
-            </div>
-
-            <div class="price-card">
-              <div class="card-top">
-                <h4 class="card-pkg-name">STANDARD</h4>
-                <span class="card-duration">4 JAM SESI</span>
-                <div class="card-price">Rp 650.000</div>
-                <ul class="card-features">
-                  <li>1 Photographer</li>
-                  <li>20 Edited Photos</li>
-                  <li>All Raw Files on Drive</li>
-                </ul>
-              </div>
-              <div class="card-action">
-                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Graduation%20Foto%20-%20Standard%20(Rp650.000)." target="_blank" rel="noopener">Book via WhatsApp ↗</a>
-              </div>
-            </div>
-
-            <div class="price-card">
-              <div class="card-top">
-                <h4 class="card-pkg-name">HALFDAY</h4>
-                <span class="card-duration">8 JAM SESI</span>
-                <div class="card-price">Rp 800.000</div>
-                <ul class="card-features">
-                  <li>1 Photographer</li>
-                  <li>40 Edited Photos</li>
-                  <li>Comprehensive Coverage</li>
-                </ul>
-              </div>
-              <div class="card-action">
-                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Graduation%20Foto%20-%20Halfday%20(Rp800.000)." target="_blank" rel="noopener">Book via WhatsApp ↗</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Subcat: Foto + Video -->
-          <div class="subcat-label">PAKET FOTO + VIDEO GRADUATION</div>
-          <div class="pricing-grid">
-            <div class="price-card">
-              <div class="card-top">
-                <h4 class="card-pkg-name">STARTER</h4>
-                <span class="card-duration">2 JAM SESI</span>
-                <div class="card-price">Rp 650.000</div>
-                <ul class="card-features">
-                  <li>1 Photographer + 1 Videographer</li>
-                  <li>10 Edited Photos</li>
-                  <li>1 Reels / After Movie</li>
-                </ul>
-              </div>
-              <div class="card-action">
-                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Graduation%20Foto%2BVideo%20-%20Starter%20(Rp650.000)." target="_blank" rel="noopener">Book via WhatsApp ↗</a>
-              </div>
-            </div>
-
-            <div class="price-card featured">
-              <span class="badge-featured">FAVORIT</span>
-              <div class="card-top">
-                <h4 class="card-pkg-name">SIGNATURE</h4>
-                <span class="card-duration">4 JAM SESI</span>
-                <div class="card-price">Rp 1.000.000</div>
-                <ul class="card-features">
-                  <li>1 Photographer + 1 Videographer</li>
-                  <li>20 Edited Photos</li>
-                  <li>1 Reels + 1 After Movie</li>
-                </ul>
-              </div>
-              <div class="card-action">
-                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Graduation%20Foto%2BVideo%20-%20Signature%20(Rp1.000.000)." target="_blank" rel="noopener">Book via WhatsApp ↗</a>
-              </div>
-            </div>
-
-            <div class="price-card">
-              <div class="card-top">
-                <h4 class="card-pkg-name">COMPLETE</h4>
-                <span class="card-duration">8 JAM SESI</span>
-                <div class="card-price">Rp 1.350.000</div>
-                <ul class="card-features">
-                  <li>1 Photographer + 1 Videographer</li>
-                  <li>40 Edited Photos</li>
-                  <li>1 Reels + 1 After Movie</li>
-                  <li>Drone Aerial (2 Jam)</li>
-                </ul>
-              </div>
-              <div class="card-action">
-                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Graduation%20Foto%2BVideo%20-%20Complete%20(Rp1.350.000)." target="_blank" rel="noopener">Book via WhatsApp ↗</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Addon Strip -->
-          <div class="addon-strip">
-            <span class="addon-strip-label">AddOn Graduation</span>
-            <span class="addon-pill">Drone: <b>Rp 350.000 / jam</b></span>
-            <span class="addon-pill">Personil: <b>Rp 200.000 / jam</b></span>
-            <span class="addon-pill">Extra Hour: <b>Rp 100.000 / jam</b></span>
-            <span class="addon-pill">Extra Reels: <b>Rp 100.000 / content</b></span>
-          </div>
-        </div>
-
-        <!-- 02 PREWEDDING -->
-        <div class="pricing-group reveal">
-          <div class="pricing-category-title">
-            <h3><span class="num">02</span> PREWEDDING <span class="jp-sub">ウェディング写真</span></h3>
-            <p class="pricing-category-desc">Abadikan kisah cinta Anda dengan visual candid berkelas dan bingkai cetak eksklusif.</p>
-          </div>
-
-          <div class="pricing-grid two-col">
-            <div class="price-card">
-              <div class="card-top">
-                <h4 class="card-pkg-name">FOTO PREWEDDING</h4>
-                <span class="card-duration">TARIF PER JAM</span>
-                <div class="card-price">Rp 400.000 <small>/ jam</small></div>
-                <ul class="card-features">
-                  <li>1 Photographer</li>
-                  <li>10 Edited Photos</li>
-                  <li>1 Photo Print 20R + Frame Eksklusif</li>
-                  <li>High-Resolution Master Files</li>
-                </ul>
-              </div>
-              <div class="card-action">
-                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20PreWedding%20Foto%20(Rp400.000/jam)." target="_blank" rel="noopener">Book via WhatsApp ↗</a>
-              </div>
-            </div>
-
-            <div class="price-card featured">
-              <span class="badge-featured">RECOMMENDED</span>
-              <div class="card-top">
-                <h4 class="card-pkg-name">FOTO + VIDEO PREWEDDING</h4>
-                <span class="card-duration">TARIF PER JAM</span>
-                <div class="card-price">Rp 750.000 <small>/ jam</small></div>
-                <ul class="card-features">
-                  <li>1 Photographer + 1 Videographer</li>
-                  <li>20 Edited Photos</li>
-                  <li>1 Photo Print 20R + Frame Eksklusif</li>
-                  <li>1 Cinematic After Movie</li>
-                  <li>1 Reels Highlight</li>
-                </ul>
-              </div>
-              <div class="card-action">
-                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20PreWedding%20Foto%2BVideo%20(Rp750.000/jam)." target="_blank" rel="noopener">Book via WhatsApp ↗</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Addon Strip -->
-          <div class="addon-strip">
-            <span class="addon-strip-label">AddOn PreWedding</span>
-            <span class="addon-pill">Drone: <b>Rp 350.000 / jam</b></span>
-            <span class="addon-pill">Personil: <b>Rp 400.000 / jam</b></span>
-            <span class="addon-pill">Extra Reels: <b>Rp 100.000 / content</b></span>
-          </div>
-        </div>
-
-        <!-- 03 EVENT -->
-        <div class="pricing-group reveal">
-          <div class="pricing-category-title">
-            <h3><span class="num">03</span> EVENT DOCUMENTATION <span class="jp-sub">イベント撮影</span></h3>
-            <p class="pricing-category-desc">Dokumentasi profesional untuk event, konser, seminar, gathering, dan corporate.</p>
-          </div>
-
-          <div class="pricing-grid four-col">
-            <!-- Basic -->
-            <div class="price-card">
-              <div class="card-top">
-                <h4 class="card-pkg-name">BASIC</h4>
-                <span class="card-duration">PER JAM</span>
-                <div class="card-price">Rp 600.000 <small>/ jam</small></div>
-                <ul class="card-features">
-                  <li>1 Photographer</li>
-                  <li>1 Videographer</li>
-                  <li>50 Edited Photos</li>
-                  <li>1 After Movie</li>
-                </ul>
-              </div>
-              <div class="card-action">
-                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Event%20-%20Basic%20(Rp600.000/jam)." target="_blank" rel="noopener">Book Basic ↗</a>
-              </div>
-            </div>
-
-            <!-- Elite -->
-            <div class="price-card">
-              <div class="card-top">
-                <h4 class="card-pkg-name">ELITE</h4>
-                <span class="card-duration">PER JAM</span>
-                <div class="card-price">Rp 750.000 <small>/ jam</small></div>
-                <ul class="card-features">
-                  <li>1 Photographer + 1 Videographer</li>
-                  <li>1 Content Creator</li>
-                  <li>50 Edited Photos + 1 After Movie</li>
-                  <li>1 Recap (30–60 Detik)</li>
-                  <li>3 Reels (60–120 Detik)</li>
-                </ul>
-              </div>
-              <div class="card-action">
-                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Event%20-%20Elite%20(Rp750.000/jam)." target="_blank" rel="noopener">Book Elite ↗</a>
-              </div>
-            </div>
-
-            <!-- Ultimate -->
-            <div class="price-card featured">
-              <span class="badge-featured">POPULAR</span>
-              <div class="card-top">
-                <h4 class="card-pkg-name">ULTIMATE</h4>
-                <span class="card-duration">PER JAM</span>
-                <div class="card-price">Rp 1.250.000 <small>/ jam</small></div>
-                <ul class="card-features">
-                  <li>2 Photographer + 2 Videographer</li>
-                  <li>1 Content Creator</li>
-                  <li>50 Edited Photos + 1 After Movie</li>
-                  <li>1 Recap (30–60 Detik)</li>
-                  <li>3 Reels (60–120 Detik)</li>
-                </ul>
-              </div>
-              <div class="card-action">
-                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Event%20-%20Ultimate%20(Rp1.250.000/jam)." target="_blank" rel="noopener">Book Ultimate ↗</a>
-              </div>
-            </div>
-
-            <!-- Profesional -->
-            <div class="price-card">
-              <div class="card-top">
-                <h4 class="card-pkg-name">PROFESIONAL</h4>
-                <span class="card-duration">FULL EVENT</span>
-                <div class="card-price">Rp 1.500.000</div>
-                <ul class="card-features">
-                  <li>2 Photographer + 2 Videographer</li>
-                  <li>1 Content Creator</li>
-                  <li>1 Drone Aerial Unit</li>
-                  <li>50 Edited Photos + 1 After Movie</li>
-                  <li>1 Recap + 3 Reels</li>
-                </ul>
-              </div>
-              <div class="card-action">
-                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Event%20-%20Profesional%20(Rp1.500.000)." target="_blank" rel="noopener">Book Pro ↗</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Addon Strip -->
-          <div class="addon-strip">
-            <span class="addon-strip-label">AddOn Event</span>
-            <span class="addon-pill">Drone: <b>Rp 350.000 / jam</b></span>
-            <span class="addon-pill">Personil: <b>Rp 400.000 / jam</b></span>
-            <span class="addon-pill">Extra Reels: <b>Rp 100.000 / content</b></span>
-          </div>
-        </div>
-
-        <!-- 04 CONTENT CREATOR -->
-        <div class="pricing-group reveal">
-          <div class="pricing-category-title">
-            <h3><span class="num">04</span> CONTENT CREATOR <span class="jp-sub">コンテンツクリエイター</span></h3>
-            <p class="pricing-category-desc">Layanan produksi konten media sosial profesional, recap event kilat, hingga manajemen bulanan.</p>
-          </div>
-
-          <div class="pricing-grid">
-            <!-- Recap -->
-            <div class="price-card">
-              <div class="card-top">
-                <h4 class="card-pkg-name">RECAP</h4>
-                <span class="card-duration">PER HOUR / EVENT</span>
-                <div class="card-price">Rp 400.000 <small>/ jam</small></div>
-                <ul class="card-features">
-                  <li>Device: iPhone 13 Pro (minimum)</li>
-                  <li>Audio: Hollyland Lark M2</li>
-                  <li>1 Recap Event</li>
-                  <li>2 Content (Request)</li>
-                  <li>10 Story Real Time</li>
-                  <li>Professional Editing</li>
-                </ul>
-              </div>
-              <div class="card-action">
-                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Content%20Creator%20-%20Recap%20(Rp400.000/jam)." target="_blank" rel="noopener">Book Recap ↗</a>
-              </div>
-            </div>
-
-            <!-- Standard -->
-            <div class="price-card">
-              <div class="card-top">
-                <h4 class="card-pkg-name">STANDARD</h4>
-                <span class="card-duration">DURASI 1 BULAN</span>
-                <div class="card-price">Rp 2.000.000 <small>/ bln</small></div>
-                <ul class="card-features">
-                  <li>Device: iPhone 13 Pro (minimum)</li>
-                  <li>Audio: Hollyland Lark M2</li>
-                  <li>12 Content / bulan</li>
-                  <li>Storyboard &amp; Content Plan</li>
-                  <li>Editing + Talent Included</li>
-                </ul>
-              </div>
-              <div class="card-action">
-                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Content%20Creator%20-%20Standard%20(Rp2.000.000/bln)." target="_blank" rel="noopener">Book Standard ↗</a>
-              </div>
-            </div>
-
-            <!-- Profesional -->
-            <div class="price-card featured">
-              <span class="badge-featured">PRO LEVEL</span>
-              <div class="card-top">
-                <h4 class="card-pkg-name">PROFESIONAL</h4>
-                <span class="card-duration">DURASI 1 BULAN</span>
-                <div class="card-price">Rp 3.000.000 <small>/ bln</small></div>
-                <ul class="card-features">
-                  <li>Device: Sony a6400 (minimum)</li>
-                  <li>Audio: Hollyland Lark M2</li>
-                  <li>12 Content / bulan</li>
-                  <li>Storyboard &amp; Content Plan</li>
-                  <li>Editing + Talent Included</li>
-                </ul>
-              </div>
-              <div class="card-action">
-                <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Content%20Creator%20-%20Profesional%20(Rp3.000.000/bln)." target="_blank" rel="noopener">Book Profesional ↗</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Addon Strip -->
-          <div class="addon-strip">
-            <span class="addon-strip-label">AddOn Content Creator</span>
-            <span class="addon-pill">Drone: <b>Rp 350.000 / jam</b></span>
-            <span class="addon-pill">Personil: <b>Rp 200.000 / jam</b></span>
-            <span class="addon-pill">Extra Hour: <b>Rp 100.000 / jam</b></span>
-            <span class="addon-pill">Extra Reels: <b>Rp 100.000 / content</b></span>
-          </div>
-        </div>
-
-        <!-- NOTES & TERMS -->
-        <div class="notes-card reveal">
-          <div>
-            <h4>KETENTUAN &amp; CATATAN</h4>
-            <ul class="notes-list">
-              <li>Harga sudah termasuk kamera basic (kit).</li>
-              <li>Harga berlaku untuk area Semarang dan sekitarnya.</li>
-              <li>Harga dapat berubah menyesuaikan kebutuhan spesifik event dan lokasi.</li>
-              <li>DP 50% wajib untuk penguncian jadwal/booking tanggal.</li>
-            </ul>
-          </div>
-          <div>
-            <h4>ESTIMASI PENGERJAAN</h4>
-            <ul class="notes-list">
-              <li>Pengiriman hasil Foto: <b>2–5 hari kerja</b>.</li>
-              <li>Pengiriman hasil Video: <b>3–7 hari kerja</b>.</li>
-              <li>Semua paket mendapatkan <b>akses seluruh footage di Google Drive</b>.</li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- PHOTOGRAPHY / VIDEO DIRECTION -->
-    <section class="direction" id="direction">
-      <div class="container">
-        <div class="direction-head reveal">
-          <div>
-            <div class="eyebrow">Visual Direction</div>
-            <h2 class="direction-title display">HOW IT<br>SHOULD FEEL.</h2>
-          </div>
-          <p class="direction-copy">Cinematic tone, natural candid moment, high contrast, real people, real story. Bukan sekadar visual yang rapi — melainkan momen yang terasa hidup dan berkarakter.</p>
-        </div>
-
-        <div class="direction-grid">
-          <article class="direction-card reveal">
-            <div class="image" data-image="directionEvent"></div>
-            <span class="badge">01 / HIGH CONTRAST</span>
-            <div class="caption">MOMENT<br>&amp; ENERGY.</div>
-          </article>
-          <article class="direction-card reveal">
-            <div class="image" data-image="directionCamera"></div>
-            <span class="badge">02 / CINEMATIC</span>
-            <div class="caption">BEHIND<br>THE FRAME.</div>
-          </article>
-          <article class="direction-card reveal">
-            <div class="image" data-image="directionStreet"></div>
-            <span class="badge">03 / STREET</span>
-            <div class="caption">REAL<br>PEOPLE.</div>
-          </article>
-          <article class="direction-card reveal">
-            <div class="image" data-image="directionWedding"></div>
-            <span class="badge">04 / CANDID</span>
-            <div class="caption">KEEP<br>THE FEELING.</div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- INSTAGRAM LIVE FEED (BEHOLD WIDGET) -->
+    <!-- INSTAGRAM LIVE FEED -->
     <section class="instagram-section" id="instagram">
       <div class="container">
         <div class="ig-header reveal">
@@ -1803,11 +416,8 @@
             <div class="eyebrow red-dot">Social Journal</div>
             <h2 class="ig-title display">LATEST ON<br>INSTAGRAM.</h2>
           </div>
-          <a class="ig-handle-btn" href="https://instagram.com/alponstudio" target="_blank" rel="noopener">
-            <span>Follow @alponstudio</span> ↗
-          </a>
+          <a class="ig-handle-btn" href="https://instagram.com/alponstudio" target="_blank" rel="noopener">Follow @alponstudio ↗</a>
         </div>
-
         <div class="behold-wrapper reveal">
           <behold-widget feed-id="CtpYJCSBiUILU0vPGAOr"></behold-widget>
         </div>
@@ -1830,20 +440,18 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <a class="logo" href="#home" aria-label="ALPON STUDIO">
+          <a class="logo" href="index.html">
             <img src="https://lh3.googleusercontent.com/d/1VzehDfh7kaoJBUak6E6wkYi5V2IHwpcC" alt="ALPON STUDIO Logo" class="logo-img footer-logo">
           </a>
           <p>We capture what matters.<br>Born from friendship, built on stories.</p>
         </div>
-
         <div class="footer-links">
           <div class="footer-col">
-            <h4>Navigate</h4>
-            <a href="#work">Work</a>
-            <a href="#services">Services</a>
-            <a href="#pricing">Pricelist 2026</a>
-            <a href="#direction">Direction</a>
-            <a href="#instagram">Instagram</a>
+            <h4>Pricelist Pages</h4>
+            <a href="graduation.html">Graduation</a>
+            <a href="prewedding.html">PreWedding</a>
+            <a href="event.html">Event Documentation</a>
+            <a href="content-creator.html">Content Creator</a>
           </div>
           <div class="footer-col">
             <h4>Social</h4>
@@ -1858,7 +466,6 @@
           </div>
         </div>
       </div>
-
       <div class="footer-bottom">
         <span>© 2026 ALPON STUDIO — ALL RIGHTS RESERVED</span>
         <span>BORN FROM <b>FRIENDSHIP</b>, BUILT ON STORIES.</span>
@@ -1866,7 +473,6 @@
     </div>
   </footer>
 
-  <!-- BEHOLD WIDGET SCRIPT -->
   <script>
     (() => {
       if(window.__bhldScript)return;window.__bhldScript=true;
@@ -1874,8 +480,6 @@
       s.src="https://w.behold.so/widget.js";setTimeout(()=>{d.head.append(s);},0);
     })();
   </script>
-
-  <!-- PAGE ENGINE SCRIPT -->
   <script>
     const IMAGE_LIBRARY = {
       hero: "https://images.unsplash.com/photo-1671117507838-103b9f1bb432?auto=format&fit=crop&w=2400&q=88",
@@ -1884,55 +488,25 @@
       storyCamera: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1400&q=86",
       workEvent: "https://images.unsplash.com/photo-1671117507838-103b9f1bb432?auto=format&fit=crop&w=1900&q=88",
       workWedding: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1500&q=88",
-      workCity: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1500&q=88",
-      directionEvent: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1800&q=88",
-      directionCamera: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1600&q=88",
-      directionStreet: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1600&q=88",
-      directionWedding: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=88"
+      workCity: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1500&q=88"
     };
-
     document.getElementById("heroMedia").style.backgroundImage =
       `linear-gradient(90deg,rgba(13,13,13,.96) 0%,rgba(13,13,13,.82) 48%,rgba(13,13,13,.35) 100%),
        linear-gradient(0deg,rgba(13,13,13,.9),transparent 55%),
        url("${IMAGE_LIBRARY.hero}")`;
-
     document.querySelectorAll("[data-image]").forEach((el) => {
       const key = el.dataset.image;
-      if (IMAGE_LIBRARY[key]) {
-        el.style.backgroundImage = `url("${IMAGE_LIBRARY[key]}")`;
-      }
+      if (IMAGE_LIBRARY[key]) el.style.backgroundImage = `url("${IMAGE_LIBRARY[key]}")`;
     });
-
     const nav = document.getElementById("nav");
-    window.addEventListener("scroll", () => {
-      nav.classList.toggle("scrolled", window.scrollY > 30);
-    }, { passive: true });
-
-    window.addEventListener("load", () => {
-      document.querySelector(".hero").classList.add("ready");
-    });
-
+    window.addEventListener("scroll", () => nav.classList.toggle("scrolled", window.scrollY > 30), { passive: true });
+    window.addEventListener("load", () => document.querySelector(".hero").classList.add("ready"));
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
+        if (entry.isIntersecting) { entry.target.classList.add("is-visible"); observer.unobserve(entry.target); }
       });
     }, { threshold: 0.08 });
-
     document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
-
-    document.querySelectorAll('a[href^="#"]').forEach((link) => {
-      link.addEventListener("click", (e) => {
-        const id = link.getAttribute("href");
-        if (id === "#") return;
-        const target = document.querySelector(id);
-        if (!target) return;
-        e.preventDefault();
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
   </script>
 </body>
 </html>
