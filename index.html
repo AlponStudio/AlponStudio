@@ -13,14 +13,16 @@
   <style>
     :root{
       --jet:#0D0D0D;
-      --smoke:#181818;
-      --smoke-light:#222222;
+      --smoke:#1A1A1A;
+      --smoke-light:#252525;
       --stone:#E8E8E6;
+      --stone-dark:#D5D5D2;
       --off:#FAFAF8;
       --red:#E63946;
       --indigo:#121E31;
-      --line:rgba(13,13,13,.15);
-      --white-line:rgba(250,250,248,.12);
+      --indigo-dark:#0C1524;
+      --line:rgba(13,13,13,.12);
+      --white-line:rgba(250,250,248,.14);
       --display:"Bebas Neue", sans-serif;
       --body:"Inter", sans-serif;
       --jp:"Noto Sans JP", sans-serif;
@@ -36,7 +38,7 @@
     .container{width:min(calc(100% - 64px),var(--max));margin-inline:auto}
 
     body::before{
-      content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.065;
+      content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.055;
       background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.65'/%3E%3C/svg%3E");
       mix-blend-mode:soft-light;
     }
@@ -50,17 +52,17 @@
 
     /* NAV */
     .nav{position:fixed;inset:0 0 auto 0;z-index:1000;padding:20px 0;transition:.4s var(--ease)}
-    .nav.scrolled{background:rgba(13,13,13,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--white-line);padding:14px 0}
+    .nav.scrolled{background:rgba(13,13,13,.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--white-line);padding:14px 0}
     .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:25px}
     .logo-img{height:36px;width:auto;object-fit:contain}
     .nav-links{display:flex;align-items:center;gap:32px;list-style:none;padding:0;margin:0}
     .nav-links a{position:relative;font-size:11px;text-transform:uppercase;letter-spacing:.18em;font-weight:600;transition:color .3s ease}
     .nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--red);transition:width .3s var(--ease)}
     .nav-links a:hover::after{width:100%}
-    .nav-cta{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:1px solid rgba(250,250,248,.35);font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;transition:.35s var(--ease)}
+    .nav-cta{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid rgba(250,250,248,.35);font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;transition:.35s var(--ease)}
     .nav-cta:hover{background:var(--red);border-color:var(--red);color:var(--off)}
 
-    /* HERO */
+    /* ---------------- SECTION: HERO (JET BLACK) ---------------- */
     .hero{min-height:100svh;position:relative;display:flex;align-items:stretch;overflow:hidden;background:var(--jet)}
     .hero-media{position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,13,13,.96) 0%,rgba(13,13,13,.82) 48%,rgba(13,13,13,.35) 100%),linear-gradient(0deg,rgba(13,13,13,.9),transparent 55%),center/cover no-repeat;transform:scale(1.05);transition:transform 7s var(--ease);filter:saturate(.75) contrast(1.1)}
     .hero.ready .hero-media{transform:scale(1.01)}
@@ -83,78 +85,79 @@
     .rec i{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red)}
     .hero-coordinates{display:flex;gap:18px;font-family:var(--display);font-size:26px}
 
-    /* ---------------- BRAND ABOUT & VISI MISI ---------------- */
-    .brand-about{background:var(--smoke);padding:130px 0;border-bottom:1px solid var(--white-line)}
+    /* ---------------- SECTION: BRAND ABOUT (WARM OFF-WHITE / EDITORIAL LIGHT) ---------------- */
+    .brand-about{background:var(--off);color:var(--jet);padding:130px 0;border-bottom:1px solid var(--line)}
     .about-top{display:grid;grid-template-columns:1.15fr .85fr;gap:70px;align-items:start;margin-bottom:75px}
-    .about-heading{margin:14px 0 0;font-size:clamp(65px,8.5vw,130px);line-height:.92}
+    .about-heading{margin:14px 0 0;font-size:clamp(65px,8.5vw,130px);line-height:.92;color:var(--jet)}
     .about-heading em{font-style:normal;color:var(--red)}
-    .about-narrative{color:#b0b0b0;font-size:14px;line-height:1.85}
+    .about-narrative{color:#444;font-size:14px;line-height:1.9}
     .about-narrative p{margin:0 0 16px}
-    .about-narrative strong{color:var(--off)}
+    .about-narrative strong{color:var(--jet);font-weight:700}
     .about-jp-quote{
-      margin-top:24px;padding:14px 18px;background:var(--smoke-light);
-      border-left:3px solid var(--red);display:flex;align-items:center;gap:12px;
+      margin-top:24px;padding:16px 20px;background:var(--stone);
+      border-left:3px solid var(--red);display:flex;align-items:center;gap:14px;
     }
     .about-jp-quote span{font-family:var(--jp);font-size:11px;color:var(--red);font-weight:700;letter-spacing:.12em}
-    .about-jp-quote p{margin:0;font-size:12px;color:#bbb;letter-spacing:.04em}
+    .about-jp-quote p{margin:0;font-size:13px;color:#333;font-weight:500;letter-spacing:.02em}
 
-    .visi-misi-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:22px}
+    .visi-misi-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:24px}
     .vm-card{
-      background:var(--jet);
-      border:1px solid var(--white-line);
-      padding:38px 34px;
+      background:#FFF;
+      border:1px solid var(--line);
+      padding:40px 36px;
       position:relative;
       overflow:hidden;
+      box-shadow:0 8px 30px rgba(0,0,0,.03);
     }
     .vm-card::before{
-      content:"";position:absolute;top:0;left:0;width:3px;height:100%;background:var(--red);
+      content:"";position:absolute;top:0;left:0;width:4px;height:100%;background:var(--red);
     }
     .vm-badge{
       display:inline-block;font-size:9px;font-weight:700;letter-spacing:.2em;
       text-transform:uppercase;color:var(--red);margin-bottom:14px;
     }
-    .vm-title{font-family:var(--display);font-size:38px;line-height:.9;margin:0 0 16px;letter-spacing:.02em}
-    .vm-desc{color:#a0a0a0;font-size:13px;line-height:1.8;margin:0}
+    .vm-title{font-family:var(--display);font-size:38px;line-height:.9;margin:0 0 16px;color:var(--jet);letter-spacing:.02em}
+    .vm-desc{color:#555;font-size:13px;line-height:1.85;margin:0}
 
     .misi-list{list-style:none;padding:0;margin:0}
     .misi-list li{
       display:flex;gap:16px;align-items:flex-start;
-      padding-bottom:16px;margin-bottom:16px;border-bottom:1px solid rgba(250,250,248,.08);
+      padding-bottom:16px;margin-bottom:16px;border-bottom:1px solid var(--line);
     }
     .misi-list li:last-child{padding-bottom:0;margin-bottom:0;border-bottom:0}
-    .misi-num{font-family:var(--display);font-size:22px;color:var(--red);line-height:1}
-    .misi-text{color:#b0b0b0;font-size:12px;line-height:1.75}
-    .misi-text strong{color:var(--off)}
+    .misi-num{font-family:var(--display);font-size:24px;color:var(--red);line-height:1}
+    .misi-text{color:#555;font-size:13px;line-height:1.75}
+    .misi-text strong{color:var(--jet);font-weight:700}
 
-    /* ---------------- SECTION 1: WORK (DOCUMENTATION & EVENTS) ---------------- */
-    .work{background:var(--jet);padding:130px 0;border-bottom:1px solid var(--white-line)}
+    /* ---------------- SECTION: DOCUMENTATION (DEEP INDIGO CONTRAST) ---------------- */
+    .work{background:var(--indigo);color:var(--off);padding:130px 0;border-bottom:1px solid var(--white-line)}
     .work-head{display:flex;justify-content:space-between;gap:40px;align-items:flex-end;margin-bottom:55px}
     .work-title{margin:14px 0 0;font-size:clamp(75px,10vw,150px);line-height:.88}
-    .work-note{max-width:340px;color:#9c9c9c;font-size:13px;line-height:1.75;margin:0}
-    .work-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
-    .work-stack{display:grid;gap:16px}
-    .frame{position:relative;overflow:hidden;background:var(--smoke);min-height:320px}
+    .work-note{max-width:340px;color:#a8b4c2;font-size:13px;line-height:1.75;margin:0}
+    .work-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+    .work-stack{display:grid;gap:18px}
+    .frame{position:relative;overflow:hidden;background:var(--indigo-dark);min-height:320px}
     .frame.large{min-height:700px}
     .frame.medium{min-height:342px}
     .frame .image{position:absolute;inset:0;background:center/cover no-repeat;transition:transform .85s var(--ease)}
     .frame:hover .image{transform:scale(1.05)}
-    .frame::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(13,13,13,.9),transparent 65%)}
+    .frame::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(12,21,36,.92),transparent 65%)}
     .project-copy{position:absolute;z-index:4;left:30px;right:30px;bottom:30px}
     .project-meta{display:flex;align-items:center;gap:10px;margin-bottom:12px;font-size:9px;text-transform:uppercase;letter-spacing:.16em;font-weight:700}
     .project-meta b{color:var(--red);font-family:var(--display);font-size:20px;line-height:1}
     .project-copy h3{margin:0;font-size:clamp(38px,4vw,60px);line-height:.92}
-    .project-copy p{margin:10px 0 0;color:#aaa;font-size:10px;text-transform:uppercase;letter-spacing:.14em}
+    .project-copy p{margin:10px 0 0;color:#c0cbd6;font-size:10px;text-transform:uppercase;letter-spacing:.14em}
 
-    /* ---------------- SECTION 2: CONTENT CREATOR (SIDE-SCROLLING SLIDER) ---------------- */
-    .creator-work{background:var(--smoke);padding:130px 0;border-bottom:1px solid var(--white-line)}
+    /* ---------------- SECTION: CONTENT CREATOR (SMOKE / JET 10-SLIDER) ---------------- */
+    .creator-work{background:var(--smoke);color:var(--off);padding:130px 0;border-bottom:1px solid var(--white-line)}
     .creator-head{display:flex;justify-content:space-between;gap:40px;align-items:flex-end;margin-bottom:45px}
     .creator-title{margin:14px 0 0;font-size:clamp(75px,10vw,150px);line-height:.88}
     .creator-header-right{display:flex;flex-direction:column;align-items:flex-end;gap:18px}
-    .creator-note{max-width:360px;color:#a8a8a8;font-size:13px;line-height:1.75;margin:0;text-align:right}
+    .creator-note{max-width:380px;color:#a8a8a8;font-size:13px;line-height:1.75;margin:0;text-align:right}
     
     .slider-arrows{display:flex;gap:10px}
     .slider-btn{
-      width:44px;height:44px;border:1px solid var(--white-line);background:var(--jet);
+      width:46px;height:46px;border:1px solid var(--white-line);background:var(--jet);
       color:var(--off);font-size:18px;display:grid;place-items:center;cursor:pointer;
       transition:.3s var(--ease);
     }
@@ -192,7 +195,7 @@
     }
     .creator-card .card-thumb{
       position:absolute;inset:0;background:center/cover no-repeat;
-      filter:grayscale(.35) contrast(1.08);
+      filter:grayscale(.25) contrast(1.08);
       transition:transform .8s var(--ease), filter .5s var(--ease);
     }
     .creator-card:hover .card-thumb{
@@ -232,7 +235,7 @@
       margin:0 0 8px;font-family:var(--display);font-size:32px;line-height:.92;letter-spacing:.02em;
     }
     .card-info-bottom p{
-      margin:0;font-size:11px;color:#aaa;line-height:1.5;
+      margin:0;font-size:11px;color:#bbb;line-height:1.5;
     }
 
     /* ---------------- VIDEO MODAL LIGHTBOX ---------------- */
@@ -242,7 +245,7 @@
     }
     .video-modal.active{display:flex;opacity:1}
     .modal-backdrop{
-      position:absolute;inset:0;background:rgba(13,13,13,.94);backdrop-filter:blur(18px);
+      position:absolute;inset:0;background:rgba(13,13,13,.95);backdrop-filter:blur(18px);
     }
     .modal-dialog{
       position:relative;z-index:2;width:min(90vw, 420px);background:#111;
@@ -271,65 +274,67 @@
       font-size:10px;font-weight:700;color:var(--red);letter-spacing:.15em;text-transform:uppercase;
     }
 
-    /* ---------------- PRICELIST PORTAL ---------------- */
-    .pricing-portal{background:var(--jet);padding:130px 0;border-bottom:1px solid var(--white-line);position:relative}
+    /* ---------------- SECTION: PRICELIST PORTAL (STONE GRAY CONTRAST) ---------------- */
+    .pricing-portal{background:var(--stone);color:var(--jet);padding:130px 0;border-bottom:1px solid var(--line);position:relative}
     .portal-head{text-align:center;max-width:760px;margin:0 auto 70px}
-    .portal-head .eyebrow{justify-content:center}
-    .portal-title{margin:16px 0 20px;font-size:clamp(75px,11vw,160px);line-height:.88}
-    .portal-tagline{display:inline-block;padding:6px 14px;background:var(--smoke-light);border:1px solid var(--white-line);font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--red);margin-bottom:16px}
-    .portal-intro{color:#9e9e9c;font-size:14px;line-height:1.8;margin:0}
+    .portal-head .eyebrow{justify-content:center;color:var(--jet)}
+    .portal-head .eyebrow::before{background:var(--red)}
+    .portal-title{margin:16px 0 20px;font-size:clamp(75px,11vw,160px);line-height:.88;color:var(--jet)}
+    .portal-tagline{display:inline-block;padding:6px 14px;background:#FFF;border:1px solid var(--line);font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--red);margin-bottom:16px}
+    .portal-intro{color:#555;font-size:14px;line-height:1.8;margin:0}
 
-    .category-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+    .category-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
     .category-card{
-      background:var(--smoke);
-      border:1px solid var(--white-line);
+      background:#FFF;
+      border:1px solid var(--line);
       padding:44px 38px;
       display:flex;
       flex-direction:column;
       justify-content:space-between;
       position:relative;
       min-height:320px;
-      transition:transform .4s var(--ease), border-color .4s var(--ease), background .4s var(--ease);
+      transition:transform .4s var(--ease), border-color .4s var(--ease), box-shadow .4s var(--ease);
       overflow:hidden;
+      box-shadow:0 8px 24px rgba(0,0,0,.04);
     }
     .category-card::before{
       content:"";position:absolute;top:0;left:0;width:4px;height:0;background:var(--red);transition:height .4s var(--ease);
     }
     .category-card:hover{
       transform:translateY(-8px);
-      border-color:rgba(230,57,70,.7);
-      background:#1a1a1a;
+      border-color:var(--red);
+      box-shadow:0 16px 36px rgba(230,57,70,.12);
     }
     .category-card:hover::before{height:100%}
     .cat-num{font-family:var(--display);font-size:42px;color:var(--red);line-height:1;margin-bottom:16px}
-    .cat-title{font-family:var(--display);font-size:clamp(38px,4vw,56px);line-height:.92;margin:0 0 10px;letter-spacing:.02em}
+    .cat-title{font-family:var(--display);font-size:clamp(38px,4vw,56px);line-height:.92;margin:0 0 10px;color:var(--jet);letter-spacing:.02em}
     .cat-jp{font-family:var(--jp);font-size:12px;color:#777;letter-spacing:.14em;margin-bottom:18px;display:block}
-    .cat-desc{color:#a5a5a5;font-size:13px;line-height:1.75;margin:0 0 28px;max-width:460px}
-    .cat-footer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--white-line);padding-top:20px;margin-top:auto}
-    .cat-rate{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#ddd}
+    .cat-desc{color:#666;font-size:13px;line-height:1.75;margin:0 0 28px;max-width:460px}
+    .cat-footer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:20px;margin-top:auto}
+    .cat-rate{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#333}
     .cat-rate b{color:var(--red)}
     .cat-btn{
-      display:inline-flex;align-items:center;gap:8px;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--off);transition:gap .3s var(--ease), color .3s var(--ease);
+      display:inline-flex;align-items:center;gap:8px;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--jet);transition:gap .3s var(--ease), color .3s var(--ease);
     }
     .category-card:hover .cat-btn{color:var(--red);gap:14px}
 
-    /* ---------------- INSTAGRAM ---------------- */
-    .instagram-section{background:var(--smoke);padding:130px 0;border-bottom:1px solid var(--white-line)}
+    /* ---------------- SECTION: INSTAGRAM (JET BLACK) ---------------- */
+    .instagram-section{background:var(--jet);color:var(--off);padding:130px 0;border-bottom:1px solid var(--white-line)}
     .ig-header{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:50px}
     .ig-title{margin:16px 0 0;font-size:clamp(65px,9vw,135px);line-height:.9}
     .ig-handle-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border:1px solid rgba(250,250,248,.3);font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;transition:.35s var(--ease)}
     .ig-handle-btn:hover{background:var(--red);border-color:var(--red)}
 
-    /* ---------------- CTA ---------------- */
+    /* ---------------- SECTION: CTA (JAPANESE RED) ---------------- */
     .cta{background:var(--red);color:var(--off);padding:140px 0;text-align:center}
     .cta .eyebrow{justify-content:center;color:var(--jet)}
     .cta .eyebrow::before{background:var(--jet)}
     .cta-title{margin:24px 0 20px;font-size:clamp(85px,14vw,200px);line-height:.88}
-    .cta-copy{max-width:540px;margin:24px auto 38px;font-size:14px;line-height:1.85;color:rgba(250,250,248,.88)}
+    .cta-copy{max-width:540px;margin:24px auto 38px;font-size:14px;line-height:1.85;color:rgba(250,250,248,.92)}
     .cta-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;background:var(--jet);color:var(--off);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;transition:.35s var(--ease)}
     .cta-btn:hover{background:var(--off);color:var(--jet)}
 
-    /* ---------------- FOOTER ---------------- */
+    /* ---------------- FOOTER (JET BLACK) ---------------- */
     footer{background:var(--jet);padding:60px 0 35px;border-top:1px solid rgba(250,250,248,.1)}
     .footer-top{display:flex;justify-content:space-between;gap:60px;padding-bottom:50px;border-bottom:1px solid rgba(250,250,248,.1)}
     .footer-logo{height:44px}
@@ -386,7 +391,7 @@
   </header>
 
   <main>
-    <!-- HERO -->
+    <!-- 1. HERO (JET BLACK) -->
     <section class="hero" id="home">
       <div class="hero-media" id="heroMedia"></div>
       <div class="container hero-grid">
@@ -410,7 +415,7 @@
       </div>
     </section>
 
-    <!-- BRAND ABOUT & VISI MISI -->
+    <!-- 2. BRAND ABOUT & VISI MISI (EDITORIAL OFF-WHITE LIGHT) -->
     <section class="brand-about" id="about">
       <div class="container">
         <div class="about-top reveal">
@@ -471,7 +476,7 @@
       </div>
     </section>
 
-    <!-- SECTION 1: WORK (DOCUMENTATION) -->
+    <!-- 3. WORK DOCUMENTATION (DEEP INDIGO) -->
     <section class="work" id="work">
       <div class="container">
         <div class="work-head reveal">
@@ -512,7 +517,7 @@
       </div>
     </section>
 
-    <!-- SECTION 2: CONTENT CREATOR (HORIZONTAL SIDE-SCROLLING 5 VIDEOS) -->
+    <!-- 4. CONTENT CREATOR (SMOKE & JET 10-SLIDER) -->
     <section class="creator-work" id="creator">
       <div class="container">
         <div class="creator-head reveal">
@@ -521,7 +526,7 @@
             <h2 class="creator-title display">CONTENT CREATOR</h2>
           </div>
           <div class="creator-header-right">
-            <p class="creator-note">Geser ke samping &amp; klik kartu video untuk memutar preview output konten vertikal 9:16.</p>
+            <p class="creator-note">Geser ke samping &amp; klik kartu video untuk memutar 10 preview output konten vertikal 9:16.</p>
             <div class="slider-arrows">
               <button class="slider-btn" id="slideLeft" aria-label="Slide Left">←</button>
               <button class="slider-btn" id="slideRight" aria-label="Slide Right">→</button>
@@ -535,8 +540,8 @@
             <!-- Video 1 -->
             <div class="creator-card" 
                  data-video="https://assets.mixkit.co/videos/preview/mixkit-fashion-model-in-neon-light-41484-large.mp4" 
-                 data-title="BRAND CAMPAIGN REEL" 
-                 data-tag="REELS 9:16">
+                 data-title="NEON PULSE" 
+                 data-tag="01 / BRAND CAMPAIGN">
               <div class="card-thumb" style="background-image:url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80');"></div>
               <div class="overlay"></div>
               <div class="card-badge-top">
@@ -553,8 +558,8 @@
             <!-- Video 2 -->
             <div class="creator-card" 
                  data-video="https://assets.mixkit.co/videos/preview/mixkit-hands-holding-smartphones-at-a-concert-43306-large.mp4" 
-                 data-title="LIVE EVENT RECAP" 
-                 data-tag="FAST PACING">
+                 data-title="CROWD ENERGY" 
+                 data-tag="02 / EVENT RECAP">
               <div class="card-thumb" style="background-image:url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80');"></div>
               <div class="overlay"></div>
               <div class="card-badge-top">
@@ -571,8 +576,8 @@
             <!-- Video 3 -->
             <div class="creator-card" 
                  data-video="https://assets.mixkit.co/videos/preview/mixkit-pouring-milk-in-a-glass-of-coffee-41662-large.mp4" 
-                 data-title="COMMERCIAL PRODUCT" 
-                 data-tag="MONTHLY RETAINER">
+                 data-title="ARTISAN BREW" 
+                 data-tag="03 / PRODUCT F&amp;B">
               <div class="card-thumb" style="background-image:url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=800&q=80');"></div>
               <div class="overlay"></div>
               <div class="card-badge-top">
@@ -589,8 +594,8 @@
             <!-- Video 4 -->
             <div class="creator-card" 
                  data-video="https://assets.mixkit.co/videos/preview/mixkit-skater-performing-tricks-on-a-ramp-43285-large.mp4" 
-                 data-title="STREET & CULTURE" 
-                 data-tag="ACTION 9:16">
+                 data-title="URBAN FLOW" 
+                 data-tag="04 / STREET &amp; CULTURE">
               <div class="card-thumb" style="background-image:url('https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=800&q=80');"></div>
               <div class="overlay"></div>
               <div class="card-badge-top">
@@ -607,8 +612,8 @@
             <!-- Video 5 -->
             <div class="creator-card" 
                  data-video="https://assets.mixkit.co/videos/preview/mixkit-woman-recording-a-vlog-with-her-phone-41481-large.mp4" 
-                 data-title="TALENT & INTERVIEW" 
-                 data-tag="HOLLYLAND AUDIO">
+                 data-title="TALENT TALK" 
+                 data-tag="05 / TALENT &amp; VLOG">
               <div class="card-thumb" style="background-image:url('https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80');"></div>
               <div class="overlay"></div>
               <div class="card-badge-top">
@@ -619,6 +624,96 @@
                 <span class="cat-sub">Storyboard Plan</span>
                 <h3>TALENT TALK</h3>
                 <p>Clean vocal recording &amp; engaging captions.</p>
+              </div>
+            </div>
+
+            <!-- Video 6 -->
+            <div class="creator-card" 
+                 data-video="https://assets.mixkit.co/videos/preview/mixkit-animation-of-futuristic-devices-99786-large.mp4" 
+                 data-title="DIGITAL RECAP" 
+                 data-tag="06 / MOTION TEASER">
+              <div class="card-thumb" style="background-image:url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80');"></div>
+              <div class="overlay"></div>
+              <div class="card-badge-top">
+                <span class="pill-tag">06 / MOTION</span>
+                <div class="play-btn-circle">▶</div>
+              </div>
+              <div class="card-info-bottom">
+                <span class="cat-sub">Visual FX</span>
+                <h3>DIGITAL RECAP</h3>
+                <p>3D animation elements &amp; tech product hype.</p>
+              </div>
+            </div>
+
+            <!-- Video 7 -->
+            <div class="creator-card" 
+                 data-video="https://assets.mixkit.co/videos/preview/mixkit-serving-a-gourmet-dish-in-a-restaurant-41666-large.mp4" 
+                 data-title="SAVORY BITES" 
+                 data-tag="07 / CULINARY REEL">
+              <div class="card-thumb" style="background-image:url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80');"></div>
+              <div class="overlay"></div>
+              <div class="card-badge-top">
+                <span class="pill-tag">07 / FOOD</span>
+                <div class="play-btn-circle">▶</div>
+              </div>
+              <div class="card-info-bottom">
+                <span class="cat-sub">Sensory Appetite</span>
+                <h3>SAVORY BITES</h3>
+                <p>Restaurant ambient &amp; mouth-watering macro food shots.</p>
+              </div>
+            </div>
+
+            <!-- Video 8 -->
+            <div class="creator-card" 
+                 data-video="https://assets.mixkit.co/videos/preview/mixkit-cameraman-filming-with-a-professional-camera-43292-large.mp4" 
+                 data-title="BEHIND THE FRAME" 
+                 data-tag="08 / BTS REEL">
+              <div class="card-thumb" style="background-image:url('https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&w=800&q=80');"></div>
+              <div class="overlay"></div>
+              <div class="card-badge-top">
+                <span class="pill-tag">08 / BTS</span>
+                <div class="play-btn-circle">▶</div>
+              </div>
+              <div class="card-info-bottom">
+                <span class="cat-sub">Production Diary</span>
+                <h3>BEHIND THE FRAME</h3>
+                <p>Director workflow &amp; cinematic equipment setup.</p>
+              </div>
+            </div>
+
+            <!-- Video 9 -->
+            <div class="creator-card" 
+                 data-video="https://assets.mixkit.co/videos/preview/mixkit-sports-car-drifting-at-night-43301-large.mp4" 
+                 data-title="NIGHT CRUISE" 
+                 data-tag="09 / AUTOMOTIVE">
+              <div class="card-thumb" style="background-image:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80');"></div>
+              <div class="overlay"></div>
+              <div class="card-badge-top">
+                <span class="pill-tag">09 / SPEED</span>
+                <div class="play-btn-circle">▶</div>
+              </div>
+              <div class="card-info-bottom">
+                <span class="cat-sub">High Adrenaline</span>
+                <h3>NIGHT CRUISE</h3>
+                <p>Automotive rolling shots &amp; engine audio mix.</p>
+              </div>
+            </div>
+
+            <!-- Video 10 -->
+            <div class="creator-card" 
+                 data-video="https://assets.mixkit.co/videos/preview/mixkit-boxer-training-in-the-gym-41480-large.mp4" 
+                 data-title="RAW POWER" 
+                 data-tag="10 / FITNESS &amp; SPORT">
+              <div class="card-thumb" style="background-image:url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80');"></div>
+              <div class="overlay"></div>
+              <div class="card-badge-top">
+                <span class="pill-tag">10 / SPORT</span>
+                <div class="play-btn-circle">▶</div>
+              </div>
+              <div class="card-info-bottom">
+                <span class="cat-sub">High Intensity</span>
+                <h3>RAW POWER</h3>
+                <p>Workout rhythm &amp; motivational commercial cut.</p>
               </div>
             </div>
 
@@ -642,7 +737,7 @@
       </div>
     </div>
 
-    <!-- SECTION 3: PRICELIST CATEGORY PORTAL -->
+    <!-- 5. PRICELIST CATEGORY PORTAL (WARM STONE GRAY) -->
     <section class="pricing-portal" id="pricing">
       <div class="container">
         <div class="portal-head reveal">
@@ -712,7 +807,7 @@
       </div>
     </section>
 
-    <!-- SECTION 4: INSTAGRAM LIVE FEED -->
+    <!-- 6. INSTAGRAM LIVE FEED (JET BLACK) -->
     <section class="instagram-section" id="instagram">
       <div class="container">
         <div class="ig-header reveal">
@@ -728,7 +823,7 @@
       </div>
     </section>
 
-    <!-- SECTION 5: CTA -->
+    <!-- 7. CTA (JAPANESE RED) -->
     <section class="cta" id="contact">
       <div class="container reveal">
         <div class="eyebrow">Let's Create Your Story</div>
