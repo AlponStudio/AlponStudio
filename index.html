@@ -3,959 +3,160 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ALPON STUDIO — We Capture What Matters.</title>
-  <meta name="description" content="ALPON STUDIO — visual documentation, photography, motion and content creator.">
-
+  <title>EVENT PRICELIST — ALPON STUDIO</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
-
   <style>
-    :root{
-      --jet:#0D0D0D;
-      --smoke:#1A1A1A;
-      --smoke-light:#252525;
-      --stone:#E8E8E6;
-      --stone-dark:#D5D5D2;
-      --off:#FAFAF8;
-      --red:#E63946;
-      --indigo:#121E31;
-      --indigo-dark:#0C1524;
-      --line:rgba(13,13,13,.12);
-      --white-line:rgba(250,250,248,.14);
-      --display:"Bebas Neue", sans-serif;
-      --body:"Inter", sans-serif;
-      --jp:"Noto Sans JP", sans-serif;
-      --max:1440px;
-      --ease:cubic-bezier(.22,1,.36,1);
-    }
+    :root{--jet:#0D0D0D;--smoke:#181818;--smoke-light:#222;--off:#FAFAF8;--red:#E63946;--white-line:rgba(250,250,248,.12);--display:"Bebas Neue", sans-serif;--body:"Inter", sans-serif;--jp:"Noto Sans JP", sans-serif;--max:1440px;--ease:cubic-bezier(.22,1,.36,1)}
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;background:var(--jet);color:var(--off);font-family:var(--body);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    body{margin:0;background:var(--jet);color:var(--off);font-family:var(--body);overflow-x:hidden}
     a{color:inherit;text-decoration:none}
-    img{display:block}
-    ::selection{background:var(--red);color:var(--off)}
     .container{width:min(calc(100% - 64px),var(--max));margin-inline:auto}
-
-    body::before{
-      content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.055;
-      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.65'/%3E%3C/svg%3E");
-      mix-blend-mode:soft-light;
-    }
-
-    .eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;margin-bottom:14px}
-    .eyebrow::before{content:"";width:24px;height:2px;background:var(--red)}
-    .eyebrow.red-dot::before{width:8px;height:8px;border-radius:50%}
-    .jp{font-family:var(--jp)}
-    .red{color:var(--red)}
     .display{font-family:var(--display);text-transform:uppercase;letter-spacing:.02em}
 
-    /* NAV */
-    .nav{position:fixed;inset:0 0 auto 0;z-index:1000;padding:20px 0;transition:.4s var(--ease)}
-    .nav.scrolled{background:rgba(13,13,13,.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--white-line);padding:14px 0}
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:25px}
-    .logo-img{height:36px;width:auto;object-fit:contain}
-    .nav-links{display:flex;align-items:center;gap:32px;list-style:none;padding:0;margin:0}
-    .nav-links a{position:relative;font-size:11px;text-transform:uppercase;letter-spacing:.18em;font-weight:600;transition:color .3s ease}
-    .nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--red);transition:width .3s var(--ease)}
-    .nav-links a:hover::after{width:100%}
-    .nav-cta{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid rgba(250,250,248,.35);font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;transition:.35s var(--ease)}
-    .nav-cta:hover{background:var(--red);border-color:var(--red);color:var(--off)}
+    .nav{position:sticky;top:0;z-index:100;background:rgba(13,13,13,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--white-line);padding:16px 0}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between}
+    .logo-img{height:34px;width:auto}
+    .back-btn{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--red)}
 
-    /* ---------------- SECTION: HERO (JET BLACK) ---------------- */
-    .hero{min-height:100svh;position:relative;display:flex;align-items:stretch;overflow:hidden;background:var(--jet)}
-    .hero-media{position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,13,13,.96) 0%,rgba(13,13,13,.82) 48%,rgba(13,13,13,.35) 100%),linear-gradient(0deg,rgba(13,13,13,.9),transparent 55%),center/cover no-repeat;transform:scale(1.05);transition:transform 7s var(--ease);filter:saturate(.75) contrast(1.1)}
-    .hero.ready .hero-media{transform:scale(1.01)}
-    .hero-grid{position:relative;z-index:2;width:100%;display:grid;grid-template-columns:1.3fr .7fr;min-height:100svh;align-items:end;padding:150px 0 65px}
-    .hero-kicker{display:flex;align-items:center;gap:10px;margin-bottom:28px;color:var(--red);font-size:12px;letter-spacing:.18em;font-weight:700}
-    .hero-kicker::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 14px var(--red)}
-    .hero-title{margin:0;font-family:var(--display);font-size:clamp(90px,16vw,240px);line-height:.88;text-transform:uppercase}
-    .hero-title span{display:block}
-    .hero-title .studio{color:transparent;-webkit-text-stroke:1.5px rgba(250,250,248,.75)}
-    .hero-sub{display:flex;align-items:center;gap:16px;margin-top:36px;font-size:15px;letter-spacing:.16em;font-weight:600;color:#d2d2d0}
-    .hero-sub::before{content:"";width:40px;height:2px;background:var(--red)}
-    .hero-actions{display:flex;gap:14px;margin-top:36px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border:1px solid rgba(250,250,248,.35);text-transform:uppercase;letter-spacing:.16em;font-size:10px;font-weight:700;transition:.35s var(--ease)}
-    .btn-primary{background:var(--red);border-color:var(--red);color:var(--off)}
-    .btn-primary:hover{background:transparent;color:var(--red)}
-    .btn-secondary:hover{background:var(--off);color:var(--jet)}
-    .hero-side{display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-end;padding-bottom:15px}
-    .vertical-note{writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--jp);font-size:11px;letter-spacing:.22em;color:rgba(250,250,248,.5);margin-bottom:45px}
-    .rec{display:flex;align-items:center;gap:8px;margin-bottom:20px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:700}
-    .rec i{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red)}
-    .hero-coordinates{display:flex;gap:18px;font-family:var(--display);font-size:26px}
+    .page-header{padding:90px 0 50px;border-bottom:1px solid var(--white-line)}
+    .badge{display:inline-block;padding:5px 12px;background:var(--red);color:var(--off);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:16px}
+    .page-title{font-size:clamp(65px,10vw,140px);margin:0 0 10px;line-height:.88}
+    .page-desc{color:#a5a5a5;font-size:14px;max-width:550px;line-height:1.8;margin:0}
 
-    /* ---------------- SECTION: BRAND ABOUT (WARM OFF-WHITE / EDITORIAL LIGHT) ---------------- */
-    .brand-about{background:var(--off);color:var(--jet);padding:130px 0;border-bottom:1px solid var(--line)}
-    .about-top{display:grid;grid-template-columns:1.15fr .85fr;gap:70px;align-items:start;margin-bottom:75px}
-    .about-heading{margin:14px 0 0;font-size:clamp(65px,8.5vw,130px);line-height:.92;color:var(--jet)}
-    .about-heading em{font-style:normal;color:var(--red)}
-    .about-narrative{color:#444;font-size:14px;line-height:1.9}
-    .about-narrative p{margin:0 0 16px}
-    .about-narrative strong{color:var(--jet);font-weight:700}
-    .about-jp-quote{
-      margin-top:24px;padding:16px 20px;background:var(--stone);
-      border-left:3px solid var(--red);display:flex;align-items:center;gap:14px;
-    }
-    .about-jp-quote span{font-family:var(--jp);font-size:11px;color:var(--red);font-weight:700;letter-spacing:.12em}
-    .about-jp-quote p{margin:0;font-size:13px;color:#333;font-weight:500;letter-spacing:.02em}
-
-    .visi-misi-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:24px}
-    .vm-card{
-      background:#FFF;
-      border:1px solid var(--line);
-      padding:40px 36px;
-      position:relative;
-      overflow:hidden;
-      box-shadow:0 8px 30px rgba(0,0,0,.03);
-    }
-    .vm-card::before{
-      content:"";position:absolute;top:0;left:0;width:4px;height:100%;background:var(--red);
-    }
-    .vm-badge{
-      display:inline-block;font-size:9px;font-weight:700;letter-spacing:.2em;
-      text-transform:uppercase;color:var(--red);margin-bottom:14px;
-    }
-    .vm-title{font-family:var(--display);font-size:38px;line-height:.9;margin:0 0 16px;color:var(--jet);letter-spacing:.02em}
-    .vm-desc{color:#555;font-size:13px;line-height:1.85;margin:0}
-
-    .misi-list{list-style:none;padding:0;margin:0}
-    .misi-list li{
-      display:flex;gap:16px;align-items:flex-start;
-      padding-bottom:16px;margin-bottom:16px;border-bottom:1px solid var(--line);
-    }
-    .misi-list li:last-child{padding-bottom:0;margin-bottom:0;border-bottom:0}
-    .misi-num{font-family:var(--display);font-size:24px;color:var(--red);line-height:1}
-    .misi-text{color:#555;font-size:13px;line-height:1.75}
-    .misi-text strong{color:var(--jet);font-weight:700}
-
-    /* ---------------- SECTION: DOCUMENTATION (DEEP INDIGO CONTRAST) ---------------- */
-    .work{background:var(--indigo);color:var(--off);padding:130px 0;border-bottom:1px solid var(--white-line)}
-    .work-head{display:flex;justify-content:space-between;gap:40px;align-items:flex-end;margin-bottom:55px}
-    .work-title{margin:14px 0 0;font-size:clamp(75px,10vw,150px);line-height:.88}
-    .work-note{max-width:340px;color:#a8b4c2;font-size:13px;line-height:1.75;margin:0}
-    .work-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
-    .work-stack{display:grid;gap:18px}
-    .frame{position:relative;overflow:hidden;background:var(--indigo-dark);min-height:320px}
-    .frame.large{min-height:700px}
-    .frame.medium{min-height:342px}
-    .frame .image{position:absolute;inset:0;background:center/cover no-repeat;transition:transform .85s var(--ease)}
-    .frame:hover .image{transform:scale(1.05)}
-    .frame::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(12,21,36,.92),transparent 65%)}
-    .project-copy{position:absolute;z-index:4;left:30px;right:30px;bottom:30px}
-    .project-meta{display:flex;align-items:center;gap:10px;margin-bottom:12px;font-size:9px;text-transform:uppercase;letter-spacing:.16em;font-weight:700}
-    .project-meta b{color:var(--red);font-family:var(--display);font-size:20px;line-height:1}
-    .project-copy h3{margin:0;font-size:clamp(38px,4vw,60px);line-height:.92}
-    .project-copy p{margin:10px 0 0;color:#c0cbd6;font-size:10px;text-transform:uppercase;letter-spacing:.14em}
-
-    /* ---------------- SECTION: CONTENT CREATOR (SMOKE / JET 10-SLIDER) ---------------- */
-    .creator-work{background:var(--smoke);color:var(--off);padding:130px 0;border-bottom:1px solid var(--white-line)}
-    .creator-head{display:flex;justify-content:space-between;gap:40px;align-items:flex-end;margin-bottom:45px}
-    .creator-title{margin:14px 0 0;font-size:clamp(75px,10vw,150px);line-height:.88}
-    .creator-header-right{display:flex;flex-direction:column;align-items:flex-end;gap:18px}
-    .creator-note{max-width:380px;color:#a8a8a8;font-size:13px;line-height:1.75;margin:0;text-align:right}
+    .pricing-content{padding:60px 0 120px}
+    .pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:20px}
     
-    .slider-arrows{display:flex;gap:10px}
-    .slider-btn{
-      width:46px;height:46px;border:1px solid var(--white-line);background:var(--jet);
-      color:var(--off);font-size:18px;display:grid;place-items:center;cursor:pointer;
-      transition:.3s var(--ease);
-    }
-    .slider-btn:hover{background:var(--red);border-color:var(--red)}
+    .price-card{background:var(--smoke);border:1px solid var(--white-line);padding:30px 22px;display:flex;flex-direction:column;justify-content:space-between;position:relative;transition:.35s var(--ease)}
+    .price-card:hover{transform:translateY(-6px);border-color:var(--red)}
+    .price-card.featured{background:linear-gradient(180deg,#241a1c 0%,var(--smoke) 100%);border-color:var(--red)}
+    .card-tag{position:absolute;top:-12px;right:18px;background:var(--red);padding:4px 10px;font-size:8px;font-weight:700;letter-spacing:.15em;text-transform:uppercase}
+    .pkg-name{font-family:var(--display);font-size:36px;margin:0 0 4px;line-height:.9}
+    .pkg-dur{font-size:10px;font-weight:700;letter-spacing:.16em;color:var(--red);text-transform:uppercase;margin-bottom:14px;display:inline-block}
+    .pkg-price{font-family:var(--display);font-size:42px;margin:10px 0 18px;line-height:.9}
+    .pkg-price small{font-family:var(--body);font-size:11px;color:#888}
+    .features{list-style:none;padding:0;margin:0 0 24px;border-top:1px solid rgba(250,250,248,.08);padding-top:16px}
+    .features li{font-size:11px;color:#ccc;margin-bottom:10px;display:flex;gap:8px;line-height:1.5}
+    .features li::before{content:"✓";color:var(--red);font-weight:700}
+    .btn-wa{display:flex;align-items:center;justify-content:center;width:100%;padding:12px;background:transparent;border:1px solid rgba(250,250,248,.3);color:var(--off);font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;transition:.3s var(--ease)}
+    .price-card:hover .btn-wa, .price-card.featured .btn-wa{background:var(--red);border-color:var(--red)}
 
-    .creator-slider-wrapper{position:relative;width:100%}
-    .creator-slider{
-      display:flex;
-      gap:20px;
-      overflow-x:auto;
-      scroll-snap-type:x mandatory;
-      scroll-behavior:smooth;
-      padding:10px 0 25px;
-      scrollbar-width:thin;
-      scrollbar-color:var(--red) var(--smoke-light);
-    }
-    .creator-slider::-webkit-scrollbar{height:4px}
-    .creator-slider::-webkit-scrollbar-track{background:var(--smoke-light)}
-    .creator-slider::-webkit-scrollbar-thumb{background:var(--red)}
+    .addon-strip{background:var(--smoke);border:1px solid var(--white-line);padding:20px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:30px}
+    .addon-title{font-size:10px;font-weight:700;letter-spacing:.16em;color:var(--red);text-transform:uppercase;margin-right:10px}
+    .addon-pill{background:var(--smoke-light);padding:6px 14px;font-size:11px;color:#bbb}
+    .addon-pill b{color:var(--off)}
 
-    .creator-card{
-      flex:0 0 300px;
-      height:520px;
-      scroll-snap-align:start;
-      position:relative;
-      overflow:hidden;
-      background:#111;
-      border:1px solid var(--white-line);
-      cursor:pointer;
-      transition:transform .4s var(--ease), border-color .4s var(--ease);
-    }
-    .creator-card:hover{
-      transform:translateY(-8px);
-      border-color:var(--red);
-    }
-    .creator-card .card-thumb{
-      position:absolute;inset:0;background:center/cover no-repeat;
-      filter:grayscale(.25) contrast(1.08);
-      transition:transform .8s var(--ease), filter .5s var(--ease);
-    }
-    .creator-card:hover .card-thumb{
-      transform:scale(1.06);
-      filter:grayscale(0) contrast(1.12);
-    }
-    .creator-card .overlay{
-      position:absolute;inset:0;
-      background:linear-gradient(180deg, rgba(13,13,13,.75) 0%, rgba(13,13,13,.15) 45%, rgba(13,13,13,.95) 100%);
-      z-index:2;
-    }
-    .card-badge-top{
-      position:absolute;top:20px;left:20px;right:20px;z-index:3;
-      display:flex;justify-content:space-between;align-items:center;
-    }
-    .pill-tag{
-      background:var(--red);color:var(--off);padding:5px 10px;
-      font-size:8px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
-    }
-    .play-btn-circle{
-      width:40px;height:40px;border-radius:50%;background:rgba(13,13,13,.75);
-      border:1px solid rgba(250,250,248,.35);backdrop-filter:blur(6px);
-      display:grid;place-items:center;font-size:12px;color:var(--off);
-      transition:.3s var(--ease);
-    }
-    .creator-card:hover .play-btn-circle{
-      background:var(--red);border-color:var(--red);transform:scale(1.12);
-    }
-    .card-info-bottom{
-      position:absolute;bottom:22px;left:22px;right:22px;z-index:3;
-    }
-    .card-info-bottom .cat-sub{
-      font-size:9px;font-weight:700;letter-spacing:.16em;color:var(--red);
-      text-transform:uppercase;margin-bottom:6px;display:block;
-    }
-    .card-info-bottom h3{
-      margin:0 0 8px;font-family:var(--display);font-size:32px;line-height:.92;letter-spacing:.02em;
-    }
-    .card-info-bottom p{
-      margin:0;font-size:11px;color:#bbb;line-height:1.5;
-    }
-
-    /* ---------------- VIDEO MODAL LIGHTBOX ---------------- */
-    .video-modal{
-      position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;
-      opacity:0;transition:opacity .35s var(--ease);
-    }
-    .video-modal.active{display:flex;opacity:1}
-    .modal-backdrop{
-      position:absolute;inset:0;background:rgba(13,13,13,.95);backdrop-filter:blur(18px);
-    }
-    .modal-dialog{
-      position:relative;z-index:2;width:min(90vw, 420px);background:#111;
-      border:1px solid var(--white-line);padding:18px;display:flex;flex-direction:column;
-      box-shadow:0 20px 60px rgba(0,0,0,.85);
-    }
-    .modal-close{
-      position:absolute;top:-45px;right:0;background:transparent;border:0;
-      color:var(--off);font-size:24px;cursor:pointer;transition:.3s var(--ease);
-    }
-    .modal-close:hover{color:var(--red);transform:rotate(90deg)}
-    .modal-video-container{
-      width:100%;aspect-ratio:9/16;background:#000;position:relative;overflow:hidden;
-    }
-    .modal-video-container video{
-      width:100%;height:100%;object-fit:cover;
-    }
-    .modal-desc{
-      margin-top:14px;padding-top:10px;border-top:1px solid var(--white-line);
-      display:flex;justify-content:space-between;align-items:center;
-    }
-    .modal-desc h4{
-      margin:0;font-family:var(--display);font-size:24px;letter-spacing:.03em;
-    }
-    .modal-desc span{
-      font-size:10px;font-weight:700;color:var(--red);letter-spacing:.15em;text-transform:uppercase;
-    }
-
-    /* ---------------- SECTION: PRICELIST PORTAL (STONE GRAY CONTRAST) ---------------- */
-    .pricing-portal{background:var(--stone);color:var(--jet);padding:130px 0;border-bottom:1px solid var(--line);position:relative}
-    .portal-head{text-align:center;max-width:760px;margin:0 auto 70px}
-    .portal-head .eyebrow{justify-content:center;color:var(--jet)}
-    .portal-head .eyebrow::before{background:var(--red)}
-    .portal-title{margin:16px 0 20px;font-size:clamp(75px,11vw,160px);line-height:.88;color:var(--jet)}
-    .portal-tagline{display:inline-block;padding:6px 14px;background:#FFF;border:1px solid var(--line);font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--red);margin-bottom:16px}
-    .portal-intro{color:#555;font-size:14px;line-height:1.8;margin:0}
-
-    .category-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
-    .category-card{
-      background:#FFF;
-      border:1px solid var(--line);
-      padding:44px 38px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      position:relative;
-      min-height:320px;
-      transition:transform .4s var(--ease), border-color .4s var(--ease), box-shadow .4s var(--ease);
-      overflow:hidden;
-      box-shadow:0 8px 24px rgba(0,0,0,.04);
-    }
-    .category-card::before{
-      content:"";position:absolute;top:0;left:0;width:4px;height:0;background:var(--red);transition:height .4s var(--ease);
-    }
-    .category-card:hover{
-      transform:translateY(-8px);
-      border-color:var(--red);
-      box-shadow:0 16px 36px rgba(230,57,70,.12);
-    }
-    .category-card:hover::before{height:100%}
-    .cat-num{font-family:var(--display);font-size:42px;color:var(--red);line-height:1;margin-bottom:16px}
-    .cat-title{font-family:var(--display);font-size:clamp(38px,4vw,56px);line-height:.92;margin:0 0 10px;color:var(--jet);letter-spacing:.02em}
-    .cat-jp{font-family:var(--jp);font-size:12px;color:#777;letter-spacing:.14em;margin-bottom:18px;display:block}
-    .cat-desc{color:#666;font-size:13px;line-height:1.75;margin:0 0 28px;max-width:460px}
-    .cat-footer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:20px;margin-top:auto}
-    .cat-rate{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#333}
-    .cat-rate b{color:var(--red)}
-    .cat-btn{
-      display:inline-flex;align-items:center;gap:8px;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--jet);transition:gap .3s var(--ease), color .3s var(--ease);
-    }
-    .category-card:hover .cat-btn{color:var(--red);gap:14px}
-
-    /* ---------------- SECTION: INSTAGRAM (JET BLACK) ---------------- */
-    .instagram-section{background:var(--jet);color:var(--off);padding:130px 0;border-bottom:1px solid var(--white-line)}
-    .ig-header{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:50px}
-    .ig-title{margin:16px 0 0;font-size:clamp(65px,9vw,135px);line-height:.9}
-    .ig-handle-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border:1px solid rgba(250,250,248,.3);font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;transition:.35s var(--ease)}
-    .ig-handle-btn:hover{background:var(--red);border-color:var(--red)}
-
-    /* ---------------- SECTION: CTA (JAPANESE RED) ---------------- */
-    .cta{background:var(--red);color:var(--off);padding:140px 0;text-align:center}
-    .cta .eyebrow{justify-content:center;color:var(--jet)}
-    .cta .eyebrow::before{background:var(--jet)}
-    .cta-title{margin:24px 0 20px;font-size:clamp(85px,14vw,200px);line-height:.88}
-    .cta-copy{max-width:540px;margin:24px auto 38px;font-size:14px;line-height:1.85;color:rgba(250,250,248,.92)}
-    .cta-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;background:var(--jet);color:var(--off);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;transition:.35s var(--ease)}
-    .cta-btn:hover{background:var(--off);color:var(--jet)}
-
-    /* ---------------- FOOTER (JET BLACK) ---------------- */
-    footer{background:var(--jet);padding:60px 0 35px;border-top:1px solid rgba(250,250,248,.1)}
-    .footer-top{display:flex;justify-content:space-between;gap:60px;padding-bottom:50px;border-bottom:1px solid rgba(250,250,248,.1)}
-    .footer-logo{height:44px}
-    .footer-brand p{color:#777;max-width:300px;font-size:12px;line-height:1.8;margin:18px 0 0}
-    .footer-links{display:grid;grid-template-columns:repeat(3,auto);gap:64px}
-    .footer-col h4{margin:0 0 18px;color:var(--red);font-size:9px;letter-spacing:.18em;text-transform:uppercase}
-    .footer-col a{display:block;margin-bottom:10px;color:#9d9d9d;font-size:11px;transition:color .3s ease}
-    .footer-col a:hover{color:var(--off)}
-    .footer-bottom{display:flex;justify-content:space-between;gap:20px;padding-top:28px;color:#5f5f5f;font-size:9px;letter-spacing:.14em;text-transform:uppercase}
-    .footer-bottom b{color:var(--red)}
-
-    .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s var(--ease)}
-    .reveal.is-visible{opacity:1;transform:none}
-
-    @media (max-width:1100px){
-      .nav-links{display:none}
-      .hero-grid,.about-top,.visi-misi-grid,.work-grid,.category-grid{grid-template-columns:1fr;gap:40px}
-      .hero-side{display:none}
-      .frame.large{min-height:500px}
-    }
-    @media (max-width:700px){
-      .container{width:calc(100% - 32px)}
-      .hero-grid{padding:135px 0 45px}
-      .hero-title{font-size:28vw}
-      .brand-about,.work,.creator-work,.pricing-portal,.instagram-section{padding:90px 0}
-      .creator-head{flex-direction:column;align-items:flex-start}
-      .creator-header-right{align-items:flex-start}
-      .creator-note{text-align:left}
-      .category-card{padding:30px 24px}
-      .work-head,.ig-header,.footer-top{flex-direction:column;align-items:flex-start}
-      .footer-links{grid-template-columns:1fr 1fr;gap:30px}
-    }
+    .notes{margin-top:20px;font-size:11px;color:#888;line-height:1.8}
+    footer{background:var(--jet);padding:40px 0;border-top:1px solid var(--white-line);text-align:center;font-size:10px;color:#666;letter-spacing:.15em}
+    @media(max-width:1100px){.pricing-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:650px){.pricing-grid{grid-template-columns:1fr}.container{width:calc(100% - 32px)}}
   </style>
 </head>
-
 <body>
-  <!-- NAV -->
-  <header class="nav" id="nav">
+  <nav class="nav">
     <div class="container nav-inner">
-      <a class="logo" href="#home" aria-label="ALPON STUDIO">
-        <img src="https://lh3.googleusercontent.com/d/1VzehDfh7kaoJBUak6E6wkYi5V2IHwpcC" alt="ALPON STUDIO Logo" class="logo-img">
-      </a>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="#about">About &amp; Vision</a></li>
-          <li><a href="#work">Documentation</a></li>
-          <li><a href="#creator">Content Creator</a></li>
-          <li><a href="#pricing">Pricelist</a></li>
-          <li><a href="#instagram">Instagram</a></li>
-        </ul>
-      </nav>
-      <a class="nav-cta" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20tertarik%20untuk%20diskusi%20project%20visual." target="_blank" rel="noopener">Start a Project <span>↗</span></a>
+      <a href="index.html"><img src="https://lh3.googleusercontent.com/d/1VzehDfh7kaoJBUak6E6wkYi5V2IHwpcC" alt="ALPON" class="logo-img"></a>
+      <a href="index.html" class="back-btn">← Kembali ke Menu Utama</a>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <div class="container">
+      <span class="badge">CATEGORY 03</span>
+      <h1 class="page-title display">EVENT DOCUMENTATION</h1>
+      <p class="page-desc">Dokumentasi live multi-kamera untuk konser, festival musik, corporate gathering, seminar, dan acara publik.</p>
     </div>
   </header>
 
-  <main>
-    <!-- 1. HERO (JET BLACK) -->
-    <section class="hero" id="home">
-      <div class="hero-media" id="heroMedia"></div>
-      <div class="container hero-grid">
-        <div class="hero-main reveal">
-          <div class="hero-kicker jp">アルポン・スタジオ</div>
-          <h1 class="hero-title display">
-            <span>ALPON</span>
-            <span class="studio">STUDIO</span>
-          </h1>
-          <div class="hero-sub">WE CAPTURE WHAT MATTERS.</div>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#pricing">Pilih Paket Dokumentasi</a>
-            <a class="btn btn-secondary" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20tanya%20paket%20dokumentasi." target="_blank" rel="noopener">Konsultasi WhatsApp ↗</a>
-          </div>
-        </div>
-        <aside class="hero-side reveal">
-          <div class="vertical-note jp">瞬間を記録する。物語を残す。</div>
-          <div class="rec"><i></i> REC / ALPON STUDIO</div>
-          <div class="hero-coordinates"><span>01</span><span>/</span><span>26</span></div>
-        </aside>
-      </div>
-    </section>
-
-    <!-- 2. BRAND ABOUT & VISI MISI (EDITORIAL OFF-WHITE LIGHT) -->
-    <section class="brand-about" id="about">
-      <div class="container">
-        <div class="about-top reveal">
+  <main class="pricing-content">
+    <div class="container">
+      <div class="pricing-grid">
+        <!-- Basic -->
+        <div class="price-card">
           <div>
-            <div class="eyebrow red-dot">About The Studio</div>
-            <h2 class="about-heading display">
-              BORN FROM<br>
-              <em>FRIENDSHIP,</em><br>
-              BUILT ON<br>
-              STORIES.
-            </h2>
-          </div>
-          <div class="about-narrative">
-            <p><strong>ALPON STUDIO</strong> adalah studio kreatif independen yang berfokus pada dokumentasi visual, fotografi, motion picture, dan produksi konten media sosial.</p>
-            <p>Berangkat dari fondasi persahabatan, kami percaya bahwa karya terbaik lahir dari kedekatan emosional dan pemahaman mendalam terhadap cerita klien. Kami tidak hanya mengambil gambar yang indah secara teknis, tetapi menangkap <strong>momen yang terasa hidup</strong> — jujur, berkarakter, dan sinematik.</p>
-            
-            <div class="about-jp-quote">
-              <span class="jp">物語を残す</span>
-              <p>Mengubah setiap detik berharga menjadi warisan cerita visual yang abadi.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="visi-misi-grid">
-          <div class="vm-card reveal">
-            <span class="vm-badge">OUR VISION</span>
-            <h3 class="vm-title">VISI KAMI</h3>
-            <p class="vm-desc">
-              Menjadi ruang kreatif dan mitra dokumentasi visual terpercaya yang mampu menghidupkan setiap selebrasi manusia, milestone personal, serta identitas brand melalui pendekatan visual yang bercerita, berjiwa, dan timeless.
-            </p>
-          </div>
-
-          <div class="vm-card reveal">
-            <span class="vm-badge">OUR MISSION</span>
-            <h3 class="vm-title">MISI KAMI</h3>
-            <ul class="misi-list">
-              <li>
-                <span class="misi-num">01</span>
-                <div class="misi-text">
-                  <strong>Dokumentasi Otentik &amp; Emosional:</strong> Menangkap momen candid dan ekspresi jujur tanpa terasa kaku atau dipaksakan.
-                </div>
-              </li>
-              <li>
-                <span class="misi-num">02</span>
-                <div class="misi-text">
-                  <strong>Kualitas Editorial Sinematik:</strong> Menyajikan standar framing, color grading, dan audio berkelas tinggi dengan tarif yang transparan dan terjangkau.
-                </div>
-              </li>
-              <li>
-                <span class="misi-num">03</span>
-                <div class="misi-text">
-                  <strong>Pendekatan Kolaboratif:</strong> Menjadikan setiap klien sebagai partner cerita, mulai dari sesi wisuda, prewedding, event akbar, hingga konten digital brand.
-                </div>
-              </li>
+            <h3 class="pkg-name">BASIC</h3>
+            <span class="pkg-dur">PER JAM</span>
+            <div class="pkg-price">Rp 600.000 <small>/ jam</small></div>
+            <ul class="features">
+              <li>1 Photographer</li>
+              <li>1 Videographer</li>
+              <li>50 Edited Photos</li>
+              <li>1 After Movie</li>
             </ul>
           </div>
+          <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Event%20-%20Basic%20(Rp600.000/jam)." target="_blank" rel="noopener">Book Basic ↗</a>
         </div>
-      </div>
-    </section>
 
-    <!-- 3. WORK DOCUMENTATION (DEEP INDIGO) -->
-    <section class="work" id="work">
-      <div class="container">
-        <div class="work-head reveal">
+        <!-- Elite -->
+        <div class="price-card">
           <div>
-            <div class="eyebrow">Selected Stories</div>
-            <h2 class="work-title display">DOCUMENTATION</h2>
+            <h3 class="pkg-name">ELITE</h3>
+            <span class="pkg-dur">PER JAM</span>
+            <div class="pkg-price">Rp 750.000 <small>/ jam</small></div>
+            <ul class="features">
+              <li>1 Photographer + 1 Videographer</li>
+              <li>1 Content Creator</li>
+              <li>50 Edited Photos + 1 After Movie</li>
+              <li>1 Recap (30–60 Detik)</li>
+              <li>3 Reels (60–120 Detik)</li>
+            </ul>
           </div>
-          <p class="work-note">Asymmetric editorial grid, high contrast, framing clean, dan sentuhan visual yang mengutamakan emosi di setiap rekaman frame.</p>
+          <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Event%20-%20Elite%20(Rp750.000/jam)." target="_blank" rel="noopener">Book Elite ↗</a>
         </div>
-        <div class="work-grid">
-          <article class="frame large reveal">
-            <div class="image" data-image="workEvent"></div>
-            <div class="project-copy">
-              <div class="project-meta"><b>01</b> / EVENT DOCUMENTATION</div>
-              <h3 class="display">LIVE &amp;<br>ENERGY.</h3>
-              <p>people / motion / sound / atmosphere</p>
-            </div>
-          </article>
-          <div class="work-stack">
-            <article class="frame medium reveal">
-              <div class="image" data-image="workWedding"></div>
-              <div class="project-copy">
-                <div class="project-meta"><b>02</b> / WEDDING &amp; INTIMATE</div>
-                <h3 class="display">THE<br>BEGINNING.</h3>
-                <p>documentary / candid / intimate</p>
-              </div>
-            </article>
-            <article class="frame medium reveal">
-              <div class="image" data-image="workCity"></div>
-              <div class="project-copy">
-                <div class="project-meta"><b>03</b> / GRADUATION &amp; PORTRAIT</div>
-                <h3 class="display">MEMORIES<br>IN FRAME.</h3>
-                <p>academic / milestone / celebration</p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- 4. CONTENT CREATOR (SMOKE & JET 10-SLIDER) -->
-    <section class="creator-work" id="creator">
-      <div class="container">
-        <div class="creator-head reveal">
+        <!-- Ultimate -->
+        <div class="price-card featured">
+          <span class="card-tag">POPULAR</span>
           <div>
-            <div class="eyebrow red-dot">Social &amp; Commercial Motion</div>
-            <h2 class="creator-title display">CONTENT CREATOR</h2>
+            <h3 class="pkg-name">ULTIMATE</h3>
+            <span class="pkg-dur">PER JAM</span>
+            <div class="pkg-price">Rp 1.250.000 <small>/ jam</small></div>
+            <ul class="features">
+              <li>2 Photographer + 2 Videographer</li>
+              <li>1 Content Creator</li>
+              <li>50 Edited Photos + 1 After Movie</li>
+              <li>1 Recap (30–60 Detik)</li>
+              <li>3 Reels (60–120 Detik)</li>
+            </ul>
           </div>
-          <div class="creator-header-right">
-            <p class="creator-note">Geser ke samping &amp; klik kartu video untuk memutar 10 preview output konten vertikal 9:16.</p>
-            <div class="slider-arrows">
-              <button class="slider-btn" id="slideLeft" aria-label="Slide Left">←</button>
-              <button class="slider-btn" id="slideRight" aria-label="Slide Right">→</button>
-            </div>
-          </div>
+          <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Event%20-%20Ultimate%20(Rp1.250.000/jam)." target="_blank" rel="noopener">Book Ultimate ↗</a>
         </div>
 
-        <div class="creator-slider-wrapper reveal">
-          <div class="creator-slider" id="creatorSlider">
-            
-            <!-- Video 1 -->
-            <div class="creator-card" 
-                 data-video="https://assets.mixkit.co/videos/preview/mixkit-fashion-model-in-neon-light-41484-large.mp4" 
-                 data-title="NEON PULSE" 
-                 data-tag="01 / BRAND CAMPAIGN">
-              <div class="card-thumb" style="background-image:url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80');"></div>
-              <div class="overlay"></div>
-              <div class="card-badge-top">
-                <span class="pill-tag">01 / BRAND</span>
-                <div class="play-btn-circle">▶</div>
-              </div>
-              <div class="card-info-bottom">
-                <span class="cat-sub">Dynamic Hook</span>
-                <h3>NEON PULSE</h3>
-                <p>Fashion &amp; commercial high-speed editorial reel.</p>
-              </div>
-            </div>
-
-            <!-- Video 2 -->
-            <div class="creator-card" 
-                 data-video="https://assets.mixkit.co/videos/preview/mixkit-hands-holding-smartphones-at-a-concert-43306-large.mp4" 
-                 data-title="CROWD ENERGY" 
-                 data-tag="02 / EVENT RECAP">
-              <div class="card-thumb" style="background-image:url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80');"></div>
-              <div class="overlay"></div>
-              <div class="card-badge-top">
-                <span class="pill-tag">02 / EVENT</span>
-                <div class="play-btn-circle">▶</div>
-              </div>
-              <div class="card-info-bottom">
-                <span class="cat-sub">Real-Time Story</span>
-                <h3>CROWD ENERGY</h3>
-                <p>Same-day festival highlight with wireless audio.</p>
-              </div>
-            </div>
-
-            <!-- Video 3 -->
-            <div class="creator-card" 
-                 data-video="https://assets.mixkit.co/videos/preview/mixkit-pouring-milk-in-a-glass-of-coffee-41662-large.mp4" 
-                 data-title="ARTISAN BREW" 
-                 data-tag="03 / PRODUCT F&amp;B">
-              <div class="card-thumb" style="background-image:url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=800&q=80');"></div>
-              <div class="overlay"></div>
-              <div class="card-badge-top">
-                <span class="pill-tag">03 / PRODUCT</span>
-                <div class="play-btn-circle">▶</div>
-              </div>
-              <div class="card-info-bottom">
-                <span class="cat-sub">Studio Lighting</span>
-                <h3>ARTISAN BREW</h3>
-                <p>Crisp product showcase &amp; sound design.</p>
-              </div>
-            </div>
-
-            <!-- Video 4 -->
-            <div class="creator-card" 
-                 data-video="https://assets.mixkit.co/videos/preview/mixkit-skater-performing-tricks-on-a-ramp-43285-large.mp4" 
-                 data-title="URBAN FLOW" 
-                 data-tag="04 / STREET &amp; CULTURE">
-              <div class="card-thumb" style="background-image:url('https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=800&q=80');"></div>
-              <div class="overlay"></div>
-              <div class="card-badge-top">
-                <span class="pill-tag">04 / STREET</span>
-                <div class="play-btn-circle">▶</div>
-              </div>
-              <div class="card-info-bottom">
-                <span class="cat-sub">Cinematic Motion</span>
-                <h3>URBAN FLOW</h3>
-                <p>Youth culture &amp; lifestyle pacing aesthetic.</p>
-              </div>
-            </div>
-
-            <!-- Video 5 -->
-            <div class="creator-card" 
-                 data-video="https://assets.mixkit.co/videos/preview/mixkit-woman-recording-a-vlog-with-her-phone-41481-large.mp4" 
-                 data-title="TALENT TALK" 
-                 data-tag="05 / TALENT &amp; VLOG">
-              <div class="card-thumb" style="background-image:url('https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80');"></div>
-              <div class="overlay"></div>
-              <div class="card-badge-top">
-                <span class="pill-tag">05 / TALENT</span>
-                <div class="play-btn-circle">▶</div>
-              </div>
-              <div class="card-info-bottom">
-                <span class="cat-sub">Storyboard Plan</span>
-                <h3>TALENT TALK</h3>
-                <p>Clean vocal recording &amp; engaging captions.</p>
-              </div>
-            </div>
-
-            <!-- Video 6 -->
-            <div class="creator-card" 
-                 data-video="https://assets.mixkit.co/videos/preview/mixkit-animation-of-futuristic-devices-99786-large.mp4" 
-                 data-title="DIGITAL RECAP" 
-                 data-tag="06 / MOTION TEASER">
-              <div class="card-thumb" style="background-image:url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80');"></div>
-              <div class="overlay"></div>
-              <div class="card-badge-top">
-                <span class="pill-tag">06 / MOTION</span>
-                <div class="play-btn-circle">▶</div>
-              </div>
-              <div class="card-info-bottom">
-                <span class="cat-sub">Visual FX</span>
-                <h3>DIGITAL RECAP</h3>
-                <p>3D animation elements &amp; tech product hype.</p>
-              </div>
-            </div>
-
-            <!-- Video 7 -->
-            <div class="creator-card" 
-                 data-video="https://assets.mixkit.co/videos/preview/mixkit-serving-a-gourmet-dish-in-a-restaurant-41666-large.mp4" 
-                 data-title="SAVORY BITES" 
-                 data-tag="07 / CULINARY REEL">
-              <div class="card-thumb" style="background-image:url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80');"></div>
-              <div class="overlay"></div>
-              <div class="card-badge-top">
-                <span class="pill-tag">07 / FOOD</span>
-                <div class="play-btn-circle">▶</div>
-              </div>
-              <div class="card-info-bottom">
-                <span class="cat-sub">Sensory Appetite</span>
-                <h3>SAVORY BITES</h3>
-                <p>Restaurant ambient &amp; mouth-watering macro food shots.</p>
-              </div>
-            </div>
-
-            <!-- Video 8 -->
-            <div class="creator-card" 
-                 data-video="https://assets.mixkit.co/videos/preview/mixkit-cameraman-filming-with-a-professional-camera-43292-large.mp4" 
-                 data-title="BEHIND THE FRAME" 
-                 data-tag="08 / BTS REEL">
-              <div class="card-thumb" style="background-image:url('https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&w=800&q=80');"></div>
-              <div class="overlay"></div>
-              <div class="card-badge-top">
-                <span class="pill-tag">08 / BTS</span>
-                <div class="play-btn-circle">▶</div>
-              </div>
-              <div class="card-info-bottom">
-                <span class="cat-sub">Production Diary</span>
-                <h3>BEHIND THE FRAME</h3>
-                <p>Director workflow &amp; cinematic equipment setup.</p>
-              </div>
-            </div>
-
-            <!-- Video 9 -->
-            <div class="creator-card" 
-                 data-video="https://assets.mixkit.co/videos/preview/mixkit-sports-car-drifting-at-night-43301-large.mp4" 
-                 data-title="NIGHT CRUISE" 
-                 data-tag="09 / AUTOMOTIVE">
-              <div class="card-thumb" style="background-image:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80');"></div>
-              <div class="overlay"></div>
-              <div class="card-badge-top">
-                <span class="pill-tag">09 / SPEED</span>
-                <div class="play-btn-circle">▶</div>
-              </div>
-              <div class="card-info-bottom">
-                <span class="cat-sub">High Adrenaline</span>
-                <h3>NIGHT CRUISE</h3>
-                <p>Automotive rolling shots &amp; engine audio mix.</p>
-              </div>
-            </div>
-
-            <!-- Video 10 -->
-            <div class="creator-card" 
-                 data-video="https://assets.mixkit.co/videos/preview/mixkit-boxer-training-in-the-gym-41480-large.mp4" 
-                 data-title="RAW POWER" 
-                 data-tag="10 / FITNESS &amp; SPORT">
-              <div class="card-thumb" style="background-image:url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80');"></div>
-              <div class="overlay"></div>
-              <div class="card-badge-top">
-                <span class="pill-tag">10 / SPORT</span>
-                <div class="play-btn-circle">▶</div>
-              </div>
-              <div class="card-info-bottom">
-                <span class="cat-sub">High Intensity</span>
-                <h3>RAW POWER</h3>
-                <p>Workout rhythm &amp; motivational commercial cut.</p>
-              </div>
-            </div>
-
+        <!-- Profesional -->
+        <div class="price-card">
+          <div>
+            <h3 class="pkg-name">PROFESIONAL</h3>
+            <span class="pkg-dur">PER JAM</span>
+            <div class="pkg-price">Rp 1.500.000 <small>/ jam</small></div>
+            <ul class="features">
+              <li>2 Photographer + 2 Videographer</li>
+              <li>1 Content Creator</li>
+              <li>1 Drone Unit Included</li>
+              <li>50 Edited Photos + 1 After Movie</li>
+              <li>1 Recap + 3 Reels</li>
+            </ul>
           </div>
+          <a class="btn-wa" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20booking%20Event%20-%20Profesional%20(Rp1.500.000/jam)." target="_blank" rel="noopener">Book Pro ↗</a>
         </div>
       </div>
-    </section>
 
-    <!-- VIDEO LIGHTBOX MODAL -->
-    <div class="video-modal" id="videoModal">
-      <div class="modal-backdrop" id="modalBackdrop"></div>
-      <div class="modal-dialog">
-        <button class="modal-close" id="modalClose" aria-label="Close Video">✕</button>
-        <div class="modal-video-container">
-          <video id="modalVideoPlayer" controls playsinline></video>
-        </div>
-        <div class="modal-desc">
-          <h4 id="modalVideoTitle">VIDEO TITLE</h4>
-          <span id="modalVideoTag">REELS 9:16</span>
-        </div>
+      <div class="addon-strip">
+        <span class="addon-title">ADD-ON EVENT:</span>
+        <span class="addon-pill">Drone: <b>Rp 350.000 / jam</b></span>
+        <span class="addon-pill">Personil: <b>Rp 400.000 / jam</b></span>
+        <span class="addon-pill">Extra Reels: <b>Rp 100.000 / content</b></span>
+      </div>
+
+      <div class="notes">
+        *Harga sudah termasuk kamera basic (kit).<br>
+        *Harga dapat berubah tergantung kebutuhan spesifik dan durasi event.
       </div>
     </div>
-
-    <!-- 5. PRICELIST CATEGORY PORTAL (WARM STONE GRAY) -->
-    <section class="pricing-portal" id="pricing">
-      <div class="container">
-        <div class="portal-head reveal">
-          <div class="eyebrow red-dot">Rate Card &amp; Packages</div>
-          <span class="portal-tagline">2026 PRICE LIST</span>
-          <h2 class="portal-title display">SERVICES &amp; RATES</h2>
-          <p class="portal-intro">Pilih kategori layanan di bawah untuk melihat rincian paket, durasi sesi, output, serta add-on lengkap.</p>
-        </div>
-
-        <div class="category-grid">
-          <!-- 01 GRADUATION -->
-          <a class="category-card reveal" href="graduation.html">
-            <div>
-              <div class="cat-num">01</div>
-              <h3 class="cat-title">GRADUATION</h3>
-              <span class="cat-jp">卒業写真 — Wisuda &amp; Personal Milestone</span>
-              <p class="cat-desc">Dokumentasi momen kelulusan dengan opsi paket Foto (Basic, Standard, Halfday) dan Foto + Video (Starter, Signature, Complete).</p>
-            </div>
-            <div class="cat-footer">
-              <span class="cat-rate">Mulai Dari <b>Rp 400.000</b></span>
-              <span class="cat-btn">Lihat Pricelist ↗</span>
-            </div>
-          </a>
-
-          <!-- 02 PREWEDDING -->
-          <a class="category-card reveal" href="prewedding.html">
-            <div>
-              <div class="cat-num">02</div>
-              <h3 class="cat-title">PREWEDDING</h3>
-              <span class="cat-jp">ウェディング写真 — Intimate Love Story</span>
-              <p class="cat-desc">Sesi foto dan video intim per jam, lengkap dengan bonus cetak foto 20R + frame eksklusif serta after movie sinematik.</p>
-            </div>
-            <div class="cat-footer">
-              <span class="cat-rate">Mulai Dari <b>Rp 400.000 / jam</b></span>
-              <span class="cat-btn">Lihat Pricelist ↗</span>
-            </div>
-          </a>
-
-          <!-- 03 EVENT -->
-          <a class="category-card reveal" href="event.html">
-            <div>
-              <div class="cat-num">03</div>
-              <h3 class="cat-title">EVENT DOCUMENTATION</h3>
-              <span class="cat-jp">イベント撮影 — Live, Concert, Gathering</span>
-              <p class="cat-desc">Liputan multi-kamera untuk konser, festival, seminar, dan acara komunitas (Paket Basic, Elite, Ultimate, Profesional).</p>
-            </div>
-            <div class="cat-footer">
-              <span class="cat-rate">Mulai Dari <b>Rp 600.000 / jam</b></span>
-              <span class="cat-btn">Lihat Pricelist ↗</span>
-            </div>
-          </a>
-
-          <!-- 04 CONTENT CREATOR -->
-          <a class="category-card reveal" href="content-creator.html">
-            <div>
-              <div class="cat-num">04</div>
-              <h3 class="cat-title">CONTENT CREATOR</h3>
-              <span class="cat-jp">コンテンツクリエイター — Reels &amp; Monthly Retainer</span>
-              <p class="cat-desc">Layanan pembuatan konten media sosial: recap kilat per jam, hingga manajemen produksi konten bulanan (Standard &amp; Pro).</p>
-            </div>
-            <div class="cat-footer">
-              <span class="cat-rate">Mulai Dari <b>Rp 400.000 / jam</b></span>
-              <span class="cat-btn">Lihat Pricelist ↗</span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- 6. INSTAGRAM LIVE FEED (JET BLACK) -->
-    <section class="instagram-section" id="instagram">
-      <div class="container">
-        <div class="ig-header reveal">
-          <div>
-            <div class="eyebrow red-dot">Social Journal</div>
-            <h2 class="ig-title display">LATEST ON<br>INSTAGRAM.</h2>
-          </div>
-          <a class="ig-handle-btn" href="https://instagram.com/alponstudio" target="_blank" rel="noopener">Follow @alponstudio ↗</a>
-        </div>
-        <div class="behold-wrapper reveal">
-          <behold-widget feed-id="CtpYJCSBiUILU0vPGAOr"></behold-widget>
-        </div>
-      </div>
-    </section>
-
-    <!-- 7. CTA (JAPANESE RED) -->
-    <section class="cta" id="contact">
-      <div class="container reveal">
-        <div class="eyebrow">Let's Create Your Story</div>
-        <h2 class="cta-title display">GOT A<br>STORY?</h2>
-        <p class="cta-copy">Tell us what matters. Kami siap mengabadikan setiap momen Anda menjadi visual yang bermakna dan berkesan.</p>
-        <a class="cta-btn" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20konsultasi%20project%20visual." target="_blank" rel="noopener">Chat via WhatsApp (089668184078) ↗</a>
-      </div>
-    </section>
   </main>
 
-  <!-- FOOTER -->
   <footer>
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <a class="logo" href="index.html">
-            <img src="https://lh3.googleusercontent.com/d/1VzehDfh7kaoJBUak6E6wkYi5V2IHwpcC" alt="ALPON STUDIO Logo" class="logo-img footer-logo">
-          </a>
-          <p>We capture what matters.<br>Born from friendship, built on stories.</p>
-        </div>
-        <div class="footer-links">
-          <div class="footer-col">
-            <h4>Pricelist Pages</h4>
-            <a href="graduation.html">Graduation</a>
-            <a href="prewedding.html">PreWedding</a>
-            <a href="event.html">Event Documentation</a>
-            <a href="content-creator.html">Content Creator</a>
-          </div>
-          <div class="footer-col">
-            <h4>Social</h4>
-            <a href="https://instagram.com/alponstudio" target="_blank" rel="noopener">Instagram (@alponstudio)</a>
-            <a href="#">TikTok</a>
-            <a href="https://alpon-studio.vercel.app/" target="_blank" rel="noopener">Website</a>
-          </div>
-          <div class="footer-col">
-            <h4>Contact</h4>
-            <a href="https://wa.me/6289668184078" target="_blank" rel="noopener">WhatsApp (089668184078)</a>
-            <a href="mailto:hello@alponstudio.com">Email</a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>© 2026 ALPON STUDIO — ALL RIGHTS RESERVED</span>
-        <span>BORN FROM <b>FRIENDSHIP</b>, BUILT ON STORIES.</span>
-      </div>
-    </div>
+    <div class="container">© 2026 ALPON STUDIO — WE CAPTURE WHAT MATTERS.</div>
   </footer>
-
-  <!-- BEHOLD SCRIPT -->
-  <script>
-    (() => {
-      if(window.__bhldScript)return;window.__bhldScript=true;
-      const d=document,s=d.createElement("script");s.type="module";
-      s.src="https://w.behold.so/widget.js";setTimeout(()=>{d.head.append(s);},0);
-    })();
-  </script>
-
-  <!-- PAGE SCRIPT & INTERACTION LOGIC -->
-  <script>
-    const IMAGE_LIBRARY = {
-      hero: "https://images.unsplash.com/photo-1671117507838-103b9f1bb432?auto=format&fit=crop&w=2400&q=88",
-      workEvent: "https://images.unsplash.com/photo-1671117507838-103b9f1bb432?auto=format&fit=crop&w=1900&q=88",
-      workWedding: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1500&q=88",
-      workCity: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=1500&q=88"
-    };
-
-    document.getElementById("heroMedia").style.backgroundImage =
-      `linear-gradient(90deg,rgba(13,13,13,.96) 0%,rgba(13,13,13,.82) 48%,rgba(13,13,13,.35) 100%),
-       linear-gradient(0deg,rgba(13,13,13,.9),transparent 55%),
-       url("${IMAGE_LIBRARY.hero}")`;
-
-    document.querySelectorAll("[data-image]").forEach((el) => {
-      const key = el.dataset.image;
-      if (IMAGE_LIBRARY[key]) el.style.backgroundImage = `url("${IMAGE_LIBRARY[key]}")`;
-    });
-
-    const nav = document.getElementById("nav");
-    window.addEventListener("scroll", () => nav.classList.toggle("scrolled", window.scrollY > 30), { passive: true });
-    window.addEventListener("load", () => document.querySelector(".hero").classList.add("ready"));
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) { entry.target.classList.add("is-visible"); observer.unobserve(entry.target); }
-      });
-    }, { threshold: 0.08 });
-    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
-
-    // SLIDER BUTTONS LOGIC
-    const slider = document.getElementById("creatorSlider");
-    document.getElementById("slideLeft").addEventListener("click", () => {
-      slider.scrollBy({ left: -320, behavior: "smooth" });
-    });
-    document.getElementById("slideRight").addEventListener("click", () => {
-      slider.scrollBy({ left: 320, behavior: "smooth" });
-    });
-
-    // VIDEO MODAL LOGIC
-    const modal = document.getElementById("videoModal");
-    const modalPlayer = document.getElementById("modalVideoPlayer");
-    const modalTitle = document.getElementById("modalVideoTitle");
-    const modalTag = document.getElementById("modalVideoTag");
-    const modalClose = document.getElementById("modalClose");
-    const modalBackdrop = document.getElementById("modalBackdrop");
-
-    document.querySelectorAll(".creator-card").forEach((card) => {
-      card.addEventListener("click", () => {
-        const videoSrc = card.dataset.video;
-        const title = card.dataset.title;
-        const tag = card.dataset.tag;
-
-        modalPlayer.src = videoSrc;
-        modalTitle.textContent = title;
-        modalTag.textContent = tag;
-
-        modal.classList.add("active");
-        modalPlayer.play();
-      });
-    });
-
-    function closeModal() {
-      modal.classList.remove("active");
-      modalPlayer.pause();
-      modalPlayer.src = "";
-    }
-
-    modalClose.addEventListener("click", closeModal);
-    modalBackdrop.addEventListener("click", closeModal);
-    window.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && modal.classList.contains("active")) {
-        closeModal();
-      }
-    });
-  </script>
 </body>
 </html>
