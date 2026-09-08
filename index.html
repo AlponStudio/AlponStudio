@@ -50,6 +50,23 @@
     .red{color:var(--red)}
     .display{font-family:var(--display);text-transform:uppercase;letter-spacing:.02em}
 
+    /* SVG ICON SYSTEM */
+    .icon{
+      display:inline-block;
+      width:20px;
+      height:20px;
+      stroke-width:1.8;
+      stroke:currentColor;
+      fill:none;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+      vertical-align:middle;
+      flex-shrink:0;
+    }
+    .icon-sm{width:16px;height:16px}
+    .icon-lg{width:28px;height:28px}
+    .icon-xl{width:38px;height:38px}
+
     /* NAV */
     .nav{position:fixed;inset:0 0 auto 0;z-index:1000;padding:20px 0;transition:.4s var(--ease)}
     .nav.scrolled{background:rgba(13,13,13,.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--white-line);padding:14px 0}
@@ -62,7 +79,7 @@
     .nav-cta{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid rgba(250,250,248,.35);font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;transition:.35s var(--ease)}
     .nav-cta:hover{background:var(--red);border-color:var(--red);color:var(--off)}
 
-    /* ---------------- SECTION: HERO (JET BLACK) ---------------- */
+    /* HERO */
     .hero{min-height:100svh;position:relative;display:flex;align-items:stretch;overflow:hidden;background:var(--jet)}
     .hero-media{position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,13,13,.96) 0%,rgba(13,13,13,.82) 48%,rgba(13,13,13,.35) 100%),linear-gradient(0deg,rgba(13,13,13,.9),transparent 55%),center/cover no-repeat;transform:scale(1.05);transition:transform 7s var(--ease);filter:saturate(.75) contrast(1.1)}
     .hero.ready .hero-media{transform:scale(1.01)}
@@ -75,7 +92,7 @@
     .hero-sub{display:flex;align-items:center;gap:16px;margin-top:36px;font-size:15px;letter-spacing:.16em;font-weight:600;color:#d2d2d0}
     .hero-sub::before{content:"";width:40px;height:2px;background:var(--red)}
     .hero-actions{display:flex;gap:14px;margin-top:36px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border:1px solid rgba(250,250,248,.35);text-transform:uppercase;letter-spacing:.16em;font-size:10px;font-weight:700;transition:.35s var(--ease)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;border:1px solid rgba(250,250,248,.35);text-transform:uppercase;letter-spacing:.16em;font-size:10px;font-weight:700;transition:.35s var(--ease)}
     .btn-primary{background:var(--red);border-color:var(--red);color:var(--off)}
     .btn-primary:hover{background:transparent;color:var(--red)}
     .btn-secondary:hover{background:var(--off);color:var(--jet)}
@@ -85,9 +102,9 @@
     .rec i{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red)}
     .hero-coordinates{display:flex;gap:18px;font-family:var(--display);font-size:26px}
 
-    /* ---------------- SECTION: BRAND ABOUT (WARM OFF-WHITE / EDITORIAL LIGHT) ---------------- */
-    .brand-about{background:var(--off);color:var(--jet);padding:130px 0;border-bottom:1px solid var(--line)}
-    .about-top{display:grid;grid-template-columns:1.15fr .85fr;gap:70px;align-items:start;margin-bottom:75px}
+    /* ---------------- SECTION: BRAND ABOUT ---------------- */
+    .brand-about{background:var(--off);color:var(--jet);padding:130px 0 110px;border-bottom:1px solid var(--line)}
+    .about-top{display:grid;grid-template-columns:1.15fr .85fr;gap:70px;align-items:start;margin-bottom:70px}
     .about-heading{margin:14px 0 0;font-size:clamp(65px,8.5vw,130px);line-height:.92;color:var(--jet)}
     .about-heading em{font-style:normal;color:var(--red)}
     .about-narrative{color:#444;font-size:14px;line-height:1.9}
@@ -100,7 +117,7 @@
     .about-jp-quote span{font-family:var(--jp);font-size:11px;color:var(--red);font-weight:700;letter-spacing:.12em}
     .about-jp-quote p{margin:0;font-size:13px;color:#333;font-weight:500;letter-spacing:.02em}
 
-    .visi-misi-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:24px}
+    .visi-misi-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:24px;margin-bottom:60px}
     .vm-card{
       background:#FFF;
       border:1px solid var(--line);
@@ -113,7 +130,7 @@
       content:"";position:absolute;top:0;left:0;width:4px;height:100%;background:var(--red);
     }
     .vm-badge{
-      display:inline-block;font-size:9px;font-weight:700;letter-spacing:.2em;
+      display:inline-flex;align-items:center;gap:8px;font-size:9px;font-weight:700;letter-spacing:.2em;
       text-transform:uppercase;color:var(--red);margin-bottom:14px;
     }
     .vm-title{font-family:var(--display);font-size:38px;line-height:.9;margin:0 0 16px;color:var(--jet);letter-spacing:.02em}
@@ -129,7 +146,57 @@
     .misi-text{color:#555;font-size:13px;line-height:1.75}
     .misi-text strong{color:var(--jet);font-weight:700}
 
-    /* ---------------- SECTION: DOCUMENTATION (DEEP INDIGO CONTRAST) ---------------- */
+    /* VISUAL CAPABILITIES STRIP (ASET VISUAL BADGES) */
+    .capabilities-strip{
+      border-top:1px solid var(--line);
+      padding-top:40px;
+      display:grid;
+      grid-template-columns:repeat(5, 1fr);
+      gap:16px;
+    }
+    .cap-item{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      padding:16px;
+      background:#FFF;
+      border:1px solid var(--line);
+      transition:.3s var(--ease);
+    }
+    .cap-item:hover{
+      border-color:var(--red);
+      transform:translateY(-3px);
+    }
+    .cap-icon-box{
+      width:42px;
+      height:42px;
+      border-radius:4px;
+      background:var(--stone);
+      color:var(--jet);
+      display:grid;
+      place-items:center;
+      flex-shrink:0;
+      transition:.3s var(--ease);
+    }
+    .cap-item:hover .cap-icon-box{
+      background:var(--red);
+      color:var(--off);
+    }
+    .cap-text h4{
+      margin:0 0 2px;
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--jet);
+    }
+    .cap-text p{
+      margin:0;
+      font-size:10px;
+      color:#777;
+    }
+
+    /* ---------------- SECTION: DOCUMENTATION (DEEP INDIGO) ---------------- */
     .work{background:var(--indigo);color:var(--off);padding:130px 0;border-bottom:1px solid var(--white-line)}
     .work-head{display:flex;justify-content:space-between;gap:40px;align-items:flex-end;margin-bottom:55px}
     .work-title{margin:14px 0 0;font-size:clamp(75px,10vw,150px);line-height:.88}
@@ -148,7 +215,7 @@
     .project-copy h3{margin:0;font-size:clamp(38px,4vw,60px);line-height:.92}
     .project-copy p{margin:10px 0 0;color:#c0cbd6;font-size:10px;text-transform:uppercase;letter-spacing:.14em}
 
-    /* ---------------- SECTION: CONTENT CREATOR (SMOKE / JET 10-SLIDER) ---------------- */
+    /* ---------------- SECTION: CONTENT CREATOR (SMOKE & 10-SLIDER) ---------------- */
     .creator-work{background:var(--smoke);color:var(--off);padding:130px 0;border-bottom:1px solid var(--white-line)}
     .creator-head{display:flex;justify-content:space-between;gap:40px;align-items:flex-end;margin-bottom:45px}
     .creator-title{margin:14px 0 0;font-size:clamp(75px,10vw,150px);line-height:.88}
@@ -218,7 +285,7 @@
     .play-btn-circle{
       width:40px;height:40px;border-radius:50%;background:rgba(13,13,13,.75);
       border:1px solid rgba(250,250,248,.35);backdrop-filter:blur(6px);
-      display:grid;place-items:center;font-size:12px;color:var(--off);
+      display:grid;place-items:center;color:var(--off);
       transition:.3s var(--ease);
     }
     .creator-card:hover .play-btn-circle{
@@ -292,7 +359,7 @@
       flex-direction:column;
       justify-content:space-between;
       position:relative;
-      min-height:320px;
+      min-height:330px;
       transition:transform .4s var(--ease), border-color .4s var(--ease), box-shadow .4s var(--ease);
       overflow:hidden;
       box-shadow:0 8px 24px rgba(0,0,0,.04);
@@ -306,7 +373,28 @@
       box-shadow:0 16px 36px rgba(230,57,70,.12);
     }
     .category-card:hover::before{height:100%}
-    .cat-num{font-family:var(--display);font-size:42px;color:var(--red);line-height:1;margin-bottom:16px}
+    .cat-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      margin-bottom:12px;
+    }
+    .cat-num{font-family:var(--display);font-size:44px;color:var(--red);line-height:1}
+    .cat-emblem{
+      width:48px;
+      height:48px;
+      border-radius:50%;
+      background:var(--stone);
+      color:var(--jet);
+      display:grid;
+      place-items:center;
+      transition:.3s var(--ease);
+    }
+    .category-card:hover .cat-emblem{
+      background:var(--red);
+      color:var(--off);
+      transform:scale(1.08) rotate(-6deg);
+    }
     .cat-title{font-family:var(--display);font-size:clamp(38px,4vw,56px);line-height:.92;margin:0 0 10px;color:var(--jet);letter-spacing:.02em}
     .cat-jp{font-family:var(--jp);font-size:12px;color:#777;letter-spacing:.14em;margin-bottom:18px;display:block}
     .cat-desc{color:#666;font-size:13px;line-height:1.75;margin:0 0 28px;max-width:460px}
@@ -322,7 +410,7 @@
     .instagram-section{background:var(--jet);color:var(--off);padding:130px 0;border-bottom:1px solid var(--white-line)}
     .ig-header{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:50px}
     .ig-title{margin:16px 0 0;font-size:clamp(65px,9vw,135px);line-height:.9}
-    .ig-handle-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border:1px solid rgba(250,250,248,.3);font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;transition:.35s var(--ease)}
+    .ig-handle-btn{display:inline-flex;align-items:center;gap:10px;padding:12px 22px;border:1px solid rgba(250,250,248,.3);font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;transition:.35s var(--ease)}
     .ig-handle-btn:hover{background:var(--red);border-color:var(--red)}
 
     /* ---------------- SECTION: CTA (JAPANESE RED) ---------------- */
@@ -341,8 +429,10 @@
     .footer-brand p{color:#777;max-width:300px;font-size:12px;line-height:1.8;margin:18px 0 0}
     .footer-links{display:grid;grid-template-columns:repeat(3,auto);gap:64px}
     .footer-col h4{margin:0 0 18px;color:var(--red);font-size:9px;letter-spacing:.18em;text-transform:uppercase}
-    .footer-col a{display:block;margin-bottom:10px;color:#9d9d9d;font-size:11px;transition:color .3s ease}
+    .footer-col a{display:flex;align-items:center;gap:8px;margin-bottom:12px;color:#9d9d9d;font-size:11px;transition:color .3s ease}
     .footer-col a:hover{color:var(--off)}
+    .footer-col a svg{stroke:#777;transition:stroke .3s ease}
+    .footer-col a:hover svg{stroke:var(--red)}
     .footer-bottom{display:flex;justify-content:space-between;gap:20px;padding-top:28px;color:#5f5f5f;font-size:9px;letter-spacing:.14em;text-transform:uppercase}
     .footer-bottom b{color:var(--red)}
 
@@ -352,6 +442,7 @@
     @media (max-width:1100px){
       .nav-links{display:none}
       .hero-grid,.about-top,.visi-misi-grid,.work-grid,.category-grid{grid-template-columns:1fr;gap:40px}
+      .capabilities-strip{grid-template-columns:repeat(2, 1fr)}
       .hero-side{display:none}
       .frame.large{min-height:500px}
     }
@@ -360,6 +451,7 @@
       .hero-grid{padding:135px 0 45px}
       .hero-title{font-size:28vw}
       .brand-about,.work,.creator-work,.pricing-portal,.instagram-section{padding:90px 0}
+      .capabilities-strip{grid-template-columns:1fr}
       .creator-head{flex-direction:column;align-items:flex-start}
       .creator-header-right{align-items:flex-start}
       .creator-note{text-align:left}
@@ -371,6 +463,76 @@
 </head>
 
 <body>
+  <!-- INLINE SVG SYMBOLS FOR REUSABILITY -->
+  <svg style="display:none;" xmlns="http://www.w3.org/2000/svg">
+    <!-- CROWN -->
+    <symbol id="icon-crown" viewBox="0 0 24 24">
+      <path d="M2 19h20M3 15l3-8 6 6 6-6 3 8H3z" />
+      <circle cx="3" cy="7" r="1.5" />
+      <circle cx="12" cy="5" r="1.5" />
+      <circle cx="21" cy="7" r="1.5" />
+    </symbol>
+
+    <!-- DIAMOND -->
+    <symbol id="icon-diamond" viewBox="0 0 24 24">
+      <path d="M6 3h12l4 6-10 12L2 9l4-6zM2 9h20M12 21L8 9l4-6 4 6-4 12z" />
+    </symbol>
+
+    <!-- STAR -->
+    <symbol id="icon-star" viewBox="0 0 24 24">
+      <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+    </symbol>
+
+    <!-- CLAPPERBOARD WITH RED PLAY -->
+    <symbol id="icon-clapper" viewBox="0 0 24 24">
+      <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zM2 9h20M7 4l3 5M12 4l3 5M17 4l3 5" />
+      <polygon points="10,12 16,15.5 10,19" fill="#E63946" stroke="none" />
+    </symbol>
+
+    <!-- DRONE -->
+    <symbol id="icon-drone" viewBox="0 0 24 24">
+      <rect x="9" y="8" width="6" height="8" rx="2" />
+      <path d="M4 5h5M15 5h5M4 19h5M15 19h5M9 10L5 6M15 10l4-4M9 14l-4 4M15 14l4 4" />
+      <circle cx="4" cy="5" r="1.5" />
+      <circle cx="20" cy="5" r="1.5" />
+      <circle cx="4" cy="19" r="1.5" />
+      <circle cx="20" cy="19" r="1.5" />
+    </symbol>
+
+    <!-- USER / PERSON -->
+    <symbol id="icon-user" viewBox="0 0 24 24">
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+      <circle cx="12" cy="7" r="4" />
+    </symbol>
+
+    <!-- REELS / FILM -->
+    <symbol id="icon-reels" viewBox="0 0 24 24">
+      <rect x="3" y="3" width="18" height="18" rx="3" />
+      <path d="M3 8.5h18M7.5 3v5.5M16.5 3v5.5" />
+      <polygon points="10,12 15,15 10,18" fill="currentColor" stroke="none" />
+    </symbol>
+
+    <!-- WHATSAPP -->
+    <symbol id="icon-whatsapp" viewBox="0 0 24 24">
+      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+      <path d="M9.5 9a1.5 1.5 0 0 0-1.5 1.5c0 2.5 2.5 5 5 5a1.5 1.5 0 0 0 1.5-1.5v-1l-1.5-.5-1 1a5.6 5.6 0 0 1-2.5-2.5l1-1z" />
+    </symbol>
+
+    <!-- INSTAGRAM -->
+    <symbol id="icon-instagram" viewBox="0 0 24 24">
+      <rect x="2" y="2" width="20" height="20" rx="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+    </symbol>
+
+    <!-- GLOBE / WEBSITE -->
+    <symbol id="icon-globe" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" />
+      <line x1="2" y1="12" x2="22" y2="12" />
+      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+    </symbol>
+  </svg>
+
   <!-- NAV -->
   <header class="nav" id="nav">
     <div class="container nav-inner">
@@ -386,7 +548,10 @@
           <li><a href="#instagram">Instagram</a></li>
         </ul>
       </nav>
-      <a class="nav-cta" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20tertarik%20untuk%20diskusi%20project%20visual." target="_blank" rel="noopener">Start a Project <span>↗</span></a>
+      <a class="nav-cta" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20tertarik%20untuk%20diskusi%20project%20visual." target="_blank" rel="noopener">
+        <svg class="icon icon-sm"><use href="#icon-whatsapp"/></svg>
+        <span>Start a Project</span> ↗
+      </a>
     </div>
   </header>
 
@@ -403,8 +568,14 @@
           </h1>
           <div class="hero-sub">WE CAPTURE WHAT MATTERS.</div>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#pricing">Pilih Paket Dokumentasi</a>
-            <a class="btn btn-secondary" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20tanya%20paket%20dokumentasi." target="_blank" rel="noopener">Konsultasi WhatsApp ↗</a>
+            <a class="btn btn-primary" href="#pricing">
+              <svg class="icon icon-sm"><use href="#icon-star"/></svg>
+              <span>Pilih Paket Dokumentasi</span>
+            </a>
+            <a class="btn btn-secondary" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20tanya%20paket%20dokumentasi." target="_blank" rel="noopener">
+              <svg class="icon icon-sm"><use href="#icon-whatsapp"/></svg>
+              <span>Konsultasi WhatsApp ↗</span>
+            </a>
           </div>
         </div>
         <aside class="hero-side reveal">
@@ -441,7 +612,10 @@
 
         <div class="visi-misi-grid">
           <div class="vm-card reveal">
-            <span class="vm-badge">OUR VISION</span>
+            <span class="vm-badge">
+              <svg class="icon icon-sm"><use href="#icon-diamond"/></svg>
+              <span>OUR VISION</span>
+            </span>
             <h3 class="vm-title">VISI KAMI</h3>
             <p class="vm-desc">
               Menjadi ruang kreatif dan mitra dokumentasi visual terpercaya yang mampu menghidupkan setiap selebrasi manusia, milestone personal, serta identitas brand melalui pendekatan visual yang bercerita, berjiwa, dan timeless.
@@ -449,7 +623,10 @@
           </div>
 
           <div class="vm-card reveal">
-            <span class="vm-badge">OUR MISSION</span>
+            <span class="vm-badge">
+              <svg class="icon icon-sm"><use href="#icon-star"/></svg>
+              <span>OUR MISSION</span>
+            </span>
             <h3 class="vm-title">MISI KAMI</h3>
             <ul class="misi-list">
               <li>
@@ -471,6 +648,59 @@
                 </div>
               </li>
             </ul>
+          </div>
+        </div>
+
+        <!-- CAPABILITIES STRIP (ASET VISUAL BADGES) -->
+        <div class="capabilities-strip reveal">
+          <div class="cap-item">
+            <div class="cap-icon-box">
+              <svg class="icon icon-lg"><use href="#icon-drone"/></svg>
+            </div>
+            <div class="cap-text">
+              <h4>AERIAL DRONE</h4>
+              <p>4K Cinematic Scale</p>
+            </div>
+          </div>
+
+          <div class="cap-item">
+            <div class="cap-icon-box">
+              <svg class="icon icon-lg"><use href="#icon-user"/></svg>
+            </div>
+            <div class="cap-text">
+              <h4>DEDICATED CREW</h4>
+              <p>Pro Field Personil</p>
+            </div>
+          </div>
+
+          <div class="cap-item">
+            <div class="cap-icon-box">
+              <svg class="icon icon-lg"><use href="#icon-reels"/></svg>
+            </div>
+            <div class="cap-text">
+              <h4>REELS SPECIALIST</h4>
+              <p>Dynamic 9:16 Format</p>
+            </div>
+          </div>
+
+          <div class="cap-item">
+            <div class="cap-icon-box">
+              <svg class="icon icon-lg"><use href="#icon-clapper"/></svg>
+            </div>
+            <div class="cap-text">
+              <h4>AFTER MOVIE</h4>
+              <p>Story Pacing &amp; Audio</p>
+            </div>
+          </div>
+
+          <div class="cap-item">
+            <div class="cap-icon-box">
+              <svg class="icon icon-lg"><use href="#icon-crown"/></svg>
+            </div>
+            <div class="cap-text">
+              <h4>PREMIUM FINISH</h4>
+              <p>Master Google Drive</p>
+            </div>
           </div>
         </div>
       </div>
@@ -546,7 +776,9 @@
               <div class="overlay"></div>
               <div class="card-badge-top">
                 <span class="pill-tag">01 / BRAND</span>
-                <div class="play-btn-circle">▶</div>
+                <div class="play-btn-circle">
+                  <svg class="icon icon-sm" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="8,5 19,12 8,19"/></svg>
+                </div>
               </div>
               <div class="card-info-bottom">
                 <span class="cat-sub">Dynamic Hook</span>
@@ -564,7 +796,9 @@
               <div class="overlay"></div>
               <div class="card-badge-top">
                 <span class="pill-tag">02 / EVENT</span>
-                <div class="play-btn-circle">▶</div>
+                <div class="play-btn-circle">
+                  <svg class="icon icon-sm" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="8,5 19,12 8,19"/></svg>
+                </div>
               </div>
               <div class="card-info-bottom">
                 <span class="cat-sub">Real-Time Story</span>
@@ -582,7 +816,9 @@
               <div class="overlay"></div>
               <div class="card-badge-top">
                 <span class="pill-tag">03 / PRODUCT</span>
-                <div class="play-btn-circle">▶</div>
+                <div class="play-btn-circle">
+                  <svg class="icon icon-sm" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="8,5 19,12 8,19"/></svg>
+                </div>
               </div>
               <div class="card-info-bottom">
                 <span class="cat-sub">Studio Lighting</span>
@@ -600,7 +836,9 @@
               <div class="overlay"></div>
               <div class="card-badge-top">
                 <span class="pill-tag">04 / STREET</span>
-                <div class="play-btn-circle">▶</div>
+                <div class="play-btn-circle">
+                  <svg class="icon icon-sm" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="8,5 19,12 8,19"/></svg>
+                </div>
               </div>
               <div class="card-info-bottom">
                 <span class="cat-sub">Cinematic Motion</span>
@@ -618,7 +856,9 @@
               <div class="overlay"></div>
               <div class="card-badge-top">
                 <span class="pill-tag">05 / TALENT</span>
-                <div class="play-btn-circle">▶</div>
+                <div class="play-btn-circle">
+                  <svg class="icon icon-sm" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="8,5 19,12 8,19"/></svg>
+                </div>
               </div>
               <div class="card-info-bottom">
                 <span class="cat-sub">Storyboard Plan</span>
@@ -636,7 +876,9 @@
               <div class="overlay"></div>
               <div class="card-badge-top">
                 <span class="pill-tag">06 / MOTION</span>
-                <div class="play-btn-circle">▶</div>
+                <div class="play-btn-circle">
+                  <svg class="icon icon-sm" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="8,5 19,12 8,19"/></svg>
+                </div>
               </div>
               <div class="card-info-bottom">
                 <span class="cat-sub">Visual FX</span>
@@ -654,7 +896,9 @@
               <div class="overlay"></div>
               <div class="card-badge-top">
                 <span class="pill-tag">07 / FOOD</span>
-                <div class="play-btn-circle">▶</div>
+                <div class="play-btn-circle">
+                  <svg class="icon icon-sm" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="8,5 19,12 8,19"/></svg>
+                </div>
               </div>
               <div class="card-info-bottom">
                 <span class="cat-sub">Sensory Appetite</span>
@@ -672,7 +916,9 @@
               <div class="overlay"></div>
               <div class="card-badge-top">
                 <span class="pill-tag">08 / BTS</span>
-                <div class="play-btn-circle">▶</div>
+                <div class="play-btn-circle">
+                  <svg class="icon icon-sm" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="8,5 19,12 8,19"/></svg>
+                </div>
               </div>
               <div class="card-info-bottom">
                 <span class="cat-sub">Production Diary</span>
@@ -690,7 +936,9 @@
               <div class="overlay"></div>
               <div class="card-badge-top">
                 <span class="pill-tag">09 / SPEED</span>
-                <div class="play-btn-circle">▶</div>
+                <div class="play-btn-circle">
+                  <svg class="icon icon-sm" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="8,5 19,12 8,19"/></svg>
+                </div>
               </div>
               <div class="card-info-bottom">
                 <span class="cat-sub">High Adrenaline</span>
@@ -708,7 +956,9 @@
               <div class="overlay"></div>
               <div class="card-badge-top">
                 <span class="pill-tag">10 / SPORT</span>
-                <div class="play-btn-circle">▶</div>
+                <div class="play-btn-circle">
+                  <svg class="icon icon-sm" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="8,5 19,12 8,19"/></svg>
+                </div>
               </div>
               <div class="card-info-bottom">
                 <span class="cat-sub">High Intensity</span>
@@ -737,7 +987,7 @@
       </div>
     </div>
 
-    <!-- 5. PRICELIST CATEGORY PORTAL (WARM STONE GRAY) -->
+    <!-- 5. PRICELIST CATEGORY PORTAL (STONE GRAY WITH ICON EMBLEMS) -->
     <section class="pricing-portal" id="pricing">
       <div class="container">
         <div class="portal-head reveal">
@@ -748,10 +998,15 @@
         </div>
 
         <div class="category-grid">
-          <!-- 01 GRADUATION -->
+          <!-- 01 GRADUATION (CROWN EMBLEM) -->
           <a class="category-card reveal" href="graduation.html">
             <div>
-              <div class="cat-num">01</div>
+              <div class="cat-header">
+                <div class="cat-num">01</div>
+                <div class="cat-emblem" title="Milestone &amp; Honors">
+                  <svg class="icon icon-lg"><use href="#icon-crown"/></svg>
+                </div>
+              </div>
               <h3 class="cat-title">GRADUATION</h3>
               <span class="cat-jp">卒業写真 — Wisuda &amp; Personal Milestone</span>
               <p class="cat-desc">Dokumentasi momen kelulusan dengan opsi paket Foto (Basic, Standard, Halfday) dan Foto + Video (Starter, Signature, Complete).</p>
@@ -762,10 +1017,15 @@
             </div>
           </a>
 
-          <!-- 02 PREWEDDING -->
+          <!-- 02 PREWEDDING (DIAMOND EMBLEM) -->
           <a class="category-card reveal" href="prewedding.html">
             <div>
-              <div class="cat-num">02</div>
+              <div class="cat-header">
+                <div class="cat-num">02</div>
+                <div class="cat-emblem" title="Intimate &amp; Precious">
+                  <svg class="icon icon-lg"><use href="#icon-diamond"/></svg>
+                </div>
+              </div>
               <h3 class="cat-title">PREWEDDING</h3>
               <span class="cat-jp">ウェディング写真 — Intimate Love Story</span>
               <p class="cat-desc">Sesi foto dan video intim per jam, lengkap dengan bonus cetak foto 20R + frame eksklusif serta after movie sinematik.</p>
@@ -776,10 +1036,15 @@
             </div>
           </a>
 
-          <!-- 03 EVENT -->
+          <!-- 03 EVENT (CLAPPERBOARD EMBLEM) -->
           <a class="category-card reveal" href="event.html">
             <div>
-              <div class="cat-num">03</div>
+              <div class="cat-header">
+                <div class="cat-num">03</div>
+                <div class="cat-emblem" title="Production &amp; Live">
+                  <svg class="icon icon-lg"><use href="#icon-clapper"/></svg>
+                </div>
+              </div>
               <h3 class="cat-title">EVENT DOCUMENTATION</h3>
               <span class="cat-jp">イベント撮影 — Live, Concert, Gathering</span>
               <p class="cat-desc">Liputan multi-kamera untuk konser, festival, seminar, dan acara komunitas (Paket Basic, Elite, Ultimate, Profesional).</p>
@@ -790,10 +1055,15 @@
             </div>
           </a>
 
-          <!-- 04 CONTENT CREATOR -->
+          <!-- 04 CONTENT CREATOR (REELS EMBLEM) -->
           <a class="category-card reveal" href="content-creator.html">
             <div>
-              <div class="cat-num">04</div>
+              <div class="cat-header">
+                <div class="cat-num">04</div>
+                <div class="cat-emblem" title="Social Motion">
+                  <svg class="icon icon-lg"><use href="#icon-reels"/></svg>
+                </div>
+              </div>
               <h3 class="cat-title">CONTENT CREATOR</h3>
               <span class="cat-jp">コンテンツクリエイター — Reels &amp; Monthly Retainer</span>
               <p class="cat-desc">Layanan pembuatan konten media sosial: recap kilat per jam, hingga manajemen produksi konten bulanan (Standard &amp; Pro).</p>
@@ -815,7 +1085,10 @@
             <div class="eyebrow red-dot">Social Journal</div>
             <h2 class="ig-title display">LATEST ON<br>INSTAGRAM.</h2>
           </div>
-          <a class="ig-handle-btn" href="https://instagram.com/alponstudio" target="_blank" rel="noopener">Follow @alponstudio ↗</a>
+          <a class="ig-handle-btn" href="https://instagram.com/alponstudio" target="_blank" rel="noopener">
+            <svg class="icon icon-sm"><use href="#icon-instagram"/></svg>
+            <span>Follow @alponstudio</span> ↗
+          </a>
         </div>
         <div class="behold-wrapper reveal">
           <behold-widget feed-id="CtpYJCSBiUILU0vPGAOr"></behold-widget>
@@ -829,7 +1102,10 @@
         <div class="eyebrow">Let's Create Your Story</div>
         <h2 class="cta-title display">GOT A<br>STORY?</h2>
         <p class="cta-copy">Tell us what matters. Kami siap mengabadikan setiap momen Anda menjadi visual yang bermakna dan berkesan.</p>
-        <a class="cta-btn" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20konsultasi%20project%20visual." target="_blank" rel="noopener">Chat via WhatsApp (089668184078) ↗</a>
+        <a class="cta-btn" href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20ingin%20konsultasi%20project%20visual." target="_blank" rel="noopener">
+          <svg class="icon icon-sm"><use href="#icon-whatsapp"/></svg>
+          <span>Chat via WhatsApp (089668184078)</span> ↗
+        </a>
       </div>
     </section>
   </main>
@@ -854,13 +1130,25 @@
           </div>
           <div class="footer-col">
             <h4>Social</h4>
-            <a href="https://instagram.com/alponstudio" target="_blank" rel="noopener">Instagram (@alponstudio)</a>
-            <a href="#">TikTok</a>
-            <a href="https://alpon-studio.vercel.app/" target="_blank" rel="noopener">Website</a>
+            <a href="https://instagram.com/alponstudio" target="_blank" rel="noopener">
+              <svg class="icon icon-sm"><use href="#icon-instagram"/></svg>
+              <span>Instagram (@alponstudio)</span>
+            </a>
+            <a href="#">
+              <svg class="icon icon-sm"><use href="#icon-reels"/></svg>
+              <span>TikTok</span>
+            </a>
+            <a href="https://alpon-studio.vercel.app/" target="_blank" rel="noopener">
+              <svg class="icon icon-sm"><use href="#icon-globe"/></svg>
+              <span>Website</span>
+            </a>
           </div>
           <div class="footer-col">
             <h4>Contact</h4>
-            <a href="https://wa.me/6289668184078" target="_blank" rel="noopener">WhatsApp (089668184078)</a>
+            <a href="https://wa.me/6289668184078" target="_blank" rel="noopener">
+              <svg class="icon icon-sm"><use href="#icon-whatsapp"/></svg>
+              <span>WhatsApp (089668184078)</span>
+            </a>
             <a href="mailto:hello@alponstudio.com">Email</a>
           </div>
         </div>
