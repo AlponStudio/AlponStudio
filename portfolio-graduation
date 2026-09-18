@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GRADUATION PORTFOLIO — ALPON STUDIO</title>
+  <meta name="description" content="Koleksi dokumentasi wisuda dan kelulusan editorial ALPON STUDIO.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --jet:#0D0D0D;
+      --smoke:#1A1A1A;
+      --smoke-light:#252525;
+      --stone:#E8E8E6;
+      --off:#FAFAF8;
+      --red:#E63946;
+      --indigo:#121E31;
+      --white-line:rgba(250,250,248,.14);
+      --line:rgba(13,13,13,.12);
+      --display:"Bebas Neue", sans-serif;
+      --body:"Inter", sans-serif;
+      --jp:"Noto Sans JP", sans-serif;
+      --max:1440px;
+      --ease:cubic-bezier(.22,1,.36,1);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--jet);color:var(--off);font-family:var(--body);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    img{display:block;width:100%;height:100%;object-fit:cover}
+    .container{width:min(calc(100% - 64px),var(--max));margin-inline:auto}
+    .display{font-family:var(--display);text-transform:uppercase;letter-spacing:.02em}
+    .jp{font-family:var(--jp)}
+
+    /* SVG ICONS */
+    .icon{display:inline-block;width:20px;height:20px;stroke-width:1.8;stroke:currentColor;fill:none;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle;flex-shrink:0}
+    .icon-sm{width:16px;height:16px}
+
+    /* NAV */
+    .nav{position:sticky;top:0;z-index:100;background:rgba(13,13,13,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--white-line);padding:16px 0}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between}
+    .logo-img{height:34px;width:auto}
+    .back-btn{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--red);transition:gap .3s var(--ease)}
+    .back-btn:hover{gap:12px}
+
+    /* HEADER */
+    .page-header{background:var(--indigo);padding:95px 0 65px;border-bottom:1px solid var(--white-line);position:relative}
+    .badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;background:var(--red);color:var(--off);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:18px}
+    .page-title{font-size:clamp(65px,10vw,140px);margin:0 0 12px;line-height:.88}
+    .page-desc{color:#b3c1d1;font-size:14px;max-width:560px;line-height:1.8;margin:0}
+
+    /* SECTION GALLERY */
+    .gallery-section{background:var(--smoke);padding:80px 0 120px}
+    .series-block{margin-bottom:80px}
+    .series-block:last-child{margin-bottom:0}
+
+    .series-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      padding-bottom:16px;
+      border-bottom:1px solid var(--white-line);
+      margin-bottom:28px;
+    }
+    .series-header h3{
+      margin:0;
+      font-family:var(--display);
+      font-size:38px;
+      line-height:.95;
+      letter-spacing:.03em;
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .series-header h3 span{color:var(--red)}
+    .series-header p{
+      margin:0;
+      font-size:11px;
+      color:#999;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    /* GRID LAYOUT (6 FOTO PER SERIES) */
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:22px;
+    }
+    .gallery-card{
+      position:relative;
+      overflow:hidden;
+      background:#111;
+      border:1px solid var(--white-line);
+      aspect-ratio:4/5;
+      cursor:pointer;
+      transition:transform .4s var(--ease), border-color .4s var(--ease);
+    }
+    .gallery-card:hover{
+      transform:translateY(-6px);
+      border-color:var(--red);
+    }
+    .gallery-card.wide{
+      grid-column:span 2;
+      aspect-ratio:16/10;
+    }
+    .gallery-card img{
+      transition:transform .85s var(--ease), filter .5s var(--ease);
+      filter:grayscale(.15) contrast(1.06);
+    }
+    .gallery-card:hover img{
+      transform:scale(1.06);
+      filter:grayscale(0) contrast(1.1);
+    }
+    .gallery-overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(0deg, rgba(13,13,13,.88) 0%, rgba(13,13,13,.1) 45%, transparent 100%);
+      padding:24px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      opacity:0;
+      transition:opacity .35s var(--ease);
+      z-index:2;
+    }
+    .gallery-card:hover .gallery-overlay{opacity:1}
+    .gallery-tag{font-size:9px;font-weight:700;letter-spacing:.16em;color:var(--red);text-transform:uppercase;margin-bottom:6px}
+    .gallery-caption{font-family:var(--display);font-size:26px;margin:0;line-height:.95}
+
+    /* LIGHTBOX POPUP */
+    .lightbox-modal{
+      position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;
+      opacity:0;transition:opacity .35s var(--ease);
+    }
+    .lightbox-modal.active{display:flex;opacity:1}
+    .lightbox-backdrop{position:absolute;inset:0;background:rgba(13,13,13,.95);backdrop-filter:blur(18px)}
+    .lightbox-dialog{
+      position:relative;z-index:2;max-width:min(92vw, 900px);max-height:88vh;
+      display:flex;flex-direction:column;align-items:center;
+    }
+    .lightbox-dialog img{
+      max-width:100%;max-height:80vh;object-fit:contain;border:1px solid var(--white-line);box-shadow:0 20px 60px rgba(0,0,0,.85);
+    }
+    .lightbox-close{
+      position:absolute;top:-45px;right:0;background:transparent;border:0;
+      color:var(--off);font-size:26px;cursor:pointer;transition:.3s var(--ease);
+    }
+    .lightbox-close:hover{color:var(--red);transform:rotate(90deg)}
+
+    /* ACTION BAR */
+    .action-bar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:var(--jet);
+      border:1px solid var(--white-line);
+      padding:28px 34px;
+      margin-top:60px;
+    }
+    .action-bar h3{margin:0;font-family:var(--display);font-size:32px;letter-spacing:.02em}
+    .action-bar span{font-size:11px;color:#888;letter-spacing:.08em;margin-top:4px;display:block}
+    .btn-group{display:flex;gap:12px}
+    .btn-action{
+      display:inline-flex;align-items:center;gap:8px;padding:12px 22px;
+      font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;transition:.3s var(--ease);
+    }
+    .btn-primary{background:var(--red);border:1px solid var(--red);color:var(--off)}
+    .btn-primary:hover{background:var(--off);border-color:var(--off);color:var(--jet)}
+    .btn-outline{border:1px solid rgba(250,250,248,.3);color:var(--off)}
+    .btn-outline:hover{background:var(--off);color:var(--jet)}
+
+    footer{background:var(--jet);padding:40px 0;border-top:1px solid var(--white-line);text-align:center;font-size:10px;color:#777;letter-spacing:.15em}
+
+    @media(max-width:900px){
+      .gallery-grid{grid-template-columns:1fr 1fr}
+      .gallery-card.wide{grid-column:span 1;aspect-ratio:4/5}
+      .action-bar{flex-direction:column;gap:20px;text-align:center}
+      .btn-group{flex-direction:column;width:100%}
+      .btn-action{justify-content:center}
+    }
+    @media(max-width:600px){
+      .gallery-grid{grid-template-columns:1fr}
+      .container{width:calc(100% - 32px)}
+      .series-header{flex-direction:column;align-items:flex-start;gap:6px}
+    }
+  </style>
+</head>
+<body>
+  <!-- SVG ICONS -->
+  <svg style="display:none;" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="icon-crown" viewBox="0 0 24 24"><path d="M2 19h20M3 15l3-8 6 6 6-6 3 8H3z"/><circle cx="3" cy="7" r="1.5"/><circle cx="12" cy="5" r="1.5"/><circle cx="21" cy="7" r="1.5"/></symbol>
+    <symbol id="icon-whatsapp" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/><path d="M9.5 9a1.5 1.5 0 0 0-1.5 1.5c0 2.5 2.5 5 5 5a1.5 1.5 0 0 0 1.5-1.5v-1l-1.5-.5-1 1a5.6 5.6 0 0 1-2.5-2.5l1-1z"/></symbol>
+  </svg>
+
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="index.html"><img src="https://lh3.googleusercontent.com/d/1VzehDfh7kaoJBUak6E6wkYi5V2IHwpcC" alt="ALPON" class="logo-img"></a>
+      <a href="index.html" class="back-btn">← Kembali ke Halaman Utama</a>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <div class="container">
+      <span class="badge">
+        <svg class="icon icon-sm"><use href="#icon-crown"/></svg>
+        <span>PORTFOLIO SHOWCASE</span>
+      </span>
+      <h1 class="page-title display">GRADUATION STORIES</h1>
+      <p class="page-desc">Dokumentasi momen kelulusan dan selebrasi wisuda sarjana: ekspresi candid, kebanggaan personal, dan kehangatan bersama orang tersayang.</p>
+    </div>
+  </header>
+
+  <main class="gallery-section">
+    <div class="container">
+
+      <!-- ==================== SERIES 01 (SET A) ==================== -->
+      <div class="series-block">
+        <div class="series-header">
+          <h3><span>01</span> GRADUATION SERIES A</h3>
+          <p>Outdoor &amp; Personal Milestone Session</p>
+        </div>
+
+        <div class="gallery-grid">
+          <!-- A1 (Wide Hero) -->
+          <div class="gallery-card wide" data-full="https://lh3.googleusercontent.com/d/17NVJq9cu2Icx4s5Rm0wREeITnC6i7K4v">
+            <img src="https://lh3.googleusercontent.com/d/17NVJq9cu2Icx4s5Rm0wREeITnC6i7K4v" alt="Graduation Series A - 01" loading="lazy">
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Series A / Frame 01</span>
+              <h4 class="gallery-caption">THE MILESTONE MOMENT</h4>
+            </div>
+          </div>
+
+          <!-- A2 -->
+          <div class="gallery-card" data-full="https://lh3.googleusercontent.com/d/1R5QmmJIqnmCaQwq7Zo35TBAmVmm4QZWi">
+            <img src="https://lh3.googleusercontent.com/d/1R5QmmJIqnmCaQwq7Zo35TBAmVmm4QZWi" alt="Graduation Series A - 02" loading="lazy">
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Series A / Frame 02</span>
+              <h4 class="gallery-caption">UNFILTERED SMILE</h4>
+            </div>
+          </div>
+
+          <!-- A3 -->
+          <div class="gallery-card" data-full="https://lh3.googleusercontent.com/d/1kCEKzhVRKFcv_r9szncRZ5UZvHH2zOwc">
+            <img src="https://lh3.googleusercontent.com/d/1kCEKzhVRKFcv_r9szncRZ5UZvHH2zOwc" alt="Graduation Series A - 03" loading="lazy">
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Series A / Frame 03</span>
+              <h4 class="gallery-caption">PORTRAIT OF PRIDE</h4>
+            </div>
+          </div>
+
+          <!-- A4 -->
+          <div class="gallery-card" data-full="https://lh3.googleusercontent.com/d/1m9wvT4bL0zjFowHiIXNs-F9HX-2-k9Sg">
+            <img src="https://lh3.googleusercontent.com/d/1m9wvT4bL0zjFowHiIXNs-F9HX-2-k9Sg" alt="Graduation Series A - 04" loading="lazy">
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Series A / Frame 04</span>
+              <h4 class="gallery-caption">SHADOW &amp; LIGHT</h4>
+            </div>
+          </div>
+
+          <!-- A5 -->
+          <div class="gallery-card" data-full="https://lh3.googleusercontent.com/d/1tUhEaznIm2vShioYDd7whOYQXrCkY-Po">
+            <img src="https://lh3.googleusercontent.com/d/1tUhEaznIm2vShioYDd7whOYQXrCkY-Po" alt="Graduation Series A - 05" loading="lazy">
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Series A / Frame 05</span>
+              <h4 class="gallery-caption">HONOR THE JOURNEY</h4>
+            </div>
+          </div>
+
+          <!-- A6 (Wide Anchor) -->
+          <div class="gallery-card wide" data-full="https://lh3.googleusercontent.com/d/1h3HZR7hV5A2oCH7AtHF1gaiNjL_n3A-7">
+            <img src="https://lh3.googleusercontent.com/d/1h3HZR7hV5A2oCH7AtHF1gaiNjL_n3A-7" alt="Graduation Series A - 06" loading="lazy">
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Series A / Frame 06</span>
+              <h4 class="gallery-caption">CELEBRATION WALK</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== SERIES 02 (SET B) ==================== -->
+      <div class="series-block">
+        <div class="series-header">
+          <h3><span>02</span> GRADUATION SERIES B</h3>
+          <p>Academic &amp; Companion Story Session</p>
+        </div>
+
+        <div class="gallery-grid">
+          <!-- B1 (Wide Hero) -->
+          <div class="gallery-card wide" data-full="https://lh3.googleusercontent.com/d/1QXSKrJLPpyJMP8GubI2uAYSTEC4_QHcP">
+            <img src="https://lh3.googleusercontent.com/d/1QXSKrJLPpyJMP8GubI2uAYSTEC4_QHcP" alt="Graduation Series B - 01" loading="lazy">
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Series B / Frame 01</span>
+              <h4 class="gallery-caption">ACADEMIC EXCELLENCE</h4>
+            </div>
+          </div>
+
+          <!-- B2 -->
+          <div class="gallery-card" data-full="https://lh3.googleusercontent.com/d/19QtvMLv6TF3bksqDt-CEqOKsU1CDAmoJ">
+            <img src="https://lh3.googleusercontent.com/d/19QtvMLv6TF3bksqDt-CEqOKsU1CDAmoJ" alt="Graduation Series B - 02" loading="lazy">
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Series B / Frame 02</span>
+              <h4 class="gallery-caption">PURE JOY</h4>
+            </div>
+          </div>
+
+          <!-- B3 -->
+          <div class="gallery-card" data-full="https://lh3.googleusercontent.com/d/1tLPQSV8bbIJWFE15mmas1eOxwDsJcfiY">
+            <img src="https://lh3.googleusercontent.com/d/1tLPQSV8bbIJWFE15mmas1eOxwDsJcfiY" alt="Graduation Series B - 03" loading="lazy">
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Series B / Frame 03</span>
+              <h4 class="gallery-caption">STEPPING FORWARD</h4>
+            </div>
+          </div>
+
+          <!-- B4 -->
+          <div class="gallery-card" data-full="https://lh3.googleusercontent.com/d/1u6WipUezDCVymSKWi_AstYxKDg1X0Zp_">
+            <img src="https://lh3.googleusercontent.com/d/1u6WipUezDCVymSKWi_AstYxKDg1X0Zp_" alt="Graduation Series B - 04" loading="lazy">
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Series B / Frame 04</span>
+              <h4 class="gallery-caption">WARMTH &amp; PRIDE</h4>
+            </div>
+          </div>
+
+          <!-- B5 -->
+          <div class="gallery-card" data-full="https://lh3.googleusercontent.com/d/18ND3CrTrQ0wwPuUqhbTajBjlorb2wUxp">
+            <img src="https://lh3.googleusercontent.com/d/18ND3CrTrQ0wwPuUqhbTajBjlorb2wUxp" alt="Graduation Series B - 05" loading="lazy">
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Series B / Frame 05</span>
+              <h4 class="gallery-caption">COMPANIONS IN FRAME</h4>
+            </div>
+          </div>
+
+          <!-- B6 (Wide Anchor) -->
+          <div class="gallery-card wide" data-full="https://lh3.googleusercontent.com/d/1AksWDXkE1ZOexd_WQ9312K_wSPC_7sD6">
+            <img src="https://lh3.googleusercontent.com/d/1AksWDXkE1ZOexd_WQ9312K_wSPC_7sD6" alt="Graduation Series B - 06" loading="lazy">
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Series B / Frame 06</span>
+              <h4 class="gallery-caption">THE NEW HORIZON</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACTION BAR -->
+      <div class="action-bar">
+        <div>
+          <h3>INGIN MENGABADIKAN MOMEN WISUDAMU?</h3>
+          <span>Pilih paket foto &amp; video kelulusan dengan rate terjangkau bersama ALPON STUDIO.</span>
+        </div>
+        <div class="btn-group">
+          <a href="graduation.html" class="btn-action btn-outline">Lihat Pricelist Graduation ↗</a>
+          <a href="https://wa.me/6289668184078?text=Halo%20ALPON%20STUDIO,%20saya%20tertarik%20booking%20sesi%20Graduation." target="_blank" rel="noopener" class="btn-action btn-primary">
+            <svg class="icon icon-sm"><use href="#icon-whatsapp"/></svg>
+            <span>Book via WhatsApp</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- LIGHTBOX MODAL -->
+  <div class="lightbox-modal" id="lightboxModal">
+    <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+    <div class="lightbox-dialog">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Close Lightbox">✕</button>
+      <img id="lightboxImg" src="" alt="Graduation Preview">
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">© 2026 ALPON STUDIO — WE CAPTURE WHAT MATTERS.</div>
+  </footer>
+
+  <script>
+    // Lightbox modal logic
+    const modal = document.getElementById("lightboxModal");
+    const modalImg = document.getElementById("lightboxImg");
+    const modalClose = document.getElementById("lightboxClose");
+    const modalBackdrop = document.getElementById("lightboxBackdrop");
+
+    document.querySelectorAll(".gallery-card").forEach((card) => {
+      card.addEventListener("click", () => {
+        const fullSrc = card.dataset.full;
+        if (!fullSrc) return;
+        modalImg.src = fullSrc;
+        modal.classList.add("active");
+      });
+    });
+
+    function closeModal() {
+      modal.classList.remove("active");
+      modalImg.src = "";
+    }
+
+    modalClose.addEventListener("click", closeModal);
+    modalBackdrop.addEventListener("click", closeModal);
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modal.classList.contains("active")) {
+        closeModal();
+      }
+    });
+  </script>
+</body>
+</html>
