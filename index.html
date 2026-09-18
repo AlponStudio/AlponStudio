@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Memaksa semua embed pihak ketiga (Instagram) membaca preferensi tema gelap -->
+  <meta name="color-scheme" content="dark">
+
   <title>ALPON STUDIO — We Capture What Matters.</title>
   <meta name="description" content="ALPON STUDIO — visual documentation, photography, motion and content creator.">
 
@@ -12,6 +15,7 @@
 
   <style>
     :root{
+      color-scheme: dark;
       --jet:#0D0D0D;
       --smoke:#1A1A1A;
       --smoke-light:#252525;
@@ -30,7 +34,7 @@
       --ease:cubic-bezier(.22,1,.36,1);
     }
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+    html{scroll-behavior:smooth; color-scheme: dark;}
     body{margin:0;background:var(--jet);color:var(--off);font-family:var(--body);overflow-x:hidden;-webkit-font-smoothing:antialiased}
     a{color:inherit;text-decoration:none}
     img{display:block}
@@ -219,7 +223,7 @@
     .project-copy h3{margin:0;font-size:clamp(38px,4vw,60px);line-height:.92}
     .project-copy p{margin:10px 0 0;color:#c0cbd6;font-size:10px;text-transform:uppercase;letter-spacing:.14em}
 
-    /* ---------------- SECTION: CONTENT CREATOR (DIRECT EMBED REELS SLIDER) ---------------- */
+    /* ---------------- SECTION: CONTENT CREATOR (INSTAGRAM DARK EMBED SLIDER) ---------------- */
     .creator-work{background:var(--smoke);color:var(--off);padding:130px 0;border-bottom:1px solid var(--white-line)}
     .creator-head{display:flex;justify-content:space-between;gap:40px;align-items:flex-end;margin-bottom:45px}
     .creator-title{margin:14px 0 0;font-size:clamp(75px,10vw,150px);line-height:.88}
@@ -249,17 +253,18 @@
     .creator-slider::-webkit-scrollbar-track{background:var(--smoke-light)}
     .creator-slider::-webkit-scrollbar-thumb{background:var(--red)}
 
+    /* Kartu Embed Instagram Gelap Murni */
     .reel-embed-card{
       flex:0 0 330px;
       height:540px;
       scroll-snap-align:start;
-      background:var(--jet);
+      background:#000;
       border:1px solid var(--white-line);
       display:flex;
       flex-direction:column;
       justify-content:space-between;
       overflow:hidden;
-      box-shadow:0 12px 36px rgba(0,0,0,.5);
+      box-shadow:0 12px 36px rgba(0,0,0,.65);
       transition:transform .35s var(--ease), border-color .35s var(--ease);
     }
     .reel-embed-card:hover{
@@ -270,7 +275,8 @@
       width:100%;
       height:485px;
       border:none;
-      background:#000;
+      background:#000 !important;
+      color-scheme: dark !important;
     }
     .reel-link-bar{
       height:55px;
@@ -285,6 +291,7 @@
       letter-spacing:.14em;
       text-transform:uppercase;
       transition:.3s var(--ease);
+      color:var(--off);
     }
     .reel-embed-card:hover .reel-link-bar{
       background:var(--red);
@@ -647,7 +654,7 @@
       </div>
     </section>
 
-    <!-- 4. CONTENT CREATOR (9 INSTAGRAM REELS SLIDER) -->
+    <!-- 4. CONTENT CREATOR (9 INSTAGRAM REELS EMBED SLIDER - DARK MODE) -->
     <section class="creator-work" id="creator">
       <div class="container">
         <div class="creator-head reveal">
@@ -656,7 +663,7 @@
             <h2 class="creator-title display">CONTENT CREATOR</h2>
           </div>
           <div class="creator-header-right">
-            <p class="creator-note">Geser ke samping untuk melihat thumbnail video asli dan memutar langsung 9 Reels ALPON STUDIO.</p>
+            <p class="creator-note">Geser ke samping untuk melihat dan memutar langsung 9 Reels ALPON STUDIO.</p>
             <div class="slider-arrows">
               <button class="slider-btn" id="slideLeft" aria-label="Slide Left">←</button>
               <button class="slider-btn" id="slideRight" aria-label="Slide Right">→</button>
@@ -669,7 +676,7 @@
             
             <!-- 01. DFz8P64SYaZ -->
             <div class="reel-embed-card">
-              <iframe src="https://www.instagram.com/reel/DFz8P64SYaZ/embed/" loading="lazy" allowfullscreen></iframe>
+              <iframe src="https://www.instagram.com/reel/DFz8P64SYaZ/embed/" style="color-scheme: dark;" loading="lazy" allowfullscreen></iframe>
               <a class="reel-link-bar" href="https://www.instagram.com/reel/DFz8P64SYaZ/" target="_blank" rel="noopener">
                 <span><svg class="icon icon-sm"><use href="#icon-instagram"/></svg> Reel #01</span>
                 <span>Tonton di IG ↗</span>
@@ -678,7 +685,7 @@
 
             <!-- 02. Db5xKLFSMBt -->
             <div class="reel-embed-card">
-              <iframe src="https://www.instagram.com/reel/Db5xKLFSMBt/embed/" loading="lazy" allowfullscreen></iframe>
+              <iframe src="https://www.instagram.com/reel/Db5xKLFSMBt/embed/" style="color-scheme: dark;" loading="lazy" allowfullscreen></iframe>
               <a class="reel-link-bar" href="https://www.instagram.com/reel/Db5xKLFSMBt/" target="_blank" rel="noopener">
                 <span><svg class="icon icon-sm"><use href="#icon-instagram"/></svg> Reel #02</span>
                 <span>Tonton di IG ↗</span>
@@ -687,7 +694,7 @@
 
             <!-- 03. DcYt4MGSIGn -->
             <div class="reel-embed-card">
-              <iframe src="https://www.instagram.com/reel/DcYt4MGSIGn/embed/" loading="lazy" allowfullscreen></iframe>
+              <iframe src="https://www.instagram.com/reel/DcYt4MGSIGn/embed/" style="color-scheme: dark;" loading="lazy" allowfullscreen></iframe>
               <a class="reel-link-bar" href="https://www.instagram.com/reel/DcYt4MGSIGn/" target="_blank" rel="noopener">
                 <span><svg class="icon icon-sm"><use href="#icon-instagram"/></svg> Reel #03</span>
                 <span>Tonton di IG ↗</span>
@@ -696,7 +703,7 @@
 
             <!-- 04. DOVbaefEhTp -->
             <div class="reel-embed-card">
-              <iframe src="https://www.instagram.com/reel/DOVbaefEhTp/embed/" loading="lazy" allowfullscreen></iframe>
+              <iframe src="https://www.instagram.com/reel/DOVbaefEhTp/embed/" style="color-scheme: dark;" loading="lazy" allowfullscreen></iframe>
               <a class="reel-link-bar" href="https://www.instagram.com/reel/DOVbaefEhTp/" target="_blank" rel="noopener">
                 <span><svg class="icon icon-sm"><use href="#icon-instagram"/></svg> Reel #04</span>
                 <span>Tonton di IG ↗</span>
@@ -705,7 +712,7 @@
 
             <!-- 05. DaXfZP-zXsN -->
             <div class="reel-embed-card">
-              <iframe src="https://www.instagram.com/reel/DaXfZP-zXsN/embed/" loading="lazy" allowfullscreen></iframe>
+              <iframe src="https://www.instagram.com/reel/DaXfZP-zXsN/embed/" style="color-scheme: dark;" loading="lazy" allowfullscreen></iframe>
               <a class="reel-link-bar" href="https://www.instagram.com/reel/DaXfZP-zXsN/" target="_blank" rel="noopener">
                 <span><svg class="icon icon-sm"><use href="#icon-instagram"/></svg> Reel #05</span>
                 <span>Tonton di IG ↗</span>
@@ -714,7 +721,7 @@
 
             <!-- 06. DR7HwROE_Ur -->
             <div class="reel-embed-card">
-              <iframe src="https://www.instagram.com/reel/DR7HwROE_Ur/embed/" loading="lazy" allowfullscreen></iframe>
+              <iframe src="https://www.instagram.com/reel/DR7HwROE_Ur/embed/" style="color-scheme: dark;" loading="lazy" allowfullscreen></iframe>
               <a class="reel-link-bar" href="https://www.instagram.com/reel/DR7HwROE_Ur/" target="_blank" rel="noopener">
                 <span><svg class="icon icon-sm"><use href="#icon-instagram"/></svg> Reel #06</span>
                 <span>Tonton di IG ↗</span>
@@ -723,7 +730,7 @@
 
             <!-- 07. DZSZtNyzpw7 -->
             <div class="reel-embed-card">
-              <iframe src="https://www.instagram.com/reel/DZSZtNyzpw7/embed/" loading="lazy" allowfullscreen></iframe>
+              <iframe src="https://www.instagram.com/reel/DZSZtNyzpw7/embed/" style="color-scheme: dark;" loading="lazy" allowfullscreen></iframe>
               <a class="reel-link-bar" href="https://www.instagram.com/reel/DZSZtNyzpw7/" target="_blank" rel="noopener">
                 <span><svg class="icon icon-sm"><use href="#icon-instagram"/></svg> Reel #07</span>
                 <span>Tonton di IG ↗</span>
@@ -732,7 +739,7 @@
 
             <!-- 08. DVTB6dcErqm -->
             <div class="reel-embed-card">
-              <iframe src="https://www.instagram.com/reel/DVTB6dcErqm/embed/" loading="lazy" allowfullscreen></iframe>
+              <iframe src="https://www.instagram.com/reel/DVTB6dcErqm/embed/" style="color-scheme: dark;" loading="lazy" allowfullscreen></iframe>
               <a class="reel-link-bar" href="https://www.instagram.com/reel/DVTB6dcErqm/" target="_blank" rel="noopener">
                 <span><svg class="icon icon-sm"><use href="#icon-instagram"/></svg> Reel #08</span>
                 <span>Tonton di IG ↗</span>
@@ -741,7 +748,7 @@
 
             <!-- 09. DYlhN20Rkap -->
             <div class="reel-embed-card">
-              <iframe src="https://www.instagram.com/reel/DYlhN20Rkap/embed/" loading="lazy" allowfullscreen></iframe>
+              <iframe src="https://www.instagram.com/reel/DYlhN20Rkap/embed/" style="color-scheme: dark;" loading="lazy" allowfullscreen></iframe>
               <a class="reel-link-bar" href="https://www.instagram.com/reel/DYlhN20Rkap/" target="_blank" rel="noopener">
                 <span><svg class="icon icon-sm"><use href="#icon-instagram"/></svg> Reel #09</span>
                 <span>Tonton di IG ↗</span>
