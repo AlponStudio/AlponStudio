@@ -101,7 +101,7 @@
     .rec i{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red)}
     .hero-coordinates{display:flex;gap:18px;font-family:var(--display);font-size:26px}
 
-    /* ---------------- SECTION: BRAND ABOUT (OFF-WHITE) ---------------- */
+    /* ---------------- SECTION: BRAND ABOUT (OFF-WHITE LIGHT) ---------------- */
     .brand-about{background:var(--off);color:var(--jet);padding:130px 0 110px;border-bottom:1px solid var(--line)}
     .about-top{display:grid;grid-template-columns:1.15fr .85fr;gap:70px;align-items:start;margin-bottom:70px}
     .about-heading{margin:14px 0 0;font-size:clamp(65px,8.5vw,130px);line-height:.92;color:var(--jet)}
@@ -266,7 +266,7 @@
     }
     .creator-card:hover .card-thumb{
       transform:scale(1.06);
-      filter:grayscale(0) contrast(1.14);
+      filter:grayscale(0) contrast(1.12);
     }
     .creator-card .overlay{
       position:absolute;inset:0;
@@ -304,7 +304,7 @@
       margin:0;font-size:11px;color:#bbb;line-height:1.5;
     }
 
-    /* ---------------- VIDEO MODAL LIGHTBOX ---------------- */
+    /* ---------------- VIDEO MODAL LIGHTBOX (INSTAGRAM REELS EMBED) ---------------- */
     .video-modal{
       position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;
       opacity:0;transition:opacity .35s var(--ease);
@@ -470,7 +470,7 @@
 </head>
 
 <body>
-  <!-- INLINE SVG SYMBOLS -->
+  <!-- INLINE SVG SYMBOLS FOR REUSABILITY -->
   <svg style="display:none;" xmlns="http://www.w3.org/2000/svg">
     <symbol id="icon-crown" viewBox="0 0 24 24"><path d="M2 19h20M3 15l3-8 6 6 6-6 3 8H3z" /><circle cx="3" cy="7" r="1.5" /><circle cx="12" cy="5" r="1.5" /><circle cx="21" cy="7" r="1.5" /></symbol>
     <symbol id="icon-diamond" viewBox="0 0 24 24"><path d="M6 3h12l4 6-10 12L2 9l4-6zM2 9h20M12 21L8 9l4-6 4 6-4 12z" /></symbol>
@@ -699,7 +699,7 @@
       </div>
     </section>
 
-    <!-- 4. CONTENT CREATOR (9 INSTAGRAM REELS SLIDER DENGAN THUMBNAIL PORTRAIT 9:16) -->
+    <!-- 4. CONTENT CREATOR (9 INSTAGRAM REELS SLIDER DENGAN THUMBNAIL & CAPTION SESUAI LINK) -->
     <section class="creator-work" id="creator">
       <div class="container">
         <div class="creator-head reveal">
@@ -723,9 +723,9 @@
             <div class="creator-card" 
                  data-shortcode="DFz8P64SYaZ" 
                  data-url="https://www.instagram.com/reel/DFz8P64SYaZ/" 
-                 data-title="LIVE CONCERT ENERGY" 
-                 data-tag="EVENT RECAP">
-              <div class="card-thumb" data-thumb="reel1"></div>
+                 data-title="CAMPUS HYPE REEL" 
+                 data-tag="01 / EVENT RECAP">
+              <div class="card-thumb" style="background-image:url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=800&q=80');"></div>
               <div class="overlay"></div>
               <div class="card-badge-top">
                 <span class="pill-tag">01 / EVENT</span>
@@ -734,9 +734,9 @@
                 </div>
               </div>
               <div class="card-info-bottom">
-                <span class="cat-sub">Dynamic Hook</span>
-                <h3>STAGE &amp; CROWD</h3>
-                <p>High-energy stage lighting, crowd sync, and live aftermovie.</p>
+                <span class="cat-sub">Dynamic Event</span>
+                <h3>CAMPUS HYPE REEL</h3>
+                <p>Keseruan selebrasi &amp; crowd gathering dengan dynamic cut 9:16.</p>
               </div>
             </div>
 
@@ -744,20 +744,20 @@
             <div class="creator-card" 
                  data-shortcode="Db5xKLFSMBt" 
                  data-url="https://www.instagram.com/reel/Db5xKLFSMBt/" 
-                 data-title="BEHIND THE CAMERA" 
-                 data-tag="BTS &amp; RIG">
-              <div class="card-thumb" data-thumb="reel2"></div>
+                 data-title="CONCERT NIGHT BEATS" 
+                 data-tag="02 / LIVE MUSIC">
+              <div class="card-thumb" style="background-image:url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=80');"></div>
               <div class="overlay"></div>
               <div class="card-badge-top">
-                <span class="pill-tag">02 / RIG</span>
+                <span class="pill-tag">02 / MUSIC</span>
                 <div class="play-btn-circle">
                   <svg class="icon icon-sm" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="8,5 19,12 8,19"/></svg>
                 </div>
               </div>
               <div class="card-info-bottom">
-                <span class="cat-sub">Director Workflow</span>
-                <h3>CINEMATIC SETUP</h3>
-                <p>Professional camera movements, wireless mics, and field gear.</p>
+                <span class="cat-sub">Live Atmosphere</span>
+                <h3>CONCERT NIGHT BEATS</h3>
+                <p>Atmosfer panggung musik, tata cahaya spektakuler, dan audio jernih.</p>
               </div>
             </div>
 
@@ -765,20 +765,20 @@
             <div class="creator-card" 
                  data-shortcode="DcYt4MGSIGn" 
                  data-url="https://www.instagram.com/reel/DcYt4MGSIGn/" 
-                 data-title="FESTIVAL NIGHTS" 
-                 data-tag="ATMOSPHERE">
-              <div class="card-thumb" data-thumb="reel3"></div>
+                 data-title="GRADUATION HIGHLIGHT" 
+                 data-tag="03 / WISUDA STORY">
+              <div class="card-thumb" style="background-image:url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80');"></div>
               <div class="overlay"></div>
               <div class="card-badge-top">
-                <span class="pill-tag">03 / STORY</span>
+                <span class="pill-tag">03 / WISUDA</span>
                 <div class="play-btn-circle">
                   <svg class="icon icon-sm" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="8,5 19,12 8,19"/></svg>
                 </div>
               </div>
               <div class="card-info-bottom">
-                <span class="cat-sub">Visual Beat</span>
-                <h3>CHASING SOUND</h3>
-                <p>Festival night vibes with fast-paced cuts and sound design.</p>
+                <span class="cat-sub">Milestone Memory</span>
+                <h3>GRADUATION HIGHLIGHT</h3>
+                <p>Momen kelulusan sarjana penuh kebanggaan bersama keluarga &amp; sahabat.</p>
               </div>
             </div>
 
@@ -786,20 +786,20 @@
             <div class="creator-card" 
                  data-shortcode="DOVbaefEhTp" 
                  data-url="https://www.instagram.com/reel/DOVbaefEhTp/" 
-                 data-title="CANDID PORTRAIT" 
-                 data-tag="PEOPLE">
-              <div class="card-thumb" data-thumb="reel4"></div>
+                 data-title="STAGE LIGHTS &amp; PASSION" 
+                 data-tag="04 / PERFORMANCE">
+              <div class="card-thumb" style="background-image:url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80');"></div>
               <div class="overlay"></div>
               <div class="card-badge-top">
-                <span class="pill-tag">04 / MOTION</span>
+                <span class="pill-tag">04 / STAGE</span>
                 <div class="play-btn-circle">
                   <svg class="icon icon-sm" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="8,5 19,12 8,19"/></svg>
                 </div>
               </div>
               <div class="card-info-bottom">
-                <span class="cat-sub">Real Human Emotion</span>
-                <h3>RAW MOMENTS</h3>
-                <p>Clean vertical portraiture captured with natural expressions.</p>
+                <span class="cat-sub">Show Production</span>
+                <h3>STAGE LIGHTS &amp; PASSION</h3>
+                <p>Sorotan aksi panggung live berenergi tinggi dalam format reels sinematik.</p>
               </div>
             </div>
 
@@ -807,20 +807,20 @@
             <div class="creator-card" 
                  data-shortcode="DaXfZP-zXsN" 
                  data-url="https://www.instagram.com/reel/DaXfZP-zXsN/" 
-                 data-title="URBAN STREET CULTURE" 
-                 data-tag="STREET">
-              <div class="card-thumb" data-thumb="reel5"></div>
+                 data-title="CREATIVE EDITORIAL" 
+                 data-tag="05 / VISUAL TONE">
+              <div class="card-thumb" style="background-image:url('https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80');"></div>
               <div class="overlay"></div>
               <div class="card-badge-top">
-                <span class="pill-tag">05 / STREET</span>
+                <span class="pill-tag">05 / EDITORIAL</span>
                 <div class="play-btn-circle">
                   <svg class="icon icon-sm" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="8,5 19,12 8,19"/></svg>
                 </div>
               </div>
               <div class="card-info-bottom">
-                <span class="cat-sub">Youth Culture</span>
-                <h3>CITY LIGHTS</h3>
-                <p>Moody night tones and dynamic street documentary pace.</p>
+                <span class="cat-sub">Dark Matte Vibe</span>
+                <h3>CREATIVE EDITORIAL</h3>
+                <p>Kombinasi framing bersih, kontras tinggi, dan color grading berkarakter.</p>
               </div>
             </div>
 
@@ -828,20 +828,20 @@
             <div class="creator-card" 
                  data-shortcode="DR7HwROE_Ur" 
                  data-url="https://www.instagram.com/reel/DR7HwROE_Ur/" 
-                 data-title="STAGE & DJ PERFORMANCE" 
-                 data-tag="PERFORMANCE">
-              <div class="card-thumb" data-thumb="reel6"></div>
+                 data-title="COMMUNITY GATHERING" 
+                 data-tag="06 / EVENT RECAP">
+              <div class="card-thumb" style="background-image:url('https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80');"></div>
               <div class="overlay"></div>
               <div class="card-badge-top">
-                <span class="pill-tag">06 / STAGE</span>
+                <span class="pill-tag">06 / GATHERING</span>
                 <div class="play-btn-circle">
                   <svg class="icon icon-sm" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="8,5 19,12 8,19"/></svg>
                 </div>
               </div>
               <div class="card-info-bottom">
-                <span class="cat-sub">Live Show</span>
-                <h3>RHYTHM &amp; LASERS</h3>
-                <p>Dramatic stage haze, strobe light timing, and heavy beats.</p>
+                <span class="cat-sub">Human Connection</span>
+                <h3>COMMUNITY GATHERING</h3>
+                <p>Dokumentasi kebersamaan hangat acara komunitas dan interaksi peserta.</p>
               </div>
             </div>
 
@@ -849,20 +849,20 @@
             <div class="creator-card" 
                  data-shortcode="DZSZtNyzpw7" 
                  data-url="https://www.instagram.com/reel/DZSZtNyzpw7/" 
-                 data-title="EVENT DIARY HIGHLIGHT" 
-                 data-tag="SAME-DAY EDIT">
-              <div class="card-thumb" data-thumb="reel7"></div>
+                 data-title="SPORTS &amp; ACTION PACING" 
+                 data-tag="07 / ACTION">
+              <div class="card-thumb" style="background-image:url('https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800&q=80');"></div>
               <div class="overlay"></div>
               <div class="card-badge-top">
-                <span class="pill-tag">07 / RECAP</span>
+                <span class="pill-tag">07 / SPORTS</span>
                 <div class="play-btn-circle">
                   <svg class="icon icon-sm" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="8,5 19,12 8,19"/></svg>
                 </div>
               </div>
               <div class="card-info-bottom">
-                <span class="cat-sub">Fast Turnaround</span>
-                <h3>REAL-TIME STORY</h3>
-                <p>Social-first recap delivery ready for immediate posting.</p>
+                <span class="cat-sub">Fast Pacing</span>
+                <h3>SPORTS &amp; ACTION PACING</h3>
+                <p>Rangkaian video dinamis berkecepatan tinggi dengan efek transisi cepat.</p>
               </div>
             </div>
 
@@ -870,20 +870,20 @@
             <div class="creator-card" 
                  data-shortcode="DVTB6dcErqm" 
                  data-url="https://www.instagram.com/reel/DVTB6dcErqm/" 
-                 data-title="GIMBAL OPERATOR RUN" 
-                 data-tag="STABILIZER">
-              <div class="card-thumb" data-thumb="reel8"></div>
+                 data-title="FESTIVAL ENERGY &amp; RHYTHM" 
+                 data-tag="08 / FESTIVAL">
+              <div class="card-thumb" style="background-image:url('https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=800&q=80');"></div>
               <div class="overlay"></div>
               <div class="card-badge-top">
-                <span class="pill-tag">08 / CREW</span>
+                <span class="pill-tag">08 / FESTIVAL</span>
                 <div class="play-btn-circle">
                   <svg class="icon icon-sm" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="8,5 19,12 8,19"/></svg>
                 </div>
               </div>
               <div class="card-info-bottom">
-                <span class="cat-sub">Smooth Tracking</span>
-                <h3>MOTION GLIDE</h3>
-                <p>Ultra-smooth field tracking shots and dynamic Dutch angles.</p>
+                <span class="cat-sub">Vibrant Sound</span>
+                <h3>FESTIVAL ENERGY</h3>
+                <p>Sorot penonton dan kemeriahan konser dalam balutan visual sinematik.</p>
               </div>
             </div>
 
@@ -891,20 +891,20 @@
             <div class="creator-card" 
                  data-shortcode="DYlhN20Rkap" 
                  data-url="https://www.instagram.com/reel/DYlhN20Rkap/" 
-                 data-title="AUTOMOTIVE NIGHT DRIVE" 
-                 data-tag="COMMERCIAL">
-              <div class="card-thumb" data-thumb="reel9"></div>
+                 data-title="URBAN MOOD &amp; CULTURE" 
+                 data-tag="09 / STREET VIBES">
+              <div class="card-thumb" style="background-image:url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80');"></div>
               <div class="overlay"></div>
               <div class="card-badge-top">
-                <span class="pill-tag">09 / BRAND</span>
+                <span class="pill-tag">09 / STREET</span>
                 <div class="play-btn-circle">
                   <svg class="icon icon-sm" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="8,5 19,12 8,19"/></svg>
                 </div>
               </div>
               <div class="card-info-bottom">
-                <span class="cat-sub">High Adrenaline</span>
-                <h3>MIDNIGHT ROLLING</h3>
-                <p>Vehicle rolling shots, exhaust sound design, and color grading.</p>
+                <span class="cat-sub">Cinematic Pacing</span>
+                <h3>URBAN MOOD &amp; CULTURE</h3>
+                <p>Eksplorasi estetika jalanan dan ekspresi candid berkarakter kuat.</p>
               </div>
             </div>
 
@@ -1136,9 +1136,8 @@
     })();
   </script>
 
-  <!-- PAGE SCRIPT & THUMBNAILS MAPPING -->
+  <!-- PAGE SCRIPT & INTERACTION LOGIC -->
   <script>
-    // General Work & Hero Assets
     const IMAGE_LIBRARY = {
       hero: "https://images.unsplash.com/photo-1671117507838-103b9f1bb432?auto=format&fit=crop&w=2400&q=88",
       workEvent: "https://images.unsplash.com/photo-1671117507838-103b9f1bb432?auto=format&fit=crop&w=1900&q=88",
@@ -1146,43 +1145,20 @@
       workCity: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=1500&q=88"
     };
 
-    // 9:16 Portrait Thumbnails untuk 9 Instagram Reels
-    const REEL_THUMBNAILS = {
-      reel1: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=720&h=1280&q=85", // Concert stage lighting
-      reel2: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=720&h=1280&q=85", // Camera rig operator
-      reel3: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=720&h=1280&q=85", // Crowd night event
-      reel4: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=720&h=1280&q=85", // Portrait candid
-      reel5: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=720&h=1280&q=85", // Urban street night
-      reel6: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=720&h=1280&q=85", // Festival stage performance
-      reel7: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=720&h=1280&q=85", // Night festival atmosphere
-      reel8: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=720&h=1280&q=85", // Camera gimbal operator
-      reel9: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=720&h=1280&q=85"  // Automotive night drive
-    };
-
-    // Hero Background
     document.getElementById("heroMedia").style.backgroundImage =
       `linear-gradient(90deg,rgba(13,13,13,.96) 0%,rgba(13,13,13,.82) 48%,rgba(13,13,13,.35) 100%),
        linear-gradient(0deg,rgba(13,13,13,.9),transparent 55%),
        url("${IMAGE_LIBRARY.hero}")`;
 
-    // Apply General Images
     document.querySelectorAll("[data-image]").forEach((el) => {
       const key = el.dataset.image;
       if (IMAGE_LIBRARY[key]) el.style.backgroundImage = `url("${IMAGE_LIBRARY[key]}")`;
     });
 
-    // Apply Reels Thumbnails
-    document.querySelectorAll("[data-thumb]").forEach((el) => {
-      const key = el.dataset.thumb;
-      if (REEL_THUMBNAILS[key]) el.style.backgroundImage = `url("${REEL_THUMBNAILS[key]}")`;
-    });
-
-    // Navbar Scroll State
     const nav = document.getElementById("nav");
     window.addEventListener("scroll", () => nav.classList.toggle("scrolled", window.scrollY > 30), { passive: true });
     window.addEventListener("load", () => document.querySelector(".hero").classList.add("ready"));
 
-    // Scroll Observer for Animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) { entry.target.classList.add("is-visible"); observer.unobserve(entry.target); }
@@ -1190,7 +1166,7 @@
     }, { threshold: 0.08 });
     document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
-    // Slider Scroll Buttons
+    // SLIDER BUTTONS LOGIC
     const slider = document.getElementById("creatorSlider");
     document.getElementById("slideLeft").addEventListener("click", () => {
       slider.scrollBy({ left: -320, behavior: "smooth" });
@@ -1199,7 +1175,7 @@
       slider.scrollBy({ left: 320, behavior: "smooth" });
     });
 
-    // Instagram Modal Player Handler
+    // MODAL LIGHTBOX WITH INSTAGRAM EMBED
     const modal = document.getElementById("videoModal");
     const modalIframe = document.getElementById("modalIframePlayer");
     const modalTitle = document.getElementById("modalVideoTitle");
